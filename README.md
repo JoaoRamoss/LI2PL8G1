@@ -3,7 +3,7 @@ Repositorio do projeto de laboratorios de informatica 2
 
 Turno - PL8
 
-Grupo - 
+Grupo - 1
 
 João Pedro Ramos Monteiro Silva (a89293)
 
