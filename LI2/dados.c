@@ -35,10 +35,6 @@ int obter_numero_de_jogadas(ESTADO *estado) {
 
 int obter_estado_casa(ESTADO *e, COORDENADA c) {
     int r;
-    for (int i = 0; i < c.linha; i++) {
-        for (int j = 0; j < c.coluna; j++) {
-            r = e -> tab[i][j];
-        }
-    }
+    r = e -> tab[c.linha - 1][c.coluna - 1];
     return r;
 }
