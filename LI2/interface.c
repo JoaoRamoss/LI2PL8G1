@@ -20,13 +20,24 @@ void mostrar_tabuleiro(ESTADO *e) {
     for (int i = 0; i < 8; i++) {
         printf("%d  ", i+1);
         for (int j = 0; j < 8; j++) {
-            if (e -> tab[i][j] == VAZIO)
-                item = '.';
-            else if (e -> tab[i][j] == BRANCA)
-                item = '*';
-            else
-                item = '#';
 
+            if (i == 0 && j == 7) {
+                printf("2");
+                break;
+            }
+            else if (i == 7 && j == 0) {
+                printf("1  ");
+                j++;
+            }
+
+            else {
+                if (obter_casa(e, i, j) == VAZIO)
+                    item = '.';
+                else if (obter_casa(e, i, j) == BRANCA)
+                    item = '*';
+                else
+                    item = '#';
+            }
             printf("%c  ", item);
         }
         printf("\n");

@@ -38,3 +38,8 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     r = e -> tab[c.linha - 1][c.coluna - 1];
     return r;
 }
+
+CASA obter_casa (ESTADO *e, int i, int j) {
+    CASA r = e -> tab[i][j];
+    return r;
+}
