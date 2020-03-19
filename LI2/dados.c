@@ -18,7 +18,7 @@ ESTADO *inicializar_estado() {
     (e -> ultima_jogada).coluna = 4;
     (e -> ultima_jogada).linha = 4;
     //Inicializa o numero de jogadas, atribuindo-lhe o valor '0'.
-    e -> num_jogadas = 0;
+    e -> num_jogadas = 1;
     //O jogo começa sempre pelo jogador 1.
     e -> jogador_atual = 1;
 
@@ -35,7 +35,7 @@ int obter_numero_de_jogadas(ESTADO *estado) {
 
 CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
     CASA r;
-    r = e -> tab[c.linha - 1][c.coluna - 1];
+    r = e -> tab[c.linha][c.coluna];
     return r;
 }
 

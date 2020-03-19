@@ -6,6 +6,8 @@
 
 void mostrar_tabuleiro(ESTADO *e) {
     char item;
+
+
     //Imprime as letras no topo do tabuleiro.
     printf("   ");
     for (char c = 'a'; c < 'i'; c++)
@@ -42,22 +44,22 @@ void mostrar_tabuleiro(ESTADO *e) {
         }
         printf("\n");
     }
+    printf("#(%d) JOG: %d => ", e->num_jogadas, e->jogador_atual);
 }
 
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
 
+    printf("\n");
     mostrar_tabuleiro(e);
-    printf("Faz a tua jogada: ");
-
     if(fgets(linha, BUF_SIZE, stdin) == NULL)
         return 0;
 
     if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
         COORDENADA coord = {*col - 'a', *lin - '1'};
         jogar(e, coord);
-        mostrar_tabuleiro(e);
     }
+
     return 1;
 }
