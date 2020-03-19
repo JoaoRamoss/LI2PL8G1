@@ -61,13 +61,7 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
 
     FILE *fp;
     fp = fopen(comando, "w");
-    fprintf(fp, "   ");
-    for (char c = 'a'; c < 'i'; c ++) {
-        fprintf(fp, "%c  ", c);
-    }
-    fprintf(fp, "\n");
     for (int i = 0; i < 8; i++) {
-        fprintf(fp, "%d  ", i+1);
         for (int j = 0; j < 8; j++) {
 
             if (i == 0 && j == 7) {
@@ -75,7 +69,7 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
                 break;
             }
             else if (i == 7 && j == 0) {
-                fprintf(fp, "1  ");
+                fprintf(fp, "1");
                 j++;
             }
 
@@ -87,16 +81,39 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
                 else
                     item = '#';
             }
-            fprintf(fp, "%c  ", item);
+            fprintf(fp, "%c", item);
         }
         fprintf(fp, "\n");
     }
-    fprintf(fp, "#(%d) JOG: %d => ", e->num_jogadas, e->jogador_atual);
+
+    if (e->jogador_atual == 2) {
+        for (int i = 1; i <= e->num_jogadas; i++) {
+            if(i < 10)
+                fprintf(fp, "0%d: ",i);
+            else
+                fprintf(fp, "%d: ",i);
+
+            if (i != e->num_jogadas) {
+                fprintf(fp, "%c%d %c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            }
+            else
+                fprintf(fp,"%c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1);
+            fprintf(fp,"\n");
+        }
+    }
+    if (e->jogador_atual == 1) {
+        for (int i = 1; i < e->num_jogadas; i++) {
+            if (i < 10)
+                fprintf(fp, "0%d: ", i);
+            else
+                fprintf(fp, "%d: ", i);
+
+            fprintf(fp, "%c%d %c%d",  e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            fprintf(fp, "\n");
+        }
+    }
     fclose(fp);
 }
-
-
-
 
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
