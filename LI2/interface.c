@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "logica.h"
+#include <string.h>
 #define BUF_SIZE 1024
 
 void mostrar_tabuleiro(ESTADO *e) {
@@ -51,15 +52,26 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
 
-    printf("\n");
-    mostrar_tabuleiro(e);
-    if(fgets(linha, BUF_SIZE, stdin) == NULL)
-        return 0;
+    while (jogo_terminado(e) == 0) {
+        printf("\n");
+        mostrar_tabuleiro(e);
+        if (fgets(linha, BUF_SIZE, stdin) == NULL)
+            return 0;
+        else
+            if (strncmp(linha, "Q", 1) == 0) {
+                printf("Saiu do jogo. \n");
+                break;
+            }
 
-    if(strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
-        COORDENADA coord = {*col - 'a', *lin - '1'};
-        jogar(e, coord);
+
+        if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
+            COORDENADA coord = {*col - 'a', *lin - '1'};
+            jogar(e, coord);
+        }
     }
-
+    if (jogo_terminado(e) == 1)
+        printf("Parabens!! O jogador 1 ganha!\n");
+    else if (jogo_terminado(e) == 2)
+        printf("Parabens!! O jogador 2 ganha! \n");
     return 1;
 }
