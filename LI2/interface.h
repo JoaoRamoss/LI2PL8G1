@@ -4,5 +4,6 @@
 
 void mostrar_tabuleiro(ESTADO *e);
 int interpretador(ESTADO *e);
+void tabuleiro_ficheiro(ESTADO *e, char linha[]);
 
 #endif
