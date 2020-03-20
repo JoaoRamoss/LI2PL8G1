@@ -10,15 +10,15 @@ int jogar(ESTADO *e, COORDENADA c) {
     int jogadas = obter_numero_de_jogadas(e);
 
     if (jogada_possivel(e,c) == 1) {
-        ///<Coloca a peça na posição pedida pelo utilizador.
+        //Coloca a peça na posição pedida pelo utilizador.
         e->tab[lin][col] = BRANCA;
-        ///<Coloca uma peça preta na casa anterior da peça branca.
+        //Coloca uma peça preta na casa anterior da peça branca.
         e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
-        ///<Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
+        //Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
         e->ultima_jogada.coluna = col;
         e->ultima_jogada.linha = lin;
 
-        ///<Determinar se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
+        //Determinar se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
         if (jog == 1) {
             e->jogadas[jogadas].jogador1.linha = lin;
             e->jogadas[jogadas].jogador1.coluna = col;
@@ -30,7 +30,7 @@ int jogar(ESTADO *e, COORDENADA c) {
             e->jogador_atual = 2;
         else {
             e->jogador_atual = 1;
-            ///<Incrementa o numero de jogadas.
+            //Incrementa o numero de jogadas.
             e->num_jogadas++;
         }
         return 1;
@@ -45,7 +45,7 @@ int jogar(ESTADO *e, COORDENADA c) {
     return 0;
 }
 
-///Verifica se a jogada pedida pelo utilizador é valida.
+//Verifica se a jogada pedida pelo utilizador é valida.
 int jogada_possivel (ESTADO *e, COORDENADA c) {
     if (obter_estado_casa(e,c) == BRANCA || obter_estado_casa(e,c) == PRETA ||
     abs((e->ultima_jogada.linha) - (c.linha)) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1) {
@@ -54,7 +54,7 @@ int jogada_possivel (ESTADO *e, COORDENADA c) {
     else return 1;
 }
 
-/// Verifica se o jogo terminou.
+// Verifica se o jogo terminou.
 int jogo_terminado (ESTADO *e) {
     int r = 0;
     if (e -> num_jogadas == 32 || (e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))

@@ -1,0 +1,231 @@
+\hypertarget{interface_8h}{}\doxysection{Referência ao ficheiro interface.\+h}
+\label{interface_8h}\index{interface.h@{interface.h}}
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+\doxysubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\+\_\+tabuleiro}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Imprime o tabuleiro. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretador}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Interpretador do jogo, todos os comandos sao efetuados nesta função. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a1f170009451fe70e20c0d67e9918e2a0}{tabuleiro\+\_\+ficheiro}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, char linha\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Coloca o tabuleiro e o estado do jogo num ficheiro. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Definicao da camada interface. 
+
+\doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
+\index{interface.h@{interface.h}!interpretador@{interpretador}}
+\index{interpretador@{interpretador}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{interpretador()}{interpretador()}}
+{\footnotesize\ttfamily int interpretador (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Interpretador do jogo, todos os comandos sao efetuados nesta função. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 caso a operação seja efetuada com sucesso. 
+\end{DoxyReturn}
+
+
+Definido na linha 118 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{118                              \{}
+\DoxyCodeLine{119     \textcolor{keywordtype}{char} linha[BUF\_SIZE];}
+\DoxyCodeLine{120     \textcolor{keywordtype}{char} col[2], lin[2];}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{keywordflow}{while} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 0) \{}
+\DoxyCodeLine{123         printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{124         \mbox{\hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\_tabuleiro}}(e);}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if} (fgets(linha, BUF\_SIZE, stdin) == NULL)}
+\DoxyCodeLine{126             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{127         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{128             \textcolor{keywordflow}{if} (strlen(linha) == 2 \&\& strncmp(linha, \textcolor{stringliteral}{"Q"}, 1) == 0) \{}
+\DoxyCodeLine{129                 printf(\textcolor{stringliteral}{"Saiu do jogo. \(\backslash\)n"});}
+\DoxyCodeLine{130                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{131             \}}
+\DoxyCodeLine{132             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(linha, \textcolor{stringliteral}{"gr"}, 2) == 0) \{}
+\DoxyCodeLine{133                 \mbox{\hyperlink{interface_8h_a1f170009451fe70e20c0d67e9918e2a0}{tabuleiro\_ficheiro}}(e, linha);}
+\DoxyCodeLine{134                 printf(\textcolor{stringliteral}{"Gravado.\(\backslash\)n"});}
+\DoxyCodeLine{135             \}}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138         \textcolor{keywordflow}{if} (strlen(linha) == 3 \&\& sscanf(linha, \textcolor{stringliteral}{"\%[a-\/h]\%[1-\/8]"}, col, lin) == 2) \{}
+\DoxyCodeLine{139             \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{*col -\/ \textcolor{charliteral}{'a'}, *lin -\/ \textcolor{charliteral}{'1'}\};}
+\DoxyCodeLine{140             \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord);}
+\DoxyCodeLine{141         \}}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 1)}
+\DoxyCodeLine{144         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
+\DoxyCodeLine{145     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
+\DoxyCodeLine{146         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
+\DoxyCodeLine{147     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{148 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}} 
+\index{interface.h@{interface.h}!mostrar\_tabuleiro@{mostrar\_tabuleiro}}
+\index{mostrar\_tabuleiro@{mostrar\_tabuleiro}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{mostrar\_tabuleiro()}{mostrar\_tabuleiro()}}
+{\footnotesize\ttfamily void mostrar\+\_\+tabuleiro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Imprime o tabuleiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definido na linha 8 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{8                                   \{}
+\DoxyCodeLine{9     \textcolor{keywordtype}{char} item;}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12     \textcolor{comment}{//Imprime as letras no topo do tabuleiro.}}
+\DoxyCodeLine{13     printf(\textcolor{stringliteral}{"   "});}
+\DoxyCodeLine{14     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{char} c = \textcolor{charliteral}{'a'}; c < \textcolor{charliteral}{'i'}; c++)}
+\DoxyCodeLine{15         printf(\textcolor{stringliteral}{"\%c  "}, c);}
+\DoxyCodeLine{16     printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{comment}{/*}}
+\DoxyCodeLine{19 \textcolor{comment}{    Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",}}
+\DoxyCodeLine{20 \textcolor{comment}{    '\#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".}}
+\DoxyCodeLine{21 \textcolor{comment}{    */}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{24         printf(\textcolor{stringliteral}{"\%d  "}, i+1);}
+\DoxyCodeLine{25         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27             \textcolor{keywordflow}{if} (i == 0 \&\& j == 7) \{}
+\DoxyCodeLine{28                 printf(\textcolor{stringliteral}{"2"});}
+\DoxyCodeLine{29                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{30             \}}
+\DoxyCodeLine{31             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 7 \&\& j == 0) \{}
+\DoxyCodeLine{32                 printf(\textcolor{stringliteral}{"1  "});}
+\DoxyCodeLine{33                 j++;}
+\DoxyCodeLine{34             \}}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{37                 \textcolor{keywordflow}{if} (obter\_casa(e, i, j) == VAZIO)}
+\DoxyCodeLine{38                     item = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{39                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (obter\_casa(e, i, j) == BRANCA)}
+\DoxyCodeLine{40                     item = \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{41                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{42                     item = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{43             \}}
+\DoxyCodeLine{44             printf(\textcolor{stringliteral}{"\%c  "}, item);}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46         printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{47     \}}
+\DoxyCodeLine{48     printf(\textcolor{stringliteral}{"\#(\%d) JOG: \%d => "}, e-\/>num\_jogadas, e-\/>jogador\_atual);}
+\DoxyCodeLine{49 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{interface_8h_a1f170009451fe70e20c0d67e9918e2a0}\label{interface_8h_a1f170009451fe70e20c0d67e9918e2a0}} 
+\index{interface.h@{interface.h}!tabuleiro\_ficheiro@{tabuleiro\_ficheiro}}
+\index{tabuleiro\_ficheiro@{tabuleiro\_ficheiro}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{tabuleiro\_ficheiro()}{tabuleiro\_ficheiro()}}
+{\footnotesize\ttfamily void tabuleiro\+\_\+ficheiro (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{char}]{linha\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Coloca o tabuleiro e o estado do jogo num ficheiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado do jogo. \\
+\hline
+{\em linha} & Nome do ficheiro onde vai ser guardado o estado. \\
+\hline
+\end{DoxyParams}
+
+
+Definido na linha 51 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{51                                                  \{}
+\DoxyCodeLine{52     \textcolor{keywordtype}{int} j = 0;}
+\DoxyCodeLine{53     \textcolor{keywordtype}{char} item;}
+\DoxyCodeLine{54     \textcolor{keywordtype}{char} comando[BUF\_SIZE];}
+\DoxyCodeLine{55     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 2; linha[i] != \textcolor{charliteral}{'\(\backslash\)n'}; i++) \{}
+\DoxyCodeLine{56         comando[j] = linha[i];}
+\DoxyCodeLine{57         j++;}
+\DoxyCodeLine{58     \}}
+\DoxyCodeLine{59     comando[j] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{60     strcat(comando, \textcolor{stringliteral}{".txt"});}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     FILE *fp;}
+\DoxyCodeLine{63     fp = fopen(comando, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{64     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{65         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67             \textcolor{keywordflow}{if} (i == 0 \&\& j == 7) \{}
+\DoxyCodeLine{68                 fprintf(fp, \textcolor{stringliteral}{"2"});}
+\DoxyCodeLine{69                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{70             \}}
+\DoxyCodeLine{71             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 7 \&\& j == 0) \{}
+\DoxyCodeLine{72                 fprintf(fp, \textcolor{stringliteral}{"1"});}
+\DoxyCodeLine{73                 j++;}
+\DoxyCodeLine{74             \}}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{77                 \textcolor{keywordflow}{if} (obter\_casa(e, i, j) == VAZIO)}
+\DoxyCodeLine{78                     item = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{79                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (obter\_casa(e, i, j) == BRANCA)}
+\DoxyCodeLine{80                     item = \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{82                     item = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{83             \}}
+\DoxyCodeLine{84             fprintf(fp, \textcolor{stringliteral}{"\%c"}, item);}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88     \textcolor{comment}{//Coloca jogadas anteriores no ficheiro.}}
+\DoxyCodeLine{89     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2) \{}
+\DoxyCodeLine{90         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= e-\/>num\_jogadas; i++) \{}
+\DoxyCodeLine{91             \textcolor{keywordflow}{if}(i < 10)}
+\DoxyCodeLine{92                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i);}
+\DoxyCodeLine{93             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{94                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i);}
+\DoxyCodeLine{95 }
+\DoxyCodeLine{96             \textcolor{keywordflow}{if} (i != e-\/>num\_jogadas) \{}
+\DoxyCodeLine{97                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
+\DoxyCodeLine{98             \}}
+\DoxyCodeLine{99             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{100                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1);}
+\DoxyCodeLine{101             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{102         \}}
+\DoxyCodeLine{103     \}}
+\DoxyCodeLine{104     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < e-\/>num\_jogadas; i++) \{}
+\DoxyCodeLine{106             \textcolor{keywordflow}{if} (i < 10)}
+\DoxyCodeLine{107                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i);}
+\DoxyCodeLine{108             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{109                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i);}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{111             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
+\DoxyCodeLine{112             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{113         \}}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115     fclose(fp);}
+\DoxyCodeLine{116 \}}
+
+\end{DoxyCode}

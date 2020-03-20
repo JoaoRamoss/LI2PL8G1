@@ -9,13 +9,13 @@ void mostrar_tabuleiro(ESTADO *e) {
     char item;
 
 
-    ///<Imprime as letras no topo do tabuleiro.
+    //Imprime as letras no topo do tabuleiro.
     printf("   ");
     for (char c = 'a'; c < 'i'; c++)
         printf("%c  ", c);
     printf("\n");
 
-    /**<
+    /*
     Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",
     '#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".
     */
@@ -47,7 +47,7 @@ void mostrar_tabuleiro(ESTADO *e) {
     }
     printf("#(%d) JOG: %d => ", e->num_jogadas, e->jogador_atual);
 }
-///Função usada para o comando gr (grava o estado de jogo num ficheiro).
+//Função usada para o comando gr (grava o estado de jogo num ficheiro).
 void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
     int j = 0;
     char item;
@@ -85,7 +85,7 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
         }
         fprintf(fp, "\n");
     }
-    ///<Coloca jogadas anteriores no ficheiro.
+    //Coloca jogadas anteriores no ficheiro.
     if (e->jogador_atual == 2) {
         for (int i = 1; i <= e->num_jogadas; i++) {
             if(i < 10)

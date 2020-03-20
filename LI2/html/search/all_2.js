@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['jogada_2',['JOGADA',['../struct_j_o_g_a_d_a.html',1,'']]]
+  ['estado_2',['ESTADO',['../struct_e_s_t_a_d_o.html',1,'']]]
 ];
