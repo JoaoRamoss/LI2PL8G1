@@ -1,9 +1,10 @@
 #include "dados.h"
 #include <stdlib.h>
 
-/*
-Inicializa o estado. Coloca todas as posicoes do tabuleiro como "VAZIO", exceto na posicao "e5",
-à qual fica atribuida uma peca "BRANCA".
+/**
+\brief Inicializa o valor do estado
+Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocado na posição inicial e todos os campos do estado estarem com o valor por omissão.
+@returns O novo estado
 */
 ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
@@ -12,14 +13,14 @@ ESTADO *inicializar_estado() {
             e -> tab[i][j] = VAZIO;
         }
     }
-    //Atribui uma peca "BRANCA" na posição "e5".
+    ///<Atribui uma peca "BRANCA" na posição "e5".
     e -> tab[4][4] = BRANCA;
-    //Define como ultima jogada a peça inicial, para ser utilizado futuramente na funçao "jogar".
+    ///<Define como ultima jogada a peça inicial, para ser utilizado futuramente na funçao "jogar".
     (e -> ultima_jogada).coluna = 4;
     (e -> ultima_jogada).linha = 4;
-    //Inicializa o numero de jogadas, atribuindo-lhe o valor '0'.
+    ///<Inicializa o numero de jogadas, atribuindo-lhe o valor '0'.
     e -> num_jogadas = 1;
-    //O jogo começa sempre pelo jogador 1.
+    ///<O jogo começa sempre pelo jogador 1.
     e -> jogador_atual = 1;
 
     return e;
