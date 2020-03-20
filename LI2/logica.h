@@ -27,4 +27,12 @@ int jogada_possivel (ESTADO *e, COORDENADA c);
  * @return 1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho.
  */
 int jogo_terminado (ESTADO *e);
+
+/**
+ * \brief Coloca o tabuleiro e o estado do jogo num ficheiro
+ * @param e Estado do jogo.
+ * @param linha Nome do ficheiro onde vai ser guardado o estado.
+ */
+void tabuleiro_ficheiro(ESTADO *e, char linha[]);
+
 #endif

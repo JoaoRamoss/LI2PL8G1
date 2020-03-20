@@ -1,51 +1,26 @@
-\hypertarget{dados_8h}{}\doxysection{Referência ao ficheiro dados.\+h}
-\label{dados_8h}\index{dados.h@{dados.h}}
-\doxysubsection*{Componentes}
-\begin{DoxyCompactItemize}
-\item 
-struct \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}
-\item 
-struct \mbox{\hyperlink{struct_j_o_g_a_d_a}{J\+O\+G\+A\+DA}}
-\item 
-struct \mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}}
-\end{DoxyCompactItemize}
-\doxysubsection*{Definições de tipos}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{dados_8h_a94c221d29a1760f008b7834093259b7d}\label{dados_8h_a94c221d29a1760f008b7834093259b7d}} 
-typedef \mbox{\hyperlink{struct_j_o_g_a_d_a}{J\+O\+G\+A\+DA}} {\bfseries J\+O\+G\+A\+D\+AS}\mbox{[}32\mbox{]}
-\end{DoxyCompactItemize}
-\doxysubsection*{Enumerações}
-\begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{dados_8h_aba91601f16d4c485b2d9b8c429f27039}\label{dados_8h_aba91601f16d4c485b2d9b8c429f27039}} 
-enum {\bfseries C\+A\+SA} \{ {\bfseries V\+A\+Z\+IO}, 
-{\bfseries B\+R\+A\+N\+CA}, 
-{\bfseries P\+R\+E\+TA}
- \}
-\end{DoxyCompactItemize}
+\hypertarget{dados_8c}{}\doxysection{Referência ao ficheiro dados.\+c}
+\label{dados_8c}\index{dados.c@{dados.c}}
+{\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$ \mbox{\hyperlink{dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}{inicializar\+\_\+estado}} ()
+\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$ \mbox{\hyperlink{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}{inicializar\+\_\+estado}} ()
 \begin{DoxyCompactList}\small\item\em Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como \char`\"{}\+V\+A\+Z\+I\+O\char`\"{} menos na posição \char`\"{}e5\char`\"{} que fica definida como \char`\"{}\+B\+R\+A\+N\+C\+A\char`\"{}. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\+\_\+jogador\+\_\+atual}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
+int \mbox{\hyperlink{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\+\_\+jogador\+\_\+atual}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
 \begin{DoxyCompactList}\small\item\em Obtem o jogador atual. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+numero\+\_\+de\+\_\+jogadas}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
+int \mbox{\hyperlink{dados_8c_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+numero\+\_\+de\+\_\+jogadas}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
 \begin{DoxyCompactList}\small\item\em Obtem o numero de jogadas. \end{DoxyCompactList}\item 
-C\+A\+SA \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+C\+A\+SA \mbox{\hyperlink{dados_8c_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
 \begin{DoxyCompactList}\small\item\em Obtem o estado atual da peca numa determinada casa. \end{DoxyCompactList}\item 
-C\+A\+SA \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
+C\+A\+SA \mbox{\hyperlink{dados_8c_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
 \begin{DoxyCompactList}\small\item\em Tem a mesma função que a funcao \char`\"{}obter\+\_\+estado\+\_\+casa\char`\"{} mas com input diferente. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{Descrição detalhada}
-Defiinição da camada dados. 
-
 \doxysubsection{Documentação das funções}
-\mbox{\Hypertarget{dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}\label{dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}} 
-\index{dados.h@{dados.h}!inicializar\_estado@{inicializar\_estado}}
-\index{inicializar\_estado@{inicializar\_estado}!dados.h@{dados.h}}
+\mbox{\Hypertarget{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}\label{dados_8c_a7e0c7e26fb685d9ab501e19b05e6954f}} 
+\index{dados.c@{dados.c}!inicializar\_estado@{inicializar\_estado}}
+\index{inicializar\_estado@{inicializar\_estado}!dados.c@{dados.c}}
 \doxysubsubsection{\texorpdfstring{inicializar\_estado()}{inicializar\_estado()}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}}$\ast$ inicializar\+\_\+estado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
@@ -85,9 +60,9 @@ Definido na linha 8 do ficheiro dados.\+c.
 \DoxyCodeLine{26 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}} 
-\index{dados.h@{dados.h}!obter\_casa@{obter\_casa}}
-\index{obter\_casa@{obter\_casa}!dados.h@{dados.h}}
+\mbox{\Hypertarget{dados_8c_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8c_ad4e371755c518dbe632dc8cb1280cdad}} 
+\index{dados.c@{dados.c}!obter\_casa@{obter\_casa}}
+\index{obter\_casa@{obter\_casa}!dados.c@{dados.c}}
 \doxysubsubsection{\texorpdfstring{obter\_casa()}{obter\_casa()}}
 {\footnotesize\ttfamily C\+A\+SA obter\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
 
@@ -119,9 +94,9 @@ Definido na linha 42 do ficheiro dados.\+c.
 \DoxyCodeLine{45 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{dados_8h_a6faa68373203923729ed38657aa0f768}\label{dados_8h_a6faa68373203923729ed38657aa0f768}} 
-\index{dados.h@{dados.h}!obter\_estado\_casa@{obter\_estado\_casa}}
-\index{obter\_estado\_casa@{obter\_estado\_casa}!dados.h@{dados.h}}
+\mbox{\Hypertarget{dados_8c_a6faa68373203923729ed38657aa0f768}\label{dados_8c_a6faa68373203923729ed38657aa0f768}} 
+\index{dados.c@{dados.c}!obter\_estado\_casa@{obter\_estado\_casa}}
+\index{obter\_estado\_casa@{obter\_estado\_casa}!dados.c@{dados.c}}
 \doxysubsubsection{\texorpdfstring{obter\_estado\_casa()}{obter\_estado\_casa()}}
 {\footnotesize\ttfamily C\+A\+SA obter\+\_\+estado\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
 
@@ -152,9 +127,9 @@ Definido na linha 36 do ficheiro dados.\+c.
 \DoxyCodeLine{40 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
-\index{dados.h@{dados.h}!obter\_jogador\_atual@{obter\_jogador\_atual}}
-\index{obter\_jogador\_atual@{obter\_jogador\_atual}!dados.h@{dados.h}}
+\mbox{\Hypertarget{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8c_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
+\index{dados.c@{dados.c}!obter\_jogador\_atual@{obter\_jogador\_atual}}
+\index{obter\_jogador\_atual@{obter\_jogador\_atual}!dados.c@{dados.c}}
 \doxysubsubsection{\texorpdfstring{obter\_jogador\_atual()}{obter\_jogador\_atual()}}
 {\footnotesize\ttfamily int obter\+\_\+jogador\+\_\+atual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{estado }\end{DoxyParamCaption})}
 
@@ -181,9 +156,9 @@ Definido na linha 28 do ficheiro dados.\+c.
 \DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{dados_8h_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8h_a6cd0b387bdee9e18003c78852394aa63}} 
-\index{dados.h@{dados.h}!obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}}
-\index{obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}!dados.h@{dados.h}}
+\mbox{\Hypertarget{dados_8c_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8c_a6cd0b387bdee9e18003c78852394aa63}} 
+\index{dados.c@{dados.c}!obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}}
+\index{obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}!dados.c@{dados.c}}
 \doxysubsubsection{\texorpdfstring{obter\_numero\_de\_jogadas()}{obter\_numero\_de\_jogadas()}}
 {\footnotesize\ttfamily int obter\+\_\+numero\+\_\+de\+\_\+jogadas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{estado }\end{DoxyParamCaption})}
 

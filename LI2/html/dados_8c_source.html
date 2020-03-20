@@ -65,57 +65,54 @@ $(function() {
 <div class="title">dados.c</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dados_8h.html">dados.h</a>&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">    5</a></span>&#160;<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *<a class="code" href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a>() {</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e = (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *) malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a>));</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; 8; j++) {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;            e -&gt; tab[i][j] = VAZIO;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;        }</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    }</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="comment">//Atribui uma peca &quot;BRANCA&quot; na posição &quot;e5&quot;.</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    e -&gt; tab[4][4] = BRANCA;</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">//Define como ultima jogada a peça inicial, para ser utilizado futuramente na funçao &quot;jogar&quot;.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    (e -&gt; ultima_jogada).coluna = 4;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    (e -&gt; ultima_jogada).linha = 4;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">//Inicializa o numero de jogadas, atribuindo-lhe o valor &#39;0&#39;.</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    e -&gt; num_jogadas = 1;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="comment">//O jogo começa sempre pelo jogador 1.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    e -&gt; jogador_atual = 1;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span> e;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<a href="dados_8c.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="dados_8h.html">dados.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">    8</a></span>&#160;<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *<a class="code" href="dados_8c.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a>() {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e = (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *) malloc(<span class="keyword">sizeof</span>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a>));</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0; j &lt; 8; j++) {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;            e -&gt; tab[i][j] = VAZIO;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    e -&gt; tab[4][4] = BRANCA;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    (e -&gt; ultima_jogada).coluna = 4;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    (e -&gt; ultima_jogada).linha = 4;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    e -&gt; num_jogadas = 1;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    e -&gt; jogador_atual = 1;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">   25</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado) {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">return</span> estado -&gt; jogador_atual;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">   29</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado) {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">return</span> estado -&gt; num_jogadas;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="dados_8h.html#a6faa68373203923729ed38657aa0f768">   33</a></span>&#160;CASA <a class="code" href="dados_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> c) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    CASA r;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    r = e -&gt; tab[c.linha][c.coluna];</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> r;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">   39</a></span>&#160;CASA <a class="code" href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    CASA r = e -&gt; tab[i][j];</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> r;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> e;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">   28</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="dados_8c.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado) {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> estado -&gt; jogador_atual;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">   32</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="dados_8c.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *estado) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> estado -&gt; num_jogadas;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="dados_8h.html#a6faa68373203923729ed38657aa0f768">   36</a></span>&#160;CASA <a class="code" href="dados_8c.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a>(<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> c) {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    CASA r;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    r = e -&gt; tab[c.linha][c.coluna];</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> r;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">   42</a></span>&#160;CASA <a class="code" href="dados_8c.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    CASA r = e -&gt; tab[i][j];</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordflow">return</span> r;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00008">dados.h:8</a></div></div>
+<div class="ttc" id="adados_8c_html_a7e0c7e26fb685d9ab501e19b05e6954f"><div class="ttname"><a href="dados_8c.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a></div><div class="ttdeci">ESTADO * inicializar_estado()</div><div class="ttdoc">Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como &quot;VAZIO&quot; menos na...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00008">dados.c:8</a></div></div>
+<div class="ttc" id="adados_8c_html_ad6e326e4ffa57ca1ae0c75377ecefc8c"><div class="ttname"><a href="dados_8c.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a></div><div class="ttdeci">int obter_jogador_atual(ESTADO *estado)</div><div class="ttdoc">Obtem o jogador atual.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00028">dados.c:28</a></div></div>
+<div class="ttc" id="adados_8c_html_a6faa68373203923729ed38657aa0f768"><div class="ttname"><a href="dados_8c.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a></div><div class="ttdeci">CASA obter_estado_casa(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Obtem o estado atual da peca numa determinada casa.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00036">dados.c:36</a></div></div>
 <div class="ttc" id="adados_8h_html"><div class="ttname"><a href="dados_8h.html">dados.h</a></div></div>
 <div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00017">dados.h:17</a></div></div>
-<div class="ttc" id="adados_8h_html_ad4e371755c518dbe632dc8cb1280cdad"><div class="ttname"><a href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a></div><div class="ttdeci">CASA obter_casa(ESTADO *e, int i, int j)</div><div class="ttdoc">Tem a mesma função que a funcao &quot;obter_estado_casa&quot; mas com input diferente.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00039">dados.c:39</a></div></div>
-<div class="ttc" id="adados_8h_html_a6cd0b387bdee9e18003c78852394aa63"><div class="ttname"><a href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a></div><div class="ttdeci">int obter_numero_de_jogadas(ESTADO *estado)</div><div class="ttdoc">Obtem o numero de jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00029">dados.c:29</a></div></div>
-<div class="ttc" id="adados_8h_html_ad6e326e4ffa57ca1ae0c75377ecefc8c"><div class="ttname"><a href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a></div><div class="ttdeci">int obter_jogador_atual(ESTADO *estado)</div><div class="ttdoc">Obtem o jogador atual.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00025">dados.c:25</a></div></div>
-<div class="ttc" id="adados_8h_html_a7e0c7e26fb685d9ab501e19b05e6954f"><div class="ttname"><a href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a></div><div class="ttdeci">ESTADO * inicializar_estado()</div><div class="ttdoc">Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como &quot;VAZIO&quot; menos na...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00005">dados.c:5</a></div></div>
-<div class="ttc" id="adados_8h_html_a6faa68373203923729ed38657aa0f768"><div class="ttname"><a href="dados_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a></div><div class="ttdeci">CASA obter_estado_casa(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Obtem o estado atual da peca numa determinada casa.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00033">dados.c:33</a></div></div>
+<div class="ttc" id="adados_8c_html_ad4e371755c518dbe632dc8cb1280cdad"><div class="ttname"><a href="dados_8c.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a></div><div class="ttdeci">CASA obter_casa(ESTADO *e, int i, int j)</div><div class="ttdoc">Tem a mesma função que a funcao &quot;obter_estado_casa&quot; mas com input diferente.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00042">dados.c:42</a></div></div>
+<div class="ttc" id="adados_8c_html_a6cd0b387bdee9e18003c78852394aa63"><div class="ttname"><a href="dados_8c.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a></div><div class="ttdeci">int obter_numero_de_jogadas(ESTADO *estado)</div><div class="ttdoc">Obtem o numero de jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00032">dados.c:32</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Gerado por &#160;<a href="http://www.doxygen.org/index.html">

@@ -19,11 +19,5 @@ void mostrar_tabuleiro(ESTADO *e);
  */
 int interpretador(ESTADO *e);
 
-/**
- * \brief Coloca o tabuleiro e o estado do jogo num ficheiro
- * @param e Estado do jogo.
- * @param linha Nome do ficheiro onde vai ser guardado o estado.
- */
-void tabuleiro_ficheiro(ESTADO *e, char linha[]);
 
 #endif

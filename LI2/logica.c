@@ -2,6 +2,8 @@
 #include "dados.h"
 #include <stdio.h>
 #include <stdlib.h>
+#define BUF_SIZE 1024
+#include <string.h>
 
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = c.linha;
@@ -66,4 +68,73 @@ int jogo_terminado (ESTADO *e) {
         r = 0;
 
     return r;
+}
+
+//Função usada para o comando gr (grava o estado de jogo num ficheiro).
+void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
+    int j = 0;
+    char item;
+    char comando[BUF_SIZE];
+    for (int i = 2; linha[i] != '\n'; i++) {
+        comando[j] = linha[i];
+        j++;
+    }
+    comando[j] = '\0';
+    strcat(comando, ".txt");
+
+    FILE *fp;
+    fp = fopen(comando, "w");
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+
+            if (i == 0 && j == 7) {
+                fprintf(fp, "2");
+                break;
+            }
+            else if (i == 7 && j == 0) {
+                fprintf(fp, "1");
+                j++;
+            }
+
+            else {
+                if (obter_casa(e, i, j) == VAZIO)
+                    item = '.';
+                else if (obter_casa(e, i, j) == BRANCA)
+                    item = '*';
+                else
+                    item = '#';
+            }
+            fprintf(fp, "%c", item);
+        }
+        fprintf(fp, "\n");
+    }
+    //Coloca jogadas anteriores no ficheiro.
+    if (e->jogador_atual == 2) {
+        for (int i = 0; i <= e->num_jogadas; i++) {
+            if(i < 10)
+                fprintf(fp, "0%d: ",i+1);
+            else
+                fprintf(fp, "%d: ",i+1);
+
+            if (i != e->num_jogadas) {
+                fprintf(fp, "%c%d %c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            }
+            else
+                fprintf(fp,"%c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1);
+            fprintf(fp,"\n");
+        }
+    }
+
+    if (e->jogador_atual == 1) {
+        for (int i = 0; i < e->num_jogadas; i++) {
+            if (i < 10)
+                fprintf(fp, "0%d: ", i+1);
+            else
+                fprintf(fp, "%d: ", i+1);
+
+            fprintf(fp, "%c%d %c%d",  e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            fprintf(fp, "\n");
+        }
+    }
+    fclose(fp);
 }
