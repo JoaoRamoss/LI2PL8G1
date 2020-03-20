@@ -143,8 +143,10 @@ Funções</h2></td></tr>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 1 ganha!\n&quot;</span>);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 2)</div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 2 ganha! \n&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 3)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        printf(<span class="stringliteral">&quot;Acabaram-se as jogadas! Ninguém ganhou. \n&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -219,7 +221,7 @@ Funções</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="alogica_8h_html_a1f170009451fe70e20c0d67e9918e2a0"><div class="ttname"><a href="logica_8h.html#a1f170009451fe70e20c0d67e9918e2a0">tabuleiro_ficheiro</a></div><div class="ttdeci">void tabuleiro_ficheiro(ESTADO *e, char linha[])</div><div class="ttdoc">Coloca o tabuleiro e o estado do jogo num ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00074">logica.c:74</a></div></div>
+<div class="ttc" id="alogica_8h_html_a1f170009451fe70e20c0d67e9918e2a0"><div class="ttname"><a href="logica_8h.html#a1f170009451fe70e20c0d67e9918e2a0">tabuleiro_ficheiro</a></div><div class="ttdeci">void tabuleiro_ficheiro(ESTADO *e, char linha[])</div><div class="ttdoc">Coloca o tabuleiro e o estado do jogo num ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00077">logica.c:77</a></div></div>
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00008">dados.h:8</a></div></div>
 <div class="ttc" id="alogica_8h_html_aea1fcb269536a2b7ee0d12518887cd09"><div class="ttname"><a href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a></div><div class="ttdeci">int jogo_terminado(ESTADO *e)</div><div class="ttdoc">Verifica se o jogo terminou.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00060">logica.c:60</a></div></div>
 <div class="ttc" id="ainterface_8h_html_aa0b6c1689e60ac852a73d67e066c1df5"><div class="ttname"><a href="interface_8h.html#aa0b6c1689e60ac852a73d67e066c1df5">mostrar_tabuleiro</a></div><div class="ttdeci">void mostrar_tabuleiro(ESTADO *e)</div><div class="ttdoc">Imprime o tabuleiro.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00007">interface.c:7</a></div></div>

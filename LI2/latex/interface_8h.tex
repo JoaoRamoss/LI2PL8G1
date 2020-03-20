@@ -69,8 +69,10 @@ Definido na linha 51 do ficheiro interface.\+c.
 \DoxyCodeLine{78         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
 \DoxyCodeLine{79     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
 \DoxyCodeLine{80         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
-\DoxyCodeLine{81     \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{82 \}}
+\DoxyCodeLine{81     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 3)}
+\DoxyCodeLine{82         printf(\textcolor{stringliteral}{"Acabaram-\/se as jogadas! Ninguém ganhou. \(\backslash\)n"});}
+\DoxyCodeLine{83     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{84 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}} 

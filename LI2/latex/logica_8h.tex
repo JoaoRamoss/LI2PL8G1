@@ -151,7 +151,7 @@ Verifica se o jogo terminou.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Retorna}
-1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho. 
+1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho, ou 3 caso as jogadas acabem. 
 \end{DoxyReturn}
 
 
@@ -161,16 +161,19 @@ Definido na linha 60 do ficheiro logica.\+c.
 \begin{DoxyCode}{0}
 \DoxyCodeLine{60                                \{}
 \DoxyCodeLine{61     \textcolor{keywordtype}{int} r = 0;}
-\DoxyCodeLine{62     \textcolor{keywordflow}{if} (e -\/> num\_jogadas == 32 || (e-\/>ultima\_jogada.coluna == 0 \&\& e-\/>ultima\_jogada.linha == 7))}
+\DoxyCodeLine{62     \textcolor{keywordflow}{if} ((e-\/>ultima\_jogada.coluna == 0 \&\& e-\/>ultima\_jogada.linha == 7))}
 \DoxyCodeLine{63         r = 1;}
 \DoxyCodeLine{64     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{65         \textcolor{keywordflow}{if} ( e-\/> num\_jogadas == 32 || (e -\/>ultima\_jogada.linha == 0 \&\& e-\/>ultima\_jogada.coluna == 7))}
+\DoxyCodeLine{65         \textcolor{keywordflow}{if} ((e -\/>ultima\_jogada.linha == 0 \&\& e-\/>ultima\_jogada.coluna == 7))}
 \DoxyCodeLine{66             r = 2;}
-\DoxyCodeLine{67     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{68         r = 0;}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{71 \}}
+\DoxyCodeLine{67         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{68             \textcolor{keywordflow}{if} (e-\/>num\_jogadas == 32)}
+\DoxyCodeLine{69                 r = 3;}
+\DoxyCodeLine{70     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{71         r = 0;}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{74 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a1f170009451fe70e20c0d67e9918e2a0}\label{logica_8h_a1f170009451fe70e20c0d67e9918e2a0}} 
@@ -206,77 +209,77 @@ Imprime o tabuleiro no ficheiro criado. \end{quote}
 Coloca jogadas anteriores no ficheiro. \end{quote}
 
 
-Definido na linha 74 do ficheiro logica.\+c.
+Definido na linha 77 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{74                                                  \{}
-\DoxyCodeLine{75     \textcolor{keywordtype}{int} j = 0;}
-\DoxyCodeLine{76     \textcolor{keywordtype}{char} item;}
-\DoxyCodeLine{77     \textcolor{keywordtype}{char} comando[BUF\_SIZE];}
-\DoxyCodeLine{78 }
-\DoxyCodeLine{80     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 2; linha[i] != \textcolor{charliteral}{'\(\backslash\)n'}; i++) \{}
-\DoxyCodeLine{81         comando[j] = linha[i];}
-\DoxyCodeLine{82         j++;}
-\DoxyCodeLine{83     \}}
-\DoxyCodeLine{84     comando[j] = \textcolor{charliteral}{'\(\backslash\)0'};}
-\DoxyCodeLine{85     strcat(comando, \textcolor{stringliteral}{".txt"});}
-\DoxyCodeLine{86 }
-\DoxyCodeLine{88     FILE *fp;}
-\DoxyCodeLine{89     fp = fopen(comando, \textcolor{stringliteral}{"w"});}
-\DoxyCodeLine{90 }
-\DoxyCodeLine{92     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
-\DoxyCodeLine{93         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
-\DoxyCodeLine{94 }
-\DoxyCodeLine{95             \textcolor{keywordflow}{if} (i == 0 \&\& j == 7) \{}
-\DoxyCodeLine{96                 fprintf(fp, \textcolor{stringliteral}{"2"});}
-\DoxyCodeLine{97                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{98             \}}
-\DoxyCodeLine{99             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 7 \&\& j == 0) \{}
-\DoxyCodeLine{100                 fprintf(fp, \textcolor{stringliteral}{"1"});}
-\DoxyCodeLine{101                 j++;}
-\DoxyCodeLine{102             \}}
-\DoxyCodeLine{103 }
-\DoxyCodeLine{104             \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{105                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j) == VAZIO)}
-\DoxyCodeLine{106                     item = \textcolor{charliteral}{'.'};}
-\DoxyCodeLine{107                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j) == BRANCA)}
-\DoxyCodeLine{108                     item = \textcolor{charliteral}{'*'};}
-\DoxyCodeLine{109                 \textcolor{keywordflow}{else}}
-\DoxyCodeLine{110                     item = \textcolor{charliteral}{'\#'};}
-\DoxyCodeLine{111             \}}
-\DoxyCodeLine{112             fprintf(fp, \textcolor{stringliteral}{"\%c"}, item);}
-\DoxyCodeLine{113         \}}
-\DoxyCodeLine{114         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{115     \}}
-\DoxyCodeLine{117     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2) \{}
-\DoxyCodeLine{118         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= e-\/>num\_jogadas; i++) \{}
-\DoxyCodeLine{119             \textcolor{keywordflow}{if}(i < 10)}
-\DoxyCodeLine{120                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i+1);}
-\DoxyCodeLine{121             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{122                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i+1);}
-\DoxyCodeLine{123 }
-\DoxyCodeLine{124             \textcolor{keywordflow}{if} (i != e-\/>num\_jogadas) \{}
-\DoxyCodeLine{125                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
-\DoxyCodeLine{126             \}}
-\DoxyCodeLine{127             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{128                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1);}
-\DoxyCodeLine{129             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{130         \}}
-\DoxyCodeLine{131     \}}
-\DoxyCodeLine{132 }
-\DoxyCodeLine{133     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
-\DoxyCodeLine{134         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < e-\/>num\_jogadas; i++) \{}
-\DoxyCodeLine{135             \textcolor{keywordflow}{if} (i < 10)}
-\DoxyCodeLine{136                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i+1);}
-\DoxyCodeLine{137             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{138                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i+1);}
-\DoxyCodeLine{139 }
-\DoxyCodeLine{140             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
-\DoxyCodeLine{141             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{142         \}}
-\DoxyCodeLine{143     \}}
-\DoxyCodeLine{144     fclose(fp);}
-\DoxyCodeLine{145 \}}
+\DoxyCodeLine{77                                                  \{}
+\DoxyCodeLine{78     \textcolor{keywordtype}{int} j = 0;}
+\DoxyCodeLine{79     \textcolor{keywordtype}{char} item;}
+\DoxyCodeLine{80     \textcolor{keywordtype}{char} comando[BUF\_SIZE];}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{83     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 2; linha[i] != \textcolor{charliteral}{'\(\backslash\)n'}; i++) \{}
+\DoxyCodeLine{84         comando[j] = linha[i];}
+\DoxyCodeLine{85         j++;}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87     comando[j] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{88     strcat(comando, \textcolor{stringliteral}{".txt"});}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{91     FILE *fp;}
+\DoxyCodeLine{92     fp = fopen(comando, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{93 }
+\DoxyCodeLine{95     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{96         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98             \textcolor{keywordflow}{if} (i == 0 \&\& j == 7) \{}
+\DoxyCodeLine{99                 fprintf(fp, \textcolor{stringliteral}{"2"});}
+\DoxyCodeLine{100                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{101             \}}
+\DoxyCodeLine{102             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (i == 7 \&\& j == 0) \{}
+\DoxyCodeLine{103                 fprintf(fp, \textcolor{stringliteral}{"1"});}
+\DoxyCodeLine{104                 j++;}
+\DoxyCodeLine{105             \}}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{107             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{108                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j) == VAZIO)}
+\DoxyCodeLine{109                     item = \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{110                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j) == BRANCA)}
+\DoxyCodeLine{111                     item = \textcolor{charliteral}{'*'};}
+\DoxyCodeLine{112                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{113                     item = \textcolor{charliteral}{'\#'};}
+\DoxyCodeLine{114             \}}
+\DoxyCodeLine{115             fprintf(fp, \textcolor{stringliteral}{"\%c"}, item);}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{117         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{118     \}}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2) \{}
+\DoxyCodeLine{121         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= e-\/>num\_jogadas; i++) \{}
+\DoxyCodeLine{122             \textcolor{keywordflow}{if}(i < 10)}
+\DoxyCodeLine{123                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i+1);}
+\DoxyCodeLine{124             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{125                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i+1);}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127             \textcolor{keywordflow}{if} (i != e-\/>num\_jogadas) \{}
+\DoxyCodeLine{128                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
+\DoxyCodeLine{129             \}}
+\DoxyCodeLine{130             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{131                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"}, e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1);}
+\DoxyCodeLine{132             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{133         \}}
+\DoxyCodeLine{134     \}}
+\DoxyCodeLine{135 }
+\DoxyCodeLine{136     \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
+\DoxyCodeLine{137         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < e-\/>num\_jogadas; i++) \{}
+\DoxyCodeLine{138             \textcolor{keywordflow}{if} (i < 10)}
+\DoxyCodeLine{139                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i+1);}
+\DoxyCodeLine{140             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{141                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i+1);}
+\DoxyCodeLine{142 }
+\DoxyCodeLine{143             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador1.linha+1, e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'}, e-\/>jogadas[i].jogador2.linha+1);}
+\DoxyCodeLine{144             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{145         \}}
+\DoxyCodeLine{146     \}}
+\DoxyCodeLine{147     fclose(fp);}
+\DoxyCodeLine{148 \}}
 
 \end{DoxyCode}

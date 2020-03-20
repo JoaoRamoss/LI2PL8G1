@@ -24,7 +24,7 @@ int jogada_possivel (ESTADO *e, COORDENADA c);
 /**
  * \brief Verifica se o jogo terminou.
  * @param e Estado do jogo.
- * @return 1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho.
+ * @return 1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho, ou 3 caso as jogadas acabem.
  */
 int jogo_terminado (ESTADO *e);
 

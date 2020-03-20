@@ -59,11 +59,14 @@ int jogada_possivel (ESTADO *e, COORDENADA c) {
 //Verifica se o jogo terminou.
 int jogo_terminado (ESTADO *e) {
     int r = 0;
-    if (e -> num_jogadas == 32 || (e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))
+    if ((e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))
         r = 1;
     else
-        if ( e-> num_jogadas == 32 || (e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
+        if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
             r = 2;
+        else
+            if (e->num_jogadas == 32)
+                r = 3;
     else
         r = 0;
 

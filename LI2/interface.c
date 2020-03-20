@@ -78,5 +78,7 @@ int interpretador(ESTADO *e) {
         printf("Parabens!! O jogador 1 ganha!\n");
     else if (jogo_terminado(e) == 2)
         printf("Parabens!! O jogador 2 ganha! \n");
+    else if (jogo_terminado(e) == 3)
+        printf("Acabaram-se as jogadas! Ninguém ganhou. \n");
     return 1;
 }
