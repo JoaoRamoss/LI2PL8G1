@@ -12,15 +12,15 @@ int jogar(ESTADO *e, COORDENADA c) {
     int jogadas = obter_numero_de_jogadas(e);
 
     if (jogada_possivel(e,c) == 1) {
-        //Coloca a peça na posição pedida pelo utilizador.
+        ///> Coloca a peça na posição pedida pelo utilizador.
         e->tab[lin][col] = BRANCA;
-        //Coloca uma peça preta na casa anterior da peça branca.
+        ///> Coloca uma peça preta na casa anterior da peça branca.
         e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
-        //Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
+        ///> Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
         e->ultima_jogada.coluna = col;
         e->ultima_jogada.linha = lin;
 
-        //Determinar se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
+        ///> Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
         if (jog == 1) {
             e->jogadas[jogadas].jogador1.linha = lin;
             e->jogadas[jogadas].jogador1.coluna = col;
@@ -32,7 +32,7 @@ int jogar(ESTADO *e, COORDENADA c) {
             e->jogador_atual = 2;
         else {
             e->jogador_atual = 1;
-            //Incrementa o numero de jogadas.
+            ///> Incrementa o numero de jogadas.
             e->num_jogadas++;
         }
         return 1;
@@ -47,7 +47,7 @@ int jogar(ESTADO *e, COORDENADA c) {
     return 0;
 }
 
-//Verifica se a jogada pedida pelo utilizador é valida.
+// Verifica se a jogada pedida pelo utilizador é valida.
 int jogada_possivel (ESTADO *e, COORDENADA c) {
     if (obter_estado_casa(e,c) == BRANCA || obter_estado_casa(e,c) == PRETA ||
     abs((e->ultima_jogada.linha) - (c.linha)) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1) {
@@ -56,7 +56,7 @@ int jogada_possivel (ESTADO *e, COORDENADA c) {
     else return 1;
 }
 
-// Verifica se o jogo terminou.
+//Verifica se o jogo terminou.
 int jogo_terminado (ESTADO *e) {
     int r = 0;
     if (e -> num_jogadas == 32 || (e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))
@@ -75,6 +75,8 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
     int j = 0;
     char item;
     char comando[BUF_SIZE];
+
+    ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
     for (int i = 2; linha[i] != '\n'; i++) {
         comando[j] = linha[i];
         j++;
@@ -82,8 +84,11 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
     comando[j] = '\0';
     strcat(comando, ".txt");
 
+    ///> Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista.
     FILE *fp;
     fp = fopen(comando, "w");
+
+    ///> Imprime o tabuleiro no ficheiro criado.
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
 
@@ -108,7 +113,7 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
         }
         fprintf(fp, "\n");
     }
-    //Coloca jogadas anteriores no ficheiro.
+    ///> Coloca jogadas anteriores no ficheiro.
     if (e->jogador_atual == 2) {
         for (int i = 0; i <= e->num_jogadas; i++) {
             if(i < 10)

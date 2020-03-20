@@ -1,6 +1,3 @@
-/**
- * @file dados.c
- */
 #include "dados.h"
 #include <stdlib.h>
 
@@ -12,14 +9,14 @@ ESTADO *inicializar_estado() {
             e -> tab[i][j] = VAZIO;
         }
     }
-    ///>Atribui uma peca "BRANCA" na posição "e5".
+    ///> Atribui uma peca "BRANCA" na posição "e5".
     e -> tab[4][4] = BRANCA;
-    ///>Define como ultima jogada a peça inicial, para ser utilizado futuramente na funçao "jogar".
+    ///> Define como ultima jogada a peça inicial, para ser utilizado futuramente na funçao "jogar".
     (e -> ultima_jogada).coluna = 4;
     (e -> ultima_jogada).linha = 4;
-    ///>Inicializa o numero de jogadas, atribuindo-lhe o valor '0'.
+    ///> Inicializa o numero de jogadas, atribuindo-lhe o valor '0'.
     e -> num_jogadas = 0;
-    ///>O jogo começa sempre pelo jogador 1.
+    ///> Coloca como jogador atual o jogador 1, visto que o jogo começa sempre por ele.
     e -> jogador_atual = 1;
 
     return e;

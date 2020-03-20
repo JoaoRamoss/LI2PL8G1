@@ -52,6 +52,7 @@ int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
     char col[2], lin[2];
 
+    ///> Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos.
     while (jogo_terminado(e) == 0) {
         printf("\n");
         mostrar_tabuleiro(e);
