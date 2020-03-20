@@ -23,14 +23,40 @@ typedef struct {
 } ESTADO;
 
 /**
-\brief Inicializa o valor do estado
-Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocado na posição inicial e todos os campos do estado estarem com o valor por omissão.
-@returns O novo estado
-*/
+ * \brief Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como "VAZIO" menos na posição "e5"
+ * que fica definida como "BRANCA".
+ * @return O Estado do jogo ja inicializado.
+ */
 ESTADO *inicializar_estado();
+
+/**
+ * \brief Obtem o jogador atual
+ * @param estado Estado atual do jogo.
+ * @return Jogador atual.
+ */
 int obter_jogador_atual(ESTADO *estado);
+
+/**
+ * \brief Obtem o numero de jogadas.
+ * @param estado Estado atual do jogo.
+ * @return O número de jogadas efetuadas.
+ */
 int obter_numero_de_jogadas(ESTADO *estado);
+
+/**
+ * \brief Obtem o estado atual da peca numa determinada casa.
+ * @param e Estado atual do jogo.
+ * @param c Coordenada introduzida pelo utilizador.
+ * @return O estado da casa pedida.
+ */
 CASA obter_estado_casa(ESTADO *e, COORDENADA c);
 
+/**
+ * \brief Tem a mesma função que a funcao "obter_estado_casa" mas com input diferente.
+ * @param e Estado atual do jogo
+ * @param i Coordenada introduzida pelo utilizador
+ * @param j Coordenada introduzida pelo utilizador.
+ * @return O estado da casa pedida.
+ */
 CASA obter_casa (ESTADO *e, int i, int j);
 #endif

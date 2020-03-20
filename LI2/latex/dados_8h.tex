@@ -28,19 +28,15 @@ enum {\bfseries C\+A\+SA} \{ {\bfseries V\+A\+Z\+IO},
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$ \mbox{\hyperlink{dados_8h_a7e0c7e26fb685d9ab501e19b05e6954f}{inicializar\+\_\+estado}} ()
-\begin{DoxyCompactList}\small\item\em Inicializa o valor do estado Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocado na posição inicial e todos os campos do estado estarem com o valor por omissão. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
-int {\bfseries obter\+\_\+jogador\+\_\+atual} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
-\item 
-\mbox{\Hypertarget{dados_8h_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8h_a6cd0b387bdee9e18003c78852394aa63}} 
-int {\bfseries obter\+\_\+numero\+\_\+de\+\_\+jogadas} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
-\item 
-\mbox{\Hypertarget{dados_8h_a6faa68373203923729ed38657aa0f768}\label{dados_8h_a6faa68373203923729ed38657aa0f768}} 
-C\+A\+SA {\bfseries obter\+\_\+estado\+\_\+casa} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
-\item 
-\mbox{\Hypertarget{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}} 
-C\+A\+SA {\bfseries obter\+\_\+casa} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como \char`\"{}\+V\+A\+Z\+I\+O\char`\"{} menos na posição \char`\"{}e5\char`\"{} que fica definida como \char`\"{}\+B\+R\+A\+N\+C\+A\char`\"{}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\+\_\+jogador\+\_\+atual}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
+\begin{DoxyCompactList}\small\item\em Obtem o jogador atual. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+numero\+\_\+de\+\_\+jogadas}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
+\begin{DoxyCompactList}\small\item\em Obtem o numero de jogadas. \end{DoxyCompactList}\item 
+C\+A\+SA \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\begin{DoxyCompactList}\small\item\em Obtem o estado atual da peca numa determinada casa. \end{DoxyCompactList}\item 
+C\+A\+SA \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
+\begin{DoxyCompactList}\small\item\em Tem a mesma função que a funcao \char`\"{}obter\+\_\+estado\+\_\+casa\char`\"{} mas com input diferente. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
@@ -55,10 +51,10 @@ Defiinição da camada dados.
 
 
 
-Inicializa o valor do estado Esta função inicializa o valor do estado. Isso implica o tabuleiro ser colocado na posição inicial e todos os campos do estado estarem com o valor por omissão. 
+Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como \char`\"{}\+V\+A\+Z\+I\+O\char`\"{} menos na posição \char`\"{}e5\char`\"{} que fica definida como \char`\"{}\+B\+R\+A\+N\+C\+A\char`\"{}. 
 
 \begin{DoxyReturn}{Retorna}
-O novo estado 
+O Estado do jogo ja inicializado. 
 \end{DoxyReturn}
 
 
@@ -85,5 +81,130 @@ Definido na linha 5 do ficheiro dados.\+c.
 \DoxyCodeLine{21 }
 \DoxyCodeLine{22     \textcolor{keywordflow}{return} e;}
 \DoxyCodeLine{23 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}} 
+\index{dados.h@{dados.h}!obter\_casa@{obter\_casa}}
+\index{obter\_casa@{obter\_casa}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{obter\_casa()}{obter\_casa()}}
+{\footnotesize\ttfamily C\+A\+SA obter\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+
+
+Tem a mesma função que a funcao \char`\"{}obter\+\_\+estado\+\_\+casa\char`\"{} mas com input diferente. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo \\
+\hline
+{\em i} & Coordenada introduzida pelo utilizador \\
+\hline
+{\em j} & Coordenada introduzida pelo utilizador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+O estado da casa pedida. 
+\end{DoxyReturn}
+
+
+Definido na linha 39 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{39                                           \{}
+\DoxyCodeLine{40     CASA r = e -\/> tab[i][j];}
+\DoxyCodeLine{41     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{42 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_a6faa68373203923729ed38657aa0f768}\label{dados_8h_a6faa68373203923729ed38657aa0f768}} 
+\index{dados.h@{dados.h}!obter\_estado\_casa@{obter\_estado\_casa}}
+\index{obter\_estado\_casa@{obter\_estado\_casa}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{obter\_estado\_casa()}{obter\_estado\_casa()}}
+{\footnotesize\ttfamily C\+A\+SA obter\+\_\+estado\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+
+
+
+Obtem o estado atual da peca numa determinada casa. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em c} & Coordenada introduzida pelo utilizador. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+O estado da casa pedida. 
+\end{DoxyReturn}
+
+
+Definido na linha 33 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{33                                                 \{}
+\DoxyCodeLine{34     CASA r;}
+\DoxyCodeLine{35     r = e -\/> tab[c.linha][c.coluna];}
+\DoxyCodeLine{36     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{37 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
+\index{dados.h@{dados.h}!obter\_jogador\_atual@{obter\_jogador\_atual}}
+\index{obter\_jogador\_atual@{obter\_jogador\_atual}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{obter\_jogador\_atual()}{obter\_jogador\_atual()}}
+{\footnotesize\ttfamily int obter\+\_\+jogador\+\_\+atual (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{estado }\end{DoxyParamCaption})}
+
+
+
+Obtem o jogador atual. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em estado} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Jogador atual. 
+\end{DoxyReturn}
+
+
+Definido na linha 25 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{25                                         \{}
+\DoxyCodeLine{26     \textcolor{keywordflow}{return} estado -\/> jogador\_atual;}
+\DoxyCodeLine{27 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8h_a6cd0b387bdee9e18003c78852394aa63}} 
+\index{dados.h@{dados.h}!obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}}
+\index{obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{obter\_numero\_de\_jogadas()}{obter\_numero\_de\_jogadas()}}
+{\footnotesize\ttfamily int obter\+\_\+numero\+\_\+de\+\_\+jogadas (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{estado }\end{DoxyParamCaption})}
+
+
+
+Obtem o numero de jogadas. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em estado} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+O número de jogadas efetuadas. 
+\end{DoxyReturn}
+
+
+Definido na linha 29 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29                                             \{}
+\DoxyCodeLine{30     \textcolor{keywordflow}{return} estado -\/> num\_jogadas;}
+\DoxyCodeLine{31 \}}
 
 \end{DoxyCode}

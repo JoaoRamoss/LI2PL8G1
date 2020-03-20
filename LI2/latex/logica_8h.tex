@@ -43,7 +43,7 @@ Definido na linha 49 do ficheiro logica.\+c.
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{49                                               \{}
-\DoxyCodeLine{50     \textcolor{keywordflow}{if} (obter\_estado\_casa(e,c) == BRANCA || obter\_estado\_casa(e,c) == PRETA ||}
+\DoxyCodeLine{50     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == BRANCA || \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == PRETA ||}
 \DoxyCodeLine{51     abs((e-\/>ultima\_jogada.linha) -\/ (c.linha)) > 1 || abs((e-\/>ultima\_jogada.coluna) -\/ (c.coluna)) > 1) \{}
 \DoxyCodeLine{52         \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{53     \}}
@@ -80,8 +80,8 @@ Definido na linha 6 do ficheiro logica.\+c.
 \DoxyCodeLine{6                                    \{}
 \DoxyCodeLine{7     \textcolor{keywordtype}{int} lin = c.linha;}
 \DoxyCodeLine{8     \textcolor{keywordtype}{int} col = c.coluna;}
-\DoxyCodeLine{9     \textcolor{keywordtype}{int} jog = obter\_jogador\_atual(e);}
-\DoxyCodeLine{10     \textcolor{keywordtype}{int} jogadas = obter\_numero\_de\_jogadas(e);}
+\DoxyCodeLine{9     \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a97c7ad5b7c6b698beca8006e674b85da}{jogada\_possivel}}(e,c) == 1) \{}
 \DoxyCodeLine{13         \textcolor{comment}{//Coloca a peça na posição pedida pelo utilizador.}}
