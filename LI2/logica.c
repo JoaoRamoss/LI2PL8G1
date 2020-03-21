@@ -84,8 +84,7 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
         comando[j] = linha[i];
         j++;
     }
-    comando[j] = '\0';
-    strcat(comando, ".txt");
+    strcat(comando, ".txt\0");
 
     ///> Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista.
     FILE *fp;
