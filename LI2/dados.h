@@ -77,4 +77,8 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
  * @return O int correspondente à coordenada linha na jogada "i".
  */
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
+
+void set_casa (ESTADO *e, char linha [], int k);
+
+void set_estado (ESTADO *e, char cord[]);
 #endif

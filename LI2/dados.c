@@ -61,3 +61,46 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i) {
         lin = abs((e -> jogadas[i].jogador2.linha + 1) - 8) + 1;
         return lin;
 }
+
+void set_casa (ESTADO *e, char linha [], int k) {
+    for (int i = 0; i < 9; i++) {
+        switch (linha[i]) {
+            case ('.'):
+                e->tab[k][i] = VAZIO;
+                break;
+            case ('*'):
+                e->tab[k][i] = BRANCA;
+                break;
+            case('#'):
+                e->tab[k][i] = PRETA;
+                break;
+            case('2'):
+                e->tab[k][i] = DOIS;
+                break;
+            case('1'):
+                e->tab[k][i] = UM;
+            default:
+                break;
+        }
+    }
+}
+
+void set_estado (ESTADO *e, char cord[]) {
+    int i, lin, col, linha;
+
+    for (i = 0; cord[i] != '\0'; i++){;}
+    if (i == 5) {
+         lin = atoi(&cord[1]);
+         col = (cord[0] - 'a');
+         e->jogador_atual = 1;
+    }
+    else if (i == 8) {
+         lin = atoi(&cord[4]);
+         col = (cord[3] - 'a');
+         e->jogador_atual = 2;
+    }
+    linha = abs(lin - 8) + 1;
+    e -> ultima_jogada.linha = linha;
+    e-> ultima_jogada.coluna = col;
+
+}

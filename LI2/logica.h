@@ -57,4 +57,8 @@ void imprime_fileTab (ESTADO *e, FILE *fp);
  * @param fp apontador do ficheiro, usado para escrever no documento de texto.
  */
 void file_posAnt (ESTADO *e, FILE *fp);
+
+int ler_ficheiro (ESTADO *e, char linha []);
+
+void update_estado (ESTADO *e, char lin_fich [], int k);
 #endif

@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #define BUF_SIZE 1024
 #include <string.h>
+#include <unistd.h>
 
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
@@ -18,12 +19,7 @@ int jogar(ESTADO *e, COORDENADA c) {
         atualiza_jogada(e, col, lin);
         return 1;
     }
-    else {
-        while (jogada_possivel(e,c) == 0){
-            printf("Jogada Invalida.\n");
-            return 0;
-        }
-    }
+    else
     return 0;
 }
 
@@ -66,7 +62,7 @@ int jogo_terminado (ESTADO *e) {
         r = 1;
     else if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
             r = 2;
-        else if (e->num_jogadas == 32)
+    else if (e->num_jogadas == 32)
                 r = 3;
     else
         r = 0;
@@ -74,17 +70,13 @@ int jogo_terminado (ESTADO *e) {
 }
 
 //Função usada para o comando gr (grava o estado de jogo num ficheiro).
-void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
+void tabuleiro_ficheiro(ESTADO *e, char *linha) {
+    char *comando;
     int j = 0;
-    char item;
-    char comando[BUF_SIZE];
-
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
-    for (int i = 2; linha[i] != '\n'; i++) {
-        comando[j] = linha[i];
-        j++;
-    }
-    strcat(comando, ".txt\0");
+    comando = strtok(linha, " ");
+    comando = strtok(NULL, "\n");
+    strcat(comando, ".txt");
 
     ///> Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista.
     FILE *fp;
@@ -104,6 +96,7 @@ void imprime_fileTab (ESTADO *e, FILE *fp) {
         }
         fprintf(fp, "\n");
     }
+    fprintf(fp, "\n");
 }
 
 //Imprime todas as jogadas anteriores no ficheiro.
@@ -141,4 +134,33 @@ void file_posAnt (ESTADO *e, FILE *fp) {
         }
     }
 }
+
+int ler_ficheiro (ESTADO *e, char linha []) {
+
+    FILE *fp;
+    char lin_fich [BUF_SIZE], *comando, *cord;
+    int k = 0;
+    int i = 0;
+    ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
+    comando = strtok(linha, " ");
+    comando = strtok (NULL, "\n");
+    strcat(comando, ".txt");
+
+        fp = fopen(comando, "r");
+        while(fgets(lin_fich,BUF_SIZE , fp) != NULL) {
+            printf("%d %s \n",k, lin_fich);
+            set_casa(e, lin_fich, k);
+                k++;
+        }
+
+        cord = strtok(lin_fich, " ");
+        cord = strtok(NULL, "\n");
+
+
+        set_estado(e, cord);
+     printf("%d%d \n", e->ultima_jogada.linha, e->ultima_jogada.coluna);
+        fclose(fp);
+        return 1;
+}
+
 

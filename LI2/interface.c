@@ -31,7 +31,7 @@ void mostrar_tabuleiro(ESTADO *e) {
 
 
 int interpretador(ESTADO *e) {
-    char linha[BUF_SIZE];
+    char linha[BUF_SIZE], comando [BUF_SIZE];
     char col[2], lin[2];
 
     ///> Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos.
@@ -49,11 +49,20 @@ int interpretador(ESTADO *e) {
                 tabuleiro_ficheiro(e, linha);
                 printf("Gravado.\n");
             }
+            else if (strncmp(linha, "ler", 3) == 0) {
+
+               // if (ler_ficheiro(e,linha) == 1) {
+               ler_ficheiro(e,linha);
+                    printf("Estado do jogo atualizado!\n");
+                //}
+                //else printf("Nao foi possivel encontrar esse ficheiro.\n");
+            }
 
 
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
-            jogar(e, coord);
+            if(jogar(e,coord) == 0)
+                printf("Jogada Invalida. \n");
         }
     }
     if (jogo_terminado(e) == 1)
