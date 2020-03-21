@@ -124,6 +124,44 @@ $(function() {
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        lin = abs((e -&gt; jogadas[i].jogador2.linha + 1) - 8) + 1;</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> lin;</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4">set_casa</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <span class="keywordtype">char</span> linha [], <span class="keywordtype">int</span> k) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; 9; i++) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">switch</span> (linha[i]) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">case</span> (<span class="charliteral">&#39;.&#39;</span>):</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                e-&gt;tab[k][i] = VAZIO;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">case</span> (<span class="charliteral">&#39;*&#39;</span>):</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                e-&gt;tab[k][i] = BRANCA;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                e-&gt;ultima_jogada.coluna = i;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                e-&gt;ultima_jogada.linha = k ;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;#&#39;</span>):</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                e-&gt;tab[k][i] = PRETA;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;2&#39;</span>):</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                e-&gt;tab[k][i] = DOIS;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;1&#39;</span>):</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                e-&gt;tab[k][i] = UM;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3">set_estado</a> (<a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <span class="keywordtype">char</span> cord[]) {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> jog = atoi(cord);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    e-&gt;num_jogadas = jog-1;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span> (i = 0; cord[i] != <span class="charliteral">&#39;\n&#39;</span>; i++){;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (i &lt; 8) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        e-&gt;jogador_atual = 2;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        e-&gt;jogador_atual = 1;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00008">dados.h:8</a></div></div>
 <div class="ttc" id="adados_8h_html"><div class="ttname"><a href="dados_8h.html">dados.h</a></div></div>
@@ -132,8 +170,10 @@ $(function() {
 <div class="ttc" id="adados_8h_html_ad4e371755c518dbe632dc8cb1280cdad"><div class="ttname"><a href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a></div><div class="ttdeci">CASA obter_casa(ESTADO *e, int i, int j)</div><div class="ttdoc">Tem a mesma função que a funcao &quot;obter_estado_casa&quot; mas com input diferente.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00041">dados.c:41</a></div></div>
 <div class="ttc" id="adados_8h_html_a0696c119c3f220421804807cc607fcda"><div class="ttname"><a href="dados_8h.html#a0696c119c3f220421804807cc607fcda">obtem_dados_jogadas_lin</a></div><div class="ttdeci">int obtem_dados_jogadas_lin(ESTADO *e, int n, int i)</div><div class="ttdoc">Obtem os dados da linha do array jogadas de um determinado jogador.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00054">dados.c:54</a></div></div>
 <div class="ttc" id="adados_8h_html_a6cd0b387bdee9e18003c78852394aa63"><div class="ttname"><a href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a></div><div class="ttdeci">int obter_numero_de_jogadas(ESTADO *estado)</div><div class="ttdoc">Obtem o numero de jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00030">dados.c:30</a></div></div>
+<div class="ttc" id="adados_8h_html_a5543c8b43313c6c2f6483629fd13a3d3"><div class="ttname"><a href="dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3">set_estado</a></div><div class="ttdeci">void set_estado(ESTADO *e, char cord[])</div><div class="ttdoc">Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00092">dados.c:92</a></div></div>
 <div class="ttc" id="adados_8h_html_ad6e326e4ffa57ca1ae0c75377ecefc8c"><div class="ttname"><a href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a></div><div class="ttdeci">int obter_jogador_atual(ESTADO *estado)</div><div class="ttdoc">Obtem o jogador atual.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00026">dados.c:26</a></div></div>
 <div class="ttc" id="adados_8h_html_a7e0c7e26fb685d9ab501e19b05e6954f"><div class="ttname"><a href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a></div><div class="ttdeci">ESTADO * inicializar_estado()</div><div class="ttdoc">Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como &quot;VAZIO&quot; menos na...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00004">dados.c:4</a></div></div>
+<div class="ttc" id="adados_8h_html_a99f70b4c2f315652b02f7a8c874cb2e4"><div class="ttname"><a href="dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4">set_casa</a></div><div class="ttdeci">void set_casa(ESTADO *e, char linha[], int k)</div><div class="ttdoc">Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00065">dados.c:65</a></div></div>
 <div class="ttc" id="adados_8h_html_a6faa68373203923729ed38657aa0f768"><div class="ttname"><a href="dados_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a></div><div class="ttdeci">CASA obter_estado_casa(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Obtem o estado atual da peca numa determinada casa.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00034">dados.c:34</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

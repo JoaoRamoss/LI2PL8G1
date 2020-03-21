@@ -69,6 +69,7 @@ void set_casa (ESTADO *e, char linha [], int k) {
             case ('.'):
                 e->tab[k][i] = VAZIO;
                 break;
+                ///> Ao encontrar a posição onde coloca a peça BRANCA, define também essa posição como última jogada.
             case ('*'):
                 e->tab[k][i] = BRANCA;
                 e->ultima_jogada.coluna = i;
@@ -87,12 +88,13 @@ void set_casa (ESTADO *e, char linha [], int k) {
         }
     }
 }
-
+///> Função auxiliar para a função "ler_ficheiro".
 void set_estado (ESTADO *e, char cord[]) {
     int i;
     int jog = atoi(cord);
     e->num_jogadas = jog-1;
     for (i = 0; cord[i] != '\n'; i++){;}
+
     if (i < 8) {
         e->jogador_atual = 2;
     }

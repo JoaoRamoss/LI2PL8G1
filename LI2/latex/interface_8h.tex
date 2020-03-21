@@ -36,43 +36,57 @@ Interpretador do jogo, todos os comandos sao efetuados nesta função.
 Usa a funcao \char`\"{}jogo\+\_\+terminado\char`\"{} para verificar se tem de continuar a pedir comandos. \end{quote}
 
 
+\begin{quote}
+Verifica qual é o comando do utilizador, tendo ações diferentes para cada um destes comandos. \end{quote}
+
+
 Definido na linha 33 do ficheiro interface.\+c.
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{33                              \{}
-\DoxyCodeLine{34     \textcolor{keywordtype}{char} linha[BUF\_SIZE];}
+\DoxyCodeLine{34     \textcolor{keywordtype}{char} linha[BUF\_SIZE], comando [BUF\_SIZE];}
 \DoxyCodeLine{35     \textcolor{keywordtype}{char} col[2], lin[2];}
 \DoxyCodeLine{36 }
 \DoxyCodeLine{38     \textcolor{keywordflow}{while} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 0) \{}
-\DoxyCodeLine{39         printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{40         \mbox{\hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\_tabuleiro}}(e);}
+\DoxyCodeLine{39         \mbox{\hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\_tabuleiro}}(e);}
 \DoxyCodeLine{41         \textcolor{keywordflow}{if} (fgets(linha, BUF\_SIZE, stdin) == NULL)}
 \DoxyCodeLine{42             \textcolor{keywordflow}{return} 0;}
 \DoxyCodeLine{43         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{44             \textcolor{keywordflow}{if} (strlen(linha) == 2 \&\& strncmp(linha, \textcolor{stringliteral}{"Q"}, 1) == 0) \{}
-\DoxyCodeLine{45                 printf(\textcolor{stringliteral}{"Saiu do jogo. \(\backslash\)n"});}
-\DoxyCodeLine{46                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{47             \}}
-\DoxyCodeLine{48             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(linha, \textcolor{stringliteral}{"gr"}, 2) == 0) \{}
-\DoxyCodeLine{49                 \mbox{\hyperlink{logica_8h_a1f170009451fe70e20c0d67e9918e2a0}{tabuleiro\_ficheiro}}(e, linha);}
-\DoxyCodeLine{50                 printf(\textcolor{stringliteral}{"Gravado.\(\backslash\)n"});}
-\DoxyCodeLine{51             \}}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 }
-\DoxyCodeLine{54         \textcolor{keywordflow}{if} (strlen(linha) == 3 \&\& sscanf(linha, \textcolor{stringliteral}{"\%[a-\/h]\%[1-\/8]"}, col, lin) == 2) \{}
-\DoxyCodeLine{55             \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{*col -\/ \textcolor{charliteral}{'a'}, *lin -\/ \textcolor{charliteral}{'1'}\};}
-\DoxyCodeLine{56             \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord);}
-\DoxyCodeLine{57         \}}
-\DoxyCodeLine{58     \}}
-\DoxyCodeLine{59     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 1)}
-\DoxyCodeLine{60         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
-\DoxyCodeLine{61     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
-\DoxyCodeLine{62         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
-\DoxyCodeLine{63     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 3)}
-\DoxyCodeLine{64         printf(\textcolor{stringliteral}{"Acabaram-\/se as jogadas! Ninguém ganhou. \(\backslash\)n"});}
-\DoxyCodeLine{65     \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{66 \}}
+\DoxyCodeLine{44             \textcolor{comment}{//Comando "Q", para sair do jogo.}}
+\DoxyCodeLine{45             \textcolor{keywordflow}{if} (strlen(linha) == 2 \&\& strncmp(linha, \textcolor{stringliteral}{"Q"}, 1) == 0) \{}
+\DoxyCodeLine{46                 printf(\textcolor{stringliteral}{"Saiu do jogo. \(\backslash\)n"});}
+\DoxyCodeLine{47                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{48             \}}
+\DoxyCodeLine{49             \textcolor{comment}{//Comando "gr", para guardar o estado do jogo.}}
+\DoxyCodeLine{50             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(linha, \textcolor{stringliteral}{"gr"}, 2) == 0) \{}
+\DoxyCodeLine{51                 \mbox{\hyperlink{logica_8h_ab69d463df342757a679a40c4f6e5d6ae}{tabuleiro\_ficheiro}}(e, linha);}
+\DoxyCodeLine{52                 printf(\textcolor{stringliteral}{"\(\backslash\)n\#=> Estado do jogo gravado.\(\backslash\)n"});}
+\DoxyCodeLine{53             \}}
+\DoxyCodeLine{54             \textcolor{comment}{//Comando "ler" para ler o estado do jogo num dado ficheiro.}}
+\DoxyCodeLine{55             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(linha, \textcolor{stringliteral}{"ler"}, 3) == 0) \{}
+\DoxyCodeLine{56                \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_ac272f234a6e3ed2b2e3c05c727e33c75}{ler\_ficheiro}}(e,linha) == 1) \{}
+\DoxyCodeLine{57                     printf(\textcolor{stringliteral}{"\(\backslash\)n\#=> Estado do jogo atualizado.\(\backslash\)n"});}
+\DoxyCodeLine{58                 \}}
+\DoxyCodeLine{59                \textcolor{keywordflow}{else}}
+\DoxyCodeLine{60                    printf(\textcolor{stringliteral}{"\(\backslash\)n\#=> Nao foi possivel encontrar esse ficheiro.\(\backslash\)n"});}
+\DoxyCodeLine{61             \}}
+\DoxyCodeLine{62             \textcolor{comment}{//Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.}}
+\DoxyCodeLine{63         \textcolor{keywordflow}{if} (strlen(linha) == 3 \&\& sscanf(linha, \textcolor{stringliteral}{"\%[a-\/h]\%[1-\/8]"}, col, lin) == 2) \{}
+\DoxyCodeLine{64             \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{*col -\/ \textcolor{charliteral}{'a'}, *lin -\/ \textcolor{charliteral}{'1'}\};}
+\DoxyCodeLine{65             \textcolor{keywordflow}{if}(\mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord) == 0)}
+\DoxyCodeLine{66                 printf(\textcolor{stringliteral}{"Jogada Invalida. \(\backslash\)n"});}
+\DoxyCodeLine{67         \}}
+\DoxyCodeLine{68     \}}
+\DoxyCodeLine{69     \textcolor{comment}{//Verifica qual dos jogadores congratular no final do jogo.}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 1)}
+\DoxyCodeLine{71         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
+\DoxyCodeLine{72     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
+\DoxyCodeLine{73         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
+\DoxyCodeLine{74     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 3)}
+\DoxyCodeLine{75         printf(\textcolor{stringliteral}{"Acabaram-\/se as jogadas! Ninguém ganhou. \(\backslash\)n"});}
+\DoxyCodeLine{76     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{77 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}} 

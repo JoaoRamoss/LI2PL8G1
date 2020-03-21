@@ -78,7 +78,18 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
  */
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 
+/**
+ * \brief Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro.
+ * @param e Estado atual do jogo.
+ * @param linha Linha obtida na leitura do ficheiro de texto na função "ler_ficheiro".
+ * @param k Determina em que linha vao ser colocados os dados.
+ */
 void set_casa (ESTADO *e, char linha [], int k);
 
+/**
+ * \brief Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar.
+ * @param e Estado atual do jogo.
+ * @param cord Última linha obtida ao ler o ficheiro.
+ */
 void set_estado (ESTADO *e, char cord[]);
 #endif

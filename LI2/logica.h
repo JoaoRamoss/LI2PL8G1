@@ -34,7 +34,7 @@ int jogo_terminado (ESTADO *e);
  * @param e Estado do jogo.
  * @param linha Nome do ficheiro onde vai ser guardado o estado.
  */
-void tabuleiro_ficheiro(ESTADO *e, char linha[]);
+void tabuleiro_ficheiro(ESTADO *e, char *linha);
 
 /**
  * \brief Função (auxiliar) que atualiza os dados de forma a que a jogada fique realizada.
@@ -58,7 +58,12 @@ void imprime_fileTab (ESTADO *e, FILE *fp);
  */
 void file_posAnt (ESTADO *e, FILE *fp);
 
+/**
+ * \brief Lê um ficheiro e atualiza o estado do jogo com o estado do jogo definido nesse ficheiro.
+ * @param e Estado atual do jogo.
+ * @param linha Linha obtida pela função "fgets()" no interpretador.
+ * @return 1 caso consiga ler o ficheiro, 0  caso nao consiga.
+ */
 int ler_ficheiro (ESTADO *e, char linha []);
 
-void update_estado (ESTADO *e, char lin_fich [], int k);
 #endif

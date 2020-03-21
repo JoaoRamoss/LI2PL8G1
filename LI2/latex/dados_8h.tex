@@ -44,7 +44,11 @@ C\+A\+SA \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\
 char \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\+\_\+dados\+\_\+jogadas\+\_\+col}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int n, int i)
 \begin{DoxyCompactList}\small\item\em Obtem os dados da coluna do array jogadas de um determinado jogador. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\+\_\+dados\+\_\+jogadas\+\_\+lin}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int n, int i)
-\begin{DoxyCompactList}\small\item\em Obtem os dados da linha do array jogadas de um determinado jogador. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Obtem os dados da linha do array jogadas de um determinado jogador. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}{set\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, char linha\mbox{[}$\,$\mbox{]}, int k)
+\begin{DoxyCompactList}\small\item\em Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dados_8h_a5543c8b43313c6c2f6483629fd13a3d3}{set\+\_\+estado}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, char cord\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
@@ -304,5 +308,96 @@ Definido na linha 30 do ficheiro dados.\+c.
 \DoxyCodeLine{30                                             \{}
 \DoxyCodeLine{31     \textcolor{keywordflow}{return} estado -\/> num\_jogadas;}
 \DoxyCodeLine{32 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}\label{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}} 
+\index{dados.h@{dados.h}!set\_casa@{set\_casa}}
+\index{set\_casa@{set\_casa}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{set\_casa()}{set\_casa()}}
+{\footnotesize\ttfamily void set\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{char}]{linha\mbox{[}$\,$\mbox{]},  }\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em linha} & Linha obtida na leitura do ficheiro de texto na função \char`\"{}ler\+\_\+ficheiro\char`\"{}. \\
+\hline
+{\em k} & Determina em que linha vao ser colocados os dados. \\
+\hline
+\end{DoxyParams}
+\begin{quote}
+Ao encontrar a posição onde coloca a peça B\+R\+A\+N\+CA, define também essa posição como última jogada. \end{quote}
+
+
+Definido na linha 65 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65                                                 \{}
+\DoxyCodeLine{66     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{67     \textcolor{keywordflow}{for} ( i = 0; i < 9; i++) \{}
+\DoxyCodeLine{68         \textcolor{keywordflow}{switch} (linha[i]) \{}
+\DoxyCodeLine{69             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'.'}):}
+\DoxyCodeLine{70                 e-\/>tab[k][i] = VAZIO;}
+\DoxyCodeLine{71                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{73             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'*'}):}
+\DoxyCodeLine{74                 e-\/>tab[k][i] = BRANCA;}
+\DoxyCodeLine{75                 e-\/>ultima\_jogada.coluna = i;}
+\DoxyCodeLine{76                 e-\/>ultima\_jogada.linha = k ;}
+\DoxyCodeLine{77                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{78             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'\#'}):}
+\DoxyCodeLine{79                 e-\/>tab[k][i] = PRETA;}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{81             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'2'}):}
+\DoxyCodeLine{82                 e-\/>tab[k][i] = DOIS;}
+\DoxyCodeLine{83                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{84             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'1'}):}
+\DoxyCodeLine{85                 e-\/>tab[k][i] = UM;}
+\DoxyCodeLine{86             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{87                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{88         \}}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_a5543c8b43313c6c2f6483629fd13a3d3}\label{dados_8h_a5543c8b43313c6c2f6483629fd13a3d3}} 
+\index{dados.h@{dados.h}!set\_estado@{set\_estado}}
+\index{set\_estado@{set\_estado}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{set\_estado()}{set\_estado()}}
+{\footnotesize\ttfamily void set\+\_\+estado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{char}]{cord\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em cord} & Última linha obtida ao ler o ficheiro.\\
+\hline
+\end{DoxyParams}
+Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar. 
+
+Definido na linha 92 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92                                          \{}
+\DoxyCodeLine{93     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} jog = atoi(cord);}
+\DoxyCodeLine{95     e-\/>num\_jogadas = jog-\/1;}
+\DoxyCodeLine{96     \textcolor{keywordflow}{for} (i = 0; cord[i] != \textcolor{charliteral}{'\(\backslash\)n'}; i++)\{;\}}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \textcolor{keywordflow}{if} (i < 8) \{}
+\DoxyCodeLine{99         e-\/>jogador\_atual = 2;}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{102         e-\/>jogador\_atual = 1;}
+\DoxyCodeLine{103 \}}
 
 \end{DoxyCode}

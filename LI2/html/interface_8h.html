@@ -112,41 +112,54 @@ Funções</h2></td></tr>
 <blockquote class="doxtable">
 <p>Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos. </p>
 </blockquote>
+<blockquote class="doxtable">
+<p>Verifica qual é o comando do utilizador, tendo ações diferentes para cada um destes comandos. </p>
+</blockquote>
 
 <p class="definition">Definido na linha <a class="el" href="interface_8c_source.html#l00033">33</a> do ficheiro <a class="el" href="interface_8c_source.html">interface.c</a>.</p>
 <div class="fragment"><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                             {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">char</span> linha[BUF_SIZE];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">char</span> linha[BUF_SIZE], comando [BUF_SIZE];</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">char</span> col[2], lin[2];</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 0) {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="interface_8h.html#aa0b6c1689e60ac852a73d67e066c1df5">mostrar_tabuleiro</a>(e);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="interface_8h.html#aa0b6c1689e60ac852a73d67e066c1df5">mostrar_tabuleiro</a>(e);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">if</span> (fgets(linha, BUF_SIZE, stdin) == NULL)</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">if</span> (strlen(linha) == 2 &amp;&amp; strncmp(linha, <span class="stringliteral">&quot;Q&quot;</span>, 1) == 0) {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                printf(<span class="stringliteral">&quot;Saiu do jogo. \n&quot;</span>);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            }</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(linha, <span class="stringliteral">&quot;gr&quot;</span>, 2) == 0) {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="logica_8h.html#a1f170009451fe70e20c0d67e9918e2a0">tabuleiro_ficheiro</a>(e, linha);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                printf(<span class="stringliteral">&quot;Gravado.\n&quot;</span>);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (strlen(linha) == 3 &amp;&amp; sscanf(linha, <span class="stringliteral">&quot;%[a-h]%[1-8]&quot;</span>, col, lin) == 2) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {*col - <span class="charliteral">&#39;a&#39;</span>, *lin - <span class="charliteral">&#39;1&#39;</span>};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 1)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 1 ganha!\n&quot;</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 2)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 2 ganha! \n&quot;</span>);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 3)</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        printf(<span class="stringliteral">&quot;Acabaram-se as jogadas! Ninguém ganhou. \n&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="comment">//Comando &quot;Q&quot;, para sair do jogo.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (strlen(linha) == 2 &amp;&amp; strncmp(linha, <span class="stringliteral">&quot;Q&quot;</span>, 1) == 0) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                printf(<span class="stringliteral">&quot;Saiu do jogo. \n&quot;</span>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="comment">//Comando &quot;gr&quot;, para guardar o estado do jogo.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(linha, <span class="stringliteral">&quot;gr&quot;</span>, 2) == 0) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                <a class="code" href="logica_8h.html#ab69d463df342757a679a40c4f6e5d6ae">tabuleiro_ficheiro</a>(e, linha);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                printf(<span class="stringliteral">&quot;\n#=&gt; Estado do jogo gravado.\n&quot;</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">//Comando &quot;ler&quot; para ler o estado do jogo num dado ficheiro.</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strncmp(linha, <span class="stringliteral">&quot;ler&quot;</span>, 3) == 0) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;               <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#ac272f234a6e3ed2b2e3c05c727e33c75">ler_ficheiro</a>(e,linha) == 1) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                    printf(<span class="stringliteral">&quot;\n#=&gt; Estado do jogo atualizado.\n&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;               <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                   printf(<span class="stringliteral">&quot;\n#=&gt; Nao foi possivel encontrar esse ficheiro.\n&quot;</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="comment">//Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (strlen(linha) == 3 &amp;&amp; sscanf(linha, <span class="stringliteral">&quot;%[a-h]%[1-8]&quot;</span>, col, lin) == 2) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {*col - <span class="charliteral">&#39;a&#39;</span>, *lin - <span class="charliteral">&#39;1&#39;</span>};</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">if</span>(<a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord) == 0)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                printf(<span class="stringliteral">&quot;Jogada Invalida. \n&quot;</span>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">//Verifica qual dos jogadores congratular no final do jogo.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 1)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 1 ganha!\n&quot;</span>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 2)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        printf(<span class="stringliteral">&quot;Parabens!! O jogador 2 ganha! \n&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e) == 3)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        printf(<span class="stringliteral">&quot;Acabaram-se as jogadas! Ninguém ganhou. \n&quot;</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -203,11 +216,12 @@ Funções</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="alogica_8h_html_a1f170009451fe70e20c0d67e9918e2a0"><div class="ttname"><a href="logica_8h.html#a1f170009451fe70e20c0d67e9918e2a0">tabuleiro_ficheiro</a></div><div class="ttdeci">void tabuleiro_ficheiro(ESTADO *e, char linha[])</div><div class="ttdoc">Coloca o tabuleiro e o estado do jogo num ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00077">logica.c:77</a></div></div>
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00008">dados.h:8</a></div></div>
-<div class="ttc" id="alogica_8h_html_aea1fcb269536a2b7ee0d12518887cd09"><div class="ttname"><a href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a></div><div class="ttdeci">int jogo_terminado(ESTADO *e)</div><div class="ttdoc">Verifica se o jogo terminou.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00063">logica.c:63</a></div></div>
+<div class="ttc" id="alogica_8h_html_aea1fcb269536a2b7ee0d12518887cd09"><div class="ttname"><a href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a></div><div class="ttdeci">int jogo_terminado(ESTADO *e)</div><div class="ttdoc">Verifica se o jogo terminou.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00059">logica.c:59</a></div></div>
+<div class="ttc" id="alogica_8h_html_ab69d463df342757a679a40c4f6e5d6ae"><div class="ttname"><a href="logica_8h.html#ab69d463df342757a679a40c4f6e5d6ae">tabuleiro_ficheiro</a></div><div class="ttdeci">void tabuleiro_ficheiro(ESTADO *e, char *linha)</div><div class="ttdoc">Coloca o tabuleiro e o estado do jogo num ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00073">logica.c:73</a></div></div>
 <div class="ttc" id="ainterface_8h_html_aa0b6c1689e60ac852a73d67e066c1df5"><div class="ttname"><a href="interface_8h.html#aa0b6c1689e60ac852a73d67e066c1df5">mostrar_tabuleiro</a></div><div class="ttdeci">void mostrar_tabuleiro(ESTADO *e)</div><div class="ttdoc">Imprime o tabuleiro.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00007">interface.c:7</a></div></div>
-<div class="ttc" id="alogica_8h_html_ac313d7e553b1e2b5f266acb9bfff8141"><div class="ttname"><a href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a></div><div class="ttdeci">int jogar(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Função que usa os dados do estado e do input do jogador para fazer a jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00007">logica.c:7</a></div></div>
+<div class="ttc" id="alogica_8h_html_ac313d7e553b1e2b5f266acb9bfff8141"><div class="ttname"><a href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a></div><div class="ttdeci">int jogar(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Função que usa os dados do estado e do input do jogador para fazer a jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00008">logica.c:8</a></div></div>
+<div class="ttc" id="alogica_8h_html_ac272f234a6e3ed2b2e3c05c727e33c75"><div class="ttname"><a href="logica_8h.html#ac272f234a6e3ed2b2e3c05c727e33c75">ler_ficheiro</a></div><div class="ttdeci">int ler_ficheiro(ESTADO *e, char linha[])</div><div class="ttdoc">Lê um ficheiro e atualiza o estado do jogo com o estado do jogo definido nesse ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00138">logica.c:138</a></div></div>
 <div class="ttc" id="adados_8h_html_ad4e371755c518dbe632dc8cb1280cdad"><div class="ttname"><a href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a></div><div class="ttdeci">CASA obter_casa(ESTADO *e, int i, int j)</div><div class="ttdoc">Tem a mesma função que a funcao &quot;obter_estado_casa&quot; mas com input diferente.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00041">dados.c:41</a></div></div>
 <div class="ttc" id="adados_8h_html_a6cd0b387bdee9e18003c78852394aa63"><div class="ttname"><a href="dados_8h.html#a6cd0b387bdee9e18003c78852394aa63">obter_numero_de_jogadas</a></div><div class="ttdeci">int obter_numero_de_jogadas(ESTADO *estado)</div><div class="ttdoc">Obtem o numero de jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00030">dados.c:30</a></div></div>
 <div class="ttc" id="adados_8h_html_ad6e326e4ffa57ca1ae0c75377ecefc8c"><div class="ttname"><a href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a></div><div class="ttdeci">int obter_jogador_atual(ESTADO *estado)</div><div class="ttdoc">Obtem o jogador atual.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00026">dados.c:26</a></div></div>

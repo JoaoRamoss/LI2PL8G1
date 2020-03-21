@@ -140,21 +140,26 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     FILE *fp;
     char lin_fich [BUF_SIZE], *comando, *cord;
     int k = 0;
-    int i = 0;
+    int r = 0;
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
     comando = strtok(linha, " ");
     comando = strtok (NULL, "\n");
     strcat(comando, ".txt");
-
+    ///> Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo.
+    //A função "access" retorna -1 caso nao encontre o ficheiro.
+    if (access(comando, F_OK) != -1) {
         fp = fopen(comando, "r");
-        while(fgets(lin_fich,BUF_SIZE , fp) != NULL) {
+        while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             set_casa(e, lin_fich, k);
             k++;
         }
         set_estado(e, lin_fich);
-     printf("%d%d \n", e->ultima_jogada.linha, e->ultima_jogada.coluna);
         fclose(fp);
-        return 1;
+        r = 1;
+    }
+    else
+        r = 0;
+    return r;
 }
 
 

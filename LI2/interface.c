@@ -36,35 +36,37 @@ int interpretador(ESTADO *e) {
 
     ///> Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos.
     while (jogo_terminado(e) == 0) {
-        printf("\n");
         mostrar_tabuleiro(e);
+        ///> Verifica qual é o comando do utilizador, tendo ações diferentes para cada um destes comandos.
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
         else
+            //Comando "Q", para sair do jogo.
             if (strlen(linha) == 2 && strncmp(linha, "Q", 1) == 0) {
                 printf("Saiu do jogo. \n");
                 break;
             }
+            //Comando "gr", para guardar o estado do jogo.
             else if (strncmp(linha, "gr", 2) == 0) {
                 tabuleiro_ficheiro(e, linha);
-                printf("Gravado.\n");
+                printf("\n#=> Estado do jogo gravado.\n");
             }
+            //Comando "ler" para ler o estado do jogo num dado ficheiro.
             else if (strncmp(linha, "ler", 3) == 0) {
-
-               // if (ler_ficheiro(e,linha) == 1) {
-               ler_ficheiro(e,linha);
-                    printf("Estado do jogo atualizado!\n");
-                //}
-                //else printf("Nao foi possivel encontrar esse ficheiro.\n");
+               if (ler_ficheiro(e,linha) == 1) {
+                    printf("\n#=> Estado do jogo atualizado.\n");
+                }
+               else
+                   printf("\n#=> Nao foi possivel encontrar esse ficheiro.\n");
             }
-
-
+            //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
             if(jogar(e,coord) == 0)
                 printf("Jogada Invalida. \n");
         }
     }
+    //Verifica qual dos jogadores congratular no final do jogo.
     if (jogo_terminado(e) == 1)
         printf("Parabens!! O jogador 1 ganha!\n");
     else if (jogo_terminado(e) == 2)

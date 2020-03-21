@@ -124,6 +124,12 @@ Funções</h2></td></tr>
 <tr class="memitem:a0696c119c3f220421804807cc607fcda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#a0696c119c3f220421804807cc607fcda">obtem_dados_jogadas_lin</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int n, int i)</td></tr>
 <tr class="memdesc:a0696c119c3f220421804807cc607fcda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem os dados da linha do array jogadas de um determinado jogador.  <a href="dados_8h.html#a0696c119c3f220421804807cc607fcda">Mais...</a><br /></td></tr>
 <tr class="separator:a0696c119c3f220421804807cc607fcda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99f70b4c2f315652b02f7a8c874cb2e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4">set_casa</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, char linha[], int k)</td></tr>
+<tr class="memdesc:a99f70b4c2f315652b02f7a8c874cb2e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro.  <a href="dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4">Mais...</a><br /></td></tr>
+<tr class="separator:a99f70b4c2f315652b02f7a8c874cb2e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5543c8b43313c6c2f6483629fd13a3d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3">set_estado</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, char cord[])</td></tr>
+<tr class="memdesc:a5543c8b43313c6c2f6483629fd13a3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar.  <a href="dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3">Mais...</a><br /></td></tr>
+<tr class="separator:a5543c8b43313c6c2f6483629fd13a3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Defiinição da camada dados. </p>
@@ -450,6 +456,132 @@ Funções</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                            {</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">return</span> estado -&gt; num_jogadas;</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a99f70b4c2f315652b02f7a8c874cb2e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99f70b4c2f315652b02f7a8c874cb2e4">&#9670;&nbsp;</a></span>set_casa()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_casa </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>linha</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>k</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado atual do jogo. </td></tr>
+    <tr><td class="paramname">linha</td><td>Linha obtida na leitura do ficheiro de texto na função "ler_ficheiro". </td></tr>
+    <tr><td class="paramname">k</td><td>Determina em que linha vao ser colocados os dados. </td></tr>
+  </table>
+  </dd>
+</dl>
+<blockquote class="doxtable">
+<p>Ao encontrar a posição onde coloca a peça BRANCA, define também essa posição como última jogada. </p>
+</blockquote>
+
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00065">65</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                                                {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; 9; i++) {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">switch</span> (linha[i]) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">case</span> (<span class="charliteral">&#39;.&#39;</span>):</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                e-&gt;tab[k][i] = VAZIO;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">case</span> (<span class="charliteral">&#39;*&#39;</span>):</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                e-&gt;tab[k][i] = BRANCA;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                e-&gt;ultima_jogada.coluna = i;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                e-&gt;ultima_jogada.linha = k ;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;#&#39;</span>):</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                e-&gt;tab[k][i] = PRETA;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;2&#39;</span>):</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                e-&gt;tab[k][i] = DOIS;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">case</span>(<span class="charliteral">&#39;1&#39;</span>):</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                e-&gt;tab[k][i] = UM;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a5543c8b43313c6c2f6483629fd13a3d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5543c8b43313c6c2f6483629fd13a3d3">&#9670;&nbsp;</a></span>set_estado()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_estado </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>cord</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado atual do jogo. </td></tr>
+    <tr><td class="paramname">cord</td><td>Última linha obtida ao ler o ficheiro.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar. </p>
+
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00092">92</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                                         {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> jog = atoi(cord);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    e-&gt;num_jogadas = jog-1;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">for</span> (i = 0; cord[i] != <span class="charliteral">&#39;\n&#39;</span>; i++){;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (i &lt; 8) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        e-&gt;jogador_atual = 2;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        e-&gt;jogador_atual = 1;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
