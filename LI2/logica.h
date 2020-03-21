@@ -4,6 +4,7 @@
  */
 #ifndef LI2_LOGICA_H
 #define LI2_LOGICA_H
+#include <stdio.h>
 #include "dados.h"
 /**
  * \brief Função que usa os dados do estado e do input do jogador para fazer a jogada.
@@ -35,4 +36,25 @@ int jogo_terminado (ESTADO *e);
  */
 void tabuleiro_ficheiro(ESTADO *e, char linha[]);
 
+/**
+ * \brief Função (auxiliar) que atualiza os dados de forma a que a jogada fique realizada.
+ * @param e Estado atual do jogo.
+ * @param col posição da coluna.
+ * @param lin posição da linha.
+ */
+void atualiza_jogada (ESTADO *e, int col, int lin);
+
+/**
+ * \brief Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando "gr".
+ * @param e Estado atual do jogo.
+ * @param fp apontador do ficheiro, usado para escrever no documento de texto.
+ */
+void imprime_fileTab (ESTADO *e, FILE *fp);
+
+/**
+ * \brief Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando "gr".
+ * @param e Estado atual do jogo.
+ * @param fp apontador do ficheiro, usado para escrever no documento de texto.
+ */
+void file_posAnt (ESTADO *e, FILE *fp);
 #endif

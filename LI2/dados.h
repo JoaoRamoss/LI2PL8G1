@@ -4,7 +4,7 @@
  * @file dados.h
  * Defiinição da camada dados.
  */
-typedef enum {VAZIO, BRANCA, PRETA} CASA;
+typedef enum {VAZIO = '.', BRANCA = '*', PRETA = '#', UM = '1', DOIS = '2'} CASA;
 typedef struct {
     int coluna;
     int linha;
@@ -59,4 +59,22 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
  * @return O estado da casa pedida.
  */
 CASA obter_casa (ESTADO *e, int i, int j);
+
+/**
+ * \brief Obtem os dados da coluna do array jogadas de um determinado jogador.
+ * @param e Estado atual do jogo.
+ * @param n Especificação de qual jogador se pretende obter informação (1 ou 2).
+ * @param i Indice do array jogadas para obter informação.
+ * @return O char correspondente à coordenada coluna na jogada "i".
+ */
+char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
+
+/**
+ * \brief Obtem os dados da linha do array jogadas de um determinado jogador.
+ * @param e Estado atual do jogo.
+ * @param n Especificação de qual jogador se pretende obter informação (1 ou 2).
+ * @param i Indice do array jogadas para obter informação.
+ * @return O int correspondente à coordenada linha na jogada "i".
+ */
+int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 #endif

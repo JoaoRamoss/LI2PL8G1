@@ -1,16 +1,12 @@
 #include "logica.h"
-#include "dados.h"
 #include <stdio.h>
 #include <stdlib.h>
 #define BUF_SIZE 1024
 #include <string.h>
 
 int jogar(ESTADO *e, COORDENADA c) {
-    int lin = c.linha;
+    int lin = abs(c.linha - 8) - 1;
     int col = c.coluna;
-    int jog = obter_jogador_atual(e);
-    int jogadas = obter_numero_de_jogadas(e);
-
     if (jogada_possivel(e,c) == 1) {
         ///> Coloca a peça na posição pedida pelo utilizador.
         e->tab[lin][col] = BRANCA;
@@ -19,22 +15,7 @@ int jogar(ESTADO *e, COORDENADA c) {
         ///> Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
         e->ultima_jogada.coluna = col;
         e->ultima_jogada.linha = lin;
-
-        ///> Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
-        if (jog == 1) {
-            e->jogadas[jogadas].jogador1.linha = lin;
-            e->jogadas[jogadas].jogador1.coluna = col;
-        } else {
-            e->jogadas[jogadas].jogador2.linha = lin;
-            e->jogadas[jogadas].jogador2.coluna = col;
-        }
-        if (jog == 1)
-            e->jogador_atual = 2;
-        else {
-            e->jogador_atual = 1;
-            ///> Incrementa o numero de jogadas.
-            e->num_jogadas++;
-        }
+        atualiza_jogada(e, col, lin);
         return 1;
     }
     else {
@@ -42,15 +23,37 @@ int jogar(ESTADO *e, COORDENADA c) {
             printf("Jogada Invalida.\n");
             return 0;
         }
-
     }
     return 0;
 }
 
+
+void atualiza_jogada (ESTADO *e, int col, int lin) {
+    int jog = obter_jogador_atual(e);
+    int jogadas = obter_numero_de_jogadas(e);
+    ///> Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
+    if (jog == 1) {
+        e->jogadas[jogadas].jogador1.linha = lin;
+        e->jogadas[jogadas].jogador1.coluna = col;
+    } else {
+        e->jogadas[jogadas].jogador2.linha = lin;
+        e->jogadas[jogadas].jogador2.coluna = col;
+    }
+    if (jog == 1)
+        e->jogador_atual = 2;
+    else {
+        e->jogador_atual = 1;
+        ///> Incrementa o numero de jogadas.
+        e->num_jogadas++;
+    }
+}
+
 // Verifica se a jogada pedida pelo utilizador é valida.
 int jogada_possivel (ESTADO *e, COORDENADA c) {
+    int lin = abs(c.linha - 8) - 1;
     if (obter_estado_casa(e,c) == BRANCA || obter_estado_casa(e,c) == PRETA ||
-    abs((e->ultima_jogada.linha) - (c.linha)) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1) {
+    abs((e->ultima_jogada.linha) - lin) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1) {
+
         return 0;
     }
     else return 1;
@@ -61,15 +64,12 @@ int jogo_terminado (ESTADO *e) {
     int r = 0;
     if ((e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))
         r = 1;
-    else
-        if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
+    else if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
             r = 2;
-        else
-            if (e->num_jogadas == 32)
+        else if (e->num_jogadas == 32)
                 r = 3;
     else
         r = 0;
-
     return r;
 }
 
@@ -90,59 +90,56 @@ void tabuleiro_ficheiro(ESTADO *e, char linha[]) {
     ///> Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista.
     FILE *fp;
     fp = fopen(comando, "w");
+    imprime_fileTab(e, fp);
+    file_posAnt(e, fp);
+    fclose(fp);
+}
 
-    ///> Imprime o tabuleiro no ficheiro criado.
+//Imprime o tabuleiro no ficheiro.
+void imprime_fileTab (ESTADO *e, FILE *fp) {
+    ///> Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",'#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-
-            if (i == 0 && j == 7) {
-                fprintf(fp, "2");
-                break;
-            }
-            else if (i == 7 && j == 0) {
-                fprintf(fp, "1");
-                j++;
-            }
-
-            else {
-                if (obter_casa(e, i, j) == VAZIO)
-                    item = '.';
-                else if (obter_casa(e, i, j) == BRANCA)
-                    item = '*';
-                else
-                    item = '#';
-            }
-            fprintf(fp, "%c", item);
+            char peca = obter_casa(e, i, j);
+            fprintf(fp, "%c", peca);
         }
         fprintf(fp, "\n");
     }
+}
+
+//Imprime todas as jogadas anteriores no ficheiro.
+void file_posAnt (ESTADO *e, FILE *fp) {
+    int jog = obter_jogador_atual(e);
+    int num_jogadas = obter_numero_de_jogadas(e);
     ///> Coloca jogadas anteriores no ficheiro.
-    if (e->jogador_atual == 2) {
-        for (int i = 0; i <= e->num_jogadas; i++) {
+    if (jog == 2) {
+        for (int i = 0; i <= num_jogadas; i++) {
             if(i < 10)
                 fprintf(fp, "0%d: ",i+1);
             else
                 fprintf(fp, "%d: ",i+1);
 
-            if (i != e->num_jogadas) {
-                fprintf(fp, "%c%d %c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            if (i != num_jogadas) {
+                fprintf(fp, "%c%d %c%d", obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
+                        obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
             }
             else
-                fprintf(fp,"%c%d", e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1);
+                fprintf(fp,"%c%d",obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i));
             fprintf(fp,"\n");
         }
     }
 
-    if (e->jogador_atual == 1) {
-        for (int i = 0; i < e->num_jogadas; i++) {
+    if (jog == 1) {
+        for (int i = 0; i < num_jogadas; i++) {
             if (i < 10)
                 fprintf(fp, "0%d: ", i+1);
             else
                 fprintf(fp, "%d: ", i+1);
 
-            fprintf(fp, "%c%d %c%d",  e->jogadas[i].jogador1.coluna + 'a', e->jogadas[i].jogador1.linha+1, e->jogadas[i].jogador2.coluna + 'a', e->jogadas[i].jogador2.linha+1);
+            fprintf(fp, "%c%d %c%d",  obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
+                    obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
             fprintf(fp, "\n");
         }
     }
-    fclose(fp);
 }
+

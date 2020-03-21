@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['coordenada_0',['COORDENADA',['../struct_c_o_o_r_d_e_n_a_d_a.html',1,'']]]
+  ['atualiza_5fjogada_0',['atualiza_jogada',['../logica_8h.html#a9cf19fce71c78359807a3f579925edbb',1,'logica.c']]]
 ];

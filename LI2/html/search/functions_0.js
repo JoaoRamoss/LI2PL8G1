@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['inicializar_5festado_23',['inicializar_estado',['../dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f',1,'dados.c']]],
-  ['interpretador_24',['interpretador',['../interface_8h.html#a24da95ebeede4a540e37790ce8be359b',1,'interface.c']]]
+  ['atualiza_5fjogada_28',['atualiza_jogada',['../logica_8h.html#a9cf19fce71c78359807a3f579925edbb',1,'logica.c']]]
 ];

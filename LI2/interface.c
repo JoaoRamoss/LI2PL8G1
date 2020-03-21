@@ -6,45 +6,27 @@
 
 void mostrar_tabuleiro(ESTADO *e) {
     char item;
-
+    int num = 8;
 
     //Imprime as letras no topo do tabuleiro.
     printf("   ");
     for (char c = 'a'; c < 'i'; c++)
         printf("%c  ", c);
     printf("\n");
-
     /*
     Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",
     '#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".
     */
-
     for (int i = 0; i < 8; i++) {
-        printf("%d  ", i+1);
+        printf("%d  ", num);
+        num--;
         for (int j = 0; j < 8; j++) {
-
-            if (i == 0 && j == 7) {
-                printf("2");
-                break;
-            }
-            else if (i == 7 && j == 0) {
-                printf("1  ");
-                j++;
-            }
-
-            else {
-                if (obter_casa(e, i, j) == VAZIO)
-                    item = '.';
-                else if (obter_casa(e, i, j) == BRANCA)
-                    item = '*';
-                else
-                    item = '#';
-            }
-            printf("%c  ", item);
+            char peca = obter_casa(e, i, j);
+            printf("%c  ", peca);
         }
         printf("\n");
     }
-    printf("#(%d) JOG: %d => ", e->num_jogadas+1, e->jogador_atual);
+    printf("#(%d) JOG: %d => ", obter_numero_de_jogadas(e) + 1, obter_jogador_atual(e));
 }
 
 
