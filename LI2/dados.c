@@ -91,7 +91,7 @@ void set_casa (ESTADO *e, char linha [], int k) {
 void set_estado (ESTADO *e, char cord[]) {
     int i;
     int jog = atoi(cord);
-    e->num_jogadas = jog;
+    e->num_jogadas = jog-1;
     for (i = 0; cord[i] != '\n'; i++){;}
     if (i < 8) {
         e->jogador_atual = 2;
