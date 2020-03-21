@@ -63,13 +63,16 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i) {
 }
 
 void set_casa (ESTADO *e, char linha [], int k) {
-    for (int i = 0; i < 9; i++) {
+    int i;
+    for ( i = 0; i < 9; i++) {
         switch (linha[i]) {
             case ('.'):
                 e->tab[k][i] = VAZIO;
                 break;
             case ('*'):
                 e->tab[k][i] = BRANCA;
+                e->ultima_jogada.coluna = i;
+                e->ultima_jogada.linha = k ;
                 break;
             case('#'):
                 e->tab[k][i] = PRETA;
@@ -86,21 +89,13 @@ void set_casa (ESTADO *e, char linha [], int k) {
 }
 
 void set_estado (ESTADO *e, char cord[]) {
-    int i, lin, col, linha;
-
-    for (i = 0; cord[i] != '\0'; i++){;}
-    if (i == 5) {
-         lin = atoi(&cord[1]);
-         col = (cord[0] - 'a');
-         e->jogador_atual = 1;
+    int i;
+    int jog = atoi(cord);
+    e->num_jogadas = jog;
+    for (i = 0; cord[i] != '\n'; i++){;}
+    if (i < 8) {
+        e->jogador_atual = 2;
     }
-    else if (i == 8) {
-         lin = atoi(&cord[4]);
-         col = (cord[3] - 'a');
-         e->jogador_atual = 2;
-    }
-    linha = abs(lin - 8) + 1;
-    e -> ultima_jogada.linha = linha;
-    e-> ultima_jogada.coluna = col;
-
+    else
+        e->jogador_atual = 1;
 }

@@ -148,16 +148,10 @@ int ler_ficheiro (ESTADO *e, char linha []) {
 
         fp = fopen(comando, "r");
         while(fgets(lin_fich,BUF_SIZE , fp) != NULL) {
-            printf("%d %s \n",k, lin_fich);
             set_casa(e, lin_fich, k);
-                k++;
+            k++;
         }
-
-        cord = strtok(lin_fich, " ");
-        cord = strtok(NULL, "\n");
-
-
-        set_estado(e, cord);
+        set_estado(e, lin_fich);
      printf("%d%d \n", e->ultima_jogada.linha, e->ultima_jogada.coluna);
         fclose(fp);
         return 1;
