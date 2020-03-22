@@ -59,7 +59,7 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i) {
     }
     else
         lin = abs((e -> jogadas[i].jogador2.linha + 1) - 8) + 1;
-        return lin;
+    return lin;
 }
 
 void set_casa (ESTADO *e, char linha [], int k) {
@@ -93,7 +93,7 @@ void set_estado (ESTADO *e, char cord[]) {
     int i;
     int jog = atoi(cord);
     e->num_jogadas = jog-1;
-    for (i = 0; cord[i] != '\n'; i++){;}
+    for (i = 0; cord[i] != '\n'; i++);
 
     if (i < 8) {
         e->jogador_atual = 2;

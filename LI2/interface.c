@@ -5,7 +5,6 @@
 #define BUF_SIZE 1024
 
 void mostrar_tabuleiro(ESTADO *e) {
-    char item;
     int num = 8;
 
     //Imprime as letras no topo do tabuleiro.
@@ -31,7 +30,7 @@ void mostrar_tabuleiro(ESTADO *e) {
 
 
 int interpretador(ESTADO *e) {
-    char linha[BUF_SIZE], comando [BUF_SIZE];
+    char linha[BUF_SIZE];
     char col[2], lin[2];
 
     ///> Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos.

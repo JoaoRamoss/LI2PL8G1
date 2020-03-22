@@ -72,7 +72,6 @@ int jogo_terminado (ESTADO *e) {
 //Função usada para o comando gr (grava o estado de jogo num ficheiro).
 void tabuleiro_ficheiro(ESTADO *e, char *linha) {
     char *comando;
-    int j = 0;
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
     comando = strtok(linha, " ");
     comando = strtok(NULL, "\n");
@@ -138,7 +137,7 @@ void file_posAnt (ESTADO *e, FILE *fp) {
 int ler_ficheiro (ESTADO *e, char linha []) {
 
     FILE *fp;
-    char lin_fich [BUF_SIZE], *comando, *cord;
+    char lin_fich [BUF_SIZE], *comando;
     int k = 0;
     int r = 0;
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
