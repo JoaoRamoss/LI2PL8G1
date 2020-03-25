@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['set_5fcasa_22',['set_casa',['../dados_8h.html#a99f70b4c2f315652b02f7a8c874cb2e4',1,'dados.c']]],
-  ['set_5festado_23',['set_estado',['../dados_8h.html#a5543c8b43313c6c2f6483629fd13a3d3',1,'dados.c']]]
+  ['retira_5fcoluna_22',['retira_coluna',['../logica_8h.html#a00a35418e9e9a6c215b653dceb822a03',1,'logica.c']]],
+  ['retira_5flinha_23',['retira_linha',['../logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce',1,'logica.c']]]
 ];

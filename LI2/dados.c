@@ -94,18 +94,6 @@ void set_casa (ESTADO *e, char linha [], int k) {
         }
     }
 }
-///> Função auxiliar para a função "ler_ficheiro".
-void set_estado (ESTADO *e, char cord[],  int jog) {
-    int i;
-    e->num_jogadas = jog-1;
-    for (i = 0; cord[i] != '\0'; i++);
-    if (i < 4) {
-        e->jogador_atual = 2;
-    }
-    else
-        e->jogador_atual = 1;
-
-}
 
 void set_jogadas(ESTADO *e, char cord[], int jog, int index) {
     int lin, col;
@@ -113,28 +101,33 @@ void set_jogadas(ESTADO *e, char cord[], int jog, int index) {
     //cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.
     strtok(cord, " ");
     cord1 = strtok(NULL, "\n");
+    ///> No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois ainda nao foi feita, logo, apenas atualiza a jogada do jogador 1 no array jogadas.
+    switch (jog) {
+        case (1):
+            col = retira_coluna(cord);
+            lin = retira_linha(cord);
+            e->jogadas[index].jogador1.linha = lin;
+            e->jogadas[index].jogador1.coluna = col;
+            break;
 
-    //No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois ainda nao foi feita.
-    if (jog == 1) {
-        col = retira_coluna(cord);
-        lin = retira_linha(cord);
-        e->jogadas[index].jogador1.linha = lin;
-        e->jogadas[index].jogador1.coluna = col;
-    }
-     //No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores.
-    else if (jog == 2) {
-        col = retira_coluna(cord);
-        lin = retira_linha(cord);
-        e->jogadas[index].jogador1.linha = lin;
-        e->jogadas[index].jogador1.coluna = col;
-        col = retira_coluna(cord1);
-        lin = retira_linha(cord1);
-        e->jogadas[index].jogador2.linha = lin;
-        e->jogadas[index].jogador2.coluna = col;
+            ///> No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores, logo, coloca-se as jogadas de ambos os jogadores no array jogadas.
+        case(2):
+            col = retira_coluna(cord);
+            lin = retira_linha(cord);
+            e->jogadas[index].jogador1.linha = lin;
+            e->jogadas[index].jogador1.coluna = col;
+            col = retira_coluna(cord1);
+            lin = retira_linha(cord1);
+            e->jogadas[index].jogador2.linha = lin;
+            e->jogadas[index].jogador2.coluna = col;
+            break;
+        default:
+            break;
     }
 }
 
 
+///> Apenas aumenta ao numero de jogadas caso o jogador atual seja 2.
 int update_num_jogadas (ESTADO *e, int k, int i) {
     if (k == 3 && i == 4)
         return 0;

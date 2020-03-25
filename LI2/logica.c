@@ -141,7 +141,7 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     int k = 0;
     int r = 0;
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
-    comando = strtok(linha, " ");
+    strtok(linha, " ");
     comando = strtok (NULL, "\n");
     strcat(comando, ".txt");
     ///> Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo.
@@ -150,14 +150,13 @@ int ler_ficheiro (ESTADO *e, char linha []) {
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             set_casa(e, lin_fich, k);
+            ///> Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função "update_array_jogadas()".
             if (k >= 9) {
                 update_array_jogadas(e, lin_fich);
             }
             k++;
 
         }
-        strtok(lin_fich, " ");
-        strtok(NULL, "\n");
         fclose(fp);
         r = 1;
     }
@@ -169,19 +168,27 @@ int ler_ficheiro (ESTADO *e, char linha []) {
 void update_array_jogadas (ESTADO *e, char lin_fich[]) {
     int i, index;
     char *nome;
+    // A partir do ficheiro, obtem o numero da jogada e guarda-a na variável index.
     index = atoi(lin_fich) - 1;
+
+    /* Retira os primeiros 4 elementos da string (uma string que fosse: "01: e5 d5" passa a ser "e5 d5".
+     */
     strtok(lin_fich, " ");
     nome = strtok(NULL, "\n");
+    ///> Determina qual das partes da função usar (parte 1 caso i seja menor que 2, e parte 2 caso i seja maior que dois.)
     for (i = 0; nome[i] != '\0' ; i++);
-    if (i > 2) {
+    if (i > 2)
         set_jogadas(e, nome, 2, index);
-    }
-    else set_jogadas(e, nome, 1, index);
+
+    else
+        set_jogadas(e, nome, 1, index);
 }
+
 
 int retira_linha (char str[]) {
     int r = 0;
     char *end;
+    //Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-0 num int e devolve-o.
     for (int i = 0; str[i] != '\0'; i++) {
         if (isdigit(str[i]) != 0) {
            r = strtol(&str[i], &end, 10);
@@ -194,6 +201,7 @@ int retira_linha (char str[]) {
 
 int retira_coluna (char str[]) {
     int cord;
+    //Quando a função isalpha() retornar algum valor diferente de 0, converte-o num int e devolve-o.f
     for (int i = 0; str[i] != '\0'; i++) {
         if (isalpha(str[i]) != 0) {
             cord = str[i] - 'a';

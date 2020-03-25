@@ -87,14 +87,21 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 void set_casa (ESTADO *e, char linha [], int k);
 
 /**
- * \brief Atualiza o numero de jogadas e identifica de qual jogador é a vez de jogar.
+ * \brief Função que coloca todas as jogadas anteriores no devido array na struct.
  * @param e Estado atual do jogo.
- * @param cord Última linha obtida ao ler o ficheiro.
+ * @param cord String de onde vão ser tiradas as coordenadas para serem colocadas como jogadas anteriores.
+ * @param jog Variável que indica qual das partes das funções será utilizada (1 ou 2).
+ * @param index Indice a ser usado para colocar os dados no array.
  */
-void set_estado (ESTADO *e, char cord[], int jog);
-
 void set_jogadas(ESTADO *e, char cord[], int jog, int index);
 
+/**
+ * \brief Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro.
+ * @param e Estado atual do jogo.
+ * @param k Valor da coordenada correspondente à linha.
+ * @param i Valor da coordenada correspondente à coluna.
+ * @return 1 caso seja realizado com suceso, 0 caso nao seja possivel realizar a operação.
+ */
 int update_num_jogadas (ESTADO *e, int k, int i);
 
 #endif

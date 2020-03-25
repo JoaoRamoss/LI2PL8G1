@@ -66,9 +66,24 @@ void file_posAnt (ESTADO *e, FILE *fp);
  */
 int ler_ficheiro (ESTADO *e, char linha []);
 
+/**
+ * \brief Depois de ler  ficheiro, atualiza as posições do array onde sao guardadas jogadas  anteriores.
+ * @param e Estado atual do jogo.
+ * @param lin_fich Linha obtida pela função "ler ficheiro".
+ */
 void update_array_jogadas (ESTADO *e, char lin_fich[]);
 
+/**
+ * \brief Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à linha.
+ * @param str String de onde vao ser tirados os dados.
+ * @return Uma posição para a linha do tabuleiro.
+ */
 int retira_linha (char str[]);
 
+/**
+ * \brief Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à coluna.
+ * @param str String de onde vao ser tirados os dados.
+ * @return Uma posição para a coluna do tabuleiro.
+ */
 int retira_coluna (char str[]);
 #endif
