@@ -91,5 +91,10 @@ void set_casa (ESTADO *e, char linha [], int k);
  * @param e Estado atual do jogo.
  * @param cord Última linha obtida ao ler o ficheiro.
  */
-void set_estado (ESTADO *e, char cord[]);
+void set_estado (ESTADO *e, char cord[], int jog);
+
+void set_jogadas(ESTADO *e, char cord[], int jog, int index);
+
+int update_num_jogadas (ESTADO *e, int k, int i);
+
 #endif

@@ -66,4 +66,9 @@ void file_posAnt (ESTADO *e, FILE *fp);
  */
 int ler_ficheiro (ESTADO *e, char linha []);
 
+void update_array_jogadas (ESTADO *e, char lin_fich[]);
+
+int retira_linha (char str[]);
+
+int retira_coluna (char str[]);
 #endif

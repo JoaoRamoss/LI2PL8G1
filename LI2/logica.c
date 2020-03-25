@@ -4,7 +4,7 @@
 #define BUF_SIZE 1024
 #include <string.h>
 #include <unistd.h>
-
+#include <ctype.h>
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
     int col = c.coluna;
@@ -150,9 +150,14 @@ int ler_ficheiro (ESTADO *e, char linha []) {
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             set_casa(e, lin_fich, k);
+            if (k >= 9) {
+                update_array_jogadas(e, lin_fich);
+            }
             k++;
+
         }
-        set_estado(e, lin_fich);
+        strtok(lin_fich, " ");
+        strtok(NULL, "\n");
         fclose(fp);
         r = 1;
     }
@@ -161,4 +166,40 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     return r;
 }
 
+void update_array_jogadas (ESTADO *e, char lin_fich[]) {
+    int i, index;
+    char *nome;
+    index = atoi(lin_fich) - 1;
+    strtok(lin_fich, " ");
+    nome = strtok(NULL, "\n");
+    for (i = 0; nome[i] != '\0' ; i++);
+    if (i > 2) {
+        set_jogadas(e, nome, 2, index);
+    }
+    else set_jogadas(e, nome, 1, index);
+}
+
+int retira_linha (char str[]) {
+    int r = 0;
+    char *end;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (isdigit(str[i]) != 0) {
+           r = strtol(&str[i], &end, 10);
+           r = abs(r-8);
+           return r;
+        }
+    }
+    return 0;
+}
+
+int retira_coluna (char str[]) {
+    int cord;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (isalpha(str[i]) != 0) {
+            cord = str[i] - 'a';
+            return cord;
+        }
+    }
+    return 0;
+}
 

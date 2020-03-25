@@ -1,5 +1,8 @@
 #include "dados.h"
 #include <stdlib.h>
+#include <string.h>
+#include "logica.h"
+#include <stdio.h>
 
 ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
@@ -68,15 +71,18 @@ void set_casa (ESTADO *e, char linha [], int k) {
         switch (linha[i]) {
             case ('.'):
                 e->tab[k][i] = VAZIO;
+                //set_jogadas(e,k,i);
                 break;
                 ///> Ao encontrar a posição onde coloca a peça BRANCA, define também essa posição como última jogada.
             case ('*'):
                 e->tab[k][i] = BRANCA;
                 e->ultima_jogada.coluna = i;
                 e->ultima_jogada.linha = k ;
+                update_num_jogadas(e,k,i);
                 break;
             case('#'):
                 e->tab[k][i] = PRETA;
+                update_num_jogadas(e,k,i);
                 break;
             case('2'):
                 e->tab[k][i] = DOIS;
@@ -89,15 +95,55 @@ void set_casa (ESTADO *e, char linha [], int k) {
     }
 }
 ///> Função auxiliar para a função "ler_ficheiro".
-void set_estado (ESTADO *e, char cord[]) {
+void set_estado (ESTADO *e, char cord[],  int jog) {
     int i;
-    int jog = atoi(cord);
     e->num_jogadas = jog-1;
-    for (i = 0; cord[i] != '\n'; i++);
-
-    if (i < 8) {
+    for (i = 0; cord[i] != '\0'; i++);
+    if (i < 4) {
         e->jogador_atual = 2;
     }
     else
         e->jogador_atual = 1;
+
+}
+
+void set_jogadas(ESTADO *e, char cord[], int jog, int index) {
+    int lin, col;
+    char *cord1;
+    //cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.
+    strtok(cord, " ");
+    cord1 = strtok(NULL, "\n");
+
+    //No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois ainda nao foi feita.
+    if (jog == 1) {
+        col = retira_coluna(cord);
+        lin = retira_linha(cord);
+        e->jogadas[index].jogador1.linha = lin;
+        e->jogadas[index].jogador1.coluna = col;
+    }
+     //No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores.
+    else if (jog == 2) {
+        col = retira_coluna(cord);
+        lin = retira_linha(cord);
+        e->jogadas[index].jogador1.linha = lin;
+        e->jogadas[index].jogador1.coluna = col;
+        col = retira_coluna(cord1);
+        lin = retira_linha(cord1);
+        e->jogadas[index].jogador2.linha = lin;
+        e->jogadas[index].jogador2.coluna = col;
+    }
+}
+
+
+int update_num_jogadas (ESTADO *e, int k, int i) {
+    if (k == 3 && i == 4)
+        return 0;
+    else if (e->jogador_atual == 2)  {
+        e->jogador_atual = 1;
+        e->num_jogadas++;
+    }
+    else if (e->jogador_atual == 1) {
+        e->jogador_atual = 2;
+    }
+ return 1;
 }
