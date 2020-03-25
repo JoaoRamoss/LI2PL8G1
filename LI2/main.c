@@ -1,10 +1,10 @@
-#include <stdio.h>
+#include <stdlib.h>
 #include "dados.h"
-#include "logica.h"
 #include "interface.h"
 
 int main () {
     ESTADO *e = inicializar_estado();
-        interpretador(e);
+    interpretador(e);
+    free(e);
     return 0;
 }
