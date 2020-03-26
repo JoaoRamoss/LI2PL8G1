@@ -5,6 +5,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
     int col = c.coluna;

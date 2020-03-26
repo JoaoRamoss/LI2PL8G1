@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "logica.h"
-#include <stdio.h>
 
 ESTADO *inicializar_estado() {
     ESTADO *e = (ESTADO *) malloc(sizeof(ESTADO));
