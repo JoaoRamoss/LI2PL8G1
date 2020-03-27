@@ -74,7 +74,7 @@ int jogo_terminado (ESTADO *e) {
 void tabuleiro_ficheiro(ESTADO *e, char *linha) {
     char *comando;
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
-    comando = strtok(linha, " ");
+    strtok(linha, " ");
     comando = strtok(NULL, "\n");
     strcat(comando, ".txt");
 
@@ -110,7 +110,6 @@ void file_posAnt (ESTADO *e, FILE *fp) {
                 fprintf(fp, "0%d: ",i+1);
             else
                 fprintf(fp, "%d: ",i+1);
-
             if (i != num_jogadas) {
                 fprintf(fp, "%c%d %c%d", obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
                         obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
@@ -120,14 +119,12 @@ void file_posAnt (ESTADO *e, FILE *fp) {
             fprintf(fp,"\n");
         }
     }
-
     if (jog == 1) {
         for (int i = 0; i < num_jogadas; i++) {
             if (i < 10)
                 fprintf(fp, "0%d: ", i+1);
             else
                 fprintf(fp, "%d: ", i+1);
-
             fprintf(fp, "%c%d %c%d",  obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
                     obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
             fprintf(fp, "\n");
@@ -156,7 +153,6 @@ int ler_ficheiro (ESTADO *e, char linha []) {
                 update_array_jogadas(e, lin_fich);
             }
             k++;
-
         }
         fclose(fp);
         r = 1;
@@ -189,7 +185,7 @@ void update_array_jogadas (ESTADO *e, char lin_fich[]) {
 int retira_linha (char str[]) {
     int r = 0;
     char *end;
-    //Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-0 num int e devolve-o.
+    //Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-o num int e devolve-o.
     for (int i = 0; str[i] != '\0'; i++) {
         if (isdigit(str[i]) != 0) {
            r = strtol(&str[i], &end, 10);
