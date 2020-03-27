@@ -1,19 +1,35 @@
-#ifndef LI2_DADOS_H
-#define LI2_DADOS_H
 /**
  * @file dados.h
  * Defiinição da camada dados.
  */
+
+#ifndef LI2_DADOS_H
+#define LI2_DADOS_H
+/**
+ * \brief Tipos diferentes de Casa que o tabuleiro pode ter.
+ */
 typedef enum {VAZIO = '.', BRANCA = '*', PRETA = '#', UM = '1', DOIS = '2'} CASA;
+/**
+ * \brief Struct para as coordenadas, sendo estas usadas para fazer jogadas.
+ */
 typedef struct {
     int coluna;
     int linha;
 } COORDENADA;
+/**
+ * \brief Struct que guarda as coordenadas de um determinado jogador.
+ */
 typedef struct {
     COORDENADA jogador1;
     COORDENADA jogador2;
 } JOGADA;
+/**
+ * \brief Array de structs do tipo "JOGADA", onde são guardadas as várias jogadas.
+ */
 typedef JOGADA JOGADAS[32];
+/**
+ * \brief Struct que guarda o estado atual do jogo (tabuleiro, ultima jogada, todas as jogadas efetuadas, numero total de  jogadas e o jogador atual).
+ */
 typedef struct {
     CASA tab[8][8];
     COORDENADA ultima_jogada;

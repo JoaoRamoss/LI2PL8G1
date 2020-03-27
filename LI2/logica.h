@@ -45,20 +45,6 @@ void tabuleiro_ficheiro(ESTADO *e, char *linha);
 void atualiza_jogada (ESTADO *e, int col, int lin);
 
 /**
- * \brief Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando "gr".
- * @param e Estado atual do jogo.
- * @param fp apontador do ficheiro, usado para escrever no documento de texto.
- */
-void imprime_fileTab (ESTADO *e, FILE *fp);
-
-/**
- * \brief Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando "gr".
- * @param e Estado atual do jogo.
- * @param fp apontador do ficheiro, usado para escrever no documento de texto.
- */
-void file_posAnt (ESTADO *e, FILE *fp);
-
-/**
  * \brief Lê um ficheiro e atualiza o estado do jogo com o estado do jogo definido nesse ficheiro.
  * @param e Estado atual do jogo.
  * @param linha Linha obtida pela função "fgets()" no interpretador.

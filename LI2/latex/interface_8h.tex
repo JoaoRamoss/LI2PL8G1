@@ -1,19 +1,118 @@
 \hypertarget{interface_8h}{}\doxysection{Referência ao ficheiro interface.\+h}
 \label{interface_8h}\index{interface.h@{interface.h}}
 {\ttfamily \#include \char`\"{}dados.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}{mostrar\+\_\+tabuleiro}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Imprime o tabuleiro. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretador}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
-\begin{DoxyCompactList}\small\item\em Interpretador do jogo, todos os comandos sao efetuados nesta função. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interpretador do jogo, todos os comandos sao efetuados nesta função. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}{imprime\+\_\+file\+Tab}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_acb7c3a1d861395fabd4db18a365738b9}{file\+\_\+pos\+Ant}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$fp)
+\begin{DoxyCompactList}\small\item\em Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
 Definicao da camada interface. 
 
 \doxysubsection{Documentação das funções}
+\mbox{\Hypertarget{interface_8h_acb7c3a1d861395fabd4db18a365738b9}\label{interface_8h_acb7c3a1d861395fabd4db18a365738b9}} 
+\index{interface.h@{interface.h}!file\_posAnt@{file\_posAnt}}
+\index{file\_posAnt@{file\_posAnt}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{file\_posAnt()}{file\_posAnt()}}
+{\footnotesize\ttfamily void file\+\_\+pos\+Ant (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em fp} & apontador do ficheiro, usado para escrever no documento de texto. \\
+\hline
+\end{DoxyParams}
+\begin{quote}
+Coloca jogadas anteriores no ficheiro. \end{quote}
+
+
+Definido na linha 92 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{92                                        \{}
+\DoxyCodeLine{93     \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} num\_jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
+\DoxyCodeLine{96     \textcolor{keywordflow}{if} (jog == 2) \{}
+\DoxyCodeLine{97         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= num\_jogadas; i++) \{}
+\DoxyCodeLine{98             \textcolor{keywordflow}{if}(i < 9)}
+\DoxyCodeLine{99                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i+1);}
+\DoxyCodeLine{100             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{101                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i+1);}
+\DoxyCodeLine{102             \textcolor{keywordflow}{if} (i != num\_jogadas) \{}
+\DoxyCodeLine{103                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{104                         \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{105             \}}
+\DoxyCodeLine{106             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{107                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"},\mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i));}
+\DoxyCodeLine{108             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{109         \}}
+\DoxyCodeLine{110     \}}
+\DoxyCodeLine{111     \textcolor{keywordflow}{if} (jog == 1) \{}
+\DoxyCodeLine{112         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num\_jogadas; i++) \{}
+\DoxyCodeLine{113             \textcolor{keywordflow}{if} (i < 10)}
+\DoxyCodeLine{114                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i+1);}
+\DoxyCodeLine{115             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{116                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i+1);}
+\DoxyCodeLine{117             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{118                     \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{119             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{120         \}}
+\DoxyCodeLine{121     \}}
+\DoxyCodeLine{122 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}\label{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}} 
+\index{interface.h@{interface.h}!imprime\_fileTab@{imprime\_fileTab}}
+\index{imprime\_fileTab@{imprime\_fileTab}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{imprime\_fileTab()}{imprime\_fileTab()}}
+{\footnotesize\ttfamily void imprime\+\_\+file\+Tab (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{F\+I\+LE $\ast$}]{fp }\end{DoxyParamCaption})}
+
+
+
+Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em fp} & apontador do ficheiro, usado para escrever no documento de texto. \\
+\hline
+\end{DoxyParams}
+\begin{quote}
+Imprime o conteudo do tabuleiro, imprimindo \textquotesingle{}$\ast$\textquotesingle{} no caso de a Peça ser \char`\"{}\+B\+R\+A\+N\+C\+A\char`\"{},\textquotesingle{}\#\textquotesingle{} no caso de a peça ser \char`\"{}\+P\+R\+E\+T\+A\char`\"{}, e \textquotesingle{}.\textquotesingle{} no caso de ser \char`\"{}\+V\+A\+Z\+I\+O\char`\"{}. \end{quote}
+
+
+Definido na linha 79 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{79                                            \{}
+\DoxyCodeLine{81     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{82         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{83             \textcolor{keywordtype}{char} peca = \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j);}
+\DoxyCodeLine{84             fprintf(fp, \textcolor{stringliteral}{"\%c"}, peca);}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{87     \}}
+\DoxyCodeLine{88     fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{89 \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
 \index{interface.h@{interface.h}!interpretador@{interpretador}}
 \index{interpretador@{interpretador}!interface.h@{interface.h}}

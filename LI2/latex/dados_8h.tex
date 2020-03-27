@@ -4,22 +4,22 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}
-\item 
+\begin{DoxyCompactList}\small\item\em Struct para as coordenadas, sendo estas usadas para fazer jogadas. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_j_o_g_a_d_a}{J\+O\+G\+A\+DA}}
-\item 
+\begin{DoxyCompactList}\small\item\em Struct que guarda as coordenadas de um determinado jogador. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Struct que guarda o estado atual do jogo (tabuleiro, ultima jogada, todas as jogadas efetuadas, numero total de jogadas e o jogador atual). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Definições de tipos}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{dados_8h_a94c221d29a1760f008b7834093259b7d}\label{dados_8h_a94c221d29a1760f008b7834093259b7d}} 
-typedef \mbox{\hyperlink{struct_j_o_g_a_d_a}{J\+O\+G\+A\+DA}} {\bfseries J\+O\+G\+A\+D\+AS}\mbox{[}32\mbox{]}
-\end{DoxyCompactItemize}
+typedef \mbox{\hyperlink{struct_j_o_g_a_d_a}{J\+O\+G\+A\+DA}} \mbox{\hyperlink{dados_8h_a94c221d29a1760f008b7834093259b7d}{J\+O\+G\+A\+D\+AS}}\mbox{[}32\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array de structs do tipo \char`\"{}\+J\+O\+G\+A\+D\+A\char`\"{}, onde são guardadas as várias jogadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Enumerações}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{dados_8h_aba91601f16d4c485b2d9b8c429f27039}\label{dados_8h_aba91601f16d4c485b2d9b8c429f27039}} 
-enum {\bfseries C\+A\+SA} \{ \newline
+enum \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} \{ \newline
 {\bfseries V\+A\+Z\+IO} = \textquotesingle{}.\textquotesingle{}, 
 {\bfseries B\+R\+A\+N\+CA} = \textquotesingle{}$\ast$\textquotesingle{}, 
 {\bfseries P\+R\+E\+TA} = \textquotesingle{}\#\textquotesingle{}, 
@@ -27,7 +27,7 @@ enum {\bfseries C\+A\+SA} \{ \newline
 \newline
 {\bfseries D\+O\+IS} = \textquotesingle{}2\textquotesingle{}
  \}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Tipos diferentes de Casa que o tabuleiro pode ter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Funções}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,9 +37,9 @@ int \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\+\_\+joga
 \begin{DoxyCompactList}\small\item\em Obtem o jogador atual. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+numero\+\_\+de\+\_\+jogadas}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$estado)
 \begin{DoxyCompactList}\small\item\em Obtem o numero de jogadas. \end{DoxyCompactList}\item 
-C\+A\+SA \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\+\_\+estado\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
 \begin{DoxyCompactList}\small\item\em Obtem o estado atual da peca numa determinada casa. \end{DoxyCompactList}\item 
-C\+A\+SA \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
+\mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
 \begin{DoxyCompactList}\small\item\em Tem a mesma função que a funcao \char`\"{}obter\+\_\+estado\+\_\+casa\char`\"{} mas com input diferente. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\+\_\+dados\+\_\+jogadas\+\_\+col}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int n, int i)
 \begin{DoxyCompactList}\small\item\em Obtem os dados da coluna do array jogadas de um determinado jogador. \end{DoxyCompactList}\item 
@@ -86,27 +86,27 @@ Inicializa o numero de jogadas, atribuindo-\/lhe o valor \textquotesingle{}0\tex
 Coloca como jogador atual o jogador 1, visto que o jogo começa sempre por ele. \end{quote}
 
 
-Definido na linha 7 do ficheiro dados.\+c.
+Definido na linha 6 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{7                              \{}
-\DoxyCodeLine{8     \mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}} *e = (\mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}} *) malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}}));}
-\DoxyCodeLine{9     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
-\DoxyCodeLine{10         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
-\DoxyCodeLine{11             e -\/> tab[i][j] = VAZIO;}
-\DoxyCodeLine{12         \}}
-\DoxyCodeLine{13     \}}
-\DoxyCodeLine{15     e -\/> tab[3][4] = BRANCA;}
-\DoxyCodeLine{16     e-\/> tab[7][0] = UM;}
-\DoxyCodeLine{17     e-\/>tab[0][7] = DOIS;}
-\DoxyCodeLine{19     (e -\/> ultima\_jogada).coluna = 4;}
-\DoxyCodeLine{20     (e -\/> ultima\_jogada).linha = 3;}
-\DoxyCodeLine{22     e -\/> num\_jogadas = 0;}
-\DoxyCodeLine{24     e -\/> jogador\_atual = 1;}
-\DoxyCodeLine{25 }
-\DoxyCodeLine{26     \textcolor{keywordflow}{return} e;}
-\DoxyCodeLine{27 \}}
+\DoxyCodeLine{6                              \{}
+\DoxyCodeLine{7     \mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}} *e = (\mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}} *) malloc(\textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_e_s_t_a_d_o}{ESTADO}}));}
+\DoxyCodeLine{8     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{9         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{10             e -\/> tab[i][j] = VAZIO;}
+\DoxyCodeLine{11         \}}
+\DoxyCodeLine{12     \}}
+\DoxyCodeLine{14     e -\/> tab[3][4] = BRANCA;}
+\DoxyCodeLine{15     e-\/> tab[7][0] = UM;}
+\DoxyCodeLine{16     e-\/>tab[0][7] = DOIS;}
+\DoxyCodeLine{18     (e -\/> ultima\_jogada).coluna = 4;}
+\DoxyCodeLine{19     (e -\/> ultima\_jogada).linha = 3;}
+\DoxyCodeLine{21     e -\/> num\_jogadas = 0;}
+\DoxyCodeLine{23     e -\/> jogador\_atual = 1;}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keywordflow}{return} e;}
+\DoxyCodeLine{26 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ad7c3d067f913501d29c5c38c497f2038}\label{dados_8h_ad7c3d067f913501d29c5c38c497f2038}} 
@@ -133,17 +133,17 @@ O char correspondente à coordenada coluna na jogada \char`\"{}i\char`\"{}.
 \end{DoxyReturn}
 
 
-Definido na linha 49 do ficheiro dados.\+c.
+Definido na linha 48 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{49                                                        \{}
-\DoxyCodeLine{50     \textcolor{keywordflow}{if} (n == 1) \{}
-\DoxyCodeLine{51         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{52     \}}
-\DoxyCodeLine{53     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{54         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{55 \}}
+\DoxyCodeLine{48                                                        \{}
+\DoxyCodeLine{49     \textcolor{keywordflow}{if} (n == 1) \{}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{51     \}}
+\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{53         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{54 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a0696c119c3f220421804807cc607fcda}\label{dados_8h_a0696c119c3f220421804807cc607fcda}} 
@@ -170,27 +170,27 @@ O int correspondente à coordenada linha na jogada \char`\"{}i\char`\"{}.
 \end{DoxyReturn}
 
 
-Definido na linha 57 do ficheiro dados.\+c.
+Definido na linha 56 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{57                                                       \{}
-\DoxyCodeLine{58     \textcolor{keywordtype}{int} lin;}
-\DoxyCodeLine{59     \textcolor{keywordflow}{if} (n == 1) \{}
-\DoxyCodeLine{60         lin = abs((e-\/>jogadas[i].jogador1.linha + 1) -\/ 8) + 1;}
-\DoxyCodeLine{61         \textcolor{keywordflow}{return} lin;}
-\DoxyCodeLine{62     \}}
-\DoxyCodeLine{63     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{64         lin = abs((e -\/> jogadas[i].jogador2.linha + 1) -\/ 8) + 1;}
-\DoxyCodeLine{65     \textcolor{keywordflow}{return} lin;}
-\DoxyCodeLine{66 \}}
+\DoxyCodeLine{56                                                       \{}
+\DoxyCodeLine{57     \textcolor{keywordtype}{int} lin;}
+\DoxyCodeLine{58     \textcolor{keywordflow}{if} (n == 1) \{}
+\DoxyCodeLine{59         lin = abs((e-\/>jogadas[i].jogador1.linha + 1) -\/ 8) + 1;}
+\DoxyCodeLine{60         \textcolor{keywordflow}{return} lin;}
+\DoxyCodeLine{61     \}}
+\DoxyCodeLine{62     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{63         lin = abs((e -\/> jogadas[i].jogador2.linha + 1) -\/ 8) + 1;}
+\DoxyCodeLine{64     \textcolor{keywordflow}{return} lin;}
+\DoxyCodeLine{65 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}} 
 \index{dados.h@{dados.h}!obter\_casa@{obter\_casa}}
 \index{obter\_casa@{obter\_casa}!dados.h@{dados.h}}
 \doxysubsubsection{\texorpdfstring{obter\_casa()}{obter\_casa()}}
-{\footnotesize\ttfamily C\+A\+SA obter\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} obter\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
 
 
 
@@ -210,21 +210,21 @@ O estado da casa pedida.
 \end{DoxyReturn}
 
 
-Definido na linha 44 do ficheiro dados.\+c.
+Definido na linha 43 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{44                                           \{}
-\DoxyCodeLine{45     CASA r = e -\/> tab[i][j];}
-\DoxyCodeLine{46     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{47 \}}
+\DoxyCodeLine{43                                           \{}
+\DoxyCodeLine{44     \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{CASA}} r = e -\/> tab[i][j];}
+\DoxyCodeLine{45     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{46 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a6faa68373203923729ed38657aa0f768}\label{dados_8h_a6faa68373203923729ed38657aa0f768}} 
 \index{dados.h@{dados.h}!obter\_estado\_casa@{obter\_estado\_casa}}
 \index{obter\_estado\_casa@{obter\_estado\_casa}!dados.h@{dados.h}}
 \doxysubsubsection{\texorpdfstring{obter\_estado\_casa()}{obter\_estado\_casa()}}
-{\footnotesize\ttfamily C\+A\+SA obter\+\_\+estado\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} obter\+\_\+estado\+\_\+casa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}}}]{c }\end{DoxyParamCaption})}
 
 
 
@@ -242,16 +242,16 @@ O estado da casa pedida.
 \end{DoxyReturn}
 
 
-Definido na linha 37 do ficheiro dados.\+c.
+Definido na linha 36 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{37                                                 \{}
-\DoxyCodeLine{38     CASA r;}
-\DoxyCodeLine{39     \textcolor{keywordtype}{int} lin = abs(c.linha -\/8) -\/ 1;}
-\DoxyCodeLine{40     r = e -\/> tab[lin][c.coluna];}
-\DoxyCodeLine{41     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{42 \}}
+\DoxyCodeLine{36                                                 \{}
+\DoxyCodeLine{37     \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{CASA}} r;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{int} lin = abs(c.linha -\/8) -\/ 1;}
+\DoxyCodeLine{39     r = e -\/> tab[lin][c.coluna];}
+\DoxyCodeLine{40     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{41 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}\label{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}} 
@@ -274,13 +274,13 @@ Jogador atual.
 \end{DoxyReturn}
 
 
-Definido na linha 29 do ficheiro dados.\+c.
+Definido na linha 28 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{29                                         \{}
-\DoxyCodeLine{30     \textcolor{keywordflow}{return} estado -\/> jogador\_atual;}
-\DoxyCodeLine{31 \}}
+\DoxyCodeLine{28                                         \{}
+\DoxyCodeLine{29     \textcolor{keywordflow}{return} estado -\/> jogador\_atual;}
+\DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8h_a6cd0b387bdee9e18003c78852394aa63}} 
@@ -303,13 +303,13 @@ O número de jogadas efetuadas.
 \end{DoxyReturn}
 
 
-Definido na linha 33 do ficheiro dados.\+c.
+Definido na linha 32 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{33                                             \{}
-\DoxyCodeLine{34     \textcolor{keywordflow}{return} estado -\/> num\_jogadas;}
-\DoxyCodeLine{35 \}}
+\DoxyCodeLine{32                                             \{}
+\DoxyCodeLine{33     \textcolor{keywordflow}{return} estado -\/> num\_jogadas;}
+\DoxyCodeLine{34 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}\label{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}} 
@@ -335,38 +335,38 @@ Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro.
 Ao encontrar a posição onde coloca a peça B\+R\+A\+N\+CA, define também essa posição como última jogada. \end{quote}
 
 
-Definido na linha 68 do ficheiro dados.\+c.
+Definido na linha 67 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{68                                                 \{}
-\DoxyCodeLine{69     \textcolor{keywordtype}{int} i;}
-\DoxyCodeLine{70     \textcolor{keywordflow}{for} ( i = 0; i < 9; i++) \{}
-\DoxyCodeLine{71         \textcolor{keywordflow}{switch} (linha[i]) \{}
-\DoxyCodeLine{72             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'.'}):}
-\DoxyCodeLine{73                 e-\/>tab[k][i] = VAZIO;}
-\DoxyCodeLine{74                 \textcolor{comment}{//set\_jogadas(e,k,i);}}
-\DoxyCodeLine{75                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{77             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'*'}):}
-\DoxyCodeLine{78                 e-\/>tab[k][i] = BRANCA;}
-\DoxyCodeLine{79                 e-\/>ultima\_jogada.coluna = i;}
-\DoxyCodeLine{80                 e-\/>ultima\_jogada.linha = k ;}
-\DoxyCodeLine{81                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
-\DoxyCodeLine{82                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{83             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'\#'}):}
-\DoxyCodeLine{84                 e-\/>tab[k][i] = PRETA;}
-\DoxyCodeLine{85                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
-\DoxyCodeLine{86                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{87             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'2'}):}
-\DoxyCodeLine{88                 e-\/>tab[k][i] = DOIS;}
-\DoxyCodeLine{89                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{90             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'1'}):}
-\DoxyCodeLine{91                 e-\/>tab[k][i] = UM;}
-\DoxyCodeLine{92             \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{93                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{94         \}}
-\DoxyCodeLine{95     \}}
-\DoxyCodeLine{96 \}}
+\DoxyCodeLine{67                                                 \{}
+\DoxyCodeLine{68     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{69     \textcolor{keywordflow}{for} ( i = 0; i < 9; i++) \{}
+\DoxyCodeLine{70         \textcolor{keywordflow}{switch} (linha[i]) \{}
+\DoxyCodeLine{71             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'.'}):}
+\DoxyCodeLine{72                 e-\/>tab[k][i] = VAZIO;}
+\DoxyCodeLine{73                 \textcolor{comment}{//set\_jogadas(e,k,i);}}
+\DoxyCodeLine{74                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{76             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'*'}):}
+\DoxyCodeLine{77                 e-\/>tab[k][i] = BRANCA;}
+\DoxyCodeLine{78                 e-\/>ultima\_jogada.coluna = i;}
+\DoxyCodeLine{79                 e-\/>ultima\_jogada.linha = k ;}
+\DoxyCodeLine{80                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
+\DoxyCodeLine{81                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{82             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'\#'}):}
+\DoxyCodeLine{83                 e-\/>tab[k][i] = PRETA;}
+\DoxyCodeLine{84                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{86             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'2'}):}
+\DoxyCodeLine{87                 e-\/>tab[k][i] = DOIS;}
+\DoxyCodeLine{88                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{89             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'1'}):}
+\DoxyCodeLine{90                 e-\/>tab[k][i] = UM;}
+\DoxyCodeLine{91             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{92                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{93         \}}
+\DoxyCodeLine{94     \}}
+\DoxyCodeLine{95 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_afc541510798bc33e8220baa9bf271f46}\label{dados_8h_afc541510798bc33e8220baa9bf271f46}} 
@@ -398,38 +398,38 @@ No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois
 No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores, logo, coloca-\/se as jogadas de ambos os jogadores no array jogadas. \end{quote}
 
 
-Definido na linha 98 do ficheiro dados.\+c.
+Definido na linha 97 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{98                                                              \{}
-\DoxyCodeLine{99     \textcolor{keywordtype}{int} lin, col;}
-\DoxyCodeLine{100     \textcolor{keywordtype}{char} *cord1;}
-\DoxyCodeLine{101     \textcolor{comment}{//cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.}}
-\DoxyCodeLine{102     strtok(cord, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{103     cord1 = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{105     \textcolor{keywordflow}{switch} (jog) \{}
-\DoxyCodeLine{106         \textcolor{keywordflow}{case} (1):}
-\DoxyCodeLine{107             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
-\DoxyCodeLine{108             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
-\DoxyCodeLine{109             e-\/>jogadas[index].jogador1.linha = lin;}
-\DoxyCodeLine{110             e-\/>jogadas[index].jogador1.coluna = col;}
-\DoxyCodeLine{111             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{114         \textcolor{keywordflow}{case}(2):}
-\DoxyCodeLine{115             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
-\DoxyCodeLine{116             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
-\DoxyCodeLine{117             e-\/>jogadas[index].jogador1.linha = lin;}
-\DoxyCodeLine{118             e-\/>jogadas[index].jogador1.coluna = col;}
-\DoxyCodeLine{119             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord1);}
-\DoxyCodeLine{120             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord1);}
-\DoxyCodeLine{121             e-\/>jogadas[index].jogador2.linha = lin;}
-\DoxyCodeLine{122             e-\/>jogadas[index].jogador2.coluna = col;}
-\DoxyCodeLine{123             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{124         \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{125             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{126     \}}
-\DoxyCodeLine{127 \}}
+\DoxyCodeLine{97                                                              \{}
+\DoxyCodeLine{98     \textcolor{keywordtype}{int} lin, col;}
+\DoxyCodeLine{99     \textcolor{keywordtype}{char} *cord1;}
+\DoxyCodeLine{100     \textcolor{comment}{//cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.}}
+\DoxyCodeLine{101     strtok(cord, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{102     cord1 = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{104     \textcolor{keywordflow}{switch} (jog) \{}
+\DoxyCodeLine{105         \textcolor{keywordflow}{case} (1):}
+\DoxyCodeLine{106             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
+\DoxyCodeLine{107             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
+\DoxyCodeLine{108             e-\/>jogadas[index].jogador1.linha = lin;}
+\DoxyCodeLine{109             e-\/>jogadas[index].jogador1.coluna = col;}
+\DoxyCodeLine{110             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{113         \textcolor{keywordflow}{case}(2):}
+\DoxyCodeLine{114             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
+\DoxyCodeLine{115             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
+\DoxyCodeLine{116             e-\/>jogadas[index].jogador1.linha = lin;}
+\DoxyCodeLine{117             e-\/>jogadas[index].jogador1.coluna = col;}
+\DoxyCodeLine{118             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord1);}
+\DoxyCodeLine{119             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord1);}
+\DoxyCodeLine{120             e-\/>jogadas[index].jogador2.linha = lin;}
+\DoxyCodeLine{121             e-\/>jogadas[index].jogador2.coluna = col;}
+\DoxyCodeLine{122             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{123         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{124             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{125     \}}
+\DoxyCodeLine{126 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}\label{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}} 
@@ -456,21 +456,21 @@ Função que dá update ao numero de jogadas atual, tendo em conta a informaçã
 \end{DoxyReturn}
 Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro. 
 
-Definido na linha 131 do ficheiro dados.\+c.
+Definido na linha 130 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{131                                                  \{}
-\DoxyCodeLine{132     \textcolor{keywordflow}{if} (k == 3 \&\& i == 4)}
-\DoxyCodeLine{133         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{134     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2)  \{}
-\DoxyCodeLine{135         e-\/>jogador\_atual = 1;}
-\DoxyCodeLine{136         e-\/>num\_jogadas++;}
-\DoxyCodeLine{137     \}}
-\DoxyCodeLine{138     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
-\DoxyCodeLine{139         e-\/>jogador\_atual = 2;}
-\DoxyCodeLine{140     \}}
-\DoxyCodeLine{141  \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{142 \}}
+\DoxyCodeLine{130                                                  \{}
+\DoxyCodeLine{131     \textcolor{keywordflow}{if} (k == 3 \&\& i == 4)}
+\DoxyCodeLine{132         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{133     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2)  \{}
+\DoxyCodeLine{134         e-\/>jogador\_atual = 1;}
+\DoxyCodeLine{135         e-\/>num\_jogadas++;}
+\DoxyCodeLine{136     \}}
+\DoxyCodeLine{137     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
+\DoxyCodeLine{138         e-\/>jogador\_atual = 2;}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140  \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{141 \}}
 
 \end{DoxyCode}

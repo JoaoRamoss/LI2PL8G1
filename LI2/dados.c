@@ -70,7 +70,6 @@ void set_casa (ESTADO *e, char linha [], int k) {
         switch (linha[i]) {
             case ('.'):
                 e->tab[k][i] = VAZIO;
-                //set_jogadas(e,k,i);
                 break;
                 ///> Ao encontrar a posição onde coloca a peça BRANCA, define também essa posição como última jogada.
             case ('*'):
