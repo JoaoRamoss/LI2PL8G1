@@ -106,7 +106,7 @@ void file_posAnt (ESTADO *e, FILE *fp) {
     ///> Coloca jogadas anteriores no ficheiro.
     if (jog == 2) {
         for (int i = 0; i <= num_jogadas; i++) {
-            if(i < 10)
+            if(i < 9)
                 fprintf(fp, "0%d: ",i+1);
             else
                 fprintf(fp, "%d: ",i+1);
