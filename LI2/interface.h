@@ -33,5 +33,9 @@ void imprime_fileTab (ESTADO *e, FILE *fp);
  */
 void file_posAnt (ESTADO *e, FILE *fp);
 
+/**
+ * \brief Função que mostra todas as jogadas efetuadas até ao momento em que o utilizador usa o comando "movs".
+ * @param e Estado atual do jogo.
+ */
 void movs(ESTADO *e);
 #endif

@@ -345,28 +345,27 @@ Definido na linha 67 do ficheiro dados.\+c.
 \DoxyCodeLine{70         \textcolor{keywordflow}{switch} (linha[i]) \{}
 \DoxyCodeLine{71             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'.'}):}
 \DoxyCodeLine{72                 e-\/>tab[k][i] = VAZIO;}
-\DoxyCodeLine{73                 \textcolor{comment}{//set\_jogadas(e,k,i);}}
-\DoxyCodeLine{74                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{76             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'*'}):}
-\DoxyCodeLine{77                 e-\/>tab[k][i] = BRANCA;}
-\DoxyCodeLine{78                 e-\/>ultima\_jogada.coluna = i;}
-\DoxyCodeLine{79                 e-\/>ultima\_jogada.linha = k ;}
-\DoxyCodeLine{80                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
-\DoxyCodeLine{81                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{82             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'\#'}):}
-\DoxyCodeLine{83                 e-\/>tab[k][i] = PRETA;}
-\DoxyCodeLine{84                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
-\DoxyCodeLine{85                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{86             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'2'}):}
-\DoxyCodeLine{87                 e-\/>tab[k][i] = DOIS;}
-\DoxyCodeLine{88                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{89             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'1'}):}
-\DoxyCodeLine{90                 e-\/>tab[k][i] = UM;}
-\DoxyCodeLine{91             \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{92                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{93         \}}
-\DoxyCodeLine{94     \}}
-\DoxyCodeLine{95 \}}
+\DoxyCodeLine{73                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{75             \textcolor{keywordflow}{case} (\textcolor{charliteral}{'*'}):}
+\DoxyCodeLine{76                 e-\/>tab[k][i] = BRANCA;}
+\DoxyCodeLine{77                 e-\/>ultima\_jogada.coluna = i;}
+\DoxyCodeLine{78                 e-\/>ultima\_jogada.linha = k ;}
+\DoxyCodeLine{79                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
+\DoxyCodeLine{80                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{81             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'\#'}):}
+\DoxyCodeLine{82                 e-\/>tab[k][i] = PRETA;}
+\DoxyCodeLine{83                 \mbox{\hyperlink{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}{update\_num\_jogadas}}(e,k,i);}
+\DoxyCodeLine{84                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{85             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'2'}):}
+\DoxyCodeLine{86                 e-\/>tab[k][i] = DOIS;}
+\DoxyCodeLine{87                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{88             \textcolor{keywordflow}{case}(\textcolor{charliteral}{'1'}):}
+\DoxyCodeLine{89                 e-\/>tab[k][i] = UM;}
+\DoxyCodeLine{90             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{91                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{92         \}}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{94 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_afc541510798bc33e8220baa9bf271f46}\label{dados_8h_afc541510798bc33e8220baa9bf271f46}} 
@@ -398,38 +397,38 @@ No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois
 No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores, logo, coloca-\/se as jogadas de ambos os jogadores no array jogadas. \end{quote}
 
 
-Definido na linha 97 do ficheiro dados.\+c.
+Definido na linha 96 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{97                                                              \{}
-\DoxyCodeLine{98     \textcolor{keywordtype}{int} lin, col;}
-\DoxyCodeLine{99     \textcolor{keywordtype}{char} *cord1;}
-\DoxyCodeLine{100     \textcolor{comment}{//cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.}}
-\DoxyCodeLine{101     strtok(cord, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{102     cord1 = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{104     \textcolor{keywordflow}{switch} (jog) \{}
-\DoxyCodeLine{105         \textcolor{keywordflow}{case} (1):}
-\DoxyCodeLine{106             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
-\DoxyCodeLine{107             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
-\DoxyCodeLine{108             e-\/>jogadas[index].jogador1.linha = lin;}
-\DoxyCodeLine{109             e-\/>jogadas[index].jogador1.coluna = col;}
-\DoxyCodeLine{110             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{111 }
-\DoxyCodeLine{113         \textcolor{keywordflow}{case}(2):}
-\DoxyCodeLine{114             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
-\DoxyCodeLine{115             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
-\DoxyCodeLine{116             e-\/>jogadas[index].jogador1.linha = lin;}
-\DoxyCodeLine{117             e-\/>jogadas[index].jogador1.coluna = col;}
-\DoxyCodeLine{118             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord1);}
-\DoxyCodeLine{119             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord1);}
-\DoxyCodeLine{120             e-\/>jogadas[index].jogador2.linha = lin;}
-\DoxyCodeLine{121             e-\/>jogadas[index].jogador2.coluna = col;}
-\DoxyCodeLine{122             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{123         \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{124             \textcolor{keywordflow}{break};}
-\DoxyCodeLine{125     \}}
-\DoxyCodeLine{126 \}}
+\DoxyCodeLine{96                                                              \{}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} lin, col;}
+\DoxyCodeLine{98     \textcolor{keywordtype}{char} *cord1;}
+\DoxyCodeLine{99     \textcolor{comment}{//cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.}}
+\DoxyCodeLine{100     strtok(cord, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{101     cord1 = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{103     \textcolor{keywordflow}{switch} (jog) \{}
+\DoxyCodeLine{104         \textcolor{keywordflow}{case} (1):}
+\DoxyCodeLine{105             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
+\DoxyCodeLine{106             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
+\DoxyCodeLine{107             e-\/>jogadas[index].jogador1.linha = lin;}
+\DoxyCodeLine{108             e-\/>jogadas[index].jogador1.coluna = col;}
+\DoxyCodeLine{109             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{110 }
+\DoxyCodeLine{112         \textcolor{keywordflow}{case}(2):}
+\DoxyCodeLine{113             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord);}
+\DoxyCodeLine{114             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord);}
+\DoxyCodeLine{115             e-\/>jogadas[index].jogador1.linha = lin;}
+\DoxyCodeLine{116             e-\/>jogadas[index].jogador1.coluna = col;}
+\DoxyCodeLine{117             col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cord1);}
+\DoxyCodeLine{118             lin = \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cord1);}
+\DoxyCodeLine{119             e-\/>jogadas[index].jogador2.linha = lin;}
+\DoxyCodeLine{120             e-\/>jogadas[index].jogador2.coluna = col;}
+\DoxyCodeLine{121             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{122         \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{123             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{124     \}}
+\DoxyCodeLine{125 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}\label{dados_8h_ac53b6311eb2ecf638e44e06216dac67f}} 
@@ -456,21 +455,21 @@ Função que dá update ao numero de jogadas atual, tendo em conta a informaçã
 \end{DoxyReturn}
 Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro. 
 
-Definido na linha 130 do ficheiro dados.\+c.
+Definido na linha 129 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{130                                                  \{}
-\DoxyCodeLine{131     \textcolor{keywordflow}{if} (k == 3 \&\& i == 4)}
-\DoxyCodeLine{132         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{133     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2)  \{}
-\DoxyCodeLine{134         e-\/>jogador\_atual = 1;}
-\DoxyCodeLine{135         e-\/>num\_jogadas++;}
-\DoxyCodeLine{136     \}}
-\DoxyCodeLine{137     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
-\DoxyCodeLine{138         e-\/>jogador\_atual = 2;}
-\DoxyCodeLine{139     \}}
-\DoxyCodeLine{140  \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{141 \}}
+\DoxyCodeLine{129                                                  \{}
+\DoxyCodeLine{130     \textcolor{keywordflow}{if} (k == 3 \&\& i == 4)}
+\DoxyCodeLine{131         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{132     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 2)  \{}
+\DoxyCodeLine{133         e-\/>jogador\_atual = 1;}
+\DoxyCodeLine{134         e-\/>num\_jogadas++;}
+\DoxyCodeLine{135     \}}
+\DoxyCodeLine{136     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>jogador\_atual == 1) \{}
+\DoxyCodeLine{137         e-\/>jogador\_atual = 2;}
+\DoxyCodeLine{138     \}}
+\DoxyCodeLine{139  \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{140 \}}
 
 \end{DoxyCode}

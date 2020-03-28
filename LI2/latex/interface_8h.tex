@@ -12,7 +12,9 @@ int \mbox{\hyperlink{interface_8h_a24da95ebeede4a540e37790ce8be359b}{interpretad
 void \mbox{\hyperlink{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}{imprime\+\_\+file\+Tab}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$fp)
 \begin{DoxyCompactList}\small\item\em Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{interface_8h_acb7c3a1d861395fabd4db18a365738b9}{file\+\_\+pos\+Ant}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, F\+I\+LE $\ast$fp)
-\begin{DoxyCompactList}\small\item\em Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando \char`\"{}gr\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_8h_a8d63019a8176de612e33bf8c72121760}{movs}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função que mostra todas as jogadas efetuadas até ao momento em que o utilizador usa o comando \char`\"{}movs\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
@@ -40,40 +42,40 @@ Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador co
 Coloca jogadas anteriores no ficheiro. \end{quote}
 
 
-Definido na linha 92 do ficheiro interface.\+c.
+Definido na linha 96 do ficheiro interface.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{92                                        \{}
-\DoxyCodeLine{93     \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
-\DoxyCodeLine{94     \textcolor{keywordtype}{int} num\_jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
-\DoxyCodeLine{96     \textcolor{keywordflow}{if} (jog == 2) \{}
-\DoxyCodeLine{97         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= num\_jogadas; i++) \{}
-\DoxyCodeLine{98             \textcolor{keywordflow}{if}(i < 9)}
-\DoxyCodeLine{99                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i+1);}
-\DoxyCodeLine{100             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{101                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i+1);}
-\DoxyCodeLine{102             \textcolor{keywordflow}{if} (i != num\_jogadas) \{}
-\DoxyCodeLine{103                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
-\DoxyCodeLine{104                         \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
-\DoxyCodeLine{105             \}}
-\DoxyCodeLine{106             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{107                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"},\mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i));}
-\DoxyCodeLine{108             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{109         \}}
-\DoxyCodeLine{110     \}}
-\DoxyCodeLine{111     \textcolor{keywordflow}{if} (jog == 1) \{}
-\DoxyCodeLine{112         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num\_jogadas; i++) \{}
-\DoxyCodeLine{113             \textcolor{keywordflow}{if} (i < 10)}
-\DoxyCodeLine{114                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i+1);}
-\DoxyCodeLine{115             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{116                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i+1);}
-\DoxyCodeLine{117             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
-\DoxyCodeLine{118                     \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
-\DoxyCodeLine{119             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{120         \}}
-\DoxyCodeLine{121     \}}
-\DoxyCodeLine{122 \}}
+\DoxyCodeLine{96                                        \{}
+\DoxyCodeLine{97     \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
+\DoxyCodeLine{98     \textcolor{keywordtype}{int} num\_jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
+\DoxyCodeLine{100     \textcolor{keywordflow}{if} (jog == 2) \{}
+\DoxyCodeLine{101         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= num\_jogadas; i++) \{}
+\DoxyCodeLine{102             \textcolor{keywordflow}{if}(i < 9)}
+\DoxyCodeLine{103                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "},i+1);}
+\DoxyCodeLine{104             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{105                 fprintf(fp, \textcolor{stringliteral}{"\%d: "},i+1);}
+\DoxyCodeLine{106             \textcolor{keywordflow}{if} (i != num\_jogadas) \{}
+\DoxyCodeLine{107                 fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"}, \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{108                         \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{109             \}}
+\DoxyCodeLine{110             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{111                 fprintf(fp,\textcolor{stringliteral}{"\%c\%d"},\mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i));}
+\DoxyCodeLine{112             fprintf(fp,\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{113         \}}
+\DoxyCodeLine{114     \}}
+\DoxyCodeLine{115     \textcolor{keywordflow}{if} (jog == 1) \{}
+\DoxyCodeLine{116         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num\_jogadas; i++) \{}
+\DoxyCodeLine{117             \textcolor{keywordflow}{if} (i < 10)}
+\DoxyCodeLine{118                 fprintf(fp, \textcolor{stringliteral}{"0\%d: "}, i+1);}
+\DoxyCodeLine{119             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{120                 fprintf(fp, \textcolor{stringliteral}{"\%d: "}, i+1);}
+\DoxyCodeLine{121             fprintf(fp, \textcolor{stringliteral}{"\%c\%d \%c\%d"},  \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{122                     \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{123             fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{124         \}}
+\DoxyCodeLine{125     \}}
+\DoxyCodeLine{126 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}\label{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}} 
@@ -97,20 +99,20 @@ Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comand
 Imprime o conteudo do tabuleiro, imprimindo \textquotesingle{}$\ast$\textquotesingle{} no caso de a Peça ser \char`\"{}\+B\+R\+A\+N\+C\+A\char`\"{},\textquotesingle{}\#\textquotesingle{} no caso de a peça ser \char`\"{}\+P\+R\+E\+T\+A\char`\"{}, e \textquotesingle{}.\textquotesingle{} no caso de ser \char`\"{}\+V\+A\+Z\+I\+O\char`\"{}. \end{quote}
 
 
-Definido na linha 79 do ficheiro interface.\+c.
+Definido na linha 83 do ficheiro interface.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{79                                            \{}
-\DoxyCodeLine{81     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
-\DoxyCodeLine{82         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
-\DoxyCodeLine{83             \textcolor{keywordtype}{char} peca = \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j);}
-\DoxyCodeLine{84             fprintf(fp, \textcolor{stringliteral}{"\%c"}, peca);}
-\DoxyCodeLine{85         \}}
-\DoxyCodeLine{86         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{87     \}}
-\DoxyCodeLine{88     fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{89 \}}
+\DoxyCodeLine{83                                            \{}
+\DoxyCodeLine{85     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{86         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{87             \textcolor{keywordtype}{char} peca = \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, i, j);}
+\DoxyCodeLine{88             fprintf(fp, \textcolor{stringliteral}{"\%c"}, peca);}
+\DoxyCodeLine{89         \}}
+\DoxyCodeLine{90         fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{91     \}}
+\DoxyCodeLine{92     fprintf(fp, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{93 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_a24da95ebeede4a540e37790ce8be359b}\label{interface_8h_a24da95ebeede4a540e37790ce8be359b}} 
@@ -170,22 +172,26 @@ Definido na linha 32 do ficheiro interface.\+c.
 \DoxyCodeLine{58                \textcolor{keywordflow}{else}}
 \DoxyCodeLine{59                    printf(\textcolor{stringliteral}{"\(\backslash\)n\#=> Nao foi possivel encontrar esse ficheiro.\(\backslash\)n"});}
 \DoxyCodeLine{60             \}}
-\DoxyCodeLine{61             \textcolor{comment}{//Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.}}
-\DoxyCodeLine{62         \textcolor{keywordflow}{if} (strlen(linha) == 3 \&\& sscanf(linha, \textcolor{stringliteral}{"\%[a-\/h]\%[1-\/8]"}, col, lin) == 2) \{}
-\DoxyCodeLine{63             \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{*col -\/ \textcolor{charliteral}{'a'}, *lin -\/ \textcolor{charliteral}{'1'}\};}
-\DoxyCodeLine{64             \textcolor{keywordflow}{if}(\mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord) == 0)}
-\DoxyCodeLine{65                 printf(\textcolor{stringliteral}{"Jogada Invalida. \(\backslash\)n"});}
-\DoxyCodeLine{66         \}}
-\DoxyCodeLine{67     \}}
-\DoxyCodeLine{68     \textcolor{comment}{//Verifica qual dos jogadores congratular no final do jogo.}}
-\DoxyCodeLine{69     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 1)}
-\DoxyCodeLine{70         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
-\DoxyCodeLine{71     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
-\DoxyCodeLine{72         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
-\DoxyCodeLine{73     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 3)}
-\DoxyCodeLine{74         printf(\textcolor{stringliteral}{"Acabaram-\/se as jogadas! Ninguém ganhou. \(\backslash\)n"});}
-\DoxyCodeLine{75     \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{76 \}}
+\DoxyCodeLine{61             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (strncmp(linha, \textcolor{stringliteral}{"movs"}, 4) == 0) \{}
+\DoxyCodeLine{62                 printf(\textcolor{stringliteral}{"\#=> Movimentos do jogo:\(\backslash\)n"});}
+\DoxyCodeLine{63                 \mbox{\hyperlink{interface_8h_a8d63019a8176de612e33bf8c72121760}{movs}}(e);}
+\DoxyCodeLine{64             \}}
+\DoxyCodeLine{65             \textcolor{comment}{//Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.}}
+\DoxyCodeLine{66         \textcolor{keywordflow}{if} (strlen(linha) == 3 \&\& sscanf(linha, \textcolor{stringliteral}{"\%[a-\/h]\%[1-\/8]"}, col, lin) == 2) \{}
+\DoxyCodeLine{67             \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{*col -\/ \textcolor{charliteral}{'a'}, *lin -\/ \textcolor{charliteral}{'1'}\};}
+\DoxyCodeLine{68             \textcolor{keywordflow}{if}(\mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord) == 0)}
+\DoxyCodeLine{69                 printf(\textcolor{stringliteral}{"Jogada Invalida. \(\backslash\)n"});}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71     \}}
+\DoxyCodeLine{72     \textcolor{comment}{//Verifica qual dos jogadores congratular no final do jogo.}}
+\DoxyCodeLine{73     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 1)}
+\DoxyCodeLine{74         printf(\textcolor{stringliteral}{"Parabens!! O jogador 1 ganha!\(\backslash\)n"});}
+\DoxyCodeLine{75     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 2)}
+\DoxyCodeLine{76         printf(\textcolor{stringliteral}{"Parabens!! O jogador 2 ganha! \(\backslash\)n"});}
+\DoxyCodeLine{77     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}{jogo\_terminado}}(e) == 3)}
+\DoxyCodeLine{78         printf(\textcolor{stringliteral}{"Acabaram-\/se as jogadas! Ninguém ganhou. \(\backslash\)n"});}
+\DoxyCodeLine{79     \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{80 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}\label{interface_8h_aa0b6c1689e60ac852a73d67e066c1df5}} 
@@ -232,5 +238,60 @@ Definido na linha 7 do ficheiro interface.\+c.
 \DoxyCodeLine{27     \}}
 \DoxyCodeLine{28     printf(\textcolor{stringliteral}{"\#(\%d) JOG: \%d => "}, \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e) + 1, \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e));}
 \DoxyCodeLine{29 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{interface_8h_a8d63019a8176de612e33bf8c72121760}\label{interface_8h_a8d63019a8176de612e33bf8c72121760}} 
+\index{interface.h@{interface.h}!movs@{movs}}
+\index{movs@{movs}!interface.h@{interface.h}}
+\doxysubsubsection{\texorpdfstring{movs()}{movs()}}
+{\footnotesize\ttfamily void movs (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função que mostra todas as jogadas efetuadas até ao momento em que o utilizador usa o comando \char`\"{}movs\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{quote}
+Coloca jogadas anteriores no ficheiro. \end{quote}
+
+
+Definido na linha 128 do ficheiro interface.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{128                      \{}
+\DoxyCodeLine{129         \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
+\DoxyCodeLine{130         \textcolor{keywordtype}{int} num\_jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
+\DoxyCodeLine{132         \textcolor{keywordflow}{if} (jog == 2) \{}
+\DoxyCodeLine{133             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i <= num\_jogadas; i++) \{}
+\DoxyCodeLine{134                 \textcolor{keywordflow}{if}(i < 9)}
+\DoxyCodeLine{135                     printf(\textcolor{stringliteral}{"0\%d: "},i+1);}
+\DoxyCodeLine{136                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{137                     printf(\textcolor{stringliteral}{"\%d: "},i+1);}
+\DoxyCodeLine{138                 \textcolor{keywordflow}{if} (i != num\_jogadas) \{}
+\DoxyCodeLine{139                     printf(\textcolor{stringliteral}{"\%c\%d \%c\%d"}, \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{140                             \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{141                 \}}
+\DoxyCodeLine{142                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{143                     printf(\textcolor{stringliteral}{"\%c\%d"},\mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i));}
+\DoxyCodeLine{144                 printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{145             \}}
+\DoxyCodeLine{146         \}}
+\DoxyCodeLine{147         \textcolor{keywordflow}{if} (jog == 1) \{}
+\DoxyCodeLine{148             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < num\_jogadas; i++) \{}
+\DoxyCodeLine{149                 \textcolor{keywordflow}{if} (i < 10)}
+\DoxyCodeLine{150                     printf(\textcolor{stringliteral}{"0\%d: "}, i+1);}
+\DoxyCodeLine{151                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{152                     printf(\textcolor{stringliteral}{"\%d: "}, i+1);}
+\DoxyCodeLine{153                 printf( \textcolor{stringliteral}{"\%c\%d \%c\%d"},  \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,1,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,1,i),}
+\DoxyCodeLine{154                         \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\_dados\_jogadas\_col}}(e,2,i), \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\_dados\_jogadas\_lin}}(e,2,i));}
+\DoxyCodeLine{155                 printf(\textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{156             \}}
+\DoxyCodeLine{157         \}}
+\DoxyCodeLine{158 \}}
 
 \end{DoxyCode}
