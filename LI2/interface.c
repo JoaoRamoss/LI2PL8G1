@@ -58,6 +58,10 @@ int interpretador(ESTADO *e) {
                else
                    printf("\n#=> Nao foi possivel encontrar esse ficheiro.\n");
             }
+            else if (strncmp(linha, "movs", 4) == 0) {
+                printf("#=> Movimentos do jogo:\n");
+                movs(e);
+            }
             //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
@@ -119,4 +123,36 @@ void file_posAnt (ESTADO *e, FILE *fp) {
             fprintf(fp, "\n");
         }
     }
+}
+
+void movs(ESTADO *e) {
+        int jog = obter_jogador_atual(e);
+        int num_jogadas = obter_numero_de_jogadas(e);
+        ///> Coloca jogadas anteriores no ficheiro.
+        if (jog == 2) {
+            for (int i = 0; i <= num_jogadas; i++) {
+                if(i < 9)
+                    printf("0%d: ",i+1);
+                else
+                    printf("%d: ",i+1);
+                if (i != num_jogadas) {
+                    printf("%c%d %c%d", obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
+                            obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
+                }
+                else
+                    printf("%c%d",obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i));
+                printf("\n");
+            }
+        }
+        if (jog == 1) {
+            for (int i = 0; i < num_jogadas; i++) {
+                if (i < 10)
+                    printf("0%d: ", i+1);
+                else
+                    printf("%d: ", i+1);
+                printf( "%c%d %c%d",  obtem_dados_jogadas_col(e,1,i), obtem_dados_jogadas_lin(e,1,i),
+                        obtem_dados_jogadas_col(e,2,i), obtem_dados_jogadas_lin(e,2,i));
+                printf("\n");
+            }
+        }
 }

@@ -33,5 +33,5 @@ void imprime_fileTab (ESTADO *e, FILE *fp);
  */
 void file_posAnt (ESTADO *e, FILE *fp);
 
-
+void movs(ESTADO *e);
 #endif
