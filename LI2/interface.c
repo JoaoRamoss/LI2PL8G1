@@ -58,9 +58,17 @@ int interpretador(ESTADO *e) {
                else
                    printf("\n#=> Nao foi possivel encontrar esse ficheiro.\n");
             }
+            //Comando "movs" que mostra todas as jogadas efetuadas até ao momento da execução do comando.
             else if (strncmp(linha, "movs", 4) == 0) {
                 printf("#=> Movimentos do jogo:\n");
                 movs(e);
+            }
+            //Comando "pos", que permite ao jogador voltar atras para uma jogada à sua escolha.
+            else if (strncmp(linha, "pos", 3) == 0) {
+                if (pos(e,linha) == 1)
+                    printf ("#=> Posição atualizada.\n");
+                else
+                    printf("A posição escolhida nao e valida!\n");
             }
             //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {

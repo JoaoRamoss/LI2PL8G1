@@ -120,4 +120,11 @@ void set_jogadas(ESTADO *e, char cord[], int jog, int index);
  */
 int update_num_jogadas (ESTADO *e, int k, int i);
 
+/**
+ * \brief Função auxiliar para a função "pos" na camada dados, atualiza o estado do jogo para que esta  seja executada com sucesso.
+ * @param e Estado atual do jogo.
+ * @param r Algarismo que vem a seguir ao comando "pos", ("pos 5", r = 5).
+ */
+void pos_helper (ESTADO *e, int r);
+
 #endif

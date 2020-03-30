@@ -138,6 +138,9 @@ Funções</h2></td></tr>
 <tr class="memitem:ac53b6311eb2ecf638e44e06216dac67f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#ac53b6311eb2ecf638e44e06216dac67f">update_num_jogadas</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int k, int i)</td></tr>
 <tr class="memdesc:ac53b6311eb2ecf638e44e06216dac67f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro.  <a href="dados_8h.html#ac53b6311eb2ecf638e44e06216dac67f">Mais...</a><br /></td></tr>
 <tr class="separator:ac53b6311eb2ecf638e44e06216dac67f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72bd3fb56f0ac3af60c392b49f76a329"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329">pos_helper</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int r)</td></tr>
+<tr class="memdesc:a72bd3fb56f0ac3af60c392b49f76a329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função auxiliar para a função "pos" na camada dados, atualiza o estado do jogo para que esta seja executada com sucesso.  <a href="dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329">Mais...</a><br /></td></tr>
+<tr class="separator:a72bd3fb56f0ac3af60c392b49f76a329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrição detalhada</h2>
 <div class="textblock"><p>Defiinição da camada dados. </p>
@@ -467,6 +470,82 @@ Funções</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a72bd3fb56f0ac3af60c392b49f76a329"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72bd3fb56f0ac3af60c392b49f76a329">&#9670;&nbsp;</a></span>pos_helper()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pos_helper </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função auxiliar para a função "pos" na camada dados, atualiza o estado do jogo para que esta seja executada com sucesso. </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado atual do jogo. </td></tr>
+    <tr><td class="paramname">r</td><td>Algarismo que vem a seguir ao comando "pos", ("pos 5", r = 5). </td></tr>
+  </table>
+  </dd>
+</dl>
+<blockquote class="doxtable">
+<p>Semelhante ao que acontece na função "*inicializar_estado()", coloca o tabuleiro com peças vazias. </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>Coloca a peça na casa "e5" como "BRANCA", e define como "ultima jogada" esta casa. </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente. </p>
+</blockquote>
+<blockquote class="doxtable">
+<p>Usa a função "jogar()" e os dados do array "jogadas" para atualizar o tabuleiro recentemente reinicializado. </p>
+</blockquote>
+
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00142">142</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                                   {</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <span class="keywordtype">int</span> col, lin, col2, lin2;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 8; j++) {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            e-&gt;tab[i][j] = VAZIO;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    e-&gt;tab [3][4] = BRANCA;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    (e -&gt; ultima_jogada).coluna = 4;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    (e -&gt; ultima_jogada).linha = 3;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    e-&gt;num_jogadas = 0;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    e-&gt;jogador_atual = 1;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; r; i++) {</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        col = e-&gt;jogadas[i].jogador1.coluna;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        lin = e-&gt;jogadas[i].jogador1.linha;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        lin = abs(lin - 8) - 1;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        col2 = e-&gt;jogadas[i].jogador2.coluna;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        lin2 = e-&gt;jogadas[i].jogador2.linha;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        lin2 = abs(lin2 - 8) - 1;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord2 = {col2, lin2};</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord2);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a99f70b4c2f315652b02f7a8c874cb2e4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99f70b4c2f315652b02f7a8c874cb2e4">&#9670;&nbsp;</a></span>set_casa()</h2>
 
@@ -691,9 +770,11 @@ Funções</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="alogica_8h_html_a224bb3db996c2f3baca3a72b8509c3ce"><div class="ttname"><a href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a></div><div class="ttdeci">int retira_linha(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00141">logica.c:141</a></div></div>
+<div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdoc">Struct para as coordenadas, sendo estas usadas para fazer jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00015">dados.h:15</a></div></div>
+<div class="ttc" id="alogica_8h_html_a224bb3db996c2f3baca3a72b8509c3ce"><div class="ttname"><a href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a></div><div class="ttdeci">int retira_linha(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00142">logica.c:142</a></div></div>
 <div class="ttc" id="adados_8h_html_ac53b6311eb2ecf638e44e06216dac67f"><div class="ttname"><a href="dados_8h.html#ac53b6311eb2ecf638e44e06216dac67f">update_num_jogadas</a></div><div class="ttdeci">int update_num_jogadas(ESTADO *e, int k, int i)</div><div class="ttdoc">Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00129">dados.c:129</a></div></div>
-<div class="ttc" id="alogica_8h_html_a00a35418e9e9a6c215b653dceb822a03"><div class="ttname"><a href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a></div><div class="ttdeci">int retira_coluna(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00155">logica.c:155</a></div></div>
+<div class="ttc" id="alogica_8h_html_a00a35418e9e9a6c215b653dceb822a03"><div class="ttname"><a href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a></div><div class="ttdeci">int retira_coluna(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00156">logica.c:156</a></div></div>
+<div class="ttc" id="alogica_8h_html_ac313d7e553b1e2b5f266acb9bfff8141"><div class="ttname"><a href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a></div><div class="ttdeci">int jogar(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Função que usa os dados do estado e do input do jogador para fazer a jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00010">logica.c:10</a></div></div>
 <div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdoc">Struct que guarda o estado atual do jogo (tabuleiro, ultima jogada, todas as jogadas efetuadas,...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00033">dados.h:33</a></div></div>
 <div class="ttc" id="adados_8h_html_aba91601f16d4c485b2d9b8c429f27039"><div class="ttname"><a href="dados_8h.html#aba91601f16d4c485b2d9b8c429f27039">CASA</a></div><div class="ttdeci">CASA</div><div class="ttdoc">Tipos diferentes de Casa que o tabuleiro pode ter.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00011">dados.h:11</a></div></div>
 <!-- start footer part -->

@@ -22,7 +22,9 @@ void \mbox{\hyperlink{logica_8h_a608d40c8b37424e7bd4e5ee3f0fe8b97}{update\+\_\+a
 int \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\+\_\+linha}} (char str\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à linha. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\+\_\+coluna}} (char str\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à coluna. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à coluna. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{logica_8h_aec4a963a88af44348027ec7cf17ff47a}{pos}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, char $\ast$linha)
+\begin{DoxyCompactList}\small\item\em Função para executar o comando \char`\"{}pos\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
@@ -253,21 +255,69 @@ Definido na linha 91 do ficheiro logica.\+c.
 \DoxyCodeLine{100     strcat(comando, \textcolor{stringliteral}{".txt"});}
 \DoxyCodeLine{102     \textcolor{comment}{//A função "access" retorna -\/1 caso nao encontre o ficheiro.}}
 \DoxyCodeLine{103     \textcolor{keywordflow}{if} (access(comando, F\_OK) != -\/1) \{}
-\DoxyCodeLine{104         fp = fopen(comando, \textcolor{stringliteral}{"r"});}
-\DoxyCodeLine{105         \textcolor{keywordflow}{while} (fgets(lin\_fich, BUF\_SIZE, fp) != NULL) \{}
-\DoxyCodeLine{106             \mbox{\hyperlink{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}{set\_casa}}(e, lin\_fich, k);}
-\DoxyCodeLine{108             \textcolor{keywordflow}{if} (k >= 9) \{}
-\DoxyCodeLine{109                 \mbox{\hyperlink{logica_8h_a608d40c8b37424e7bd4e5ee3f0fe8b97}{update\_array\_jogadas}}(e, lin\_fich);}
-\DoxyCodeLine{110             \}}
-\DoxyCodeLine{111             k++;}
-\DoxyCodeLine{112         \}}
-\DoxyCodeLine{113         fclose(fp);}
-\DoxyCodeLine{114         r = 1;}
-\DoxyCodeLine{115     \}}
-\DoxyCodeLine{116     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{117         r = 0;}
-\DoxyCodeLine{118     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{119 \}}
+\DoxyCodeLine{104         e-\/>num\_jogadas = 0;}
+\DoxyCodeLine{105         fp = fopen(comando, \textcolor{stringliteral}{"r"});}
+\DoxyCodeLine{106         \textcolor{keywordflow}{while} (fgets(lin\_fich, BUF\_SIZE, fp) != NULL) \{}
+\DoxyCodeLine{107             \mbox{\hyperlink{dados_8h_a99f70b4c2f315652b02f7a8c874cb2e4}{set\_casa}}(e, lin\_fich, k);}
+\DoxyCodeLine{109             \textcolor{keywordflow}{if} (k >= 9) \{}
+\DoxyCodeLine{110                 \mbox{\hyperlink{logica_8h_a608d40c8b37424e7bd4e5ee3f0fe8b97}{update\_array\_jogadas}}(e, lin\_fich);}
+\DoxyCodeLine{111             \}}
+\DoxyCodeLine{112             k++;}
+\DoxyCodeLine{113         \}}
+\DoxyCodeLine{114         fclose(fp);}
+\DoxyCodeLine{115         r = 1;}
+\DoxyCodeLine{116     \}}
+\DoxyCodeLine{117     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{118         r = 0;}
+\DoxyCodeLine{119     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{120 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{logica_8h_aec4a963a88af44348027ec7cf17ff47a}\label{logica_8h_aec4a963a88af44348027ec7cf17ff47a}} 
+\index{logica.h@{logica.h}!pos@{pos}}
+\index{pos@{pos}!logica.h@{logica.h}}
+\doxysubsubsection{\texorpdfstring{pos()}{pos()}}
+{\footnotesize\ttfamily int pos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{char $\ast$}]{linha }\end{DoxyParamCaption})}
+
+
+
+Função para executar o comando \char`\"{}pos\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em linha} & Linha obtida pelo interpretador na camada \char`\"{}\+Interface\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+1 caso a operação seja executada com sucesso, 0 caso não seja executada com sucesso. 
+\end{DoxyReturn}
+\begin{quote}
+Extrai o algarismo que é introduzido após o comando \char`\"{}pos\char`\"{} (\char`\"{}pos 5\char`\"{}, extrai o \char`\"{}5\char`\"{}). \end{quote}
+
+
+\begin{quote}
+Verifica que o comando \char`\"{}pos\char`\"{} apenas está a ser introduzido a uma jogada anterior e não à jogada anterior. \end{quote}
+
+
+Definido na linha 168 do ficheiro logica.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{168                                  \{}
+\DoxyCodeLine{169     \textcolor{keywordtype}{char} *comando, *end;}
+\DoxyCodeLine{170     \textcolor{keywordtype}{int} r, max = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
+\DoxyCodeLine{171     strtok (linha, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{172     comando = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{174     r = strtol (comando, \&end, 10);}
+\DoxyCodeLine{176     \textcolor{keywordflow}{if} (r < max + 1) \{}
+\DoxyCodeLine{177         \mbox{\hyperlink{dados_8h_a72bd3fb56f0ac3af60c392b49f76a329}{pos\_helper}}(e, r);}
+\DoxyCodeLine{178         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{179     \}}
+\DoxyCodeLine{180     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{181         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{182 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a00a35418e9e9a6c215b653dceb822a03}\label{logica_8h_a00a35418e9e9a6c215b653dceb822a03}} 
@@ -290,21 +340,21 @@ Uma posição para a coluna do tabuleiro.
 \end{DoxyReturn}
 
 
-Definido na linha 155 do ficheiro logica.\+c.
+Definido na linha 156 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{155                                \{}
-\DoxyCodeLine{156     \textcolor{keywordtype}{int} cord;}
-\DoxyCodeLine{157     \textcolor{comment}{//Quando a função isalpha() retornar algum valor diferente de 0, converte-\/o num int e devolve-\/o.f}}
-\DoxyCodeLine{158     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
-\DoxyCodeLine{159         \textcolor{keywordflow}{if} (isalpha(str[i]) != 0) \{}
-\DoxyCodeLine{160             cord = str[i] -\/ \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{161             \textcolor{keywordflow}{return} cord;}
-\DoxyCodeLine{162         \}}
-\DoxyCodeLine{163     \}}
-\DoxyCodeLine{164     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{165 \}}
+\DoxyCodeLine{156                                \{}
+\DoxyCodeLine{157     \textcolor{keywordtype}{int} cord;}
+\DoxyCodeLine{158     \textcolor{comment}{//Quando a função isalpha() retornar algum valor diferente de 0, converte-\/o num int e devolve-\/o.f}}
+\DoxyCodeLine{159     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
+\DoxyCodeLine{160         \textcolor{keywordflow}{if} (isalpha(str[i]) != 0) \{}
+\DoxyCodeLine{161             cord = str[i] -\/ \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{162             \textcolor{keywordflow}{return} cord;}
+\DoxyCodeLine{163         \}}
+\DoxyCodeLine{164     \}}
+\DoxyCodeLine{165     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{166 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}\label{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}} 
@@ -327,23 +377,23 @@ Uma posição para a linha do tabuleiro.
 \end{DoxyReturn}
 
 
-Definido na linha 141 do ficheiro logica.\+c.
+Definido na linha 142 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{141                               \{}
-\DoxyCodeLine{142     \textcolor{keywordtype}{int} r = 0;}
-\DoxyCodeLine{143     \textcolor{keywordtype}{char} *end;}
-\DoxyCodeLine{144     \textcolor{comment}{//Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-\/o num int e devolve-\/o.}}
-\DoxyCodeLine{145     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
-\DoxyCodeLine{146         \textcolor{keywordflow}{if} (isdigit(str[i]) != 0) \{}
-\DoxyCodeLine{147            r = strtol(\&str[i], \&end, 10);}
-\DoxyCodeLine{148            r = abs(r-\/8);}
-\DoxyCodeLine{149            \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{150         \}}
-\DoxyCodeLine{151     \}}
-\DoxyCodeLine{152     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{153 \}}
+\DoxyCodeLine{142                               \{}
+\DoxyCodeLine{143     \textcolor{keywordtype}{int} r = 0;}
+\DoxyCodeLine{144     \textcolor{keywordtype}{char} *end;}
+\DoxyCodeLine{145     \textcolor{comment}{//Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-\/o num int e devolve-\/o.}}
+\DoxyCodeLine{146     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
+\DoxyCodeLine{147         \textcolor{keywordflow}{if} (isdigit(str[i]) != 0) \{}
+\DoxyCodeLine{148            r = strtol(\&str[i], \&end, 10);}
+\DoxyCodeLine{149            r = abs(r-\/8);}
+\DoxyCodeLine{150            \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{151         \}}
+\DoxyCodeLine{152     \}}
+\DoxyCodeLine{153     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{154 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_ab69d463df342757a679a40c4f6e5d6ae}\label{logica_8h_ab69d463df342757a679a40c4f6e5d6ae}} 
@@ -410,26 +460,26 @@ Depois de ler ficheiro, atualiza as posições do array onde sao guardadas jogad
 Determina qual das partes da função usar (parte 1 caso i seja menor que 2, e parte 2 caso i seja maior que dois.) \end{quote}
 
 
-Definido na linha 121 do ficheiro logica.\+c.
+Definido na linha 122 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{121                                                        \{}
-\DoxyCodeLine{122     \textcolor{keywordtype}{int} i, index;}
-\DoxyCodeLine{123     \textcolor{keywordtype}{char} *nome;}
-\DoxyCodeLine{124     \textcolor{comment}{// A partir do ficheiro, obtem o numero da jogada e guarda-\/a na variável index.}}
-\DoxyCodeLine{125     index = atoi(lin\_fich) -\/ 1;}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127     \textcolor{comment}{/* Retira os primeiros 4 elementos da string (uma string que fosse: "01: e5 d5" passa a ser "e5 d5".}}
-\DoxyCodeLine{128 \textcolor{comment}{     */}}
-\DoxyCodeLine{129     strtok(lin\_fich, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{130     nome = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{132     \textcolor{keywordflow}{for} (i = 0; nome[i] != \textcolor{charliteral}{'\(\backslash\)0'} ; i++);}
-\DoxyCodeLine{133     \textcolor{keywordflow}{if} (i > 2)}
-\DoxyCodeLine{134         \mbox{\hyperlink{dados_8h_afc541510798bc33e8220baa9bf271f46}{set\_jogadas}}(e, nome, 2, index);}
-\DoxyCodeLine{135 }
-\DoxyCodeLine{136     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{137         \mbox{\hyperlink{dados_8h_afc541510798bc33e8220baa9bf271f46}{set\_jogadas}}(e, nome, 1, index);}
-\DoxyCodeLine{138 \}}
+\DoxyCodeLine{122                                                        \{}
+\DoxyCodeLine{123     \textcolor{keywordtype}{int} i, index;}
+\DoxyCodeLine{124     \textcolor{keywordtype}{char} *nome;}
+\DoxyCodeLine{125     \textcolor{comment}{// A partir do ficheiro, obtem o numero da jogada e guarda-\/a na variável index.}}
+\DoxyCodeLine{126     index = atoi(lin\_fich) -\/ 1;}
+\DoxyCodeLine{127 }
+\DoxyCodeLine{128     \textcolor{comment}{/* Retira os primeiros 4 elementos da string (uma string que fosse: "01: e5 d5" passa a ser "e5 d5".}}
+\DoxyCodeLine{129 \textcolor{comment}{     */}}
+\DoxyCodeLine{130     strtok(lin\_fich, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{131     nome = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{133     \textcolor{keywordflow}{for} (i = 0; nome[i] != \textcolor{charliteral}{'\(\backslash\)0'} ; i++);}
+\DoxyCodeLine{134     \textcolor{keywordflow}{if} (i > 2)}
+\DoxyCodeLine{135         \mbox{\hyperlink{dados_8h_afc541510798bc33e8220baa9bf271f46}{set\_jogadas}}(e, nome, 2, index);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{138         \mbox{\hyperlink{dados_8h_afc541510798bc33e8220baa9bf271f46}{set\_jogadas}}(e, nome, 1, index);}
+\DoxyCodeLine{139 \}}
 
 \end{DoxyCode}

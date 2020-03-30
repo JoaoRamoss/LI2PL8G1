@@ -72,4 +72,12 @@ int retira_linha (char str[]);
  * @return Uma posição para a coluna do tabuleiro.
  */
 int retira_coluna (char str[]);
+
+/**
+ * \brief Função para executar o comando "pos".
+ * @param e Estado atual do jogo.
+ * @param linha Linha obtida pelo interpretador na camada "Interface".
+ * @return 1 caso a operação seja executada com sucesso, 0 caso não seja executada com sucesso.
+ */
+int pos (ESTADO *e, char *linha);
 #endif

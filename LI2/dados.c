@@ -138,3 +138,33 @@ int update_num_jogadas (ESTADO *e, int k, int i) {
     }
  return 1;
 }
+
+void pos_helper (ESTADO *e, int r) {
+    ///> Semelhante ao que acontece na função "*inicializar_estado()", coloca o tabuleiro com peças vazias.
+    int col, lin, col2, lin2;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            e->tab[i][j] = VAZIO;
+        }
+    }
+    ///> Coloca a peça na casa "e5" como "BRANCA", e define como "ultima jogada" esta casa.
+    e->tab [3][4] = BRANCA;
+    (e -> ultima_jogada).coluna = 4;
+    (e -> ultima_jogada).linha = 3;
+    ///> Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente.
+    e->num_jogadas = 0;
+    e->jogador_atual = 1;
+    ///> Usa a função "jogar()" e os dados do array "jogadas" para atualizar o tabuleiro recentemente reinicializado.
+    for (int i = 0; i < r; i++) {
+        col = e->jogadas[i].jogador1.coluna;
+        lin = e->jogadas[i].jogador1.linha;
+        lin = abs(lin - 8) - 1;
+        col2 = e->jogadas[i].jogador2.coluna;
+        lin2 = e->jogadas[i].jogador2.linha;
+        lin2 = abs(lin2 - 8) - 1;
+        COORDENADA coord = {col,lin};
+        jogar(e,coord);
+        COORDENADA coord2 = {col2, lin2};
+        jogar(e, coord2);
+    }
+}

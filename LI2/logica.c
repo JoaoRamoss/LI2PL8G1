@@ -101,6 +101,7 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     ///> Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo.
     //A função "access" retorna -1 caso nao encontre o ficheiro.
     if (access(comando, F_OK) != -1) {
+        e->num_jogadas = 0;
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             set_casa(e, lin_fich, k);
@@ -163,4 +164,21 @@ int retira_coluna (char str[]) {
     }
     return 0;
 }
+
+int pos (ESTADO *e, char *linha) {
+    char *comando, *end;
+    int r, max = obter_numero_de_jogadas(e);
+    strtok (linha, " ");
+    comando = strtok(NULL, "\n");
+    ///> Extrai o algarismo que é introduzido após o comando "pos" ("pos 5", extrai o "5").
+    r = strtol (comando, &end, 10);
+    ///> Verifica  que o comando "pos" apenas está a ser introduzido a uma jogada anterior e não à jogada anterior.
+    if (r < max + 1) {
+        pos_helper(e, r);
+        return 1;
+    }
+    else
+        return 0;
+}
+
 
