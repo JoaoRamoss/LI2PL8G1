@@ -64,7 +64,7 @@ int jogo_terminado (ESTADO *e) {
         r = 1;
     else if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
             r = 2;
-    else if (e->num_jogadas == 32)
+    else if (e->num_jogadas == 31)
                 r = 3;
     else
         r = 0;
