@@ -101,13 +101,12 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     ///> Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo.
     //A função "access" retorna -1 caso nao encontre o ficheiro.
     if (access(comando, F_OK) != -1) {
-        e->num_jogadas = 0;
+        reinit(e);
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
-            set_casa(e, lin_fich, k);
             ///> Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função "update_array_jogadas()".
             if (k >= 9) {
-                update_array_jogadas(e, lin_fich);
+                ler_tab(e, lin_fich);
             }
             k++;
         }
@@ -118,26 +117,6 @@ int ler_ficheiro (ESTADO *e, char linha []) {
         r = 0;
     return r;
 }
-
-void update_array_jogadas (ESTADO *e, char lin_fich[]) {
-    int i, index;
-    char *nome;
-    // A partir do ficheiro, obtem o numero da jogada e guarda-a na variável index.
-    index = atoi(lin_fich) - 1;
-
-    /* Retira os primeiros 4 elementos da string (uma string que fosse: "01: e5 d5" passa a ser "e5 d5".
-     */
-    strtok(lin_fich, " ");
-    nome = strtok(NULL, "\n");
-    ///> Determina qual das partes da função usar (parte 1 caso i seja menor que 2, e parte 2 caso i seja maior que dois.)
-    for (i = 0; nome[i] != '\0' ; i++);
-    if (i > 2)
-        set_jogadas(e, nome, 2, index);
-
-    else
-        set_jogadas(e, nome, 1, index);
-}
-
 
 int retira_linha (char str[]) {
     int r = 0;

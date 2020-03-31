@@ -95,36 +95,21 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 
 /**
- * \brief Tendo em conta os dados lidos pelo ficheiro, atualiza as casas do tabuleiro.
- * @param e Estado atual do jogo.
- * @param linha Linha obtida na leitura do ficheiro de texto na função "ler_ficheiro".
- * @param k Determina em que linha vao ser colocados os dados.
- */
-void set_casa (ESTADO *e, char linha [], int k);
-
-/**
- * \brief Função que coloca todas as jogadas anteriores no devido array na struct.
- * @param e Estado atual do jogo.
- * @param cord String de onde vão ser tiradas as coordenadas para serem colocadas como jogadas anteriores.
- * @param jog Variável que indica qual das partes das funções será utilizada (1 ou 2).
- * @param index Indice a ser usado para colocar os dados no array.
- */
-void set_jogadas(ESTADO *e, char cord[], int jog, int index);
-
-/**
- * \brief Função que dá update ao numero de jogadas atual, tendo em conta a informação do ficheiro.
- * @param e Estado atual do jogo.
- * @param k Valor da coordenada correspondente à linha.
- * @param i Valor da coordenada correspondente à coluna.
- * @return 1 caso seja realizado com suceso, 0 caso nao seja possivel realizar a operação.
- */
-int update_num_jogadas (ESTADO *e, int k, int i);
-
-/**
  * \brief Função auxiliar para a função "pos" na camada dados, atualiza o estado do jogo para que esta  seja executada com sucesso.
  * @param e Estado atual do jogo.
  * @param r Algarismo que vem a seguir ao comando "pos", ("pos 5", r = 5).
  */
 void pos_helper (ESTADO *e, int r);
+/**
+ * \brief Reinicializa o tabuleiro, colocando peças vazias em todas as casas exceto na casa  "e5".
+ * @param e Estado atual do jogo.
+ */
+void reinit(ESTADO *e);
 
+/**
+ * \brief Função que atualiza os dados do jogo ao ler o ficheiro.
+ * @param e Estado atual do jogo.
+ * @param linha Linha obtida na função "ler_ficheiro()".
+ */
+void ler_tab(ESTADO *e, char *linha);
 #endif

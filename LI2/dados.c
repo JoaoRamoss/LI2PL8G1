@@ -64,96 +64,9 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i) {
     return lin;
 }
 
-void set_casa (ESTADO *e, char linha [], int k) {
-    int i;
-    for ( i = 0; i < 9; i++) {
-        switch (linha[i]) {
-            case ('.'):
-                e->tab[k][i] = VAZIO;
-                break;
-                ///> Ao encontrar a posição onde coloca a peça BRANCA, define também essa posição como última jogada.
-            case ('*'):
-                e->tab[k][i] = BRANCA;
-                e->ultima_jogada.coluna = i;
-                e->ultima_jogada.linha = k ;
-                update_num_jogadas(e,k,i);
-                break;
-            case('#'):
-                e->tab[k][i] = PRETA;
-                update_num_jogadas(e,k,i);
-                break;
-            case('2'):
-                e->tab[k][i] = DOIS;
-                break;
-            case('1'):
-                e->tab[k][i] = UM;
-            default:
-                break;
-        }
-    }
-}
-
-void set_jogadas(ESTADO *e, char cord[], int jog, int index) {
-    int lin, col;
-    char *cord1;
-    //cord corresponde à primeira coordenada do ficheiro, cord1 corresponde à segunda. (e5 d5) "cord" vai ser: e5; "cord1" vai ser: d5.
-    strtok(cord, " ");
-    cord1 = strtok(NULL, "\n");
-    ///> No caso de a jogada ainda ser do jogador 2, nao ha registo da jogada deste, pois ainda nao foi feita, logo, apenas atualiza a jogada do jogador 1 no array jogadas.
-    switch (jog) {
-        case (1):
-            col = retira_coluna(cord);
-            lin = retira_linha(cord);
-            e->jogadas[index].jogador1.linha = lin;
-            e->jogadas[index].jogador1.coluna = col;
-            break;
-
-            ///> No caso de a jogada ser do jogador 1, entao tem de haver registo de ambos os jogadores, logo, coloca-se as jogadas de ambos os jogadores no array jogadas.
-        case(2):
-            col = retira_coluna(cord);
-            lin = retira_linha(cord);
-            e->jogadas[index].jogador1.linha = lin;
-            e->jogadas[index].jogador1.coluna = col;
-            col = retira_coluna(cord1);
-            lin = retira_linha(cord1);
-            e->jogadas[index].jogador2.linha = lin;
-            e->jogadas[index].jogador2.coluna = col;
-            break;
-        default:
-            break;
-    }
-}
-
-
-///> Apenas aumenta ao numero de jogadas caso o jogador atual seja 2.
-int update_num_jogadas (ESTADO *e, int k, int i) {
-    if (k == 3 && i == 4)
-        return 0;
-    else if (e->jogador_atual == 2)  {
-        e->jogador_atual = 1;
-        e->num_jogadas++;
-    }
-    else if (e->jogador_atual == 1) {
-        e->jogador_atual = 2;
-    }
- return 1;
-}
-
 void pos_helper (ESTADO *e, int r) {
-    ///> Semelhante ao que acontece na função "*inicializar_estado()", coloca o tabuleiro com peças vazias.
     int col, lin, col2, lin2;
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            e->tab[i][j] = VAZIO;
-        }
-    }
-    ///> Coloca a peça na casa "e5" como "BRANCA", e define como "ultima jogada" esta casa.
-    e->tab [3][4] = BRANCA;
-    (e -> ultima_jogada).coluna = 4;
-    (e -> ultima_jogada).linha = 3;
-    ///> Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente.
-    e->num_jogadas = 0;
-    e->jogador_atual = 1;
+    reinit(e);
     ///> Usa a função "jogar()" e os dados do array "jogadas" para atualizar o tabuleiro recentemente reinicializado.
     for (int i = 0; i < r; i++) {
         col = e->jogadas[i].jogador1.coluna;
@@ -166,5 +79,48 @@ void pos_helper (ESTADO *e, int r) {
         jogar(e,coord);
         COORDENADA coord2 = {col2, lin2};
         jogar(e, coord2);
+    }
+}
+
+void reinit(ESTADO *e) {
+    ///> Semelhante ao que acontece na função "*inicializar_estado()", coloca o tabuleiro com peças vazias.
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            e->tab[i][j] = VAZIO;
+        }
+    }
+    ///> Coloca a peça na casa "e5" como "BRANCA", e define como "ultima jogada" esta casa.
+    e->tab [3][4] = BRANCA;
+    (e -> ultima_jogada).coluna = 4;
+    (e -> ultima_jogada).linha = 3;
+    ///> Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente.
+    e->num_jogadas = 0;
+    e->jogador_atual = 1;
+}
+
+void ler_tab(ESTADO *e, char *linha) {
+    int col, lin, col2, lin2;
+    char *linha2, *cords;
+    int i;
+    strtok(linha, " ");
+    linha2 = strtok  (NULL, "\n");
+    for (i = 0; linha2[i] != '\0'; i++);
+    strtok(linha2, " ");
+    cords = strtok(NULL, "\n");
+    if (i > 2) {
+        col = retira_coluna(linha2);
+        lin = abs(retira_linha(linha2)-8) - 1;
+        col2 = retira_coluna(cords);
+        lin2 = abs(retira_linha(cords)-8) - 1;
+        COORDENADA coord = {col,lin};
+        jogar(e,coord);
+        COORDENADA coord2 = {col2, lin2};
+        jogar(e, coord2);
+    }
+    else {
+        col = retira_coluna(linha2);
+        lin = abs(retira_linha(linha2)-8) - 1;
+        COORDENADA coord = {col,lin};
+        jogar(e,coord);
     }
 }
