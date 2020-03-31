@@ -1,4 +1,4 @@
-# LI2
+# LI2PL8G1
 Repositorio do projeto de laboratorios de informatica 2
 
 Turno - PL8
