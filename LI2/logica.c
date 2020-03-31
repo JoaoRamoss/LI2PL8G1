@@ -151,7 +151,7 @@ int pos (ESTADO *e, char *linha) {
     comando = strtok(NULL, "\n");
     ///> Extrai o algarismo que é introduzido após o comando "pos" ("pos 5", extrai o "5").
     r = strtol (comando, &end, 10);
-    ///> Verifica  que o comando "pos" apenas está a ser introduzido a uma jogada anterior e não à jogada anterior.
+    ///> Verifica  que o comando "pos" apenas está a ser introduzido a uma jogada anterior e não à jogada atual.
     if (r < max + 1) {
         pos_helper(e, r);
         return 1;
