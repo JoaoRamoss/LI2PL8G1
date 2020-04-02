@@ -123,6 +123,12 @@ Funções</h2></td></tr>
 <tr class="memitem:ad4e371755c518dbe632dc8cb1280cdad"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dados_8h.html#aba91601f16d4c485b2d9b8c429f27039">CASA</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">obter_casa</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int i, int j)</td></tr>
 <tr class="memdesc:ad4e371755c518dbe632dc8cb1280cdad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tem a mesma função que a funcao "obter_estado_casa" mas com input diferente.  <a href="dados_8h.html#ad4e371755c518dbe632dc8cb1280cdad">Mais...</a><br /></td></tr>
 <tr class="separator:ad4e371755c518dbe632dc8cb1280cdad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f2d95954ffa63c2f456e9481a883071"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#a9f2d95954ffa63c2f456e9481a883071">obter_max_num_jog</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:a9f2d95954ffa63c2f456e9481a883071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem o número máximo de jogadas que o jogador pode introduzir no comando "pos".  <a href="dados_8h.html#a9f2d95954ffa63c2f456e9481a883071">Mais...</a><br /></td></tr>
+<tr class="separator:a9f2d95954ffa63c2f456e9481a883071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46fb285155bff2316804318ef6f0fc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#ae46fb285155bff2316804318ef6f0fc6">set_max</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
+<tr class="memdesc:ae46fb285155bff2316804318ef6f0fc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Coloca o "max_num_jogadas" igual ao valor de "num_jogadas".  <a href="dados_8h.html#ae46fb285155bff2316804318ef6f0fc6">Mais...</a><br /></td></tr>
+<tr class="separator:ae46fb285155bff2316804318ef6f0fc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7c3d067f913501d29c5c38c497f2038"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dados_8h.html#ad7c3d067f913501d29c5c38c497f2038">obtem_dados_jogadas_col</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int n, int i)</td></tr>
 <tr class="memdesc:ad7c3d067f913501d29c5c38c497f2038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtem os dados da coluna do array jogadas de um determinado jogador.  <a href="dados_8h.html#ad7c3d067f913501d29c5c38c497f2038">Mais...</a><br /></td></tr>
 <tr class="separator:ad7c3d067f913501d29c5c38c497f2038"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,7 +195,7 @@ Funções</h2></td></tr>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    (e -&gt; ultima_jogada).linha = 3;</div>
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    e -&gt; num_jogadas = 0;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    e -&gt; jogador_atual = 1;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    e-&gt;max_num_jogadas = 0;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">return</span> e;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
 </div><!-- fragment -->
@@ -230,33 +236,33 @@ Funções</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00101">101</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                     {</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">int</span> col, lin, col2, lin2;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">char</span> *linha2, *cords;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    strtok(linha, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    linha2 = strtok  (NULL, <span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">for</span> (i = 0; linha2[i] != <span class="charliteral">&#39;\0&#39;</span>; i++);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    strtok(linha2, <span class="stringliteral">&quot; &quot;</span>);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    cords = strtok(NULL, <span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span> (i &gt; 2) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        col = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(linha2);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        lin = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(linha2)-8) - 1;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        col2 = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(cords);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        lin2 = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(cords)-8) - 1;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord2 = {col2, lin2};</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord2);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        col = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(linha2);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        lin = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(linha2)-8) - 1;</div>
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00109">109</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                     {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> col, lin, col2, lin2;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">char</span> *linha2, *cords;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    strtok(linha, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    linha2 = strtok  (NULL, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">for</span> (i = 0; linha2[i] != <span class="charliteral">&#39;\0&#39;</span>; i++);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    strtok(linha2, <span class="stringliteral">&quot; &quot;</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    cords = strtok(NULL, <span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">if</span> (i &gt; 2) {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        col = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(linha2);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        lin = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(linha2)-8) - 1;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        col2 = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(cords);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        lin2 = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(cords)-8) - 1;</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord2 = {col2, lin2};</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord2);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        col = <a class="code" href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a>(linha2);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        lin = abs(<a class="code" href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a>(linha2)-8) - 1;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -303,14 +309,14 @@ Funções</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Retorna</dt><dd>O char correspondente à coordenada coluna na jogada "i". </dd></dl>
 
-<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00048">48</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                                       {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (n == 1) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> e-&gt;jogadas[i].jogador1.coluna + <span class="charliteral">&#39;a&#39;</span>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">return</span> e-&gt;jogadas[i].jogador2.coluna + <span class="charliteral">&#39;a&#39;</span>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00056">56</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                       {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (n == 1) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> e-&gt;jogadas[i].jogador1.coluna + <span class="charliteral">&#39;a&#39;</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> e-&gt;jogadas[i].jogador2.coluna + <span class="charliteral">&#39;a&#39;</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -357,17 +363,17 @@ Funções</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Retorna</dt><dd>O int correspondente à coordenada linha na jogada "i". </dd></dl>
 
-<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00056">56</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                                                      {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> lin;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (n == 1) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        lin = abs((e-&gt;jogadas[i].jogador1.linha + 1) - 8) + 1;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> lin;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        lin = abs((e -&gt; jogadas[i].jogador2.linha + 1) - 8) + 1;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> lin;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00064">64</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                                      {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">int</span> lin;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (n == 1) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        lin = abs((e-&gt;jogadas[i].jogador1.linha + 1) - 8) + 1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordflow">return</span> lin;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        lin = abs((e -&gt; jogadas[i].jogador2.linha + 1) - 8) + 1;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> lin;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -500,6 +506,38 @@ Funções</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="a9f2d95954ffa63c2f456e9481a883071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f2d95954ffa63c2f456e9481a883071">&#9670;&nbsp;</a></span>obter_max_num_jog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int obter_max_num_jog </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Obtem o número máximo de jogadas que o jogador pode introduzir no comando "pos". </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado atual do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Retorna</dt><dd>O valor do máximo numero permitido no comando "pos". </dd></dl>
+
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00048">48</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                 {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> e-&gt;max_num_jogadas;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a6cd0b387bdee9e18003c78852394aa63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cd0b387bdee9e18003c78852394aa63">&#9670;&nbsp;</a></span>obter_numero_de_jogadas()</h2>
 
@@ -570,23 +608,23 @@ Funções</h2></td></tr>
 <p>Usa a função "jogar()" e os dados do array "jogadas" para atualizar o tabuleiro recentemente reinicializado. </p>
 </blockquote>
 
-<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00067">67</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                                   {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> col, lin, col2, lin2;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="dados_8h.html#a543f64d33cbc5f4c00ad7dc4e60d2105">reinit</a>(e);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; r; i++) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        col = e-&gt;jogadas[i].jogador1.coluna;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        lin = e-&gt;jogadas[i].jogador1.linha;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        lin = abs(lin - 8) - 1;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        col2 = e-&gt;jogadas[i].jogador2.coluna;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        lin2 = e-&gt;jogadas[i].jogador2.linha;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        lin2 = abs(lin2 - 8) - 1;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord2 = {col2, lin2};</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord2);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00075">75</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                                   {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> col, lin, col2, lin2;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="dados_8h.html#a543f64d33cbc5f4c00ad7dc4e60d2105">reinit</a>(e);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; r; i++) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        col = e-&gt;jogadas[i].jogador1.coluna;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        lin = e-&gt;jogadas[i].jogador1.linha;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        lin = abs(lin - 8) - 1;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        col2 = e-&gt;jogadas[i].jogador2.coluna;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        lin2 = e-&gt;jogadas[i].jogador2.linha;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        lin2 = abs(lin2 - 8) - 1;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord = {col,lin};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e,coord);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> coord2 = {col2, lin2};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, coord2);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -623,27 +661,58 @@ Funções</h2></td></tr>
 <p>Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente. </p>
 </blockquote>
 
-<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00085">85</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                       {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 8; j++) {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            e-&gt;tab[i][j] = VAZIO;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    e-&gt;tab [3][4] = BRANCA;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    (e -&gt; ultima_jogada).coluna = 4;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    (e -&gt; ultima_jogada).linha = 3;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    e-&gt;num_jogadas = 0;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    e-&gt;jogador_atual = 1;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00093">93</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                       {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 8; i++) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; 8; j++) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            e-&gt;tab[i][j] = VAZIO;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    e-&gt;tab [3][4] = BRANCA;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    (e -&gt; ultima_jogada).coluna = 4;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    (e -&gt; ultima_jogada).linha = 3;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    e-&gt;num_jogadas = 0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    e-&gt;jogador_atual = 1;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ae46fb285155bff2316804318ef6f0fc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46fb285155bff2316804318ef6f0fc6">&#9670;&nbsp;</a></span>set_max()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_max </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Coloca o "max_num_jogadas" igual ao valor de "num_jogadas". </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>Estado atual do jogo. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definido na linha <a class="el" href="dados_8c_source.html#l00052">52</a> do ficheiro <a class="el" href="dados_8c_source.html">dados.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    e-&gt;max_num_jogadas = e-&gt;num_jogadas;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdoc">Struct para as coordenadas, sendo estas usadas para fazer jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00015">dados.h:15</a></div></div>
-<div class="ttc" id="alogica_8h_html_a224bb3db996c2f3baca3a72b8509c3ce"><div class="ttname"><a href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a></div><div class="ttdeci">int retira_linha(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00121">logica.c:121</a></div></div>
-<div class="ttc" id="adados_8h_html_a543f64d33cbc5f4c00ad7dc4e60d2105"><div class="ttname"><a href="dados_8h.html#a543f64d33cbc5f4c00ad7dc4e60d2105">reinit</a></div><div class="ttdeci">void reinit(ESTADO *e)</div><div class="ttdoc">Reinicializa o tabuleiro, colocando peças vazias em todas as casas exceto na casa &quot;e5&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00085">dados.c:85</a></div></div>
-<div class="ttc" id="alogica_8h_html_a00a35418e9e9a6c215b653dceb822a03"><div class="ttname"><a href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a></div><div class="ttdeci">int retira_coluna(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00135">logica.c:135</a></div></div>
+<div class="ttc" id="alogica_8h_html_a224bb3db996c2f3baca3a72b8509c3ce"><div class="ttname"><a href="logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce">retira_linha</a></div><div class="ttdeci">int retira_linha(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00127">logica.c:127</a></div></div>
+<div class="ttc" id="adados_8h_html_a543f64d33cbc5f4c00ad7dc4e60d2105"><div class="ttname"><a href="dados_8h.html#a543f64d33cbc5f4c00ad7dc4e60d2105">reinit</a></div><div class="ttdeci">void reinit(ESTADO *e)</div><div class="ttdoc">Reinicializa o tabuleiro, colocando peças vazias em todas as casas exceto na casa &quot;e5&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00093">dados.c:93</a></div></div>
+<div class="ttc" id="alogica_8h_html_a00a35418e9e9a6c215b653dceb822a03"><div class="ttname"><a href="logica_8h.html#a00a35418e9e9a6c215b653dceb822a03">retira_coluna</a></div><div class="ttdeci">int retira_coluna(char str[])</div><div class="ttdoc">Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro corresponden...</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00141">logica.c:141</a></div></div>
 <div class="ttc" id="alogica_8h_html_ac313d7e553b1e2b5f266acb9bfff8141"><div class="ttname"><a href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a></div><div class="ttdeci">int jogar(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Função que usa os dados do estado e do input do jogador para fazer a jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00010">logica.c:10</a></div></div>
 <div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdoc">Struct que guarda o estado atual do jogo (tabuleiro, ultima jogada, todas as jogadas efetuadas,...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00033">dados.h:33</a></div></div>
 <div class="ttc" id="adados_8h_html_aba91601f16d4c485b2d9b8c429f27039"><div class="ttname"><a href="dados_8h.html#aba91601f16d4c485b2d9b8c429f27039">CASA</a></div><div class="ttdeci">CASA</div><div class="ttdoc">Tipos diferentes de Casa que o tabuleiro pode ter.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00011">dados.h:11</a></div></div>

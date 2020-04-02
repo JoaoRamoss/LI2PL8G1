@@ -73,6 +73,8 @@ int interpretador(ESTADO *e) {
             //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
+            //Caso seja feita uma jogada, colocamos o valor máximo do comando pos = ao valor da jogada atual.
+            set_max(e);
             if(jogar(e,coord) == 0)
                 printf("Jogada Invalida. \n");
         }

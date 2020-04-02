@@ -36,6 +36,7 @@ typedef struct {
     JOGADAS jogadas;
     int num_jogadas;
     int jogador_atual;
+    int max_num_jogadas;
 } ESTADO;
 
 /**
@@ -75,6 +76,18 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c);
  * @return O estado da casa pedida.
  */
 CASA obter_casa (ESTADO *e, int i, int j);
+/**
+ *\brief Obtem o número máximo de jogadas que o jogador pode introduzir no comando "pos".
+ * @param e Estado atual do jogo.
+ * @return O valor do máximo numero permitido no comando "pos".
+ */
+int obter_max_num_jog(ESTADO *e);
+
+/**
+ * \brief Coloca o "max_num_jogadas" igual ao valor de "num_jogadas".
+ * @param e Estado atual do jogo.
+ */
+void set_max(ESTADO *e);
 
 /**
  * \brief Obtem os dados da coluna do array jogadas de um determinado jogador.
@@ -112,4 +125,5 @@ void reinit(ESTADO *e);
  * @param linha Linha obtida na função "ler_ficheiro()".
  */
 void ler_tab(ESTADO *e, char *linha);
+
 #endif

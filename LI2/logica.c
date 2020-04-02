@@ -42,7 +42,12 @@ void atualiza_jogada (ESTADO *e, int col, int lin) {
     else {
         e->jogador_atual = 1;
         ///> Incrementa o numero de jogadas.
-        e->num_jogadas++;
+        if (e->num_jogadas >= e->max_num_jogadas) {
+            e->num_jogadas++;
+            e->max_num_jogadas++;
+        }
+        else
+            e->num_jogadas++;
     }
 }
 
@@ -102,6 +107,7 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     //A função "access" retorna -1 caso nao encontre o ficheiro.
     if (access(comando, F_OK) != -1) {
         reinit(e);
+        e->max_num_jogadas = 0;
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             ///> Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função "update_array_jogadas()".
@@ -146,7 +152,7 @@ int retira_coluna (char str[]) {
 
 int pos (ESTADO *e, char *linha) {
     char *comando, *end;
-    int r, max = obter_numero_de_jogadas(e);
+    int r, max = obter_max_num_jog(e);
     strtok (linha, " ");
     comando = strtok(NULL, "\n");
     ///> Extrai o algarismo que é introduzido após o comando "pos" ("pos 5", extrai o "5").

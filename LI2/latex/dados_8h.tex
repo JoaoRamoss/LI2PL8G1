@@ -41,6 +41,10 @@ int \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\+\_\+nume
 \begin{DoxyCompactList}\small\item\em Obtem o estado atual da peca numa determinada casa. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{dados_8h_aba91601f16d4c485b2d9b8c429f27039}{C\+A\+SA}} \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\+\_\+casa}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int i, int j)
 \begin{DoxyCompactList}\small\item\em Tem a mesma função que a funcao \char`\"{}obter\+\_\+estado\+\_\+casa\char`\"{} mas com input diferente. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{dados_8h_a9f2d95954ffa63c2f456e9481a883071}{obter\+\_\+max\+\_\+num\+\_\+jog}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Obtem o número máximo de jogadas que o jogador pode introduzir no comando \char`\"{}pos\char`\"{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dados_8h_ae46fb285155bff2316804318ef6f0fc6}{set\+\_\+max}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Coloca o \char`\"{}max\+\_\+num\+\_\+jogadas\char`\"{} igual ao valor de \char`\"{}num\+\_\+jogadas\char`\"{}. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{dados_8h_ad7c3d067f913501d29c5c38c497f2038}{obtem\+\_\+dados\+\_\+jogadas\+\_\+col}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int n, int i)
 \begin{DoxyCompactList}\small\item\em Obtem os dados da coluna do array jogadas de um determinado jogador. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{dados_8h_a0696c119c3f220421804807cc607fcda}{obtem\+\_\+dados\+\_\+jogadas\+\_\+lin}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int n, int i)
@@ -104,7 +108,7 @@ Definido na linha 6 do ficheiro dados.\+c.
 \DoxyCodeLine{19     (e -\/> ultima\_jogada).linha = 3;}
 \DoxyCodeLine{21     e -\/> num\_jogadas = 0;}
 \DoxyCodeLine{23     e -\/> jogador\_atual = 1;}
-\DoxyCodeLine{24 }
+\DoxyCodeLine{24     e-\/>max\_num\_jogadas = 0;}
 \DoxyCodeLine{25     \textcolor{keywordflow}{return} e;}
 \DoxyCodeLine{26 \}}
 
@@ -128,36 +132,36 @@ Função que atualiza os dados do jogo ao ler o ficheiro.
 \end{DoxyParams}
 
 
-Definido na linha 101 do ficheiro dados.\+c.
+Definido na linha 109 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{101                                      \{}
-\DoxyCodeLine{102     \textcolor{keywordtype}{int} col, lin, col2, lin2;}
-\DoxyCodeLine{103     \textcolor{keywordtype}{char} *linha2, *cords;}
-\DoxyCodeLine{104     \textcolor{keywordtype}{int} i;}
-\DoxyCodeLine{105     strtok(linha, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{106     linha2 = strtok  (NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{107     \textcolor{keywordflow}{for} (i = 0; linha2[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++);}
-\DoxyCodeLine{108     strtok(linha2, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{109     cords = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{110     \textcolor{keywordflow}{if} (i > 2) \{}
-\DoxyCodeLine{111         col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(linha2);}
-\DoxyCodeLine{112         lin = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(linha2)-\/8) -\/ 1;}
-\DoxyCodeLine{113         col2 = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cords);}
-\DoxyCodeLine{114         lin2 = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cords)-\/8) -\/ 1;}
-\DoxyCodeLine{115         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{col,lin\};}
-\DoxyCodeLine{116         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord);}
-\DoxyCodeLine{117         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord2 = \{col2, lin2\};}
-\DoxyCodeLine{118         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord2);}
-\DoxyCodeLine{119     \}}
-\DoxyCodeLine{120     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{121         col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(linha2);}
-\DoxyCodeLine{122         lin = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(linha2)-\/8) -\/ 1;}
+\DoxyCodeLine{109                                      \{}
+\DoxyCodeLine{110     \textcolor{keywordtype}{int} col, lin, col2, lin2;}
+\DoxyCodeLine{111     \textcolor{keywordtype}{char} *linha2, *cords;}
+\DoxyCodeLine{112     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{113     strtok(linha, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{114     linha2 = strtok  (NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{115     \textcolor{keywordflow}{for} (i = 0; linha2[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++);}
+\DoxyCodeLine{116     strtok(linha2, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{117     cords = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{118     \textcolor{keywordflow}{if} (i > 2) \{}
+\DoxyCodeLine{119         col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(linha2);}
+\DoxyCodeLine{120         lin = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(linha2)-\/8) -\/ 1;}
+\DoxyCodeLine{121         col2 = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(cords);}
+\DoxyCodeLine{122         lin2 = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(cords)-\/8) -\/ 1;}
 \DoxyCodeLine{123         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{col,lin\};}
 \DoxyCodeLine{124         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord);}
-\DoxyCodeLine{125     \}}
-\DoxyCodeLine{126 \}}
+\DoxyCodeLine{125         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord2 = \{col2, lin2\};}
+\DoxyCodeLine{126         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord2);}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{129         col = \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\_coluna}}(linha2);}
+\DoxyCodeLine{130         lin = abs(\mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\_linha}}(linha2)-\/8) -\/ 1;}
+\DoxyCodeLine{131         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{col,lin\};}
+\DoxyCodeLine{132         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord);}
+\DoxyCodeLine{133     \}}
+\DoxyCodeLine{134 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ad7c3d067f913501d29c5c38c497f2038}\label{dados_8h_ad7c3d067f913501d29c5c38c497f2038}} 
@@ -184,17 +188,17 @@ O char correspondente à coordenada coluna na jogada \char`\"{}i\char`\"{}.
 \end{DoxyReturn}
 
 
-Definido na linha 48 do ficheiro dados.\+c.
+Definido na linha 56 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{48                                                        \{}
-\DoxyCodeLine{49     \textcolor{keywordflow}{if} (n == 1) \{}
-\DoxyCodeLine{50         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{51     \}}
-\DoxyCodeLine{52     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{53         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{54 \}}
+\DoxyCodeLine{56                                                        \{}
+\DoxyCodeLine{57     \textcolor{keywordflow}{if} (n == 1) \{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador1.coluna + \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{59     \}}
+\DoxyCodeLine{60     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{61         \textcolor{keywordflow}{return} e-\/>jogadas[i].jogador2.coluna + \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{62 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a0696c119c3f220421804807cc607fcda}\label{dados_8h_a0696c119c3f220421804807cc607fcda}} 
@@ -221,20 +225,20 @@ O int correspondente à coordenada linha na jogada \char`\"{}i\char`\"{}.
 \end{DoxyReturn}
 
 
-Definido na linha 56 do ficheiro dados.\+c.
+Definido na linha 64 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{56                                                       \{}
-\DoxyCodeLine{57     \textcolor{keywordtype}{int} lin;}
-\DoxyCodeLine{58     \textcolor{keywordflow}{if} (n == 1) \{}
-\DoxyCodeLine{59         lin = abs((e-\/>jogadas[i].jogador1.linha + 1) -\/ 8) + 1;}
-\DoxyCodeLine{60         \textcolor{keywordflow}{return} lin;}
-\DoxyCodeLine{61     \}}
-\DoxyCodeLine{62     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{63         lin = abs((e -\/> jogadas[i].jogador2.linha + 1) -\/ 8) + 1;}
-\DoxyCodeLine{64     \textcolor{keywordflow}{return} lin;}
-\DoxyCodeLine{65 \}}
+\DoxyCodeLine{64                                                       \{}
+\DoxyCodeLine{65     \textcolor{keywordtype}{int} lin;}
+\DoxyCodeLine{66     \textcolor{keywordflow}{if} (n == 1) \{}
+\DoxyCodeLine{67         lin = abs((e-\/>jogadas[i].jogador1.linha + 1) -\/ 8) + 1;}
+\DoxyCodeLine{68         \textcolor{keywordflow}{return} lin;}
+\DoxyCodeLine{69     \}}
+\DoxyCodeLine{70     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{71         lin = abs((e -\/> jogadas[i].jogador2.linha + 1) -\/ 8) + 1;}
+\DoxyCodeLine{72     \textcolor{keywordflow}{return} lin;}
+\DoxyCodeLine{73 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}\label{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}} 
@@ -334,6 +338,35 @@ Definido na linha 28 do ficheiro dados.\+c.
 \DoxyCodeLine{30 \}}
 
 \end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_a9f2d95954ffa63c2f456e9481a883071}\label{dados_8h_a9f2d95954ffa63c2f456e9481a883071}} 
+\index{dados.h@{dados.h}!obter\_max\_num\_jog@{obter\_max\_num\_jog}}
+\index{obter\_max\_num\_jog@{obter\_max\_num\_jog}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{obter\_max\_num\_jog()}{obter\_max\_num\_jog()}}
+{\footnotesize\ttfamily int obter\+\_\+max\+\_\+num\+\_\+jog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Obtem o número máximo de jogadas que o jogador pode introduzir no comando \char`\"{}pos\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+O valor do máximo numero permitido no comando \char`\"{}pos\char`\"{}. 
+\end{DoxyReturn}
+
+
+Definido na linha 48 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48                                  \{}
+\DoxyCodeLine{49     \textcolor{keywordflow}{return} e-\/>max\_num\_jogadas;}
+\DoxyCodeLine{50 \}}
+
+\end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a6cd0b387bdee9e18003c78852394aa63}\label{dados_8h_a6cd0b387bdee9e18003c78852394aa63}} 
 \index{dados.h@{dados.h}!obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}}
 \index{obter\_numero\_de\_jogadas@{obter\_numero\_de\_jogadas}!dados.h@{dados.h}}
@@ -384,26 +417,26 @@ Função auxiliar para a função \char`\"{}pos\char`\"{} na camada dados, atual
 Usa a função \char`\"{}jogar()\char`\"{} e os dados do array \char`\"{}jogadas\char`\"{} para atualizar o tabuleiro recentemente reinicializado. \end{quote}
 
 
-Definido na linha 67 do ficheiro dados.\+c.
+Definido na linha 75 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{67                                    \{}
-\DoxyCodeLine{68     \textcolor{keywordtype}{int} col, lin, col2, lin2;}
-\DoxyCodeLine{69     \mbox{\hyperlink{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}{reinit}}(e);}
-\DoxyCodeLine{71     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < r; i++) \{}
-\DoxyCodeLine{72         col = e-\/>jogadas[i].jogador1.coluna;}
-\DoxyCodeLine{73         lin = e-\/>jogadas[i].jogador1.linha;}
-\DoxyCodeLine{74         lin = abs(lin -\/ 8) -\/ 1;}
-\DoxyCodeLine{75         col2 = e-\/>jogadas[i].jogador2.coluna;}
-\DoxyCodeLine{76         lin2 = e-\/>jogadas[i].jogador2.linha;}
-\DoxyCodeLine{77         lin2 = abs(lin2 -\/ 8) -\/ 1;}
-\DoxyCodeLine{78         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{col,lin\};}
-\DoxyCodeLine{79         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord);}
-\DoxyCodeLine{80         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord2 = \{col2, lin2\};}
-\DoxyCodeLine{81         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord2);}
-\DoxyCodeLine{82     \}}
-\DoxyCodeLine{83 \}}
+\DoxyCodeLine{75                                    \{}
+\DoxyCodeLine{76     \textcolor{keywordtype}{int} col, lin, col2, lin2;}
+\DoxyCodeLine{77     \mbox{\hyperlink{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}{reinit}}(e);}
+\DoxyCodeLine{79     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < r; i++) \{}
+\DoxyCodeLine{80         col = e-\/>jogadas[i].jogador1.coluna;}
+\DoxyCodeLine{81         lin = e-\/>jogadas[i].jogador1.linha;}
+\DoxyCodeLine{82         lin = abs(lin -\/ 8) -\/ 1;}
+\DoxyCodeLine{83         col2 = e-\/>jogadas[i].jogador2.coluna;}
+\DoxyCodeLine{84         lin2 = e-\/>jogadas[i].jogador2.linha;}
+\DoxyCodeLine{85         lin2 = abs(lin2 -\/ 8) -\/ 1;}
+\DoxyCodeLine{86         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord = \{col,lin\};}
+\DoxyCodeLine{87         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e,coord);}
+\DoxyCodeLine{88         \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} coord2 = \{col2, lin2\};}
+\DoxyCodeLine{89         \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, coord2);}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}\label{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}} 
@@ -433,21 +466,47 @@ Coloca a peça na casa \char`\"{}e5\char`\"{} como \char`\"{}\+B\+R\+A\+N\+C\+A\
 Coloca o numero de jogadas e o jogador atual como 0 e 1, respetivamente. \end{quote}
 
 
-Definido na linha 85 do ficheiro dados.\+c.
+Definido na linha 93 do ficheiro dados.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{85                        \{}
-\DoxyCodeLine{87     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
-\DoxyCodeLine{88         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
-\DoxyCodeLine{89             e-\/>tab[i][j] = VAZIO;}
-\DoxyCodeLine{90         \}}
-\DoxyCodeLine{91     \}}
-\DoxyCodeLine{93     e-\/>tab [3][4] = BRANCA;}
-\DoxyCodeLine{94     (e -\/> ultima\_jogada).coluna = 4;}
-\DoxyCodeLine{95     (e -\/> ultima\_jogada).linha = 3;}
-\DoxyCodeLine{97     e-\/>num\_jogadas = 0;}
-\DoxyCodeLine{98     e-\/>jogador\_atual = 1;}
-\DoxyCodeLine{99 \}}
+\DoxyCodeLine{93                        \{}
+\DoxyCodeLine{95     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 8; i++) \{}
+\DoxyCodeLine{96         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 8; j++) \{}
+\DoxyCodeLine{97             e-\/>tab[i][j] = VAZIO;}
+\DoxyCodeLine{98         \}}
+\DoxyCodeLine{99     \}}
+\DoxyCodeLine{101     e-\/>tab [3][4] = BRANCA;}
+\DoxyCodeLine{102     (e -\/> ultima\_jogada).coluna = 4;}
+\DoxyCodeLine{103     (e -\/> ultima\_jogada).linha = 3;}
+\DoxyCodeLine{105     e-\/>num\_jogadas = 0;}
+\DoxyCodeLine{106     e-\/>jogador\_atual = 1;}
+\DoxyCodeLine{107 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{dados_8h_ae46fb285155bff2316804318ef6f0fc6}\label{dados_8h_ae46fb285155bff2316804318ef6f0fc6}} 
+\index{dados.h@{dados.h}!set\_max@{set\_max}}
+\index{set\_max@{set\_max}!dados.h@{dados.h}}
+\doxysubsubsection{\texorpdfstring{set\_max()}{set\_max()}}
+{\footnotesize\ttfamily void set\+\_\+max (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Coloca o \char`\"{}max\+\_\+num\+\_\+jogadas\char`\"{} igual ao valor de \char`\"{}num\+\_\+jogadas\char`\"{}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definido na linha 52 do ficheiro dados.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{52                         \{}
+\DoxyCodeLine{53     e-\/>max\_num\_jogadas = e-\/>num\_jogadas;}
+\DoxyCodeLine{54 \}}
 
 \end{DoxyCode}

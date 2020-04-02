@@ -21,7 +21,7 @@ ESTADO *inicializar_estado() {
     e -> num_jogadas = 0;
     ///> Coloca como jogador atual o jogador 1, visto que o jogo começa sempre por ele.
     e -> jogador_atual = 1;
-
+    e->max_num_jogadas = 0;
     return e;
 }
 
@@ -43,6 +43,14 @@ CASA obter_estado_casa(ESTADO *e, COORDENADA c) {
 CASA obter_casa (ESTADO *e, int i, int j) {
     CASA r = e -> tab[i][j];
     return r;
+}
+
+int obter_max_num_jog(ESTADO *e) {
+    return e->max_num_jogadas;
+}
+
+void set_max(ESTADO *e) {
+    e->max_num_jogadas = e->num_jogadas;
 }
 
 char obtem_dados_jogadas_col (ESTADO *e, int n, int i) {
