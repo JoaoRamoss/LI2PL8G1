@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['update_5farray_5fjogadas_67',['update_array_jogadas',['../logica_8h.html#a608d40c8b37424e7bd4e5ee3f0fe8b97',1,'logica.h']]]
+  ['set_5fmax_70',['set_max',['../dados_8h.html#ae46fb285155bff2316804318ef6f0fc6',1,'dados.c']]]
 ];

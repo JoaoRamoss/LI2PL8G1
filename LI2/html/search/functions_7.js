@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['pos_60',['pos',['../logica_8h.html#aec4a963a88af44348027ec7cf17ff47a',1,'logica.c']]],
-  ['pos_5fhelper_61',['pos_helper',['../dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329',1,'dados.c']]]
+  ['mostrar_5ftabuleiro_55',['mostrar_tabuleiro',['../interface_8h.html#aa0b6c1689e60ac852a73d67e066c1df5',1,'interface.c']]],
+  ['mostrar_5ftabuleiro_5ffinal_56',['mostrar_tabuleiro_final',['../interface_8h.html#a14932179629d49fade0db78a3136d787',1,'interface.c']]],
+  ['movs_57',['movs',['../interface_8h.html#a8d63019a8176de612e33bf8c72121760',1,'interface.c']]]
 ];

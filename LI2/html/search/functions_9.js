@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['set_5fmax_65',['set_max',['../dados_8h.html#ae46fb285155bff2316804318ef6f0fc6',1,'dados.c']]]
+  ['pos_65',['pos',['../logica_8h.html#aec4a963a88af44348027ec7cf17ff47a',1,'logica.c']]],
+  ['pos_5fhelper_66',['pos_helper',['../dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329',1,'dados.c']]]
 ];

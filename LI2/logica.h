@@ -25,9 +25,23 @@ int jogada_possivel (ESTADO *e, COORDENADA c);
 /**
  * \brief Verifica se o jogo terminou.
  * @param e Estado do jogo.
- * @return 1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho, ou 3 caso as jogadas acabem.
+ * @return 1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho, 3 caso as jogadas acabem, ou 4 caso a peça fique encurralada.
  */
 int jogo_terminado (ESTADO *e);
+
+/**
+ *\brief Verifica se a peça está encurralada.
+ * @param e Estado atual do jogo.
+ * @return 1 caso esteja encurralada, 0 caso nao esteja.
+ */
+int encurralado(ESTADO *e);
+
+/**
+ * \brief Verifica se todas as casas a volta da peça branca estao preenchidas com peças pretas.
+ * @param e Estado atual do jogo.
+ * @return 1 caso a peca esteja encurralada, 0 caso nao esteja.
+ */
+int check_around (ESTADO *e);
 
 /**
  * \brief Coloca o tabuleiro e o estado do jogo num ficheiro
@@ -51,13 +65,6 @@ void atualiza_jogada (ESTADO *e, int col, int lin);
  * @return 1 caso consiga ler o ficheiro, 0  caso nao consiga.
  */
 int ler_ficheiro (ESTADO *e, char linha []);
-
-/**
- * \brief Depois de ler  ficheiro, atualiza as posições do array onde sao guardadas jogadas  anteriores.
- * @param e Estado atual do jogo.
- * @param lin_fich Linha obtida pela função "ler ficheiro".
- */
-void update_array_jogadas (ESTADO *e, char lin_fich[]);
 
 /**
  * \brief Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à linha.

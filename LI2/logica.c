@@ -71,9 +71,38 @@ int jogo_terminado (ESTADO *e) {
             r = 2;
     else if (e->num_jogadas == 31)
                 r = 3;
+    else if (encurralado(e) == 1)
+        r = 4;
     else
         r = 0;
     return r;
+}
+
+int encurralado(ESTADO *e) {
+    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    ///> Verifica primeiro se a peça está num dos cantos do tabuleiro, e, caso esteja, verifica se está encurralada.
+    if (col == 0 && lin == 0) {
+        if (obter_casa(e, lin, col + 1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA)
+            return 1;
+    }
+    else if (col == 7 && lin == 7) {
+        if (obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA)
+            return 1;
+    }
+    ///> Caso nao esteja em um dos cantos, chama a função "check_around()" para verificar se está ou nao encurralada.
+    else if (check_around(e) == 1)
+        return 1;
+
+    return 0;
+}
+
+int check_around (ESTADO *e) {
+    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    if (obter_casa(e, lin, col + 1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA &&
+    obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA)
+        return 1;
+    else
+        return 0;
 }
 
 //Função usada para o comando gr (grava o estado de jogo num ficheiro).
@@ -82,7 +111,7 @@ void tabuleiro_ficheiro(ESTADO *e, char *linha) {
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
     strtok(linha, " ");
     comando = strtok(NULL, "\n");
-    strcat(comando, ".txt");
+
 
     ///> Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista.
     FILE *fp;
@@ -102,7 +131,6 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     ///> Copia o nome do ficheiro presente na string "linha" e coloca na string "comando", e concatena ".txt" no final.
     strtok(linha, " ");
     comando = strtok (NULL, "\n");
-    strcat(comando, ".txt");
     ///> Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo.
     //A função "access" retorna -1 caso nao encontre o ficheiro.
     if (access(comando, F_OK) != -1) {

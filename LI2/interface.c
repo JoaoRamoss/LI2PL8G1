@@ -28,6 +28,28 @@ void mostrar_tabuleiro(ESTADO *e) {
     printf("#(%d) JOG: %d => ", obter_numero_de_jogadas(e) + 1, obter_jogador_atual(e));
 }
 
+void mostrar_tabuleiro_final(ESTADO *e) {
+    int num = 8;
+
+    //Imprime as letras no topo do tabuleiro.
+    printf("   ");
+    for (char c = 'a'; c < 'i'; c++)
+        printf("%c  ", c);
+    printf("\n");
+    /*
+    Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",
+    '#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".
+    */
+    for (int i = 0; i < 8; i++) {
+        printf("%d  ", num);
+        num--;
+        for (int j = 0; j < 8; j++) {
+            char peca = obter_casa(e, i, j);
+            printf("%c  ", peca);
+        }
+        printf("\n");
+    }
+}
 
 int interpretador(ESTADO *e) {
     char linha[BUF_SIZE];
@@ -80,12 +102,22 @@ int interpretador(ESTADO *e) {
         }
     }
     //Verifica qual dos jogadores congratular no final do jogo.
-    if (jogo_terminado(e) == 1)
+    if (jogo_terminado(e) == 1) {
+        mostrar_tabuleiro_final(e);
         printf("Parabens!! O jogador 1 ganha!\n");
-    else if (jogo_terminado(e) == 2)
+    }
+    else if (jogo_terminado(e) == 2) {
+        mostrar_tabuleiro_final(e);
         printf("Parabens!! O jogador 2 ganha! \n");
-    else if (jogo_terminado(e) == 3)
+    }
+    else if (jogo_terminado(e) == 3) {
+        mostrar_tabuleiro_final(e);
         printf("Acabaram-se as jogadas! Ninguém ganhou. \n");
+    }
+    else if (jogo_terminado(e) == 4) {
+        mostrar_tabuleiro_final(e);
+        printf("A peca ficou encurralada, e um empate!\n");
+    }
     return 1;
 }
 

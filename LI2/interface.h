@@ -13,6 +13,12 @@
 void mostrar_tabuleiro(ESTADO *e);
 
 /**
+ *\brief Imprime o tabuleiro sem o prompt.
+ * @param e Estado atual do jogo.
+ */
+void mostrar_tabuleiro_final(ESTADO *e);
+
+/**
  * \brief Interpretador do jogo, todos os comandos sao efetuados nesta função.
  * @param e Estado do jogo.
  * @return 1 caso a operação seja efetuada com sucesso.
