@@ -24,7 +24,10 @@ LISTA proximo(LISTA L) {
 }
 
 LISTA remove_cabeca(LISTA L) {
-    L = L->proximo;
+    LISTA tmp;
+    tmp = L;
+    L = proximo(L);
+    free(tmp);
     return L;
 }
 
