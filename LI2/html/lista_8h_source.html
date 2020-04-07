@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Rastros: Código-Fonte de lista.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Rastros
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Localizar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">lista.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="lista_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef LI2_LISTA_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define LI2_LISTA_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="structnodo.html">    8</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structnodo.html">nodo</a> {</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keywordtype">void</span> *head;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    <span class="keyword">struct </span><a class="code" href="structnodo.html">nodo</a> *proximo;</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;} *<a class="code" href="structnodo.html">LISTA</a>, <a class="code" href="structnodo.html">Nodo</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<a class="code" href="structnodo.html">LISTA</a> <a class="code" href="lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e">criar_lista</a> ();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<a class="code" href="structnodo.html">LISTA</a> <a class="code" href="lista_8h.html#a37ba5fc3cfddb6bc94d4b54b00bc696e">insere_cabeca</a>(<a class="code" href="structnodo.html">LISTA</a> L, <span class="keywordtype">void</span> *valor);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keywordtype">void</span> *<a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(<a class="code" href="structnodo.html">LISTA</a> L);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<a class="code" href="structnodo.html">LISTA</a> <a class="code" href="lista_8h.html#ad9380152361127432c55c1c6067e05ae">proximo</a>(<a class="code" href="structnodo.html">LISTA</a> L);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="structnodo.html">LISTA</a> <a class="code" href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a>(<a class="code" href="structnodo.html">LISTA</a> L);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keywordtype">int</span> <a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(<a class="code" href="structnodo.html">LISTA</a> L);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="alista_8h_html_a9026a681a68322b5ec7f07137b864cbd"><div class="ttname"><a href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a></div><div class="ttdeci">LISTA remove_cabeca(LISTA L)</div><div class="ttdoc">Função para remover a cabeça da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00026">lista.c:26</a></div></div>
+<div class="ttc" id="alista_8h_html_ae3b99323b6f8f35d80bb69ff1a27985e"><div class="ttname"><a href="lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e">criar_lista</a></div><div class="ttdeci">LISTA criar_lista()</div><div class="ttdoc">Inicializa a lista vazia, tendo o valor NULL no seu único nodo.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00004">lista.c:4</a></div></div>
+<div class="ttc" id="alista_8h_html_abfcb205f3eb670157be0d1221021714b"><div class="ttname"><a href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a></div><div class="ttdeci">void * devolve_cabeca(LISTA L)</div><div class="ttdoc">Função que vai buscar o valor da cabeça da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00018">lista.c:18</a></div></div>
+<div class="ttc" id="alista_8h_html_a4c10928f7acaa4e3de3760cea0dfd9c0"><div class="ttname"><a href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a></div><div class="ttdeci">int lista_esta_vazia(LISTA L)</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00031">lista.c:31</a></div></div>
+<div class="ttc" id="astructnodo_html"><div class="ttname"><a href="structnodo.html">nodo</a></div><div class="ttdef"><b>Definition:</b> <a href="lista_8h_source.html#l00008">lista.h:8</a></div></div>
+<div class="ttc" id="alista_8h_html_ad9380152361127432c55c1c6067e05ae"><div class="ttname"><a href="lista_8h.html#ad9380152361127432c55c1c6067e05ae">proximo</a></div><div class="ttdeci">LISTA proximo(LISTA L)</div><div class="ttdoc">Função para obter o proximo nodo da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00022">lista.c:22</a></div></div>
+<div class="ttc" id="alista_8h_html_a37ba5fc3cfddb6bc94d4b54b00bc696e"><div class="ttname"><a href="lista_8h.html#a37ba5fc3cfddb6bc94d4b54b00bc696e">insere_cabeca</a></div><div class="ttdeci">LISTA insere_cabeca(LISTA L, void *valor)</div><div class="ttdoc">Insere um apontador void na cabeça da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00010">lista.c:10</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

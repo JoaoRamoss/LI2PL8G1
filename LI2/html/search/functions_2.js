@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encurralado_45',['encurralado',['../logica_8h.html#a1e08ddaa296db25866c21b3ea2a9c106',1,'logica.c']]]
+  ['devolve_5fcabeca_56',['devolve_cabeca',['../lista_8h.html#abfcb205f3eb670157be0d1221021714b',1,'lista.c']]]
 ];

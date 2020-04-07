@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['atualiza_5fjogada_43',['atualiza_jogada',['../logica_8h.html#a9cf19fce71c78359807a3f579925edbb',1,'logica.c']]]
+  ['atualiza_5fjogada_53',['atualiza_jogada',['../logica_8h.html#a9cf19fce71c78359807a3f579925edbb',1,'logica.c']]]
 ];

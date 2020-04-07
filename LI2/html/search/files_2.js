@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logica_2eh_42',['logica.h',['../logica_8h.html',1,'']]]
+  ['lista_2eh_51',['lista.h',['../lista_8h.html',1,'']]],
+  ['logica_2eh_52',['logica.h',['../logica_8h.html',1,'']]]
 ];

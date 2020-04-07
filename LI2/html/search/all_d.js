@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tabuleiro_5fficheiro_36',['tabuleiro_ficheiro',['../logica_8h.html#ab69d463df342757a679a40c4f6e5d6ae',1,'logica.c']]]
+  ['set_5fmax_43',['set_max',['../dados_8h.html#ae46fb285155bff2316804318ef6f0fc6',1,'dados.c']]]
 ];
