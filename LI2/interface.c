@@ -170,7 +170,7 @@ void file_posAnt (ESTADO *e, FILE *fp) {
 void movs(ESTADO *e) {
         int jog = obter_jogador_atual(e);
         int num_jogadas = obter_numero_de_jogadas(e);
-        ///> Coloca jogadas anteriores no ficheiro.
+        ///> Obtem o numero do jogador atual e, dependedo desse numero, decide se tem de imprimir um ou dois movimentos numa dada jogada.
         if (jog == 2) {
             for (int i = 0; i <= num_jogadas; i++) {
                 if(i < 9)
