@@ -6,6 +6,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <limits.h>
 
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
@@ -55,11 +56,11 @@ void atualiza_jogada (ESTADO *e, int col, int lin) {
 int jogada_possivel (ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
     if (obter_estado_casa(e,c) == BRANCA || obter_estado_casa(e,c) == PRETA ||
-    abs((e->ultima_jogada.linha) - lin) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1) {
-
+    abs((e->ultima_jogada.linha) - lin) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1
+    || lin > 7  || lin < 0 || c.coluna >  7 || c.coluna < 0)
         return 0;
-    }
-    else return 1;
+    else
+        return 1;
 }
 
 //Verifica se o jogo terminou.
@@ -193,5 +194,9 @@ int pos (ESTADO *e, char *linha) {
     else
         return 0;
 }
+
+//=====================//
+//======= BOT ========//
+//====================//
 
 

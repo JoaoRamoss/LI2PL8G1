@@ -92,6 +92,9 @@ int interpretador(ESTADO *e) {
                 else
                     printf("A posição escolhida nao e valida!\n");
             }
+            else if (strncmp(linha, "jog", 3) == 0) {
+                printf("O bot jogou na sua vez.\n");
+            }
             //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
         if (strlen(linha) == 3 && sscanf(linha, "%[a-h]%[1-8]", col, lin) == 2) {
             COORDENADA coord = {*col - 'a', *lin - '1'};

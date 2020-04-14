@@ -6,6 +6,7 @@
 #define LI2_LOGICA_H
 #include <stdio.h>
 #include "dados.h"
+#include "lista.h"
 /**
  * \brief Função que usa os dados do estado e do input do jogador para fazer a jogada.
  * @param e Estado do jogo.
@@ -87,4 +88,17 @@ int retira_coluna (char str[]);
  * @return 1 caso a operação seja executada com sucesso, 0 caso não seja executada com sucesso.
  */
 int pos (ESTADO *e, char *linha);
+
+// ======= BOT ======= //
+LISTA regista_livres (ESTADO *e);
+
+
+
+void bestMove (ESTADO *e);
+
+int minimax(ESTADO *e);
+
+int score (ESTADO *e);
+
+
 #endif

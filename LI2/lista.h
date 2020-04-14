@@ -4,6 +4,7 @@
  */
 #ifndef LI2_LISTA_H
 #define LI2_LISTA_H
+#include "dados.h"
 
 typedef struct nodo {
     void *head;
@@ -44,6 +45,17 @@ LISTA proximo(LISTA L);
  * @return A lista, com a sua cabeça removida (isto é, uma lista sem o seu primeiro elemento).
  */
 LISTA remove_cabeca(LISTA L);
+
+/**
+ * \brief Verifica se a lista esta vazia.
+ * @param L Lista.
+ * @return 1, caso esteja vazia, 0, caso nao esteja.
+ */
 int lista_esta_vazia(LISTA L);
 
+LISTA add_livres (ESTADO *e, LISTA L);
+
+LISTA add_cantos(ESTADO *e, LISTA L);
+
+LISTA add_arround (ESTADO *e, LISTA L);
 #endif

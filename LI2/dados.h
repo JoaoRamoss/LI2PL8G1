@@ -126,4 +126,6 @@ void reinit(ESTADO *e);
  */
 void ler_tab(ESTADO *e, char *linha);
 
+void volta(ESTADO *e);
+
 #endif
