@@ -126,6 +126,10 @@ void reinit(ESTADO *e);
  */
 void ler_tab(ESTADO *e, char *linha);
 
+/**
+ * \brief Volta atrás uma jogada no tabuleiro.
+ * @param e Estado atual do jogo.
+ */
 void volta(ESTADO *e);
 
 #endif

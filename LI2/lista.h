@@ -53,9 +53,27 @@ LISTA remove_cabeca(LISTA L);
  */
 int lista_esta_vazia(LISTA L);
 
+/**
+ * \brief Adiciona todas as casas onde o bot pode jogar na lista ligada.
+ * @param e Estado atual do jogo.
+ * @param L Lista ligada.
+ * @return Lista ligada atualizada.
+ */
 LISTA add_livres (ESTADO *e, LISTA L);
 
+/**
+ * \brief Adiciona na lista ligada todas as casas para onde o bot poderá jogar, caso a peca branca se encontre atualmente no canto.
+ * @param e Estado atual do jogo.
+ * @param L Lista ligada.
+ * @return Lista atualizada.
+ */
 LISTA add_cantos(ESTADO *e, LISTA L);
 
+/**
+ * \brief Adiciona na lista ligada todas as casas para onde o bot poderá jogar.
+ * @param e Estado atual do jogo.
+ * @param L Lista ligada.
+ * @return Lista atualizada.
+ */
 LISTA add_arround (ESTADO *e, LISTA L);
 #endif

@@ -90,15 +90,7 @@ int retira_coluna (char str[]);
 int pos (ESTADO *e, char *linha);
 
 // ======= BOT ======= //
-LISTA regista_livres (ESTADO *e);
 
-
-
-void bestMove (ESTADO *e);
-
-int minimax(ESTADO *e);
-
-int score (ESTADO *e);
 
 
 #endif

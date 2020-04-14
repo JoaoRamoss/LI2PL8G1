@@ -44,6 +44,7 @@ int lista_esta_vazia(LISTA L) {
 
 LISTA add_livres (ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    ///> Verifica se a peca branca esta em um dos cantos e dependendo disto, decide qual das duas funcoes chamar (add_cantos() ou add_around()).
     if ((col == 7 && lin == 7) || (col == 0 && lin == 0))
        L =  add_cantos(e, L);
     else
@@ -89,8 +90,9 @@ LISTA add_cantos(ESTADO *e, LISTA L) {
 LISTA add_arround (ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
     char cord[3];
+    ///> Passa as coordenadas como strings para a lista.
     if (obter_casa(e, lin, col + 1) == VAZIO) {
-        sprintf(cord, "%d%d", lin, col+1);
+        sprintf(cord, "%d%d", lin, col+1); //Usa-se sprintf para passar as coordenadas como strings ("transforma" int em char).
         L = insere_cabeca(L, strdup(cord));
     }
     if (obter_casa(e, lin+1, col+1) == VAZIO) {
