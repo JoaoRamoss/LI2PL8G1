@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['ler_5fficheiro_73',['ler_ficheiro',['../logica_8h.html#ac272f234a6e3ed2b2e3c05c727e33c75',1,'logica.c']]],
-  ['ler_5ftab_74',['ler_tab',['../dados_8h.html#abadfdc02ae37afa3fc371a15c0090e61',1,'dados.c']]],
-  ['lista_5festa_5fvazia_75',['lista_esta_vazia',['../lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0',1,'lista.c']]]
+  ['jog_74',['jog',['../logica_8h.html#a9dfbc982d23a619e36575d8e7ec8e41c',1,'logica.c']]],
+  ['jogada_5fpossivel_75',['jogada_possivel',['../logica_8h.html#a97c7ad5b7c6b698beca8006e674b85da',1,'logica.c']]],
+  ['jogar_76',['jogar',['../logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141',1,'logica.c']]],
+  ['jogo_5fterminado_77',['jogo_terminado',['../logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09',1,'logica.c']]]
 ];

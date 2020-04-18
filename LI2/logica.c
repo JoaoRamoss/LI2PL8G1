@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <limits.h>
+#include <time.h>
 
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
@@ -199,4 +200,134 @@ int pos (ESTADO *e, char *linha) {
 //======= BOT ========//
 //====================//
 
+COORDENADA get_cords(char *str) {
+    char *end;
+    int col, lin;
+    lin = strtol(str, &end,  10);
+    col = strtol(end,  &end,10);
+    COORDENADA cord = {col, abs(lin-7)};
+    return cord;
+}
+//auxiliar do minimax
+void best_move (ESTADO *e) {
+    int score, best_score = INT_MIN, cords[2];
+    LISTA L = criar_lista();
+    L = add_livres(e, L);
+    COORDENADA melhor_jogada;
 
+    while (lista_esta_vazia(L) != 1) {
+        char *str = (char *) devolve_cabeca(L);
+        printf("%s\n",str);
+        COORDENADA cord_jog = get_cords(str);
+        //Cria estado auxiliar
+        //ESTADO *aux = inicializar_estado();
+        //copyStruct(e, aux);
+        //jogar(aux, cord_jog);
+        COORDENADA anterior = playTemp(e, cord_jog);
+        //free (aux);
+        score = minimax(e, 2, 1);
+        reset(e, anterior);
+        if (score > best_score) {
+            best_score = score;
+        }
+        L = remove_cabeca(L);
+    }
+    jogar(e, melhor_jogada);
+}
+//funcao auxiliar do minimax
+int scores(ESTADO *e) {
+    int tabela[8][8], score = 0;
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            tabela[i][j] = i-j;
+        }
+    }
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (obter_casa(e, i, j) == BRANCA)
+                score = tabela[i][j];
+        }
+    }
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            printf("%d ", tabela[i][j]);
+        }
+        printf("\n");
+    }
+    return score;
+}
+//minimax ainda nao implementado.
+int minimax(ESTADO *e, int depth, int player) {
+    int result = jogo_terminado(e), score;
+    LISTA L = criar_lista();
+    L = add_livres(e, L);
+    if (depth == 0 || result != 0)
+        return player*(scores(e));
+
+    int bestScore = INT_MIN;
+    while (lista_esta_vazia(L) != 1) {
+        char *str = (char*)devolve_cabeca(L);
+        COORDENADA jog = get_cords(str);
+        //ESTADO *aux = inicializar_estado();
+        //copyStruct(e, aux);
+        //jogar(aux,jog);
+        COORDENADA anterior = playTemp(e, jog);
+        //free(aux);
+        score = -minimax(e,depth-1, player*-1);
+        reset(e, anterior);
+        if(score > bestScore)
+            bestScore = score;
+        L = remove_cabeca(L);
+    }
+    return bestScore;
+}
+//auxiliar minimax
+void copyStruct (ESTADO *e, ESTADO *aux) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            aux->tab[i][j] = e->tab[i][j];
+        }
+    }
+    aux->ultima_jogada = e->ultima_jogada;
+    aux->jogador_atual = e->jogador_atual;
+    aux->num_jogadas = e->num_jogadas;
+}
+//auxiliar minimax
+COORDENADA playTemp (ESTADO *e, COORDENADA jog) {
+    int lin = abs(jog.linha - 8) - 1;
+    int col = jog.coluna;
+
+    COORDENADA anterior = {e->ultima_jogada.coluna, e->ultima_jogada.linha};
+
+    e->tab[lin][col] = BRANCA;
+    e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
+    e->ultima_jogada.linha = lin;
+    e->ultima_jogada.coluna = col;
+    return anterior;
+}
+//auxiliar minimax.
+void reset(ESTADO *e, COORDENADA c) {
+    int lin = abs(c.linha - 8) - 1;
+    int col = c.coluna;
+    e->tab[lin][col] = BRANCA;
+    e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = VAZIO;
+    e->ultima_jogada.linha = lin;
+    e->ultima_jogada.coluna = col;
+}
+
+//comando jog.
+void jog (ESTADO *e) {
+    LISTA L = criar_lista();
+    L = add_livres(e, L);
+    LISTA T = L;
+    int length = lengthLista(L);
+    int random = rand() % length;
+    char *str;
+    for (int i = 0; i < random; i++)
+        T = proximo(T);
+    str = (char*) devolve_cabeca(T);
+    COORDENADA jog = get_cords(str);
+    jogar(e, jog);
+    freeLista(L);
+}

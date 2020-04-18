@@ -27,7 +27,29 @@ int \mbox{\hyperlink{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}{retira\+\_\+li
 int \mbox{\hyperlink{logica_8h_a00a35418e9e9a6c215b653dceb822a03}{retira\+\_\+coluna}} (char str\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à coluna. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{logica_8h_aec4a963a88af44348027ec7cf17ff47a}{pos}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, char $\ast$linha)
-\begin{DoxyCompactList}\small\item\em Função para executar o comando \char`\"{}pos\char`\"{}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Função para executar o comando \char`\"{}pos\char`\"{}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} \mbox{\hyperlink{logica_8h_a33c8928e31992541dd9cf0ce0e9f7d50}{get\+\_\+cords}} (char $\ast$str)
+\item 
+\mbox{\Hypertarget{logica_8h_a7749b2423b37ed2358a2f223c11fe668}\label{logica_8h_a7749b2423b37ed2358a2f223c11fe668}} 
+void {\bfseries best\+\_\+move} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\item 
+\mbox{\Hypertarget{logica_8h_a2b0f98e3493bc14d0f07d5ba5790c3bb}\label{logica_8h_a2b0f98e3493bc14d0f07d5ba5790c3bb}} 
+int {\bfseries scores} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\item 
+\mbox{\Hypertarget{logica_8h_aa375942115b84ed0b58b86ea76a82084}\label{logica_8h_aa375942115b84ed0b58b86ea76a82084}} 
+int {\bfseries minimax} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int depth, int player)
+\item 
+\mbox{\Hypertarget{logica_8h_a3815d005d1762c547d70d3198048e7d3}\label{logica_8h_a3815d005d1762c547d70d3198048e7d3}} 
+void {\bfseries copy\+Struct} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$aux)
+\item 
+\mbox{\Hypertarget{logica_8h_a77a777d0fe713bb9bcb41f7bb4978288}\label{logica_8h_a77a777d0fe713bb9bcb41f7bb4978288}} 
+\mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} {\bfseries play\+Temp} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}})
+\item 
+\mbox{\Hypertarget{logica_8h_a0cc461927ebe79b6fd6de3d275edde0f}\label{logica_8h_a0cc461927ebe79b6fd6de3d275edde0f}} 
+void {\bfseries reset} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} c)
+\item 
+void \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Função para o comando jog, joga em uma posição disponível aleatória. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Descrição detalhada}
@@ -61,32 +83,32 @@ Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array \c
 Incrementa o numero de jogadas. \end{quote}
 
 
-Definido na linha 30 do ficheiro logica.\+c.
+Definido na linha 31 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{30                                                    \{}
-\DoxyCodeLine{31     \textcolor{keywordtype}{int} jog = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
-\DoxyCodeLine{32     \textcolor{keywordtype}{int} jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
-\DoxyCodeLine{34     \textcolor{keywordflow}{if} (jog == 1) \{}
-\DoxyCodeLine{35         e-\/>jogadas[jogadas].jogador1.linha = lin;}
-\DoxyCodeLine{36         e-\/>jogadas[jogadas].jogador1.coluna = col;}
-\DoxyCodeLine{37     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{38         e-\/>jogadas[jogadas].jogador2.linha = lin;}
-\DoxyCodeLine{39         e-\/>jogadas[jogadas].jogador2.coluna = col;}
-\DoxyCodeLine{40     \}}
-\DoxyCodeLine{41     \textcolor{keywordflow}{if} (jog == 1)}
-\DoxyCodeLine{42         e-\/>jogador\_atual = 2;}
-\DoxyCodeLine{43     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{44         e-\/>jogador\_atual = 1;}
-\DoxyCodeLine{46         \textcolor{keywordflow}{if} (e-\/>num\_jogadas >= e-\/>max\_num\_jogadas) \{}
-\DoxyCodeLine{47             e-\/>num\_jogadas++;}
-\DoxyCodeLine{48             e-\/>max\_num\_jogadas++;}
-\DoxyCodeLine{49         \}}
-\DoxyCodeLine{50         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{51             e-\/>num\_jogadas++;}
-\DoxyCodeLine{52     \}}
-\DoxyCodeLine{53 \}}
+\DoxyCodeLine{31                                                    \{}
+\DoxyCodeLine{32     \textcolor{keywordtype}{int} \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} = \mbox{\hyperlink{dados_8h_ad6e326e4ffa57ca1ae0c75377ecefc8c}{obter\_jogador\_atual}}(e);}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} jogadas = \mbox{\hyperlink{dados_8h_a6cd0b387bdee9e18003c78852394aa63}{obter\_numero\_de\_jogadas}}(e);}
+\DoxyCodeLine{35     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} == 1) \{}
+\DoxyCodeLine{36         e-\/>jogadas[jogadas].jogador1.linha = lin;}
+\DoxyCodeLine{37         e-\/>jogadas[jogadas].jogador1.coluna = col;}
+\DoxyCodeLine{38     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{39         e-\/>jogadas[jogadas].jogador2.linha = lin;}
+\DoxyCodeLine{40         e-\/>jogadas[jogadas].jogador2.coluna = col;}
+\DoxyCodeLine{41     \}}
+\DoxyCodeLine{42     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} == 1)}
+\DoxyCodeLine{43         e-\/>jogador\_atual = 2;}
+\DoxyCodeLine{44     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{45         e-\/>jogador\_atual = 1;}
+\DoxyCodeLine{47         \textcolor{keywordflow}{if} (e-\/>num\_jogadas >= e-\/>max\_num\_jogadas) \{}
+\DoxyCodeLine{48             e-\/>num\_jogadas++;}
+\DoxyCodeLine{49             e-\/>max\_num\_jogadas++;}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{52             e-\/>num\_jogadas++;}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a9065d2c25c9052ce1f7f5e1d6272dd6e}\label{logica_8h_a9065d2c25c9052ce1f7f5e1d6272dd6e}} 
@@ -109,18 +131,18 @@ Verifica se todas as casas a volta da peça branca estao preenchidas com peças 
 \end{DoxyReturn}
 
 
-Definido na linha 100 do ficheiro logica.\+c.
+Definido na linha 101 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{100                              \{}
-\DoxyCodeLine{101     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
-\DoxyCodeLine{102     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == PRETA \&\&}
-\DoxyCodeLine{103     \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == PRETA)}
-\DoxyCodeLine{104         \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{105     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{106         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{107 \}}
+\DoxyCodeLine{101                              \{}
+\DoxyCodeLine{102     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
+\DoxyCodeLine{103     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == PRETA \&\&}
+\DoxyCodeLine{104     \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == PRETA)}
+\DoxyCodeLine{105         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{106     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{107         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{108 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a1e08ddaa296db25866c21b3ea2a9c106}\label{logica_8h_a1e08ddaa296db25866c21b3ea2a9c106}} 
@@ -149,25 +171,91 @@ Verifica primeiro se a peça está num dos cantos do tabuleiro, e, caso esteja, 
 Caso nao esteja em um dos cantos, chama a função \char`\"{}check\+\_\+around()\char`\"{} para verificar se está ou nao encurralada. \end{quote}
 
 
-Definido na linha 82 do ficheiro logica.\+c.
+Definido na linha 83 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{82                            \{}
-\DoxyCodeLine{83     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
-\DoxyCodeLine{85     \textcolor{keywordflow}{if} (col == 0 \&\& lin == 0) \{}
-\DoxyCodeLine{86         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == PRETA)}
-\DoxyCodeLine{87             \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{88     \}}
-\DoxyCodeLine{89     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (col == 7 \&\& lin == 7) \{}
-\DoxyCodeLine{90         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == PRETA)}
-\DoxyCodeLine{91             \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{92     \}}
-\DoxyCodeLine{94     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a9065d2c25c9052ce1f7f5e1d6272dd6e}{check\_around}}(e) == 1)}
-\DoxyCodeLine{95         \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{97     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{98 \}}
+\DoxyCodeLine{83                            \{}
+\DoxyCodeLine{84     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
+\DoxyCodeLine{86     \textcolor{keywordflow}{if} (col == 0 \&\& lin == 0) \{}
+\DoxyCodeLine{87         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == PRETA)}
+\DoxyCodeLine{88             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{89     \}}
+\DoxyCodeLine{90     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (col == 7 \&\& lin == 7) \{}
+\DoxyCodeLine{91         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == PRETA \&\& \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == PRETA)}
+\DoxyCodeLine{92             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{93     \}}
+\DoxyCodeLine{95     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a9065d2c25c9052ce1f7f5e1d6272dd6e}{check\_around}}(e) == 1)}
+\DoxyCodeLine{96         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{97 }
+\DoxyCodeLine{98     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{99 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{logica_8h_a33c8928e31992541dd9cf0ce0e9f7d50}\label{logica_8h_a33c8928e31992541dd9cf0ce0e9f7d50}} 
+\index{logica.h@{logica.h}!get\_cords@{get\_cords}}
+\index{get\_cords@{get\_cords}!logica.h@{logica.h}}
+\doxysubsubsection{\texorpdfstring{get\_cords()}{get\_cords()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} get\+\_\+cords (\begin{DoxyParamCaption}\item[{char $\ast$}]{str }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em str} & \\
+\hline
+{\em cords} & \\
+\hline
+\end{DoxyParams}
+
+
+Definido na linha 203 do ficheiro logica.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{203                                 \{}
+\DoxyCodeLine{204     \textcolor{keywordtype}{char} *end;}
+\DoxyCodeLine{205     \textcolor{keywordtype}{int} col, lin;}
+\DoxyCodeLine{206     lin = strtol(str, \&end,  10);}
+\DoxyCodeLine{207     col = strtol(end,  \&end,10);}
+\DoxyCodeLine{208     \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} cord = \{col, abs(lin-\/7)\};}
+\DoxyCodeLine{209     \textcolor{keywordflow}{return} cord;}
+\DoxyCodeLine{210 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}\label{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}} 
+\index{logica.h@{logica.h}!jog@{jog}}
+\index{jog@{jog}!logica.h@{logica.h}}
+\doxysubsubsection{\texorpdfstring{jog()}{jog()}}
+{\footnotesize\ttfamily void jog (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Função para o comando jog, joga em uma posição disponível aleatória. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+\end{DoxyParams}
+
+
+Definido na linha 320 do ficheiro logica.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{320                      \{}
+\DoxyCodeLine{321     \mbox{\hyperlink{structnodo}{LISTA}} L = \mbox{\hyperlink{lista_8h_ae3b99323b6f8f35d80bb69ff1a27985e}{criar\_lista}}();}
+\DoxyCodeLine{322     L = \mbox{\hyperlink{lista_8h_a0b56764e73eb24ca541210236e5ee307}{add\_livres}}(e, L);}
+\DoxyCodeLine{323     \mbox{\hyperlink{structnodo}{LISTA}} T = L;}
+\DoxyCodeLine{324     \textcolor{keywordtype}{int} length = lengthLista(L);}
+\DoxyCodeLine{325     \textcolor{keywordtype}{int} random = rand() \% length;}
+\DoxyCodeLine{326     \textcolor{keywordtype}{char} *str;}
+\DoxyCodeLine{327     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < random; i++)}
+\DoxyCodeLine{328         T = \mbox{\hyperlink{lista_8h_ad9380152361127432c55c1c6067e05ae}{proximo}}(T);}
+\DoxyCodeLine{329     str = (\textcolor{keywordtype}{char}*) \mbox{\hyperlink{lista_8h_abfcb205f3eb670157be0d1221021714b}{devolve\_cabeca}}(T);}
+\DoxyCodeLine{330     \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{COORDENADA}} \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} = \mbox{\hyperlink{logica_8h_a33c8928e31992541dd9cf0ce0e9f7d50}{get\_cords}}(str);}
+\DoxyCodeLine{331     \mbox{\hyperlink{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}{jogar}}(e, \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}});}
+\DoxyCodeLine{332     \mbox{\hyperlink{lista_8h_a9cb229685e08e4b8706349624d2091a8}{freeLista}}(L);}
+\DoxyCodeLine{333 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a97c7ad5b7c6b698beca8006e674b85da}\label{logica_8h_a97c7ad5b7c6b698beca8006e674b85da}} 
@@ -192,19 +280,19 @@ Função que verifica se a jogada é possivel.
 \end{DoxyReturn}
 
 
-Definido na linha 56 do ficheiro logica.\+c.
+Definido na linha 57 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{56                                               \{}
-\DoxyCodeLine{57     \textcolor{keywordtype}{int} lin = abs(c.linha -\/ 8) -\/ 1;}
-\DoxyCodeLine{58     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == BRANCA || \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == PRETA ||}
-\DoxyCodeLine{59     abs((e-\/>ultima\_jogada.linha) -\/ lin) > 1 || abs((e-\/>ultima\_jogada.coluna) -\/ (c.coluna)) > 1}
-\DoxyCodeLine{60     || lin > 7  || lin < 0 || c.coluna >  7 || c.coluna < 0)}
-\DoxyCodeLine{61         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{62     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{63         \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{64 \}}
+\DoxyCodeLine{57                                               \{}
+\DoxyCodeLine{58     \textcolor{keywordtype}{int} lin = abs(c.linha -\/ 8) -\/ 1;}
+\DoxyCodeLine{59     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == BRANCA || \mbox{\hyperlink{dados_8h_a6faa68373203923729ed38657aa0f768}{obter\_estado\_casa}}(e,c) == PRETA ||}
+\DoxyCodeLine{60     abs((e-\/>ultima\_jogada.linha) -\/ lin) > 1 || abs((e-\/>ultima\_jogada.coluna) -\/ (c.coluna)) > 1}
+\DoxyCodeLine{61     || lin > 7  || lin < 0 || c.coluna >  7 || c.coluna < 0)}
+\DoxyCodeLine{62         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{63     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{64         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{65 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}\label{logica_8h_ac313d7e553b1e2b5f266acb9bfff8141}} 
@@ -239,24 +327,24 @@ Coloca uma peça preta na casa anterior da peça branca. \end{quote}
 Coloca a nova posição da peça branca como posição anterior para ser usada futuramente. \end{quote}
 
 
-Definido na linha 11 do ficheiro logica.\+c.
+Definido na linha 12 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{11                                    \{}
-\DoxyCodeLine{12     \textcolor{keywordtype}{int} lin = abs(c.linha -\/ 8) -\/ 1;}
-\DoxyCodeLine{13     \textcolor{keywordtype}{int} col = c.coluna;}
-\DoxyCodeLine{14     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a97c7ad5b7c6b698beca8006e674b85da}{jogada\_possivel}}(e,c) == 1) \{}
-\DoxyCodeLine{16         e-\/>tab[lin][col] = BRANCA;}
-\DoxyCodeLine{18         e-\/>tab[(e-\/>ultima\_jogada).linha][(e-\/>ultima\_jogada).coluna] = PRETA;}
-\DoxyCodeLine{20         e-\/>ultima\_jogada.coluna = col;}
-\DoxyCodeLine{21         e-\/>ultima\_jogada.linha = lin;}
-\DoxyCodeLine{22         \mbox{\hyperlink{logica_8h_a9cf19fce71c78359807a3f579925edbb}{atualiza\_jogada}}(e, col, lin);}
-\DoxyCodeLine{23         \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{24     \}}
-\DoxyCodeLine{25     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{26     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{27 \}}
+\DoxyCodeLine{12                                    \{}
+\DoxyCodeLine{13     \textcolor{keywordtype}{int} lin = abs(c.linha -\/ 8) -\/ 1;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{int} col = c.coluna;}
+\DoxyCodeLine{15     \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a97c7ad5b7c6b698beca8006e674b85da}{jogada\_possivel}}(e,c) == 1) \{}
+\DoxyCodeLine{17         e-\/>tab[lin][col] = BRANCA;}
+\DoxyCodeLine{19         e-\/>tab[(e-\/>ultima\_jogada).linha][(e-\/>ultima\_jogada).coluna] = PRETA;}
+\DoxyCodeLine{21         e-\/>ultima\_jogada.coluna = col;}
+\DoxyCodeLine{22         e-\/>ultima\_jogada.linha = lin;}
+\DoxyCodeLine{23         \mbox{\hyperlink{logica_8h_a9cf19fce71c78359807a3f579925edbb}{atualiza\_jogada}}(e, col, lin);}
+\DoxyCodeLine{24         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{25     \}}
+\DoxyCodeLine{26     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{27     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{28 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}\label{logica_8h_aea1fcb269536a2b7ee0d12518887cd09}} 
@@ -279,24 +367,24 @@ Verifica se o jogo terminou.
 \end{DoxyReturn}
 
 
-Definido na linha 67 do ficheiro logica.\+c.
+Definido na linha 68 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{67                                \{}
-\DoxyCodeLine{68     \textcolor{keywordtype}{int} r = 0;}
-\DoxyCodeLine{69     \textcolor{keywordflow}{if} ((e-\/>ultima\_jogada.coluna == 0 \&\& e-\/>ultima\_jogada.linha == 7))}
-\DoxyCodeLine{70         r = 1;}
-\DoxyCodeLine{71     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((e -\/>ultima\_jogada.linha == 0 \&\& e-\/>ultima\_jogada.coluna == 7))}
-\DoxyCodeLine{72             r = 2;}
-\DoxyCodeLine{73     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>num\_jogadas == 31)}
-\DoxyCodeLine{74                 r = 3;}
-\DoxyCodeLine{75     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a1e08ddaa296db25866c21b3ea2a9c106}{encurralado}}(e) == 1)}
-\DoxyCodeLine{76         r = 4;}
-\DoxyCodeLine{77     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{78         r = 0;}
-\DoxyCodeLine{79     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{80 \}}
+\DoxyCodeLine{68                                \{}
+\DoxyCodeLine{69     \textcolor{keywordtype}{int} r = 0;}
+\DoxyCodeLine{70     \textcolor{keywordflow}{if} ((e-\/>ultima\_jogada.coluna == 0 \&\& e-\/>ultima\_jogada.linha == 7))}
+\DoxyCodeLine{71         r = 1;}
+\DoxyCodeLine{72     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((e -\/>ultima\_jogada.linha == 0 \&\& e-\/>ultima\_jogada.coluna == 7))}
+\DoxyCodeLine{73             r = 2;}
+\DoxyCodeLine{74     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (e-\/>num\_jogadas == 31)}
+\DoxyCodeLine{75                 r = 3;}
+\DoxyCodeLine{76     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (\mbox{\hyperlink{logica_8h_a1e08ddaa296db25866c21b3ea2a9c106}{encurralado}}(e) == 1)}
+\DoxyCodeLine{77         r = 4;}
+\DoxyCodeLine{78     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{79         r = 0;}
+\DoxyCodeLine{80     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{81 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_ac272f234a6e3ed2b2e3c05c727e33c75}\label{logica_8h_ac272f234a6e3ed2b2e3c05c727e33c75}} 
@@ -331,36 +419,36 @@ Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo. \end{quote}
 Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função \char`\"{}update\+\_\+array\+\_\+jogadas()\char`\"{}. \end{quote}
 
 
-Definido na linha 126 do ficheiro logica.\+c.
+Definido na linha 127 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{126                                             \{}
-\DoxyCodeLine{127 }
-\DoxyCodeLine{128     FILE *fp;}
-\DoxyCodeLine{129     \textcolor{keywordtype}{char} lin\_fich [BUF\_SIZE], *comando;}
-\DoxyCodeLine{130     \textcolor{keywordtype}{int} k = 0;}
-\DoxyCodeLine{131     \textcolor{keywordtype}{int} r = 0;}
-\DoxyCodeLine{133     strtok(linha, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{134     comando = strtok (NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{136     \textcolor{comment}{//A função "access" retorna -\/1 caso nao encontre o ficheiro.}}
-\DoxyCodeLine{137     \textcolor{keywordflow}{if} (access(comando, F\_OK) != -\/1) \{}
-\DoxyCodeLine{138         \mbox{\hyperlink{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}{reinit}}(e);}
-\DoxyCodeLine{139         e-\/>max\_num\_jogadas = 0;}
-\DoxyCodeLine{140         fp = fopen(comando, \textcolor{stringliteral}{"r"});}
-\DoxyCodeLine{141         \textcolor{keywordflow}{while} (fgets(lin\_fich, BUF\_SIZE, fp) != NULL) \{}
-\DoxyCodeLine{143             \textcolor{keywordflow}{if} (k >= 9) \{}
-\DoxyCodeLine{144                 \mbox{\hyperlink{dados_8h_abadfdc02ae37afa3fc371a15c0090e61}{ler\_tab}}(e, lin\_fich);}
-\DoxyCodeLine{145             \}}
-\DoxyCodeLine{146             k++;}
-\DoxyCodeLine{147         \}}
-\DoxyCodeLine{148         fclose(fp);}
-\DoxyCodeLine{149         r = 1;}
-\DoxyCodeLine{150     \}}
-\DoxyCodeLine{151     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{152         r = 0;}
-\DoxyCodeLine{153     \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{154 \}}
+\DoxyCodeLine{127                                             \{}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     FILE *fp;}
+\DoxyCodeLine{130     \textcolor{keywordtype}{char} lin\_fich [BUF\_SIZE], *comando;}
+\DoxyCodeLine{131     \textcolor{keywordtype}{int} k = 0;}
+\DoxyCodeLine{132     \textcolor{keywordtype}{int} r = 0;}
+\DoxyCodeLine{134     strtok(linha, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{135     comando = strtok (NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{137     \textcolor{comment}{//A função "access" retorna -\/1 caso nao encontre o ficheiro.}}
+\DoxyCodeLine{138     \textcolor{keywordflow}{if} (access(comando, F\_OK) != -\/1) \{}
+\DoxyCodeLine{139         \mbox{\hyperlink{dados_8h_a543f64d33cbc5f4c00ad7dc4e60d2105}{reinit}}(e);}
+\DoxyCodeLine{140         e-\/>max\_num\_jogadas = 0;}
+\DoxyCodeLine{141         fp = fopen(comando, \textcolor{stringliteral}{"r"});}
+\DoxyCodeLine{142         \textcolor{keywordflow}{while} (fgets(lin\_fich, BUF\_SIZE, fp) != NULL) \{}
+\DoxyCodeLine{144             \textcolor{keywordflow}{if} (k >= 9) \{}
+\DoxyCodeLine{145                 \mbox{\hyperlink{dados_8h_abadfdc02ae37afa3fc371a15c0090e61}{ler\_tab}}(e, lin\_fich);}
+\DoxyCodeLine{146             \}}
+\DoxyCodeLine{147             k++;}
+\DoxyCodeLine{148         \}}
+\DoxyCodeLine{149         fclose(fp);}
+\DoxyCodeLine{150         r = 1;}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{153         r = 0;}
+\DoxyCodeLine{154     \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{155 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_aec4a963a88af44348027ec7cf17ff47a}\label{logica_8h_aec4a963a88af44348027ec7cf17ff47a}} 
@@ -391,23 +479,23 @@ Extrai o algarismo que é introduzido após o comando \char`\"{}pos\char`\"{} (\
 Verifica que o comando \char`\"{}pos\char`\"{} apenas está a ser introduzido a uma jogada anterior e não à jogada atual. \end{quote}
 
 
-Definido na linha 182 do ficheiro logica.\+c.
+Definido na linha 183 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{182                                  \{}
-\DoxyCodeLine{183     \textcolor{keywordtype}{char} *comando, *end;}
-\DoxyCodeLine{184     \textcolor{keywordtype}{int} r, max = \mbox{\hyperlink{dados_8h_a9f2d95954ffa63c2f456e9481a883071}{obter\_max\_num\_jog}}(e);}
-\DoxyCodeLine{185     strtok (linha, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{186     comando = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{188     r = strtol (comando, \&end, 10);}
-\DoxyCodeLine{190     \textcolor{keywordflow}{if} (r < max + 1) \{}
-\DoxyCodeLine{191         \mbox{\hyperlink{dados_8h_a72bd3fb56f0ac3af60c392b49f76a329}{pos\_helper}}(e, r);}
-\DoxyCodeLine{192         \textcolor{keywordflow}{return} 1;}
-\DoxyCodeLine{193     \}}
-\DoxyCodeLine{194     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{195         \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{196 \}}
+\DoxyCodeLine{183                                  \{}
+\DoxyCodeLine{184     \textcolor{keywordtype}{char} *comando, *end;}
+\DoxyCodeLine{185     \textcolor{keywordtype}{int} r, max = \mbox{\hyperlink{dados_8h_a9f2d95954ffa63c2f456e9481a883071}{obter\_max\_num\_jog}}(e);}
+\DoxyCodeLine{186     strtok (linha, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{187     comando = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
+\DoxyCodeLine{189     r = strtol (comando, \&end, 10);}
+\DoxyCodeLine{191     \textcolor{keywordflow}{if} (r < max + 1) \{}
+\DoxyCodeLine{192         \mbox{\hyperlink{dados_8h_a72bd3fb56f0ac3af60c392b49f76a329}{pos\_helper}}(e, r);}
+\DoxyCodeLine{193         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{194     \}}
+\DoxyCodeLine{195     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{196         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{197 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a00a35418e9e9a6c215b653dceb822a03}\label{logica_8h_a00a35418e9e9a6c215b653dceb822a03}} 
@@ -430,21 +518,21 @@ Uma posição para a coluna do tabuleiro.
 \end{DoxyReturn}
 
 
-Definido na linha 170 do ficheiro logica.\+c.
+Definido na linha 171 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{170                                \{}
-\DoxyCodeLine{171     \textcolor{keywordtype}{int} cord;}
-\DoxyCodeLine{172     \textcolor{comment}{//Quando a função isalpha() retornar algum valor diferente de 0, converte-\/o num int e devolve-\/o.f}}
-\DoxyCodeLine{173     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
-\DoxyCodeLine{174         \textcolor{keywordflow}{if} (isalpha(str[i]) != 0) \{}
-\DoxyCodeLine{175             cord = str[i] -\/ \textcolor{charliteral}{'a'};}
-\DoxyCodeLine{176             \textcolor{keywordflow}{return} cord;}
-\DoxyCodeLine{177         \}}
-\DoxyCodeLine{178     \}}
-\DoxyCodeLine{179     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{180 \}}
+\DoxyCodeLine{171                                \{}
+\DoxyCodeLine{172     \textcolor{keywordtype}{int} cord;}
+\DoxyCodeLine{173     \textcolor{comment}{//Quando a função isalpha() retornar algum valor diferente de 0, converte-\/o num int e devolve-\/o.f}}
+\DoxyCodeLine{174     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
+\DoxyCodeLine{175         \textcolor{keywordflow}{if} (isalpha(str[i]) != 0) \{}
+\DoxyCodeLine{176             cord = str[i] -\/ \textcolor{charliteral}{'a'};}
+\DoxyCodeLine{177             \textcolor{keywordflow}{return} cord;}
+\DoxyCodeLine{178         \}}
+\DoxyCodeLine{179     \}}
+\DoxyCodeLine{180     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{181 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}\label{logica_8h_a224bb3db996c2f3baca3a72b8509c3ce}} 
@@ -467,23 +555,23 @@ Uma posição para a linha do tabuleiro.
 \end{DoxyReturn}
 
 
-Definido na linha 156 do ficheiro logica.\+c.
+Definido na linha 157 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{156                               \{}
-\DoxyCodeLine{157     \textcolor{keywordtype}{int} r = 0;}
-\DoxyCodeLine{158     \textcolor{keywordtype}{char} *end;}
-\DoxyCodeLine{159     \textcolor{comment}{//Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-\/o num int e devolve-\/o.}}
-\DoxyCodeLine{160     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
-\DoxyCodeLine{161         \textcolor{keywordflow}{if} (isdigit(str[i]) != 0) \{}
-\DoxyCodeLine{162            r = strtol(\&str[i], \&end, 10);}
-\DoxyCodeLine{163            r = abs(r-\/8);}
-\DoxyCodeLine{164            \textcolor{keywordflow}{return} r;}
-\DoxyCodeLine{165         \}}
-\DoxyCodeLine{166     \}}
-\DoxyCodeLine{167     \textcolor{keywordflow}{return} 0;}
-\DoxyCodeLine{168 \}}
+\DoxyCodeLine{157                               \{}
+\DoxyCodeLine{158     \textcolor{keywordtype}{int} r = 0;}
+\DoxyCodeLine{159     \textcolor{keywordtype}{char} *end;}
+\DoxyCodeLine{160     \textcolor{comment}{//Quando enconrtar algum elemento da string para a qual a funcao isdigit() devolva algum valor diferente de 0, converte-\/o num int e devolve-\/o.}}
+\DoxyCodeLine{161     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; str[i] != \textcolor{charliteral}{'\(\backslash\)0'}; i++) \{}
+\DoxyCodeLine{162         \textcolor{keywordflow}{if} (isdigit(str[i]) != 0) \{}
+\DoxyCodeLine{163            r = strtol(\&str[i], \&end, 10);}
+\DoxyCodeLine{164            r = abs(r-\/8);}
+\DoxyCodeLine{165            \textcolor{keywordflow}{return} r;}
+\DoxyCodeLine{166         \}}
+\DoxyCodeLine{167     \}}
+\DoxyCodeLine{168     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{169 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{logica_8h_ab69d463df342757a679a40c4f6e5d6ae}\label{logica_8h_ab69d463df342757a679a40c4f6e5d6ae}} 
@@ -511,21 +599,21 @@ Copia o nome do ficheiro presente na string \char`\"{}linha\char`\"{} e coloca n
 Cria o ficheiro com o nome pedido pelo utilizador, ou abre-\/o, caso este ja exista. \end{quote}
 
 
-Definido na linha 110 do ficheiro logica.\+c.
+Definido na linha 111 do ficheiro logica.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{110                                                 \{}
-\DoxyCodeLine{111     \textcolor{keywordtype}{char} *comando;}
-\DoxyCodeLine{113     strtok(linha, \textcolor{stringliteral}{" "});}
-\DoxyCodeLine{114     comando = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
-\DoxyCodeLine{115 }
+\DoxyCodeLine{111                                                 \{}
+\DoxyCodeLine{112     \textcolor{keywordtype}{char} *comando;}
+\DoxyCodeLine{114     strtok(linha, \textcolor{stringliteral}{" "});}
+\DoxyCodeLine{115     comando = strtok(NULL, \textcolor{stringliteral}{"\(\backslash\)n"});}
 \DoxyCodeLine{116 }
-\DoxyCodeLine{118     FILE *fp;}
-\DoxyCodeLine{119     fp = fopen(comando, \textcolor{stringliteral}{"w"});}
-\DoxyCodeLine{120     \mbox{\hyperlink{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}{imprime\_fileTab}}(e, fp);}
-\DoxyCodeLine{121     \mbox{\hyperlink{interface_8h_acb7c3a1d861395fabd4db18a365738b9}{file\_posAnt}}(e, fp);}
-\DoxyCodeLine{122     fclose(fp);}
-\DoxyCodeLine{123 \}}
+\DoxyCodeLine{117 }
+\DoxyCodeLine{119     FILE *fp;}
+\DoxyCodeLine{120     fp = fopen(comando, \textcolor{stringliteral}{"w"});}
+\DoxyCodeLine{121     \mbox{\hyperlink{interface_8h_aa36b92ddb3d9b1fdb93d8524262ee66c}{imprime\_fileTab}}(e, fp);}
+\DoxyCodeLine{122     \mbox{\hyperlink{interface_8h_acb7c3a1d861395fabd4db18a365738b9}{file\_posAnt}}(e, fp);}
+\DoxyCodeLine{123     fclose(fp);}
+\DoxyCodeLine{124 \}}
 
 \end{DoxyCode}

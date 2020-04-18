@@ -53,6 +53,8 @@ LISTA remove_cabeca(LISTA L);
  */
 int lista_esta_vazia(LISTA L);
 
+int lengthLista(LISTA L);
+
 /**
  * \brief Adiciona todas as casas onde o bot pode jogar na lista ligada.
  * @param e Estado atual do jogo.
@@ -76,4 +78,10 @@ LISTA add_cantos(ESTADO *e, LISTA L);
  * @return Lista atualizada.
  */
 LISTA add_arround (ESTADO *e, LISTA L);
+
+/**
+ * \brief Liberta o espaço alocado na memória para a lista.
+ * @param L Lista ligada.
+ */
+void freeLista (LISTA L);
 #endif

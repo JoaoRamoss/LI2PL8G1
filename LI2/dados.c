@@ -132,25 +132,3 @@ void ler_tab(ESTADO *e, char *linha) {
         jogar(e,coord);
     }
 }
-
-void volta(ESTADO *e) {
-    int num_jogadas = obter_numero_de_jogadas(e);
-    int atual = obter_jogador_atual(e);
-    int col = e->ultima_jogada.coluna, lin  = e->ultima_jogada.linha;
-    if (atual == 1) {
-        e->ultima_jogada.linha = e->jogadas[num_jogadas - 1].jogador2.linha;
-        e->ultima_jogada.coluna = e->jogadas[num_jogadas - 1].jogador2.coluna;
-        e->num_jogadas = num_jogadas - 1;
-        e->tab[lin][col] = VAZIO;
-        e->tab[e->ultima_jogada.coluna][e->ultima_jogada.linha] = BRANCA;
-        e->jogador_atual = 2;
-        e->max_num_jogadas--;
-    }
-    else {
-        e->ultima_jogada.linha = e->jogadas[num_jogadas].jogador1.linha;
-        e->ultima_jogada.coluna = e->jogadas[num_jogadas].jogador1.coluna;
-        e->tab[lin][col] = VAZIO;
-        e->tab[e->ultima_jogada.coluna][e->ultima_jogada.linha] = BRANCA;
-        e->jogador_atual = 1;
-    }
-}

@@ -5,6 +5,7 @@
 LISTA criar_lista () {
     LISTA r;
     r = malloc(sizeof(Nodo));
+    r->proximo = NULL;
     return r;
 }
 LISTA insere_cabeca(LISTA L, void *valor) {
@@ -41,6 +42,15 @@ int lista_esta_vazia(LISTA L) {
     return r;
 }
 
+int lengthLista (LISTA L) {
+    LISTA T;
+    int i = 0;
+    for (T = L; T->proximo != NULL; T = T->proximo)
+        i++;
+
+    return i;
+}
+
 
 LISTA add_livres (ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
@@ -55,32 +65,32 @@ LISTA add_livres (ESTADO *e, LISTA L) {
 
 LISTA add_cantos(ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
-    char cord[3];
+    char cord[4];
     if (col == 0 && lin == 0) {
         if (obter_casa(e, lin, col + 1) == VAZIO) {
-            sprintf(cord, "%d%d", lin, col+1);
+            sprintf(cord, "%d %d", lin, col+1);
             L = insere_cabeca(L, strdup(cord));
         }
         if (obter_casa(e, lin+1, col+1) == VAZIO) {
-            sprintf(cord, "%d%d", lin+1, col+1);
+            sprintf(cord, "%d %d", lin+1, col+1);
             L = insere_cabeca(L, strdup(cord));
         }
         if (obter_casa(e, lin+1, col) == VAZIO) {
-            sprintf(cord, "%d%d", lin+1, col);
+            sprintf(cord, "%d %d", lin+1, col);
             L = insere_cabeca(L, strdup(cord));
         }
     }
     else if (col == 7 && lin == 7) {
         if (obter_casa(e, lin, col-1) == VAZIO) {
-            sprintf(cord, "%d%d", lin, col-1);
+            sprintf(cord, "%d %d", lin, col-1);
             L = insere_cabeca(L, strdup(cord));
         }
         if (obter_casa(e, lin-1, col-1) == VAZIO) {
-            sprintf(cord, "%d%d", lin-1, col-1);
+            sprintf(cord, "%d %d", lin-1, col-1);
             L = insere_cabeca(L, strdup(cord));
         }
         if(obter_casa(e, lin-1, col) == VAZIO) {
-            sprintf(cord, "%d%d", lin-1, col);
+            sprintf(cord, "%d %d", lin-1, col);
             L = insere_cabeca(L, strdup(cord));
         }
     }
@@ -89,39 +99,47 @@ LISTA add_cantos(ESTADO *e, LISTA L) {
 
 LISTA add_arround (ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
-    char cord[3];
+    char cord[4];
     ///> Passa as coordenadas como strings para a lista.
-    if (obter_casa(e, lin, col + 1) == VAZIO) {
-        sprintf(cord, "%d%d", lin, col+1); //Usa-se sprintf para passar as coordenadas como strings ("transforma" int em char).
+    if (obter_casa(e, lin, col + 1) == VAZIO || obter_casa(e, lin, col + 1) == UM || obter_casa(e, lin, col + 1) == DOIS) {
+        sprintf(cord, "%d %d", lin, col+1); //Usa-se sprintf para passar as coordenadas como strings ("transforma" int em char).
         L = insere_cabeca(L, strdup(cord));
     }
-    if (obter_casa(e, lin+1, col+1) == VAZIO) {
-        sprintf(cord, "%d%d", lin+1, col+1);
+    if (obter_casa(e, lin+1, col+1) == VAZIO || obter_casa(e, lin+1, col+1) == UM || obter_casa(e, lin+1, col+1) == DOIS) {
+        sprintf(cord, "%d %d", lin+1, col+1);
         L = insere_cabeca(L, strdup(cord));
     }
-    if (obter_casa(e, lin+1, col) == VAZIO) {
-        sprintf(cord, "%d%d", lin+1, col);
+    if (obter_casa(e, lin+1, col) == VAZIO || obter_casa(e, lin+1, col) == UM || obter_casa(e, lin+1, col) == DOIS) {
+        sprintf(cord, "%d %d", lin+1, col);
         L = insere_cabeca(L, strdup(cord));
     }
-    if (obter_casa(e, lin, col-1) == VAZIO) {
-        sprintf(cord, "%d%d", lin, col-1);
+    if (obter_casa(e, lin, col-1) == VAZIO || obter_casa(e, lin, col-1) == UM || obter_casa(e, lin, col-1) == DOIS) {
+        sprintf(cord, "%d %d", lin, col-1);
         L = insere_cabeca(L, strdup(cord));
     }
-    if (obter_casa(e, lin-1, col-1) == VAZIO) {
-        sprintf(cord, "%d%d", lin-1, col-1);
+    if (obter_casa(e, lin-1, col-1) == VAZIO || obter_casa(e, lin-1, col-1) == UM || obter_casa(e, lin-1, col-1) == DOIS) {
+        sprintf(cord, "%d %d", lin-1, col-1);
         L = insere_cabeca(L, strdup(cord));
     }
-    if(obter_casa(e, lin-1, col) == VAZIO) {
-        sprintf(cord, "%d%d", lin-1, col);
+    if(obter_casa(e, lin-1, col) == VAZIO || obter_casa(e, lin-1, col) == UM || obter_casa(e, lin-1, col) == DOIS) {
+        sprintf(cord, "%d %d", lin-1, col);
         L = insere_cabeca(L, strdup(cord));
     }
-    if (obter_casa(e, lin-1, col+1) == VAZIO) {
-        sprintf(cord, "%d%d", lin-1, col+1);
+    if (obter_casa(e, lin-1, col+1) == VAZIO || obter_casa(e, lin-1, col+1) == UM || obter_casa(e, lin-1, col+1) == DOIS) {
+        sprintf(cord, "%d %d", lin-1, col+1);
         L = insere_cabeca(L, strdup(cord));
     }
-    if(obter_casa(e, lin+1, col-1) == VAZIO) {
-        sprintf(cord, "%d%d", lin+1,col-1);
+    if(obter_casa(e, lin+1, col-1) == VAZIO || obter_casa(e, lin+1, col-1) == UM || obter_casa(e, lin+1, col-1) == DOIS) {
+        sprintf(cord, "%d %d", lin+1,col-1);
         L = insere_cabeca(L, strdup(cord));
     }
 return L;
+}
+
+void freeLista (LISTA L) {
+    while (!lista_esta_vazia(L)) {
+        void *str = devolve_cabeca(L);
+        L = remove_cabeca(L);
+        free(str);
+    }
 }

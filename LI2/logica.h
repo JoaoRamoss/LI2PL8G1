@@ -91,6 +91,28 @@ int pos (ESTADO *e, char *linha);
 
 // ======= BOT ======= //
 
+/**
+ * \brief
+ * @param str
+ * @param cords
+ */
+COORDENADA get_cords(char *str);
 
+void best_move (ESTADO *e);
 
+int scores(ESTADO *e);
+
+int minimax (ESTADO *e, int depth, int player);
+
+void copyStruct (ESTADO *e, ESTADO *aux);
+
+COORDENADA playTemp (ESTADO *e, COORDENADA jog);
+
+void reset(ESTADO *e, COORDENADA c);
+
+/**
+ * \brief Função para o comando jog, joga em uma posição disponível aleatória.
+ * @param e Estado atual do jogo.
+ */
+void jog (ESTADO *e);
 #endif

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['volta_95',['volta',['../dados_8h.html#a6690795fa223a344aea3e2c06c991ef7',1,'dados.c']]]
+  ['tabuleiro_5fficheiro_99',['tabuleiro_ficheiro',['../logica_8h.html#ab69d463df342757a679a40c4f6e5d6ae',1,'logica.c']]]
 ];
