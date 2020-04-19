@@ -80,6 +80,22 @@ LISTA add_cantos(ESTADO *e, LISTA L);
 LISTA add_arround (ESTADO *e, LISTA L);
 
 /**
+ * \brief Adiciona na lista ligada todas as casas para onde o bot podera jogar caso se encontre com col == 0 ou lin == 0.
+ * @param e Estado atual do jogo.
+ * @param L Lista ligada
+ * @return Lista atualizada.
+ */
+LISTA add_lados (ESTADO *e, LISTA L);
+
+/**
+ * \brief Adiciona na lista ligada todas as casas para onde o bot podera  jogar caso se encontre com lin == 0 ou lin == 7.
+ * @param e Estado atual do jogo.
+ * @param L Lista ligada.
+ * @return Lista atualizada.
+ */
+LISTA add_bottom (ESTADO  *e, LISTA L);
+
+/**
  * \brief Liberta o espaço alocado na memória para a lista.
  * @param L Lista ligada.
  */

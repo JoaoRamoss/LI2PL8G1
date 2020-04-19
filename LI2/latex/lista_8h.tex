@@ -39,6 +39,10 @@ int {\bfseries length\+Lista} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
 \begin{DoxyCompactList}\small\item\em Adiciona na lista ligada todas as casas para onde o bot poderá jogar, caso a peca branca se encontre atualmente no canto. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{lista_8h_a88263476521240485997a353379fbc2e}{add\+\_\+arround}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
 \begin{DoxyCompactList}\small\item\em Adiciona na lista ligada todas as casas para onde o bot poderá jogar. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{lista_8h_a3916f8605aca0c96da7fba4a91039203}{add\+\_\+lados}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Adiciona na lista ligada todas as casas para onde o bot podera jogar caso se encontre com col == 0 ou lin == 0. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} \mbox{\hyperlink{lista_8h_aae3fd70fccd11c201d85a18c4dddf077}{add\+\_\+bottom}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
+\begin{DoxyCompactList}\small\item\em Adiciona na lista ligada todas as casas para onde o bot podera jogar caso se encontre com lin == 0 ou lin == 7. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{lista_8h_a9cb229685e08e4b8706349624d2091a8}{free\+Lista}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
 \begin{DoxyCompactList}\small\item\em Liberta o espaço alocado na memória para a lista. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -71,47 +75,116 @@ Lista atualizada.
 Passa as coordenadas como strings para a lista. \end{quote}
 
 
-Definido na linha 100 do ficheiro lista.\+c.
+Definido na linha 104 do ficheiro lista.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{100                                        \{}
-\DoxyCodeLine{101     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
-\DoxyCodeLine{102     \textcolor{keywordtype}{char} cord[4];}
-\DoxyCodeLine{104     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == DOIS) \{}
-\DoxyCodeLine{105         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col+1); \textcolor{comment}{//Usa-\/se sprintf para passar as coordenadas como strings ("transforma" int em char).}}
-\DoxyCodeLine{106         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
-\DoxyCodeLine{107     \}}
-\DoxyCodeLine{108     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == DOIS) \{}
-\DoxyCodeLine{109         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col+1);}
+\DoxyCodeLine{104                                        \{}
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
+\DoxyCodeLine{106     \textcolor{keywordtype}{char} cord[4];}
+\DoxyCodeLine{108     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == DOIS) \{}
+\DoxyCodeLine{109         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col+1); \textcolor{comment}{//Usa-\/se sprintf para passar as coordenadas como strings ("transforma" int em char).}}
 \DoxyCodeLine{110         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{111     \}}
-\DoxyCodeLine{112     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == DOIS) \{}
-\DoxyCodeLine{113         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col);}
+\DoxyCodeLine{112     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == DOIS) \{}
+\DoxyCodeLine{113         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col+1);}
 \DoxyCodeLine{114         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{115     \}}
-\DoxyCodeLine{116     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == DOIS) \{}
-\DoxyCodeLine{117         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
+\DoxyCodeLine{116     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == DOIS) \{}
+\DoxyCodeLine{117         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col);}
 \DoxyCodeLine{118         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{119     \}}
-\DoxyCodeLine{120     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == DOIS) \{}
-\DoxyCodeLine{121         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col-\/1);}
+\DoxyCodeLine{120     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == DOIS) \{}
+\DoxyCodeLine{121         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
 \DoxyCodeLine{122         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{123     \}}
-\DoxyCodeLine{124     \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == DOIS) \{}
-\DoxyCodeLine{125         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
+\DoxyCodeLine{124     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == DOIS) \{}
+\DoxyCodeLine{125         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col-\/1);}
 \DoxyCodeLine{126         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{127     \}}
-\DoxyCodeLine{128     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == DOIS) \{}
-\DoxyCodeLine{129         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col+1);}
+\DoxyCodeLine{128     \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == DOIS) \{}
+\DoxyCodeLine{129         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
 \DoxyCodeLine{130         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{131     \}}
-\DoxyCodeLine{132     \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == DOIS) \{}
-\DoxyCodeLine{133         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1,col-\/1);}
+\DoxyCodeLine{132     \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col+1) == DOIS) \{}
+\DoxyCodeLine{133         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col+1);}
 \DoxyCodeLine{134         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{135     \}}
-\DoxyCodeLine{136 \textcolor{keywordflow}{return} L;}
-\DoxyCodeLine{137 \}}
+\DoxyCodeLine{136     \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col-\/1) == DOIS) \{}
+\DoxyCodeLine{137         sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1,col-\/1);}
+\DoxyCodeLine{138         L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{139     \}}
+\DoxyCodeLine{140 \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{141 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{lista_8h_aae3fd70fccd11c201d85a18c4dddf077}\label{lista_8h_aae3fd70fccd11c201d85a18c4dddf077}} 
+\index{lista.h@{lista.h}!add\_bottom@{add\_bottom}}
+\index{add\_bottom@{add\_bottom}!lista.h@{lista.h}}
+\doxysubsubsection{\texorpdfstring{add\_bottom()}{add\_bottom()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} add\+\_\+bottom (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Adiciona na lista ligada todas as casas para onde o bot podera jogar caso se encontre com lin == 0 ou lin == 7. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em L} & Lista ligada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Lista atualizada. 
+\end{DoxyReturn}
+
+
+Definido na linha 194 do ficheiro lista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{194                                        \{}
+\DoxyCodeLine{195     \textcolor{keywordtype}{int} lin = e-\/>ultima\_jogada.linha, col = e-\/>ultima\_jogada.coluna;}
+\DoxyCodeLine{196     \textcolor{keywordtype}{char} cord[4];}
+\DoxyCodeLine{197     \textcolor{keywordflow}{if} (lin == 0) \{}
+\DoxyCodeLine{198         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == DOIS) \{}
+\DoxyCodeLine{199             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col + 1);}
+\DoxyCodeLine{200             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{201         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == DOIS) \{}
+\DoxyCodeLine{202             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin + 1, col + 1);}
+\DoxyCodeLine{203             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{204         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == DOIS) \{}
+\DoxyCodeLine{205             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin + 1, col);}
+\DoxyCodeLine{206             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{207         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == DOIS) \{}
+\DoxyCodeLine{208             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin + 1, col -\/ 1);}
+\DoxyCodeLine{209             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{210         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == DOIS) \{}
+\DoxyCodeLine{211             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col -\/ 1);}
+\DoxyCodeLine{212             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{213         \}}
+\DoxyCodeLine{214         \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{215     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{216         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == VAZIO) \{}
+\DoxyCodeLine{217             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col -\/ 1);}
+\DoxyCodeLine{218             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{219         \}\textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col -\/ 1) == VAZIO) \{}
+\DoxyCodeLine{220             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin -\/ 1, col -\/ 1);}
+\DoxyCodeLine{221             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{222         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col) == VAZIO) \{}
+\DoxyCodeLine{223             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin -\/ 1, col);}
+\DoxyCodeLine{224             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{225         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col + 1) == VAZIO) \{}
+\DoxyCodeLine{226             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin -\/ 1, col + 1);}
+\DoxyCodeLine{227             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{228         \} \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO) \{}
+\DoxyCodeLine{229             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col + 1);}
+\DoxyCodeLine{230             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{231         \}}
+\DoxyCodeLine{232         \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{233     \}}
+\DoxyCodeLine{234 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{lista_8h_ad5a64a1e9c4f10ad2cad2f803b6fae49}\label{lista_8h_ad5a64a1e9c4f10ad2cad2f803b6fae49}} 
@@ -136,43 +209,120 @@ Lista atualizada.
 \end{DoxyReturn}
 
 
-Definido na linha 66 do ficheiro lista.\+c.
+Definido na linha 70 do ficheiro lista.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{66                                      \{}
-\DoxyCodeLine{67     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
-\DoxyCodeLine{68     \textcolor{keywordtype}{char} cord[4];}
-\DoxyCodeLine{69     \textcolor{keywordflow}{if} (col == 0 \&\& lin == 0) \{}
-\DoxyCodeLine{70         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO) \{}
-\DoxyCodeLine{71             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col+1);}
-\DoxyCodeLine{72             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
-\DoxyCodeLine{73         \}}
-\DoxyCodeLine{74         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == VAZIO) \{}
-\DoxyCodeLine{75             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col+1);}
+\DoxyCodeLine{70                                      \{}
+\DoxyCodeLine{71     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
+\DoxyCodeLine{72     \textcolor{keywordtype}{char} cord[4];}
+\DoxyCodeLine{73     \textcolor{keywordflow}{if} (col == 0 \&\& lin == 0) \{}
+\DoxyCodeLine{74         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO) \{}
+\DoxyCodeLine{75             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col+1);}
 \DoxyCodeLine{76             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{77         \}}
-\DoxyCodeLine{78         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == VAZIO) \{}
-\DoxyCodeLine{79             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col);}
+\DoxyCodeLine{78         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col+1) == VAZIO) \{}
+\DoxyCodeLine{79             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col+1);}
 \DoxyCodeLine{80             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{81         \}}
-\DoxyCodeLine{82     \}}
-\DoxyCodeLine{83     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (col == 7 \&\& lin == 7) \{}
-\DoxyCodeLine{84         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == VAZIO) \{}
-\DoxyCodeLine{85             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
-\DoxyCodeLine{86             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
-\DoxyCodeLine{87         \}}
-\DoxyCodeLine{88         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == VAZIO) \{}
-\DoxyCodeLine{89             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col-\/1);}
+\DoxyCodeLine{82         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin+1, col) == VAZIO) \{}
+\DoxyCodeLine{83             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col);}
+\DoxyCodeLine{84             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{85         \}}
+\DoxyCodeLine{86     \}}
+\DoxyCodeLine{87     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (col == 7 \&\& lin == 7) \{}
+\DoxyCodeLine{88         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col-\/1) == VAZIO) \{}
+\DoxyCodeLine{89             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
 \DoxyCodeLine{90             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{91         \}}
-\DoxyCodeLine{92         \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == VAZIO) \{}
-\DoxyCodeLine{93             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
+\DoxyCodeLine{92         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col-\/1) == VAZIO) \{}
+\DoxyCodeLine{93             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col-\/1);}
 \DoxyCodeLine{94             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
 \DoxyCodeLine{95         \}}
-\DoxyCodeLine{96     \}}
-\DoxyCodeLine{97     \textcolor{keywordflow}{return} L;}
-\DoxyCodeLine{98 \}}
+\DoxyCodeLine{96         \textcolor{keywordflow}{if}(\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1, col) == VAZIO) \{}
+\DoxyCodeLine{97             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
+\DoxyCodeLine{98             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{99         \}}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101     \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{lista_8h_a3916f8605aca0c96da7fba4a91039203}\label{lista_8h_a3916f8605aca0c96da7fba4a91039203}} 
+\index{lista.h@{lista.h}!add\_lados@{add\_lados}}
+\index{add\_lados@{add\_lados}!lista.h@{lista.h}}
+\doxysubsubsection{\texorpdfstring{add\_lados()}{add\_lados()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} add\+\_\+lados (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}}}]{L }\end{DoxyParamCaption})}
+
+
+
+Adiciona na lista ligada todas as casas para onde o bot podera jogar caso se encontre com col == 0 ou lin == 0. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em e} & Estado atual do jogo. \\
+\hline
+{\em L} & Lista ligada \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Retorna}
+Lista atualizada. 
+\end{DoxyReturn}
+
+
+Definido na linha 143 do ficheiro lista.\+c.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143                                      \{}
+\DoxyCodeLine{144     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
+\DoxyCodeLine{145     \textcolor{keywordtype}{char} cord[4];}
+\DoxyCodeLine{146     \textcolor{keywordflow}{if} (col == 0) \{}
+\DoxyCodeLine{147         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == DOIS)\{}
+\DoxyCodeLine{148             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
+\DoxyCodeLine{149             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{150         \}}
+\DoxyCodeLine{151         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col + 1) == DOIS) \{}
+\DoxyCodeLine{152             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1,col+1);}
+\DoxyCodeLine{153             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{154         \}}
+\DoxyCodeLine{155         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col + 1) == DOIS) \{}
+\DoxyCodeLine{156             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col+1);}
+\DoxyCodeLine{157             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{158         \}}
+\DoxyCodeLine{159         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == DOIS) \{}
+\DoxyCodeLine{160             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col+1);}
+\DoxyCodeLine{161             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{162         \}}
+\DoxyCodeLine{163         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col + 1) == DOIS) \{}
+\DoxyCodeLine{164             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
+\DoxyCodeLine{165             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{166         \}}
+\DoxyCodeLine{167             \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{168     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{169         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1 , col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1 , col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin-\/1 , col) == DOIS)\{}
+\DoxyCodeLine{170             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1, col);}
+\DoxyCodeLine{171             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{172         \}}
+\DoxyCodeLine{173         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin -\/ 1, col -\/ 1) == DOIS) \{}
+\DoxyCodeLine{174             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin-\/1,col-\/1);}
+\DoxyCodeLine{175             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{176         \}}
+\DoxyCodeLine{177         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin, col -\/ 1) == DOIS) \{}
+\DoxyCodeLine{178             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin, col-\/1);}
+\DoxyCodeLine{179             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{180         \}}
+\DoxyCodeLine{181         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col -\/ 1) == DOIS) \{}
+\DoxyCodeLine{182             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col-\/1);}
+\DoxyCodeLine{183             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{184         \}}
+\DoxyCodeLine{185         \textcolor{keywordflow}{if} (\mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == VAZIO || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == UM || \mbox{\hyperlink{dados_8h_ad4e371755c518dbe632dc8cb1280cdad}{obter\_casa}}(e, lin + 1, col) == DOIS) \{}
+\DoxyCodeLine{186             sprintf(cord, \textcolor{stringliteral}{"\%d \%d"}, lin+1, col);}
+\DoxyCodeLine{187             L = \mbox{\hyperlink{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}{insere\_cabeca}}(L, strdup(cord));}
+\DoxyCodeLine{188         \}}
+\DoxyCodeLine{189         \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{lista_8h_a0b56764e73eb24ca541210236e5ee307}\label{lista_8h_a0b56764e73eb24ca541210236e5ee307}} 
@@ -207,10 +357,14 @@ Definido na linha 55 do ficheiro lista.\+c.
 \DoxyCodeLine{56     \textcolor{keywordtype}{int} col = e-\/>ultima\_jogada.coluna, lin = e-\/>ultima\_jogada.linha;}
 \DoxyCodeLine{58     \textcolor{keywordflow}{if} ((col == 7 \&\& lin == 7) || (col == 0 \&\& lin == 0))}
 \DoxyCodeLine{59        L =  \mbox{\hyperlink{lista_8h_ad5a64a1e9c4f10ad2cad2f803b6fae49}{add\_cantos}}(e, L);}
-\DoxyCodeLine{60     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{61         L = \mbox{\hyperlink{lista_8h_a88263476521240485997a353379fbc2e}{add\_arround}}(e, L);}
-\DoxyCodeLine{62     \textcolor{keywordflow}{return} L;}
-\DoxyCodeLine{63 \}}
+\DoxyCodeLine{60     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (lin == 7 || lin == 0)}
+\DoxyCodeLine{61         L = \mbox{\hyperlink{lista_8h_aae3fd70fccd11c201d85a18c4dddf077}{add\_bottom}}(e, L);}
+\DoxyCodeLine{62     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (col == 7 || col ==  0)}
+\DoxyCodeLine{63         L = \mbox{\hyperlink{lista_8h_a3916f8605aca0c96da7fba4a91039203}{add\_lados}}(e, L);}
+\DoxyCodeLine{64     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{65         L = \mbox{\hyperlink{lista_8h_a88263476521240485997a353379fbc2e}{add\_arround}}(e, L);}
+\DoxyCodeLine{66     \textcolor{keywordflow}{return} L;}
+\DoxyCodeLine{67 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{lista_8h_ae3b99323b6f8f35d80bb69ff1a27985e}\label{lista_8h_ae3b99323b6f8f35d80bb69ff1a27985e}} 
@@ -286,17 +440,17 @@ Liberta o espaço alocado na memória para a lista.
 \end{DoxyParams}
 
 
-Definido na linha 139 do ficheiro lista.\+c.
+Definido na linha 236 do ficheiro lista.\+c.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{139                          \{}
-\DoxyCodeLine{140     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{lista_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}{lista\_esta\_vazia}}(L)) \{}
-\DoxyCodeLine{141         \textcolor{keywordtype}{void} *str = \mbox{\hyperlink{lista_8h_abfcb205f3eb670157be0d1221021714b}{devolve\_cabeca}}(L);}
-\DoxyCodeLine{142         L = \mbox{\hyperlink{lista_8h_a9026a681a68322b5ec7f07137b864cbd}{remove\_cabeca}}(L);}
-\DoxyCodeLine{143         free(str);}
-\DoxyCodeLine{144     \}}
-\DoxyCodeLine{145 \}}
+\DoxyCodeLine{236                          \{}
+\DoxyCodeLine{237     \textcolor{keywordflow}{while} (!\mbox{\hyperlink{lista_8h_a4c10928f7acaa4e3de3760cea0dfd9c0}{lista\_esta\_vazia}}(L)) \{}
+\DoxyCodeLine{238         \textcolor{keywordtype}{void} *str = \mbox{\hyperlink{lista_8h_abfcb205f3eb670157be0d1221021714b}{devolve\_cabeca}}(L);}
+\DoxyCodeLine{239         L = \mbox{\hyperlink{lista_8h_a9026a681a68322b5ec7f07137b864cbd}{remove\_cabeca}}(L);}
+\DoxyCodeLine{240         free(str);}
+\DoxyCodeLine{241     \}}
+\DoxyCodeLine{242 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}\label{lista_8h_a37ba5fc3cfddb6bc94d4b54b00bc696e}} 

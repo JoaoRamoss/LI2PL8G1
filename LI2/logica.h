@@ -45,6 +45,20 @@ int encurralado(ESTADO *e);
 int check_around (ESTADO *e);
 
 /**
+ * \brief Verifica todas as casas a volta da peca branca caso se encontre em col == 0 ou col == 7.
+ * @param e Estado atual do jogo.
+ * @return 1 caso a peca esteja encurralada.
+ */
+int check_lados (ESTADO *e);
+
+/**
+ * \brief Verifica todas as casas  a volta da peça branca caso se encontre em lin == 0 ou lin == 7;
+ * @param e Estado atual do jogo.
+ * @return 1 caso a peça esteja encurralada.
+ */
+int check_bottom(ESTADO *e);
+
+/**
  * \brief Coloca o tabuleiro e o estado do jogo num ficheiro
  * @param e Estado do jogo.
  * @param linha Nome do ficheiro onde vai ser guardado o estado.

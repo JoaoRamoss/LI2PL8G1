@@ -91,6 +91,14 @@ int encurralado(ESTADO *e) {
         if (obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA)
             return 1;
     }
+    else if (col == 0 || col == 7) {
+        if (check_lados(e) == 1)
+            return 1;
+    }
+    else if (lin == 0 || lin == 7){
+        if (check_bottom(e) == 1)
+            return 1;
+    }
     ///> Caso nao esteja em um dos cantos, chama a função "check_around()" para verificar se está ou nao encurralada.
     else if (check_around(e) == 1)
         return 1;
@@ -105,6 +113,35 @@ int check_around (ESTADO *e) {
         return 1;
     else
         return 0;
+}
+
+int check_lados (ESTADO *e) {
+    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    if (col == 0) {
+        if (obter_casa(e, lin, col - 1) == PRETA && obter_casa(e, lin - 1, col + 1) == PRETA &&
+            obter_casa(e, lin, col + 1) == PRETA &&
+            obter_casa(e, lin + 1, col + 1) == PRETA && obter_casa(e, lin - 1, col) == PRETA)
+            return 1;
+    } else {
+        if (obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin, col-1) == PRETA &&
+        obter_casa(e, lin+1,col-1) == PRETA && obter_casa(e, lin+1,col) == PRETA)
+            return 1;
+    }
+    return 0;
+}
+
+int check_bottom(ESTADO *e) {
+    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    if (lin == 0) {
+        if (obter_casa(e, lin, col+1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA
+        && obter_casa(e, lin+1,col-1) == PRETA && obter_casa(e, lin, col-1) == PRETA)
+            return 1;
+    } else {
+        if (obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1,col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA &&
+        obter_casa(e, lin-1, col+1) == PRETA && obter_casa(e, lin, col+1) == PRETA)
+            return 1;
+    }
+    return 0;
 }
 
 //Função usada para o comando gr (grava o estado de jogo num ficheiro).
