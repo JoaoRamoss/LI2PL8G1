@@ -118,9 +118,9 @@ int check_around (ESTADO *e) {
 int check_lados (ESTADO *e) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
     if (col == 0) {
-        if (obter_casa(e, lin, col - 1) == PRETA && obter_casa(e, lin - 1, col + 1) == PRETA &&
+        if (obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin - 1, col + 1) == PRETA &&
             obter_casa(e, lin, col + 1) == PRETA &&
-            obter_casa(e, lin + 1, col + 1) == PRETA && obter_casa(e, lin - 1, col) == PRETA)
+            obter_casa(e, lin + 1, col + 1) == PRETA && obter_casa(e, lin + 1, col) == PRETA)
             return 1;
     } else {
         if (obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin, col-1) == PRETA &&
