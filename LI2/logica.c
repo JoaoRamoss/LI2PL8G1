@@ -365,6 +365,7 @@ void jog (ESTADO *e) {
         T = proximo(T);
     str = (char*) devolve_cabeca(T);
     COORDENADA jog = get_cords(str);
+    printf("jogada: %d %d\n",jog.coluna, jog.linha);
     jogar(e, jog);
     freeLista(L);
 }
