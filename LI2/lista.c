@@ -47,7 +47,6 @@ int lengthLista (LISTA L) {
     int i = 0;
     for (T = L; T->proximo != NULL; T = T->proximo)
         i++;
-
     return i;
 }
 

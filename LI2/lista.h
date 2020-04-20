@@ -53,6 +53,11 @@ LISTA remove_cabeca(LISTA L);
  */
 int lista_esta_vazia(LISTA L);
 
+/**
+ * \brief Calcula o length da lista fornecida pelo utilizador.
+ * @param L Lista ligada.
+ * @return O inteiro com o valor do length da lista fornecida.
+ */
 int lengthLista(LISTA L);
 
 /**

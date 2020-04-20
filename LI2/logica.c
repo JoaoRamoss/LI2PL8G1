@@ -273,24 +273,20 @@ void best_move (ESTADO *e) {
 }
 //funcao auxiliar do minimax
 int scores(ESTADO *e) {
+    ///> Cria uma tabela com os scores.
+    ///> O score de uma dada casa é atribuido ao valor de (linha - coluna) de cada uma das casas.
     int tabela[8][8], score = 0;
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             tabela[i][j] = i-j;
         }
     }
+    ///> Ao detetar em que posição do tabuleiro está a peça branca, dá return do score atribuido a essa posiçao.
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             if (obter_casa(e, i, j) == BRANCA)
                 score = tabela[i][j];
         }
-    }
-
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            printf("%d ", tabela[i][j]);
-        }
-        printf("\n");
     }
     return score;
 }
@@ -355,12 +351,15 @@ void reset(ESTADO *e, COORDENADA c) {
 
 //comando jog.
 void jog (ESTADO *e) {
+    ///> Adiciona na lista ligada todas as casas para onde é possivel jogar.
     LISTA L = criar_lista();
     L = add_livres(e, L);
     LISTA T = L;
+    ///> Calcula a length da lista e gera um numero aleatorio  entre 0 e o length-1.
     int length = lengthLista(L);
     int random = rand() % length;
     char *str;
+    ///> Tendo em conta o numero aleatorio gerado pela função rand(), joga com as coordenadas na posição  aleatoria da lista.
     for (int i = 0; i < random; i++)
         T = proximo(T);
     str = (char*) devolve_cabeca(T);
