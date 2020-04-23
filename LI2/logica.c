@@ -242,35 +242,10 @@ COORDENADA get_cords(char *str) {
     int col, lin;
     lin = strtol(str, &end,  10);
     col = strtol(end,  &end,10);
-    COORDENADA cord = {col, abs(lin-7)};
+    COORDENADA cord = {col, abs(lin-8)-1};
     return cord;
 }
-//auxiliar do minimax
-void best_move (ESTADO *e) {
-    int score, best_score = INT_MIN, cords[2];
-    LISTA L = criar_lista();
-    L = add_livres(e, L);
-    COORDENADA melhor_jogada;
 
-    while (lista_esta_vazia(L) != 1) {
-        char *str = (char *) devolve_cabeca(L);
-        printf("%s\n",str);
-        COORDENADA cord_jog = get_cords(str);
-        //Cria estado auxiliar
-        //ESTADO *aux = inicializar_estado();
-        //copyStruct(e, aux);
-        //jogar(aux, cord_jog);
-        COORDENADA anterior = playTemp(e, cord_jog);
-        //free (aux);
-        score = minimax(e, 2, 1);
-        reset(e, anterior);
-        if (score > best_score) {
-            best_score = score;
-        }
-        L = remove_cabeca(L);
-    }
-    jogar(e, melhor_jogada);
-}
 //funcao auxiliar do minimax
 int scores(ESTADO *e) {
     ///> Cria uma tabela com os scores.
@@ -290,32 +265,7 @@ int scores(ESTADO *e) {
     }
     return score;
 }
-//minimax ainda nao implementado.
-int minimax(ESTADO *e, int depth, int player) {
-    int result = jogo_terminado(e), score;
-    LISTA L = criar_lista();
-    L = add_livres(e, L);
-    if (depth == 0 || result != 0)
-        return player*(scores(e));
 
-    int bestScore = INT_MIN;
-    while (lista_esta_vazia(L) != 1) {
-        char *str = (char*)devolve_cabeca(L);
-        COORDENADA jog = get_cords(str);
-        //ESTADO *aux = inicializar_estado();
-        //copyStruct(e, aux);
-        //jogar(aux,jog);
-        COORDENADA anterior = playTemp(e, jog);
-        //free(aux);
-        score = -minimax(e,depth-1, player*-1);
-        reset(e, anterior);
-        if(score > bestScore)
-            bestScore = score;
-        L = remove_cabeca(L);
-    }
-    return bestScore;
-}
-//auxiliar minimax
 void copyStruct (ESTADO *e, ESTADO *aux) {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
@@ -326,34 +276,16 @@ void copyStruct (ESTADO *e, ESTADO *aux) {
     aux->jogador_atual = e->jogador_atual;
     aux->num_jogadas = e->num_jogadas;
 }
-//auxiliar minimax
-COORDENADA playTemp (ESTADO *e, COORDENADA jog) {
-    int lin = abs(jog.linha - 8) - 1;
-    int col = jog.coluna;
-
-    COORDENADA anterior = {e->ultima_jogada.coluna, e->ultima_jogada.linha};
-
-    e->tab[lin][col] = BRANCA;
-    e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
-    e->ultima_jogada.linha = lin;
-    e->ultima_jogada.coluna = col;
-    return anterior;
-}
-//auxiliar minimax.
-void reset(ESTADO *e, COORDENADA c) {
-    int lin = abs(c.linha - 8) - 1;
-    int col = c.coluna;
-    e->tab[lin][col] = BRANCA;
-    e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = VAZIO;
-    e->ultima_jogada.linha = lin;
-    e->ultima_jogada.coluna = col;
-}
 
 //comando jog.
 void jog (ESTADO *e) {
     ///> Adiciona na lista ligada todas as casas para onde é possivel jogar.
     LISTA L = criar_lista();
     L = add_livres(e, L);
+    for(LISTA K = L; lista_esta_vazia(K) != 1; K = proximo(K)) {
+        char *str = (char*)devolve_cabeca(K);
+        printf("%s\n", str);
+    }
     LISTA T = L;
     ///> Calcula a length da lista e gera um numero aleatorio  entre 0 e o length-1.
     int length = lengthLista(L);
@@ -366,4 +298,31 @@ void jog (ESTADO *e) {
     COORDENADA jog = get_cords(str);
     jogar(e, jog);
     freeLista(L);
+}
+
+void jog2 (ESTADO *e) {
+    int atual = obter_jogador_atual(e), bestScore = INT_MIN, score;
+    COORDENADA melhorJogada;
+    LISTA L = criar_lista();
+    ///> Adiciona na lista ligada todas as posições para onde pode jogar.
+    L = add_livres(e, L);
+    ///> Analisa todas as posições presentes na lista e escolbe aquela que tiver o maior score.
+    while (lista_esta_vazia(L) != 1) {
+        ESTADO *aux = inicializar_estado();
+        copyStruct(e, aux);
+        char *str = (char*)devolve_cabeca(L);
+        COORDENADA jogada = get_cords(str);
+        jogar(aux,jogada);
+        if (atual == 1)
+            score = scores(aux);
+        else
+            score = scores(aux) * (-1);
+        free(aux);
+        if (score > bestScore) {
+            bestScore = score;
+            melhorJogada = jogada;
+        }
+        L = remove_cabeca(L);
+    }
+    jogar(e,melhorJogada);
 }

@@ -112,21 +112,29 @@ int pos (ESTADO *e, char *linha);
  */
 COORDENADA get_cords(char *str);
 
-void best_move (ESTADO *e);
-
+/**
+ * \brief Atribui uma pontuação a cada uma das casas do tabuleiro.
+ * @param e Estado atual do jogo.
+ * @return A pontuação final.
+ */
 int scores(ESTADO *e);
 
-int minimax (ESTADO *e, int depth, int player);
-
+/**
+ * \brief Copia um struct para um outro struct.
+ * @param e Estado atual do jogo.
+ * @param aux Struct auxiliar para onde vao ser copiadas as informações.
+ */
 void copyStruct (ESTADO *e, ESTADO *aux);
-
-COORDENADA playTemp (ESTADO *e, COORDENADA jog);
-
-void reset(ESTADO *e, COORDENADA c);
 
 /**
  * \brief Função para o comando jog, joga em uma posição disponível aleatória.
  * @param e Estado atual do jogo.
  */
 void jog (ESTADO *e);
+
+/**
+ * \brief Função para o comando "jog2".
+ * @param e Estado atual do jogo.
+ */
+void jog2 (ESTADO *e);
 #endif

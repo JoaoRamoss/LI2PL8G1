@@ -92,8 +92,13 @@ int interpretador(ESTADO *e) {
                 else
                     printf("A posição escolhida nao e valida!\n");
             }
+            else if (strncmp(linha, "jog2", 4) == 0) {
+                printf("#=> O bot jogou na sua vez.\n");
+                //best_move(e);
+                jog2(e);
+            }
             else if (strncmp(linha, "jog", 3) == 0) {
-                printf("O bot jogou na sua vez.\n");
+                printf("#=> O bot jogou na sua vez.\n");
                 jog(e);
             }
             //Caso nao se pretenda efetuar nenhum comando mas sim uma jogada.
@@ -101,6 +106,7 @@ int interpretador(ESTADO *e) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
             //Caso seja feita uma jogada, colocamos o valor máximo do comando pos = ao valor da jogada atual.
             set_max(e);
+            printf("jogar: %d %d\n", coord.coluna, coord.linha);
             if(jogar(e,coord) == 0)
                 printf("Jogada Invalida. \n");
         }
