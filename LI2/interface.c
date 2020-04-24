@@ -106,7 +106,6 @@ int interpretador(ESTADO *e) {
             COORDENADA coord = {*col - 'a', *lin - '1'};
             //Caso seja feita uma jogada, colocamos o valor máximo do comando pos = ao valor da jogada atual.
             set_max(e);
-            printf("jogar: %d %d\n", coord.coluna, coord.linha);
             if(jogar(e,coord) == 0)
                 printf("Jogada Invalida. \n");
         }
