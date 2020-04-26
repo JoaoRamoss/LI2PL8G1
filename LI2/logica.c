@@ -109,7 +109,8 @@ int encurralado(ESTADO *e) {
 int check_around (ESTADO *e) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
     if (obter_casa(e, lin, col + 1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA &&
-    obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA)
+    obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin-1, col+1) == PRETA
+    && obter_casa(e, lin+1, col-1) == PRETA)
         return 1;
     else
         return 0;
