@@ -301,29 +301,81 @@ void jog (ESTADO *e) {
     freeLista(L);
 }
 
-void jog2 (ESTADO *e) {
-    int atual = obter_jogador_atual(e), bestScore = INT_MIN, score;
-    COORDENADA melhorJogada;
-    LISTA L = criar_lista();
-    ///> Adiciona na lista ligada todas as posições para onde pode jogar.
+void bestMove (ESTADO *e) {
+    int bestScore = INT_MIN, score, atual = obter_jogador_atual(e), jogada_atual = obter_numero_de_jogadas(e);
+    COORDENADA best_jogada;
+    LISTA L =  criar_lista();
     L = add_livres(e, L);
-    ///> Analisa todas as posições presentes na lista e escolbe aquela que tiver o maior score.
+    ///> Invoca o minimax com player = 1 caso seja o jogador 1 a jogar, e player = -1 caso seja o jogador 2.
+    if (check_vencedora(e, L) != 1) {
+        while (lista_esta_vazia(L) != 1) {
+            char *str = (char *) devolve_cabeca(L);
+            if (strncmp(str, "7 0", 3) != 0) {
+                ESTADO *aux = inicializar_estado();
+                copyStruct(e, aux);
+                COORDENADA jog = get_cords(str);
+                jogar(aux, jog);
+                if (atual == 1)
+                    score = negamax(aux, 5, 1);
+                else
+                    score = negamax(aux, 5, -1);
+                if (score > bestScore) {
+                    bestScore = score;
+                    best_jogada = jog;
+                }
+            }
+            L = remove_cabeca(L);
+        }
+    }
+    else
+        best_jogada = get_vencedor(L);
+
+    jogar(e, best_jogada);
+}
+
+int negamax (ESTADO *e, int depth, int player) {
+    int bestScore = INT_MIN, score;
+    LISTA L = criar_lista();
+    L = add_livres(e, L);
+    ///> Caso a depth seja = 0 ou esteja em posição terminal do jogo, da return do score (caso de paragem da função recursiva).
+    if (depth == 0 || jogo_terminado(e) != 0) {
+        return (scores(e)*player);
+    }
+    ///> Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score.
     while (lista_esta_vazia(L) != 1) {
         ESTADO *aux = inicializar_estado();
         copyStruct(e, aux);
-        char *str = (char*)devolve_cabeca(L);
+        char *str = (char *) devolve_cabeca(L);
         COORDENADA jogada = get_cords(str);
-        jogar(aux,jogada);
-        if (atual == 1)
-            score = scores(aux);
-        else
-            score = scores(aux) * (-1);
-        free(aux);
-        if (score > bestScore) {
+        jogar (aux, jogada);
+        score = -negamax(e, depth - 1, player*(-1));
+        if (score > bestScore)
             bestScore = score;
-            melhorJogada = jogada;
+        L = remove_cabeca(L);
+    }
+    return bestScore;
+}
+
+int check_vencedora (ESTADO *e, LISTA L) {
+    LISTA T;
+    int atual = obter_jogador_atual(e);
+    for (T = L; !lista_esta_vazia(T); T = proximo(T)) {
+        char *str = (char *) devolve_cabeca(T);
+        if (strncmp (str,"7 0", 3) == 0 && atual == 1)
+            return 1;
+    }
+    return 0;
+}
+
+COORDENADA get_vencedor(LISTA L) {
+    COORDENADA jogada;
+    while (lista_esta_vazia(L) != 1) {
+        char *str = (char *) devolve_cabeca(L);
+        if (strncmp(str, "7 0", 3) == 0) {
+            jogada = get_cords(str);
+            break;
         }
         L = remove_cabeca(L);
     }
-    jogar(e,melhorJogada);
+    return jogada;
 }

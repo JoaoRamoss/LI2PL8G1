@@ -94,8 +94,7 @@ int interpretador(ESTADO *e) {
             }
             else if (strncmp(linha, "jog2", 4) == 0) {
                 printf("#=> O bot jogou na sua vez.\n");
-                //best_move(e);
-                jog2(e);
+                bestMove(e);
             }
             else if (strncmp(linha, "jog", 3) == 0) {
                 printf("#=> O bot jogou na sua vez.\n");

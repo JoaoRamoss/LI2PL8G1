@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['encurralado_15',['encurralado',['../logica_8h.html#a1e08ddaa296db25866c21b3ea2a9c106',1,'logica.c']]],
-  ['estado_16',['ESTADO',['../struct_e_s_t_a_d_o.html',1,'']]]
+  ['dados_2eh_15',['dados.h',['../dados_8h.html',1,'']]],
+  ['devolve_5fcabeca_16',['devolve_cabeca',['../lista_8h.html#abfcb205f3eb670157be0d1221021714b',1,'lista.c']]]
 ];

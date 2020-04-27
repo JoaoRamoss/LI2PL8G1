@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['scores_56',['scores',['../logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb',1,'logica.c']]],
-  ['set_5fmax_57',['set_max',['../dados_8h.html#ae46fb285155bff2316804318ef6f0fc6',1,'dados.c']]]
+  ['reinit_55',['reinit',['../dados_8h.html#a543f64d33cbc5f4c00ad7dc4e60d2105',1,'dados.c']]],
+  ['remove_5fcabeca_56',['remove_cabeca',['../lista_8h.html#a9026a681a68322b5ec7f07137b864cbd',1,'lista.c']]],
+  ['retira_5fcoluna_57',['retira_coluna',['../logica_8h.html#a00a35418e9e9a6c215b653dceb822a03',1,'logica.c']]],
+  ['retira_5flinha_58',['retira_linha',['../logica_8h.html#a224bb3db996c2f3baca3a72b8509c3ce',1,'logica.c']]]
 ];

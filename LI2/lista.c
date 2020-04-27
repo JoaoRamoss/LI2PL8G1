@@ -54,15 +54,19 @@ int lengthLista (LISTA L) {
 LISTA add_livres (ESTADO *e, LISTA L) {
     int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
     ///> Verifica se a peca branca esta em um dos cantos e dependendo disto, decide qual das duas funcoes chamar (add_cantos() ou add_around()).
-    if ((col == 7 && lin == 7) || (col == 0 && lin == 0))
-       L =  add_cantos(e, L);
-    else if (lin == 7 || lin == 0)
+    if ((col == 7 && lin == 7) || (col == 0 && lin == 0)) {
+        L = add_cantos(e, L);
+    }
+
+    else if (lin == 7 || lin == 0) {
         L = add_bottom(e, L);
+    }
     else if (col == 7 || col ==  0) {
         L = add_lados(e, L);
     }
-    else
+    else {
         L = add_arround(e, L);
+    }
     return L;
 }
 
@@ -219,13 +223,16 @@ LISTA add_bottom (ESTADO  *e, LISTA L) {
         }if (obter_casa(e, lin - 1, col - 1) == VAZIO || obter_casa(e, lin - 1, col - 1) == UM || obter_casa(e, lin - 1, col - 1) == DOIS) {
             sprintf(cord, "%d %d", lin - 1, col - 1);
             L = insere_cabeca(L, strdup(cord));
-        } if (obter_casa(e, lin - 1, col) == VAZIO || obter_casa(e, lin - 1, col) == UM || obter_casa(e, lin - 1, col) == DOIS) {
+        }
+        if (obter_casa(e, lin - 1, col) == VAZIO || obter_casa(e, lin - 1, col) == UM || obter_casa(e, lin - 1, col) == DOIS) {
             sprintf(cord, "%d %d", lin - 1, col);
             L = insere_cabeca(L, strdup(cord));
-        } if (obter_casa(e, lin - 1, col + 1) == VAZIO || obter_casa(e, lin - 1, col + 1) == UM || obter_casa(e, lin - 1, col + 1) == DOIS) {
+        }
+        if (obter_casa(e, lin - 1, col + 1) == VAZIO || obter_casa(e, lin - 1, col + 1) == UM || obter_casa(e, lin - 1, col + 1) == DOIS) {
             sprintf(cord, "%d %d", lin - 1, col + 1);
             L = insere_cabeca(L, strdup(cord));
-        } if (obter_casa(e, lin, col + 1) == VAZIO || obter_casa(e, lin, col + 1) == UM || obter_casa(e, lin, col + 1) == DOIS) {
+        }
+        if (obter_casa(e, lin, col + 1) == VAZIO || obter_casa(e, lin, col + 1) == UM || obter_casa(e, lin, col + 1) == DOIS) {
             sprintf(cord, "%d %d", lin, col + 1);
             L = insere_cabeca(L, strdup(cord));
         }

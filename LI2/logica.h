@@ -133,8 +133,32 @@ void copyStruct (ESTADO *e, ESTADO *aux);
 void jog (ESTADO *e);
 
 /**
- * \brief Função para o comando "jog2".
+ * \brief Função que invoca o minimax para decidir qual é a melhor jogada a realizar.
  * @param e Estado atual do jogo.
  */
-void jog2 (ESTADO *e);
+void bestMove (ESTADO *e);
+
+/**
+ * \bref Variação do algoritmo "minimax".
+ * @param e Cópia do estado do jogo.
+ * @param depth Profundidade.
+ * @param player Varia entre -1 e 1, dependendo de quem e a vez de jogar.
+ * @return Score da posição onde a peça se encontra.
+ */
+int negamax (ESTADO *e, int depth, int player);
+
+/**
+ * \brief Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.
+ * @param e Estado atual do jogo.
+ * @param L Lista com posições possiveis.
+ * @return 1 caso exista uma jogada vencedora.
+ */
+int check_vencedora (ESTADO *e, LISTA L);
+
+/**
+ * \brief Caso exista uma jogada vencedora, obtem esta jogada.
+ * @param L Lista de jogadas possiveis.
+ * @return As coordenadas da jogada vencedora.
+ */
+COORDENADA get_vencedor(LISTA L);
 #endif

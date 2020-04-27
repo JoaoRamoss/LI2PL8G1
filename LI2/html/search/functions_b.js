@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['pos_106',['pos',['../logica_8h.html#aec4a963a88af44348027ec7cf17ff47a',1,'logica.c']]],
-  ['pos_5fhelper_107',['pos_helper',['../dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329',1,'dados.c']]],
-  ['proximo_108',['proximo',['../lista_8h.html#ad9380152361127432c55c1c6067e05ae',1,'lista.c']]]
+  ['negamax_104',['negamax',['../logica_8h.html#a87984bf05c623849f7e349ba8060ebdd',1,'logica.c']]]
 ];
