@@ -315,6 +315,7 @@ void bestMove (ESTADO *e) {
                     score = negamax(aux, 5, 1);
                 else
                     score = negamax(aux, 5, -1);
+                free(aux);
                 if (score > bestScore) {
                     bestScore = score;
                     best_jogada = jog;
@@ -339,11 +340,8 @@ int negamax (ESTADO *e, int depth, int player) {
     }
     ///> Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score.
     while (lista_esta_vazia(L) != 1) {
-        ESTADO *aux = inicializar_estado();
-        copyStruct(e, aux);
         char *str = (char *) devolve_cabeca(L);
         COORDENADA jogada = get_cords(str);
-        jogar (aux, jogada);
         score = -negamax(e, depth - 1, player*(-1));
         if (score > bestScore)
             bestScore = score;
