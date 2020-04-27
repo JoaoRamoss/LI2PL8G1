@@ -312,9 +312,9 @@ void bestMove (ESTADO *e) {
                 COORDENADA jog = get_cords(str);
                 jogar(aux, jog);
                 if (atual == 1)
-                    score = negamax(aux, 5, 1);
+                    score = minimax(aux, 5, 1);
                 else
-                    score = negamax(aux, 5, -1);
+                    score = minimax(aux, 5, -1);
                 free(aux);
                 if (score > bestScore) {
                     bestScore = score;
@@ -327,22 +327,30 @@ void bestMove (ESTADO *e) {
     else
         best_jogada = get_vencedor(L);
 
+    printf("\nbestscore: %d\n", bestScore);
     jogar(e, best_jogada);
 }
 
-int negamax (ESTADO *e, int depth, int player) {
+int minimax (ESTADO *e, int depth, int player) {
     int bestScore = INT_MIN, score;
     LISTA L = criar_lista();
     L = add_livres(e, L);
     ///> Caso a depth seja = 0 ou esteja em posição terminal do jogo, da return do score (caso de paragem da função recursiva).
-    if (depth == 0 || jogo_terminado(e) != 0) {
+    if (depth == 0 || jogo_terminado(e)) {
         return (scores(e)*player);
     }
     ///> Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score.
     while (lista_esta_vazia(L) != 1) {
+        ESTADO *aux = inicializar_estado();
+        copyStruct(e, aux);
         char *str = (char *) devolve_cabeca(L);
         COORDENADA jogada = get_cords(str);
-        score = -negamax(e, depth - 1, player*(-1));
+        if (strncmp(str, "0 7", 3) == 0 || strncmp (str, "7 0", 3) == 0)
+            return (scores(e)*(player));
+
+        jogar(aux, jogada);
+        score = -minimax(aux, depth - 1, player * (-1));
+        free(aux);
         if (score > bestScore)
             bestScore = score;
         L = remove_cabeca(L);
