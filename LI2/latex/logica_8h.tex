@@ -43,7 +43,7 @@ void \mbox{\hyperlink{logica_8h_a9dfbc982d23a619e36575d8e7ec8e41c}{jog}} (\mbox{
 void \mbox{\hyperlink{logica_8h_a1e4ba81358ad3fcb728e87199de3ce32}{best\+Move}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e)
 \begin{DoxyCompactList}\small\item\em Função que invoca o minimax para decidir qual é a melhor jogada a realizar. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{logica_8h_a87984bf05c623849f7e349ba8060ebdd}{negamax}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, int depth, int player)
-\item 
+\begin{DoxyCompactList}\small\item\em Variação do algoritmo \char`\"{}minimax\char`\"{}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{logica_8h_a0d0ae42af34190215d0219bc3230873b}{check\+\_\+vencedora}} (\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$e, \mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
 \begin{DoxyCompactList}\small\item\em Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{struct_c_o_o_r_d_e_n_a_d_a}{C\+O\+O\+R\+D\+E\+N\+A\+DA}} \mbox{\hyperlink{logica_8h_a269576c01f83872ee667e982ab409612}{get\+\_\+vencedor}} (\mbox{\hyperlink{structnodo}{L\+I\+S\+TA}} L)
@@ -723,7 +723,11 @@ Definido na linha 165 do ficheiro logica.\+c.
 \doxysubsubsection{\texorpdfstring{negamax()}{negamax()}}
 {\footnotesize\ttfamily int negamax (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_e_s_t_a_d_o}{E\+S\+T\+A\+DO}} $\ast$}]{e,  }\item[{int}]{depth,  }\item[{int}]{player }\end{DoxyParamCaption})}
 
-\textbackslash{}bref Variação do algoritmo \char`\"{}minimax\char`\"{}. 
+
+
+Variação do algoritmo \char`\"{}minimax\char`\"{}. 
+
+
 \begin{DoxyParams}{Parâmetros}
 {\em e} & Cópia do estado do jogo. \\
 \hline

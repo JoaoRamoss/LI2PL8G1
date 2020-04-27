@@ -139,7 +139,7 @@ void jog (ESTADO *e);
 void bestMove (ESTADO *e);
 
 /**
- * \bref Variação do algoritmo "minimax".
+ * \brief Variação do algoritmo "minimax".
  * @param e Cópia do estado do jogo.
  * @param depth Profundidade.
  * @param player Varia entre -1 e 1, dependendo de quem e a vez de jogar.

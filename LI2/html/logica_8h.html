@@ -129,6 +129,7 @@ Funções</h2></td></tr>
 <tr class="memdesc:a1e4ba81358ad3fcb728e87199de3ce32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que invoca o minimax para decidir qual é a melhor jogada a realizar.  <a href="logica_8h.html#a1e4ba81358ad3fcb728e87199de3ce32">Mais...</a><br /></td></tr>
 <tr class="separator:a1e4ba81358ad3fcb728e87199de3ce32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87984bf05c623849f7e349ba8060ebdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int depth, int player)</td></tr>
+<tr class="memdesc:a87984bf05c623849f7e349ba8060ebdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variação do algoritmo "minimax".  <a href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">Mais...</a><br /></td></tr>
 <tr class="separator:a87984bf05c623849f7e349ba8060ebdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d0ae42af34190215d0219bc3230873b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">check_vencedora</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="el" href="structnodo.html">LISTA</a> L)</td></tr>
 <tr class="memdesc:a0d0ae42af34190215d0219bc3230873b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.  <a href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">Mais...</a><br /></td></tr>
@@ -949,7 +950,9 @@ Funções</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>\bref Variação do algoritmo "minimax". </p><dl class="params"><dt>Parâmetros</dt><dd>
+
+<p>Variação do algoritmo "minimax". </p>
+<dl class="params"><dt>Parâmetros</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>Cópia do estado do jogo. </td></tr>
     <tr><td class="paramname">depth</td><td>Profundidade. </td></tr>
@@ -1242,7 +1245,7 @@ Funções</h2></td></tr>
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdoc">Struct para as coordenadas, sendo estas usadas para fazer jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00015">dados.h:15</a></div></div>
 <div class="ttc" id="alogica_8h_html_aea1fcb269536a2b7ee0d12518887cd09"><div class="ttname"><a href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a></div><div class="ttdeci">int jogo_terminado(ESTADO *e)</div><div class="ttdoc">Verifica se o jogo terminou.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00068">logica.c:68</a></div></div>
 <div class="ttc" id="adados_8h_html_a9f2d95954ffa63c2f456e9481a883071"><div class="ttname"><a href="dados_8h.html#a9f2d95954ffa63c2f456e9481a883071">obter_max_num_jog</a></div><div class="ttdeci">int obter_max_num_jog(ESTADO *e)</div><div class="ttdoc">Obtem o número máximo de jogadas que o jogador pode introduzir no comando &quot;pos&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00048">dados.c:48</a></div></div>
-<div class="ttc" id="alogica_8h_html_a87984bf05c623849f7e349ba8060ebdd"><div class="ttname"><a href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a></div><div class="ttdeci">int negamax(ESTADO *e, int depth, int player)</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00336">logica.c:336</a></div></div>
+<div class="ttc" id="alogica_8h_html_a87984bf05c623849f7e349ba8060ebdd"><div class="ttname"><a href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a></div><div class="ttdeci">int negamax(ESTADO *e, int depth, int player)</div><div class="ttdoc">Variação do algoritmo &quot;minimax&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00336">logica.c:336</a></div></div>
 <div class="ttc" id="adados_8h_html_a72bd3fb56f0ac3af60c392b49f76a329"><div class="ttname"><a href="dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329">pos_helper</a></div><div class="ttdeci">void pos_helper(ESTADO *e, int r)</div><div class="ttdoc">Função auxiliar para a função &quot;pos&quot; na camada dados, atualiza o estado do jogo para que esta seja exe...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00075">dados.c:75</a></div></div>
 <div class="ttc" id="adados_8h_html_abadfdc02ae37afa3fc371a15c0090e61"><div class="ttname"><a href="dados_8h.html#abadfdc02ae37afa3fc371a15c0090e61">ler_tab</a></div><div class="ttdeci">void ler_tab(ESTADO *e, char *linha)</div><div class="ttdoc">Função que atualiza os dados do jogo ao ler o ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00109">dados.c:109</a></div></div>
 <div class="ttc" id="alogica_8h_html_a9065d2c25c9052ce1f7f5e1d6272dd6e"><div class="ttname"><a href="logica_8h.html#a9065d2c25c9052ce1f7f5e1d6272dd6e">check_around</a></div><div class="ttdeci">int check_around(ESTADO *e)</div><div class="ttdoc">Verifica se todas as casas a volta da peça branca estao preenchidas com peças pretas.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00109">logica.c:109</a></div></div>
