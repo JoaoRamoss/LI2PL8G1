@@ -327,7 +327,6 @@ void bestMove (ESTADO *e) {
     else
         best_jogada = get_vencedor(L);
 
-    printf("\nbestscore: %d\n", bestScore);
     jogar(e, best_jogada);
 }
 
@@ -370,7 +369,7 @@ int check_vencedora (ESTADO *e, LISTA L) {
 }
 
 COORDENADA get_vencedor(LISTA L) {
-    COORDENADA jogada;
+    COORDENADA jogada = {0,0};
     while (lista_esta_vazia(L) != 1) {
         char *str = (char *) devolve_cabeca(L);
         if (strncmp(str, "7 0", 3) == 0) {
