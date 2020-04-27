@@ -234,10 +234,6 @@ int pos (ESTADO *e, char *linha) {
         return 0;
 }
 
-//=====================//
-//======= BOT ========//
-//====================//
-
 COORDENADA get_cords(char *str) {
     char *end;
     int col, lin;

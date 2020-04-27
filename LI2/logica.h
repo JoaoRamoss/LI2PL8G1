@@ -103,8 +103,6 @@ int retira_coluna (char str[]);
  */
 int pos (ESTADO *e, char *linha);
 
-// ======= BOT ======= //
-
 /**
  * \brief
  * @param str
