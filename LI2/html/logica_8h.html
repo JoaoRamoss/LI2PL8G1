@@ -128,9 +128,9 @@ Funções</h2></td></tr>
 <tr class="memitem:a1e4ba81358ad3fcb728e87199de3ce32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#a1e4ba81358ad3fcb728e87199de3ce32">bestMove</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e)</td></tr>
 <tr class="memdesc:a1e4ba81358ad3fcb728e87199de3ce32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função que invoca o minimax para decidir qual é a melhor jogada a realizar.  <a href="logica_8h.html#a1e4ba81358ad3fcb728e87199de3ce32">Mais...</a><br /></td></tr>
 <tr class="separator:a1e4ba81358ad3fcb728e87199de3ce32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa375942115b84ed0b58b86ea76a82084"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">minimax</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int depth, int player)</td></tr>
-<tr class="memdesc:aa375942115b84ed0b58b86ea76a82084"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variação do algoritmo "minimax".  <a href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">Mais...</a><br /></td></tr>
-<tr class="separator:aa375942115b84ed0b58b86ea76a82084"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87984bf05c623849f7e349ba8060ebdd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, int depth, int player)</td></tr>
+<tr class="memdesc:a87984bf05c623849f7e349ba8060ebdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Variação do algoritmo "minimax".  <a href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">Mais...</a><br /></td></tr>
+<tr class="separator:a87984bf05c623849f7e349ba8060ebdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d0ae42af34190215d0219bc3230873b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">check_vencedora</a> (<a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *e, <a class="el" href="structnodo.html">LISTA</a> L)</td></tr>
 <tr class="memdesc:a0d0ae42af34190215d0219bc3230873b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.  <a href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">Mais...</a><br /></td></tr>
 <tr class="separator:a0d0ae42af34190215d0219bc3230873b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -259,9 +259,9 @@ Funções</h2></td></tr>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> <a class="code" href="logica_8h.html#a9dfbc982d23a619e36575d8e7ec8e41c">jog</a> = <a class="code" href="logica_8h.html#a33c8928e31992541dd9cf0ce0e9f7d50">get_cords</a>(str);</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(aux, <a class="code" href="logica_8h.html#a9dfbc982d23a619e36575d8e7ec8e41c">jog</a>);</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="keywordflow">if</span> (atual == 1)</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    score = <a class="code" href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">minimax</a>(aux, 5, 1);</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                    score = <a class="code" href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a>(aux, 5, 1);</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    score = <a class="code" href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">minimax</a>(aux, 5, -1);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                    score = <a class="code" href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a>(aux, 5, -1);</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                free(aux);</div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordflow">if</span> (score &gt; bestScore) {</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    bestScore = score;</div>
@@ -274,9 +274,8 @@ Funções</h2></td></tr>
 <div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="keywordflow">else</span></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        best_jogada = <a class="code" href="logica_8h.html#a269576c01f83872ee667e982ab409612">get_vencedor</a>(L);</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    printf(<span class="stringliteral">&quot;\nbestscore: %d\n&quot;</span>, bestScore);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, best_jogada);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(e, best_jogada);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -439,17 +438,17 @@ Funções</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Retorna</dt><dd>1 caso exista uma jogada vencedora. </dd></dl>
 
-<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00361">361</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;                                         {</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <a class="code" href="structnodo.html">LISTA</a> T;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordtype">int</span> atual = <a class="code" href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a>(e);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="keywordflow">for</span> (T = L; !<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(T); T = <a class="code" href="lista_8h.html#ad9380152361127432c55c1c6067e05ae">proximo</a>(T)) {</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(T);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keywordflow">if</span> (strncmp (str,<span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0 &amp;&amp; atual == 1)</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;            <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00360">360</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;                                         {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="structnodo.html">LISTA</a> T;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">int</span> atual = <a class="code" href="dados_8h.html#ad6e326e4ffa57ca1ae0c75377ecefc8c">obter_jogador_atual</a>(e);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">for</span> (T = L; !<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(T); T = <a class="code" href="lista_8h.html#ad9380152361127432c55c1c6067e05ae">proximo</a>(T)) {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(T);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="keywordflow">if</span> (strncmp (str,<span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0 &amp;&amp; atual == 1)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    }</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -620,19 +619,19 @@ Funções</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Retorna</dt><dd>As coordenadas da jogada vencedora. </dd></dl>
 
-<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00372">372</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;                                 {</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogada;</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(L) != 1) {</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(L);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <span class="keywordflow">if</span> (strncmp(str, <span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0) {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            jogada = <a class="code" href="logica_8h.html#a33c8928e31992541dd9cf0ce0e9f7d50">get_cords</a>(str);</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        }</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        L = <a class="code" href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a>(L);</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">return</span> jogada;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00371">371</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;                                 {</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogada = {0,0};</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(L) != 1) {</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(L);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">if</span> (strncmp(str, <span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0) {</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            jogada = <a class="code" href="logica_8h.html#a33c8928e31992541dd9cf0ce0e9f7d50">get_cords</a>(str);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        }</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        L = <a class="code" href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a>(L);</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">return</span> jogada;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -921,14 +920,14 @@ Funções</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="aa375942115b84ed0b58b86ea76a82084"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa375942115b84ed0b58b86ea76a82084">&#9670;&nbsp;</a></span>minimax()</h2>
+<a id="a87984bf05c623849f7e349ba8060ebdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87984bf05c623849f7e349ba8060ebdd">&#9670;&nbsp;</a></span>negamax()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int minimax </td>
+          <td class="memname">int negamax </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_e_s_t_a_d_o.html">ESTADO</a> *&#160;</td>
           <td class="paramname"><em>e</em>, </td>
@@ -970,31 +969,31 @@ Funções</h2></td></tr>
 <p>Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score. </p>
 </blockquote>
 
-<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00334">334</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
-<div class="fragment"><div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;                                               {</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="keywordtype">int</span> bestScore = INT_MIN, score;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="structnodo.html">LISTA</a> L = <a class="code" href="lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e">criar_lista</a>();</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    L = <a class="code" href="lista_8h.html#a0b56764e73eb24ca541210236e5ee307">add_livres</a>(e, L);</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">if</span> (depth == 0 || <a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e)) {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb">scores</a>(e)*player);</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    }</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(L) != 1) {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *aux = <a class="code" href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a>();</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <a class="code" href="logica_8h.html#a3815d005d1762c547d70d3198048e7d3">copyStruct</a>(e, aux);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(L);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogada = <a class="code" href="logica_8h.html#a33c8928e31992541dd9cf0ce0e9f7d50">get_cords</a>(str);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <span class="keywordflow">if</span> (strncmp(str, <span class="stringliteral">&quot;0 7&quot;</span>, 3) == 0 || strncmp (str, <span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0)</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb">scores</a>(e)*(player));</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(aux, jogada);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        score = -<a class="code" href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">minimax</a>(aux, depth - 1, player * (-1));</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        free(aux);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <span class="keywordflow">if</span> (score &gt; bestScore)</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            bestScore = score;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        L = <a class="code" href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a>(L);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">return</span> bestScore;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;}</div>
+<p class="definition">Definido na linha <a class="el" href="logica_8c_source.html#l00333">333</a> do ficheiro <a class="el" href="logica_8c_source.html">logica.c</a>.</p>
+<div class="fragment"><div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                                               {</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">int</span> bestScore = INT_MIN, score;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="structnodo.html">LISTA</a> L = <a class="code" href="lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e">criar_lista</a>();</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    L = <a class="code" href="lista_8h.html#a0b56764e73eb24ca541210236e5ee307">add_livres</a>(e, L);</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">if</span> (depth == 0 || <a class="code" href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a>(e)) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <span class="keywordflow">return</span> (<a class="code" href="logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb">scores</a>(e)*player);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="lista_8h.html#a4c10928f7acaa4e3de3760cea0dfd9c0">lista_esta_vazia</a>(L) != 1) {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <a class="code" href="struct_e_s_t_a_d_o.html">ESTADO</a> *aux = <a class="code" href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a>();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <a class="code" href="logica_8h.html#a3815d005d1762c547d70d3198048e7d3">copyStruct</a>(e, aux);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <span class="keywordtype">char</span> *str = (<span class="keywordtype">char</span> *) <a class="code" href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a>(L);</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <a class="code" href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a> jogada = <a class="code" href="logica_8h.html#a33c8928e31992541dd9cf0ce0e9f7d50">get_cords</a>(str);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordflow">if</span> (strncmp(str, <span class="stringliteral">&quot;0 7&quot;</span>, 3) == 0 || strncmp (str, <span class="stringliteral">&quot;7 0&quot;</span>, 3) == 0)</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;            <span class="keywordflow">return</span> (<a class="code" href="logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb">scores</a>(e)*(player));</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <a class="code" href="logica_8h.html#ac313d7e553b1e2b5f266acb9bfff8141">jogar</a>(aux, jogada);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        score = -<a class="code" href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a>(aux, depth - 1, player * (-1));</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        free(aux);</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <span class="keywordflow">if</span> (score &gt; bestScore)</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            bestScore = score;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        L = <a class="code" href="lista_8h.html#a9026a681a68322b5ec7f07137b864cbd">remove_cabeca</a>(L);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="keywordflow">return</span> bestScore;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1251,6 +1250,7 @@ Funções</h2></td></tr>
 <div class="ttc" id="astruct_c_o_o_r_d_e_n_a_d_a_html"><div class="ttname"><a href="struct_c_o_o_r_d_e_n_a_d_a.html">COORDENADA</a></div><div class="ttdoc">Struct para as coordenadas, sendo estas usadas para fazer jogadas.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00015">dados.h:15</a></div></div>
 <div class="ttc" id="alogica_8h_html_aea1fcb269536a2b7ee0d12518887cd09"><div class="ttname"><a href="logica_8h.html#aea1fcb269536a2b7ee0d12518887cd09">jogo_terminado</a></div><div class="ttdeci">int jogo_terminado(ESTADO *e)</div><div class="ttdoc">Verifica se o jogo terminou.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00068">logica.c:68</a></div></div>
 <div class="ttc" id="adados_8h_html_a9f2d95954ffa63c2f456e9481a883071"><div class="ttname"><a href="dados_8h.html#a9f2d95954ffa63c2f456e9481a883071">obter_max_num_jog</a></div><div class="ttdeci">int obter_max_num_jog(ESTADO *e)</div><div class="ttdoc">Obtem o número máximo de jogadas que o jogador pode introduzir no comando &quot;pos&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00048">dados.c:48</a></div></div>
+<div class="ttc" id="alogica_8h_html_a87984bf05c623849f7e349ba8060ebdd"><div class="ttname"><a href="logica_8h.html#a87984bf05c623849f7e349ba8060ebdd">negamax</a></div><div class="ttdeci">int negamax(ESTADO *e, int depth, int player)</div><div class="ttdoc">Variação do algoritmo &quot;minimax&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00333">logica.c:333</a></div></div>
 <div class="ttc" id="adados_8h_html_a72bd3fb56f0ac3af60c392b49f76a329"><div class="ttname"><a href="dados_8h.html#a72bd3fb56f0ac3af60c392b49f76a329">pos_helper</a></div><div class="ttdeci">void pos_helper(ESTADO *e, int r)</div><div class="ttdoc">Função auxiliar para a função &quot;pos&quot; na camada dados, atualiza o estado do jogo para que esta seja exe...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00075">dados.c:75</a></div></div>
 <div class="ttc" id="adados_8h_html_abadfdc02ae37afa3fc371a15c0090e61"><div class="ttname"><a href="dados_8h.html#abadfdc02ae37afa3fc371a15c0090e61">ler_tab</a></div><div class="ttdeci">void ler_tab(ESTADO *e, char *linha)</div><div class="ttdoc">Função que atualiza os dados do jogo ao ler o ficheiro.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00109">dados.c:109</a></div></div>
 <div class="ttc" id="alogica_8h_html_a9065d2c25c9052ce1f7f5e1d6272dd6e"><div class="ttname"><a href="logica_8h.html#a9065d2c25c9052ce1f7f5e1d6272dd6e">check_around</a></div><div class="ttdeci">int check_around(ESTADO *e)</div><div class="ttdoc">Verifica se todas as casas a volta da peça branca estao preenchidas com peças pretas.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00109">logica.c:109</a></div></div>
@@ -1262,7 +1262,7 @@ Funções</h2></td></tr>
 <div class="ttc" id="astruct_e_s_t_a_d_o_html"><div class="ttname"><a href="struct_e_s_t_a_d_o.html">ESTADO</a></div><div class="ttdoc">Struct que guarda o estado atual do jogo (tabuleiro, ultima jogada, todas as jogadas efetuadas,...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8h_source.html#l00033">dados.h:33</a></div></div>
 <div class="ttc" id="alogica_8h_html_a1e08ddaa296db25866c21b3ea2a9c106"><div class="ttname"><a href="logica_8h.html#a1e08ddaa296db25866c21b3ea2a9c106">encurralado</a></div><div class="ttdeci">int encurralado(ESTADO *e)</div><div class="ttdoc">Verifica se a peça está encurralada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00083">logica.c:83</a></div></div>
 <div class="ttc" id="alogica_8h_html_a97c7ad5b7c6b698beca8006e674b85da"><div class="ttname"><a href="logica_8h.html#a97c7ad5b7c6b698beca8006e674b85da">jogada_possivel</a></div><div class="ttdeci">int jogada_possivel(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Função que verifica se a jogada é possivel.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00057">logica.c:57</a></div></div>
-<div class="ttc" id="alogica_8h_html_a269576c01f83872ee667e982ab409612"><div class="ttname"><a href="logica_8h.html#a269576c01f83872ee667e982ab409612">get_vencedor</a></div><div class="ttdeci">COORDENADA get_vencedor(LISTA L)</div><div class="ttdoc">Caso exista uma jogada vencedora, obtem esta jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00372">logica.c:372</a></div></div>
+<div class="ttc" id="alogica_8h_html_a269576c01f83872ee667e982ab409612"><div class="ttname"><a href="logica_8h.html#a269576c01f83872ee667e982ab409612">get_vencedor</a></div><div class="ttdeci">COORDENADA get_vencedor(LISTA L)</div><div class="ttdoc">Caso exista uma jogada vencedora, obtem esta jogada.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00371">logica.c:371</a></div></div>
 <div class="ttc" id="alista_8h_html_ae3b99323b6f8f35d80bb69ff1a27985e"><div class="ttname"><a href="lista_8h.html#ae3b99323b6f8f35d80bb69ff1a27985e">criar_lista</a></div><div class="ttdeci">LISTA criar_lista()</div><div class="ttdoc">Inicializa a lista vazia, tendo o valor NULL no seu único nodo.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00005">lista.c:5</a></div></div>
 <div class="ttc" id="ainterface_8h_html_acb7c3a1d861395fabd4db18a365738b9"><div class="ttname"><a href="interface_8h.html#acb7c3a1d861395fabd4db18a365738b9">file_posAnt</a></div><div class="ttdeci">void file_posAnt(ESTADO *e, FILE *fp)</div><div class="ttdoc">Função que imprime as jogadas anteriores no ficheiro criado pelo utilizador com o comando &quot;gr&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00146">interface.c:146</a></div></div>
 <div class="ttc" id="alista_8h_html_abfcb205f3eb670157be0d1221021714b"><div class="ttname"><a href="lista_8h.html#abfcb205f3eb670157be0d1221021714b">devolve_cabeca</a></div><div class="ttdeci">void * devolve_cabeca(LISTA L)</div><div class="ttdoc">Função que vai buscar o valor da cabeça da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00019">lista.c:19</a></div></div>
@@ -1278,10 +1278,9 @@ Funções</h2></td></tr>
 <div class="ttc" id="alogica_8h_html_a2b0f98e3493bc14d0f07d5ba5790c3bb"><div class="ttname"><a href="logica_8h.html#a2b0f98e3493bc14d0f07d5ba5790c3bb">scores</a></div><div class="ttdeci">int scores(ESTADO *e)</div><div class="ttdoc">Atribui uma pontuação a cada uma das casas do tabuleiro.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00247">logica.c:247</a></div></div>
 <div class="ttc" id="alista_8h_html_ad9380152361127432c55c1c6067e05ae"><div class="ttname"><a href="lista_8h.html#ad9380152361127432c55c1c6067e05ae">proximo</a></div><div class="ttdeci">LISTA proximo(LISTA L)</div><div class="ttdoc">Função para obter o proximo nodo da lista.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00023">lista.c:23</a></div></div>
 <div class="ttc" id="alista_8h_html_afbf1fd7cbee0a00eef9742a686e60c93"><div class="ttname"><a href="lista_8h.html#afbf1fd7cbee0a00eef9742a686e60c93">lengthLista</a></div><div class="ttdeci">int lengthLista(LISTA L)</div><div class="ttdoc">Calcula o length da lista fornecida pelo utilizador.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00045">lista.c:45</a></div></div>
-<div class="ttc" id="alogica_8h_html_a0d0ae42af34190215d0219bc3230873b"><div class="ttname"><a href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">check_vencedora</a></div><div class="ttdeci">int check_vencedora(ESTADO *e, LISTA L)</div><div class="ttdoc">Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00361">logica.c:361</a></div></div>
+<div class="ttc" id="alogica_8h_html_a0d0ae42af34190215d0219bc3230873b"><div class="ttname"><a href="logica_8h.html#a0d0ae42af34190215d0219bc3230873b">check_vencedora</a></div><div class="ttdeci">int check_vencedora(ESTADO *e, LISTA L)</div><div class="ttdoc">Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00360">logica.c:360</a></div></div>
 <div class="ttc" id="adados_8h_html_a7e0c7e26fb685d9ab501e19b05e6954f"><div class="ttname"><a href="dados_8h.html#a7e0c7e26fb685d9ab501e19b05e6954f">inicializar_estado</a></div><div class="ttdeci">ESTADO * inicializar_estado()</div><div class="ttdoc">Função para inicializar o estado do jogo, colocando todas as peças do tabuleiro como &quot;VAZIO&quot; menos na...</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00006">dados.c:6</a></div></div>
 <div class="ttc" id="alista_8h_html_a0b56764e73eb24ca541210236e5ee307"><div class="ttname"><a href="lista_8h.html#a0b56764e73eb24ca541210236e5ee307">add_livres</a></div><div class="ttdeci">LISTA add_livres(ESTADO *e, LISTA L)</div><div class="ttdoc">Adiciona todas as casas onde o bot pode jogar na lista ligada.</div><div class="ttdef"><b>Definition:</b> <a href="lista_8c_source.html#l00054">lista.c:54</a></div></div>
-<div class="ttc" id="alogica_8h_html_aa375942115b84ed0b58b86ea76a82084"><div class="ttname"><a href="logica_8h.html#aa375942115b84ed0b58b86ea76a82084">minimax</a></div><div class="ttdeci">int minimax(ESTADO *e, int depth, int player)</div><div class="ttdoc">Variação do algoritmo &quot;minimax&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="logica_8c_source.html#l00334">logica.c:334</a></div></div>
 <div class="ttc" id="ainterface_8h_html_aa36b92ddb3d9b1fdb93d8524262ee66c"><div class="ttname"><a href="interface_8h.html#aa36b92ddb3d9b1fdb93d8524262ee66c">imprime_fileTab</a></div><div class="ttdeci">void imprime_fileTab(ESTADO *e, FILE *fp)</div><div class="ttdoc">Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando &quot;gr&quot;.</div><div class="ttdef"><b>Definition:</b> <a href="interface_8c_source.html#l00133">interface.c:133</a></div></div>
 <div class="ttc" id="adados_8h_html_a6faa68373203923729ed38657aa0f768"><div class="ttname"><a href="dados_8h.html#a6faa68373203923729ed38657aa0f768">obter_estado_casa</a></div><div class="ttdeci">CASA obter_estado_casa(ESTADO *e, COORDENADA c)</div><div class="ttdoc">Obtem o estado atual da peca numa determinada casa.</div><div class="ttdef"><b>Definition:</b> <a href="dados_8c_source.html#l00036">dados.c:36</a></div></div>
 <!-- start footer part -->

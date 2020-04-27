@@ -312,9 +312,9 @@ void bestMove (ESTADO *e) {
                 COORDENADA jog = get_cords(str);
                 jogar(aux, jog);
                 if (atual == 1)
-                    score = minimax(aux, 5, 1);
+                    score = negamax(aux, 5, 1);
                 else
-                    score = minimax(aux, 5, -1);
+                    score = negamax(aux, 5, -1);
                 free(aux);
                 if (score > bestScore) {
                     bestScore = score;
@@ -330,7 +330,7 @@ void bestMove (ESTADO *e) {
     jogar(e, best_jogada);
 }
 
-int minimax (ESTADO *e, int depth, int player) {
+int negamax (ESTADO *e, int depth, int player) {
     int bestScore = INT_MIN, score;
     LISTA L = criar_lista();
     L = add_livres(e, L);
@@ -348,7 +348,7 @@ int minimax (ESTADO *e, int depth, int player) {
             return (scores(e)*(player));
 
         jogar(aux, jogada);
-        score = -minimax(aux, depth - 1, player * (-1));
+        score = -negamax(aux, depth - 1, player * (-1));
         free(aux);
         if (score > bestScore)
             bestScore = score;

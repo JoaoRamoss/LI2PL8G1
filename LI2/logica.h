@@ -143,7 +143,7 @@ void bestMove (ESTADO *e);
  * @param player Varia entre -1 e 1, dependendo de quem e a vez de jogar.
  * @return Score da posição onde a peça se encontra.
  */
-int minimax (ESTADO *e, int depth, int player);
+int negamax (ESTADO *e, int depth, int player);
 
 /**
  * \brief Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora.
