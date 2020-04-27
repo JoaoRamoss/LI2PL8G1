@@ -298,7 +298,7 @@ void jog (ESTADO *e) {
 }
 
 void bestMove (ESTADO *e) {
-    int bestScore = INT_MIN, score, atual = obter_jogador_atual(e), jogada_atual = obter_numero_de_jogadas(e);
+    int bestScore = INT_MIN, score, atual = obter_jogador_atual(e);
     COORDENADA best_jogada;
     LISTA L =  criar_lista();
     L = add_livres(e, L);
