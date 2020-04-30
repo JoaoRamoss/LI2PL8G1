@@ -1,0 +1,919 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="logica_8h" kind="file" language="C++">
+    <compoundname>logica.h</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes refid="dados_8h" local="yes">dados.h</includes>
+    <includes refid="lista_8h" local="yes">lista.h</includes>
+    <includedby refid="dados_8c" local="yes">dados.c</includedby>
+    <includedby refid="interface_8c" local="yes">interface.c</includedby>
+    <includedby refid="logica_8c" local="yes">logica.c</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>logica.h</label>
+        <link refid="logica_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>dados.h</label>
+        <link refid="dados_8h"/>
+      </node>
+      <node id="2">
+        <label>stdio.h</label>
+      </node>
+      <node id="4">
+        <label>lista.h</label>
+        <link refid="lista_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>logica.c</label>
+        <link refid="logica_8c_source"/>
+      </node>
+      <node id="1">
+        <label>logica.h</label>
+        <link refid="logica_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>dados.c</label>
+        <link refid="dados_8c_source"/>
+      </node>
+      <node id="3">
+        <label>interface.c</label>
+        <link refid="interface_8c_source"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="logica_8h_1ac313d7e553b1e2b5f266acb9bfff8141" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int jogar</definition>
+        <argsstring>(ESTADO *e, COORDENADA c)</argsstring>
+        <name>jogar</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Função que usa os dados do estado e do input do jogador para fazer a jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordenada introduzida pelo utilizador. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Um novo estado atualizado conforme a jogada. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Coloca a nova posição da peça branca como posição anterior para ser usada futuramente. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="16" column="5" bodyfile="logica.c" bodystart="12" bodyend="23" declfile="logica.h" declline="16" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a97c7ad5b7c6b698beca8006e674b85da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int jogada_possivel</definition>
+        <argsstring>(ESTADO *e, COORDENADA c)</argsstring>
+        <name>jogada_possivel</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+<para>Função que verifica se a jogada é possivel. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Coordenada introduzida pelo utilizador. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 Caso nao seja possivel, 1 caso seja possivel. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="24" column="5" bodyfile="logica.c" bodystart="26" bodyend="34" declfile="logica.h" declline="24" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1aea1fcb269536a2b7ee0d12518887cd09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int jogo_terminado</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>jogo_terminado</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Verifica se o jogo terminou. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso o jogador 1 ganhe, 2 caso o jogador ganhe, 0 caso ainda ninguem tenha ganho, 3 caso as jogadas acabem, ou 4 caso a peça fique encurralada. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="31" column="5" bodyfile="logica.c" bodystart="37" bodyend="50" declfile="logica.h" declline="31" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a1e08ddaa296db25866c21b3ea2a9c106" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int encurralado</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>encurralado</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Verifica se a peça está encurralada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso esteja encurralada, 0 caso nao esteja. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Verifica primeiro se a peça está num dos cantos do tabuleiro, e, caso esteja, verifica se está encurralada. </para>
+</blockquote></para>
+<para><blockquote><para>Caso nao esteja em um dos cantos, chama a função &quot;check_around()&quot; para verificar se está ou nao encurralada. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="38" column="5" bodyfile="logica.c" bodystart="52" bodyend="76" declfile="logica.h" declline="38" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a9065d2c25c9052ce1f7f5e1d6272dd6e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int check_around</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>check_around</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Verifica se todas as casas a volta da peça branca estao preenchidas com peças pretas. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso a peca esteja encurralada, 0 caso nao esteja. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="45" column="5" bodyfile="logica.c" bodystart="78" bodyend="86" declfile="logica.h" declline="45" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1ada698c3adcce8d5c33d10004ebfac7f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int check_lados</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>check_lados</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Verifica todas as casas a volta da peca branca caso se encontre em col == 0 ou col == 7. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso a peca esteja encurralada. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="52" column="5" bodyfile="logica.c" bodystart="88" bodyend="101" declfile="logica.h" declline="52" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1ad83373f532ddf59ddedb25a40b575626" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int check_bottom</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>check_bottom</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Verifica todas as casas a volta da peça branca caso se encontre em lin == 0 ou lin == 7;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso a peça esteja encurralada. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="59" column="5" bodyfile="logica.c" bodystart="103" bodyend="115" declfile="logica.h" declline="59" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1ab69d463df342757a679a40c4f6e5d6ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void tabuleiro_ficheiro</definition>
+        <argsstring>(ESTADO *e, char *linha)</argsstring>
+        <name>tabuleiro_ficheiro</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>linha</declname>
+        </param>
+        <briefdescription>
+<para>Coloca o tabuleiro e o estado do jogo num ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Nome do ficheiro onde vai ser guardado o estado. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Copia o nome do ficheiro presente na string &quot;linha&quot; e coloca na string &quot;comando&quot;, e concatena &quot;.txt&quot; no final. </para>
+</blockquote></para>
+<para><blockquote><para>Cria o ficheiro com o nome pedido pelo utilizador, ou abre-o, caso este ja exista. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="66" column="6" bodyfile="logica.c" bodystart="118" bodyend="131" declfile="logica.h" declline="66" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a9cf19fce71c78359807a3f579925edbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void atualiza_jogada</definition>
+        <argsstring>(ESTADO *e, int col, int lin)</argsstring>
+        <name>atualiza_jogada</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>col</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lin</declname>
+        </param>
+        <briefdescription>
+<para>Função (auxiliar) que atualiza os dados de forma a que a jogada fique realizada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>col</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>posição da coluna. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>lin</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>posição da linha. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array &quot;jogadas&quot; as informações correspondentes. </para>
+</blockquote></para>
+<para><blockquote><para>Incrementa o numero de jogadas. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="74" column="6" bodyfile="dados.c" bodystart="87" bodyend="110" declfile="logica.h" declline="74" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1ac272f234a6e3ed2b2e3c05c727e33c75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ler_ficheiro</definition>
+        <argsstring>(ESTADO *e, char linha[])</argsstring>
+        <name>ler_ficheiro</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char</type>
+          <declname>linha</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+<para>Lê um ficheiro e atualiza o estado do jogo com o estado do jogo definido nesse ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linha obtida pela função &quot;fgets()&quot; no interpretador. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso consiga ler o ficheiro, 0 caso nao consiga. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Copia o nome do ficheiro presente na string &quot;linha&quot; e coloca na string &quot;comando&quot;, e concatena &quot;.txt&quot; no final. </para>
+</blockquote></para>
+<para><blockquote><para>Abre o ficheiro pedido pelo utilizador e lê o seu conteúdo. </para>
+</blockquote></para>
+<para><blockquote><para>Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função &quot;update_array_jogadas()&quot;. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="82" column="5" bodyfile="logica.c" bodystart="134" bodyend="162" declfile="logica.h" declline="82" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1abadfdc02ae37afa3fc371a15c0090e61" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ler_tab</definition>
+        <argsstring>(ESTADO *e, char *linha)</argsstring>
+        <name>ler_tab</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>linha</declname>
+        </param>
+        <briefdescription>
+<para>Função que atualiza os dados do jogo ao ler o ficheiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linha obtida na função &quot;ler_ficheiro()&quot;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="89" column="6" bodyfile="logica.c" bodystart="164" bodyend="189" declfile="logica.h" declline="89" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a224bb3db996c2f3baca3a72b8509c3ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int retira_linha</definition>
+        <argsstring>(char str[])</argsstring>
+        <name>retira_linha</name>
+        <param>
+          <type>char</type>
+          <declname>str</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+<para>Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à linha. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String de onde vao ser tirados os dados. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Uma posição para a linha do tabuleiro. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="96" column="5" bodyfile="logica.c" bodystart="191" bodyend="203" declfile="logica.h" declline="96" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a00a35418e9e9a6c215b653dceb822a03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int retira_coluna</definition>
+        <argsstring>(char str[])</argsstring>
+        <name>retira_coluna</name>
+        <param>
+          <type>char</type>
+          <declname>str</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+<para>Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à coluna. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String de onde vao ser tirados os dados. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Uma posição para a coluna do tabuleiro. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="103" column="5" bodyfile="logica.c" bodystart="205" bodyend="215" declfile="logica.h" declline="103" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1aec4a963a88af44348027ec7cf17ff47a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int pos</definition>
+        <argsstring>(ESTADO *e, char *linha)</argsstring>
+        <name>pos</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>linha</declname>
+        </param>
+        <briefdescription>
+<para>Função para executar o comando &quot;pos&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>linha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Linha obtida pelo interpretador na camada &quot;Interface&quot;. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso a operação seja executada com sucesso, 0 caso não seja executada com sucesso. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Extrai o algarismo que é introduzido após o comando &quot;pos&quot; (&quot;pos 5&quot;, extrai o &quot;5&quot;). </para>
+</blockquote></para>
+<para><blockquote><para>Verifica que o comando &quot;pos&quot; apenas está a ser introduzido a uma jogada anterior e não à jogada atual. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="111" column="5" bodyfile="logica.c" bodystart="217" bodyend="231" declfile="logica.h" declline="111" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a33c8928e31992541dd9cf0ce0e9f7d50" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+        <definition>COORDENADA get_cords</definition>
+        <argsstring>(char *str)</argsstring>
+        <name>get_cords</name>
+        <param>
+          <type>char *</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cords</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="118" column="12" bodyfile="logica.c" bodystart="233" bodyend="240" declfile="logica.h" declline="118" declcolumn="12"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a2b0f98e3493bc14d0f07d5ba5790c3bb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int scores</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>scores</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Atribui uma pontuação a cada uma das casas do tabuleiro. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A pontuação final. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Cria uma tabela com os scores. O score de uma dada casa é atribuido ao valor de (linha - coluna) de cada uma das casas. </para>
+</blockquote></para>
+<para><blockquote><para>Ao detetar em que posição do tabuleiro está a peça branca, dá return do score atribuido a essa posiçao. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="125" column="5" bodyfile="logica.c" bodystart="243" bodyend="260" declfile="logica.h" declline="125" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a9dfbc982d23a619e36575d8e7ec8e41c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void jog</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>jog</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função para o comando jog, joga em uma posição disponível aleatória. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Adiciona na lista ligada todas as casas para onde é possivel jogar. </para>
+</blockquote></para>
+<para><blockquote><para>Calcula a length da lista e gera um numero aleatorio entre 0 e o length-1. </para>
+</blockquote></para>
+<para><blockquote><para>Tendo em conta o numero aleatorio gerado pela função rand(), joga com as coordenadas na posição aleatoria da lista. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="131" column="6" bodyfile="logica.c" bodystart="263" bodyend="283" declfile="logica.h" declline="131" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a1e4ba81358ad3fcb728e87199de3ce32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void bestMove</definition>
+        <argsstring>(ESTADO *e)</argsstring>
+        <name>bestMove</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+<para>Função que invoca o minimax para decidir qual é a melhor jogada a realizar. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Invoca o minimax com player = 1 caso seja o jogador 1 a jogar, e player = -1 caso seja o jogador 2. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="137" column="6" bodyfile="logica.c" bodystart="285" bodyend="316" declfile="logica.h" declline="137" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a87984bf05c623849f7e349ba8060ebdd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int negamax</definition>
+        <argsstring>(ESTADO *e, int depth, int player)</argsstring>
+        <name>negamax</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>depth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>player</declname>
+        </param>
+        <briefdescription>
+<para>Variação do algoritmo &quot;minimax&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Cópia do estado do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>depth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Profundidade. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>player</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Varia entre -1 e 1, dependendo de quem e a vez de jogar. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Score da posição onde a peça se encontra. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+<para><blockquote><para>Caso a depth seja = 0 ou esteja em posição terminal do jogo, da return do score (caso de paragem da função recursiva). </para>
+</blockquote></para>
+<para><blockquote><para>Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score. </para>
+</blockquote></para>
+        </inbodydescription>
+        <location file="logica.h" line="146" column="5" bodyfile="logica.c" bodystart="318" bodyend="343" declfile="logica.h" declline="146" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a0d0ae42af34190215d0219bc3230873b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int check_vencedora</definition>
+        <argsstring>(ESTADO *e, LISTA L)</argsstring>
+        <name>check_vencedora</name>
+        <param>
+          <type><ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <param>
+          <type><ref refid="structnodo" kindref="compound">LISTA</ref></type>
+          <declname>L</declname>
+        </param>
+        <briefdescription>
+<para>Verifica se o jogador se encontra na possibilidade de fazer uma jogada vencedora. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>e</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Estado atual do jogo. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>L</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lista com posições possiveis. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>1 caso exista uma jogada vencedora. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="154" column="5" bodyfile="logica.c" bodystart="345" bodyend="354" declfile="logica.h" declline="154" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="logica_8h_1a269576c01f83872ee667e982ab409612" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref></type>
+        <definition>COORDENADA get_vencedor</definition>
+        <argsstring>(LISTA L)</argsstring>
+        <name>get_vencedor</name>
+        <param>
+          <type><ref refid="structnodo" kindref="compound">LISTA</ref></type>
+          <declname>L</declname>
+        </param>
+        <briefdescription>
+<para>Caso exista uma jogada vencedora, obtem esta jogada. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>L</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lista de jogadas possiveis. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>As coordenadas da jogada vencedora. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="logica.h" line="161" column="12" bodyfile="logica.c" bodystart="356" bodyend="367" declfile="logica.h" declline="161" declcolumn="12"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Definição da camada logica. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="5"><highlight class="preprocessor">#ifndef<sp/>LI2_LOGICA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LI2_LOGICA_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dados_8h" kindref="compound">dados.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="lista_8h" kindref="compound">lista.h</ref>&quot;</highlight></codeline>
+<codeline lineno="16"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1ac313d7e553b1e2b5f266acb9bfff8141" kindref="member">jogar</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>c);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a97c7ad5b7c6b698beca8006e674b85da" kindref="member">jogada_possivel</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/>c);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1aea1fcb269536a2b7ee0d12518887cd09" kindref="member">jogo_terminado</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a1e08ddaa296db25866c21b3ea2a9c106" kindref="member">encurralado</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a9065d2c25c9052ce1f7f5e1d6272dd6e" kindref="member">check_around</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1ada698c3adcce8d5c33d10004ebfac7f5" kindref="member">check_lados</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1ad83373f532ddf59ddedb25a40b575626" kindref="member">check_bottom</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1ab69d463df342757a679a40c4f6e5d6ae" kindref="member">tabuleiro_ficheiro</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*linha);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a9cf19fce71c78359807a3f579925edbb" kindref="member">atualiza_jogada</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>col,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lin);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1ac272f234a6e3ed2b2e3c05c727e33c75" kindref="member">ler_ficheiro</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>linha<sp/>[]);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1abadfdc02ae37afa3fc371a15c0090e61" kindref="member">ler_tab</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*linha);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a224bb3db996c2f3baca3a72b8509c3ce" kindref="member">retira_linha</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>str[]);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a00a35418e9e9a6c215b653dceb822a03" kindref="member">retira_coluna</ref><sp/>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>str[]);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1aec4a963a88af44348027ec7cf17ff47a" kindref="member">pos</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*linha);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="logica_8h_1a33c8928e31992541dd9cf0ce0e9f7d50" kindref="member">get_cords</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a2b0f98e3493bc14d0f07d5ba5790c3bb" kindref="member">scores</ref>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a9dfbc982d23a619e36575d8e7ec8e41c" kindref="member">jog</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a1e4ba81358ad3fcb728e87199de3ce32" kindref="member">bestMove</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a87984bf05c623849f7e349ba8060ebdd" kindref="member">negamax</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>depth,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>player);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="logica_8h_1a0d0ae42af34190215d0219bc3230873b" kindref="member">check_vencedora</ref><sp/>(<ref refid="struct_e_s_t_a_d_o" kindref="compound">ESTADO</ref><sp/>*e,<sp/><ref refid="structnodo" kindref="compound">LISTA</ref><sp/>L);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><ref refid="struct_c_o_o_r_d_e_n_a_d_a" kindref="compound">COORDENADA</ref><sp/><ref refid="logica_8h_1a269576c01f83872ee667e982ab409612" kindref="member">get_vencedor</ref>(<ref refid="structnodo" kindref="compound">LISTA</ref><sp/>L);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="logica.h"/>
+  </compounddef>
+</doxygen>

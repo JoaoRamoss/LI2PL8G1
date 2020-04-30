@@ -319,9 +319,13 @@ int negamax (ESTADO *e, int depth, int player) {
     int bestScore = INT_MIN, score;
     LISTA L = criar_lista();
     L = add_livres(e, L);
+
+    if (encurralado(e) == 1) {
+        return 7;
+    }
     ///> Caso a depth seja = 0 ou esteja em posição terminal do jogo, da return do score (caso de paragem da função recursiva).
     if (depth == 0 || jogo_terminado(e)) {
-        return (scores(e)*player);
+        return (scores(e) * player);
     }
     ///> Analisa todas as peças possíveis e escolhe aquela que levar o jogador ao melhor score.
     while (lista_esta_vazia(L) != 1) {
@@ -364,4 +368,12 @@ COORDENADA get_vencedor(LISTA L) {
         L = remove_cabeca(L);
     }
     return jogada;
+}
+
+int jogador_vencedor(ESTADO *e) {
+    int atual = obter_jogador_atual(e);
+    if (atual == 1)
+        return 2;
+    else
+        return 1;
 }

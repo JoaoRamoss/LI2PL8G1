@@ -159,4 +159,6 @@ int check_vencedora (ESTADO *e, LISTA L);
  * @return As coordenadas da jogada vencedora.
  */
 COORDENADA get_vencedor(LISTA L);
+
+int jogador_vencedor(ESTADO *e);
 #endif

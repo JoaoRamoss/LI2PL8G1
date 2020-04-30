@@ -106,8 +106,9 @@ void caso_final(ESTADO *e) {
         printf("Acabaram-se as jogadas! Ninguém ganhou. \n");
     }
     else if (jogo_terminado(e) == 4) {
+        int atual = jogador_vencedor(e);
         mostrar_tabuleiro(e, 0);
-        printf("A peca ficou encurralada, e um empate!\n");
+        printf("Parabens!! o jogador %d ganha! \n", atual);
     }
 }
 
