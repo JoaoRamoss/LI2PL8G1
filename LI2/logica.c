@@ -12,52 +12,21 @@
 int jogar(ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
     int col = c.coluna;
-    if (jogada_possivel(e,c) == 1) {
-        ///> Coloca a peça na posição pedida pelo utilizador.
-        e->tab[lin][col] = BRANCA;
-        ///> Coloca uma peça preta na casa anterior da peça branca.
-        e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
+    if (jogada_possivel(e, c) == 1) {
+        update_tab(e, lin, col);
         ///> Coloca a nova posição da peça branca como posição anterior para ser usada futuramente.
-        e->ultima_jogada.coluna = col;
-        e->ultima_jogada.linha = lin;
+        set_ultima_jogada(e, lin, col);
         atualiza_jogada(e, col, lin);
         return 1;
-    }
-    else
-    return 0;
-}
-
-
-void atualiza_jogada (ESTADO *e, int col, int lin) {
-    int jog = obter_jogador_atual(e);
-    int jogadas = obter_numero_de_jogadas(e);
-    ///> Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
-    if (jog == 1) {
-        e->jogadas[jogadas].jogador1.linha = lin;
-        e->jogadas[jogadas].jogador1.coluna = col;
-    } else {
-        e->jogadas[jogadas].jogador2.linha = lin;
-        e->jogadas[jogadas].jogador2.coluna = col;
-    }
-    if (jog == 1)
-        e->jogador_atual = 2;
-    else {
-        e->jogador_atual = 1;
-        ///> Incrementa o numero de jogadas.
-        if (e->num_jogadas >= e->max_num_jogadas) {
-            e->num_jogadas++;
-            e->max_num_jogadas++;
-        }
-        else
-            e->num_jogadas++;
-    }
+    } else
+        return 0;
 }
 
 // Verifica se a jogada pedida pelo utilizador é valida.
 int jogada_possivel (ESTADO *e, COORDENADA c) {
     int lin = abs(c.linha - 8) - 1;
     if (obter_estado_casa(e,c) == BRANCA || obter_estado_casa(e,c) == PRETA ||
-    abs((e->ultima_jogada.linha) - lin) > 1 || abs((e->ultima_jogada.coluna) - (c.coluna)) > 1
+    abs((ultima_linha(e)) - lin) > 1 || abs((ultima_coluna(e)) - (c.coluna)) > 1
     || lin > 7  || lin < 0 || c.coluna >  7 || c.coluna < 0)
         return 0;
     else
@@ -67,11 +36,11 @@ int jogada_possivel (ESTADO *e, COORDENADA c) {
 //Verifica se o jogo terminou.
 int jogo_terminado (ESTADO *e) {
     int r = 0;
-    if ((e->ultima_jogada.coluna == 0 && e->ultima_jogada.linha == 7))
+    if ((ultima_coluna(e) == 0 && ultima_linha(e) == 7))
         r = 1;
-    else if ((e ->ultima_jogada.linha == 0 && e->ultima_jogada.coluna == 7))
+    else if ((ultima_linha(e) == 0 && ultima_coluna(e) == 7))
             r = 2;
-    else if (e->num_jogadas == 31)
+    else if (obter_numero_de_jogadas(e) == 31)
                 r = 3;
     else if (encurralado(e) == 1)
         r = 4;
@@ -81,7 +50,7 @@ int jogo_terminado (ESTADO *e) {
 }
 
 int encurralado(ESTADO *e) {
-    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    int col = ultima_coluna(e), lin = ultima_linha(e);
     ///> Verifica primeiro se a peça está num dos cantos do tabuleiro, e, caso esteja, verifica se está encurralada.
     if (col == 0 && lin == 0) {
         if (obter_casa(e, lin, col + 1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA)
@@ -107,7 +76,7 @@ int encurralado(ESTADO *e) {
 }
 
 int check_around (ESTADO *e) {
-    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    int col = ultima_coluna(e), lin = ultima_linha(e);
     if (obter_casa(e, lin, col + 1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA &&
     obter_casa(e, lin, col-1) == PRETA && obter_casa(e, lin-1, col-1) == PRETA && obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin-1, col+1) == PRETA
     && obter_casa(e, lin+1, col-1) == PRETA)
@@ -117,7 +86,7 @@ int check_around (ESTADO *e) {
 }
 
 int check_lados (ESTADO *e) {
-    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    int col = ultima_coluna(e), lin = ultima_linha(e);
     if (col == 0) {
         if (obter_casa(e, lin-1, col) == PRETA && obter_casa(e, lin - 1, col + 1) == PRETA &&
             obter_casa(e, lin, col + 1) == PRETA &&
@@ -132,7 +101,7 @@ int check_lados (ESTADO *e) {
 }
 
 int check_bottom(ESTADO *e) {
-    int col = e->ultima_jogada.coluna, lin = e->ultima_jogada.linha;
+    int col = ultima_coluna(e), lin = ultima_linha(e);
     if (lin == 0) {
         if (obter_casa(e, lin, col+1) == PRETA && obter_casa(e, lin+1, col+1) == PRETA && obter_casa(e, lin+1, col) == PRETA
         && obter_casa(e, lin+1,col-1) == PRETA && obter_casa(e, lin, col-1) == PRETA)
@@ -175,7 +144,7 @@ int ler_ficheiro (ESTADO *e, char linha []) {
     //A função "access" retorna -1 caso nao encontre o ficheiro.
     if (access(comando, F_OK) != -1) {
         reinit(e);
-        e->max_num_jogadas = 0;
+        reset_max_num_jogadas(e);
         fp = fopen(comando, "r");
         while (fgets(lin_fich, BUF_SIZE, fp) != NULL) {
             ///> Ao ler o ficheiro, quando chega ao local onde se encontram as jogadas anteriores, chama a função "update_array_jogadas()".
@@ -261,17 +230,6 @@ int scores(ESTADO *e) {
         }
     }
     return score;
-}
-
-void copyStruct (ESTADO *e, ESTADO *aux) {
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            aux->tab[i][j] = e->tab[i][j];
-        }
-    }
-    aux->ultima_jogada = e->ultima_jogada;
-    aux->jogador_atual = e->jogador_atual;
-    aux->num_jogadas = e->num_jogadas;
 }
 
 //comando jog.

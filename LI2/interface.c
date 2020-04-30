@@ -4,7 +4,7 @@
 #include "logica.h"
 #define BUF_SIZE 1024
 
-void mostrar_tabuleiro(ESTADO *e) {
+void mostrar_tabuleiro(ESTADO *e, int prompt) {
     int num = 8;
 
     //Imprime as letras no topo do tabuleiro.
@@ -25,30 +25,8 @@ void mostrar_tabuleiro(ESTADO *e) {
         }
         printf("\n");
     }
-    printf("#(%d) JOG: %d => ", obter_numero_de_jogadas(e) + 1, obter_jogador_atual(e));
-}
-
-void mostrar_tabuleiro_final(ESTADO *e) {
-    int num = 8;
-
-    //Imprime as letras no topo do tabuleiro.
-    printf("   ");
-    for (char c = 'a'; c < 'i'; c++)
-        printf("%c  ", c);
-    printf("\n");
-    /*
-    Imprime o conteudo do tabuleiro, imprimindo '*' no caso de a Peça ser "BRANCA",
-    '#' no caso de a peça ser "PRETA", e '.' no caso de ser "VAZIO".
-    */
-    for (int i = 0; i < 8; i++) {
-        printf("%d  ", num);
-        num--;
-        for (int j = 0; j < 8; j++) {
-            char peca = obter_casa(e, i, j);
-            printf("%c  ", peca);
-        }
-        printf("\n");
-    }
+    if (prompt == 1)
+        printf("#(%d) JOG: %d => ", obter_numero_de_jogadas(e) + 1, obter_jogador_atual(e));
 }
 
 int interpretador(ESTADO *e) {
@@ -57,7 +35,7 @@ int interpretador(ESTADO *e) {
 
     ///> Usa a funcao "jogo_terminado" para verificar se tem de continuar a pedir comandos.
     while (jogo_terminado(e) == 0) {
-        mostrar_tabuleiro(e);
+        mostrar_tabuleiro(e, 1);
         ///> Verifica qual é o comando do utilizador, tendo ações diferentes para cada um destes comandos.
         if (fgets(linha, BUF_SIZE, stdin) == NULL)
             return 0;
@@ -109,24 +87,28 @@ int interpretador(ESTADO *e) {
                 printf("Jogada Invalida. \n");
         }
     }
+    caso_final(e);
+    return 1;
+}
+
+void caso_final(ESTADO *e) {
     //Verifica qual dos jogadores congratular no final do jogo.
     if (jogo_terminado(e) == 1) {
-        mostrar_tabuleiro_final(e);
+        mostrar_tabuleiro(e, 0);
         printf("Parabens!! O jogador 1 ganha!\n");
     }
     else if (jogo_terminado(e) == 2) {
-        mostrar_tabuleiro_final(e);
+        mostrar_tabuleiro(e, 0);
         printf("Parabens!! O jogador 2 ganha! \n");
     }
     else if (jogo_terminado(e) == 3) {
-        mostrar_tabuleiro_final(e);
+        mostrar_tabuleiro(e, 0);
         printf("Acabaram-se as jogadas! Ninguém ganhou. \n");
     }
     else if (jogo_terminado(e) == 4) {
-        mostrar_tabuleiro_final(e);
+        mostrar_tabuleiro(e, 0);
         printf("A peca ficou encurralada, e um empate!\n");
     }
-    return 1;
 }
 
 //Imprime o tabuleiro no ficheiro.

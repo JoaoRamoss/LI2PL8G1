@@ -72,6 +72,55 @@ int obtem_dados_jogadas_lin (ESTADO *e, int n, int i) {
     return lin;
 }
 
+void set_ultima_jogada (ESTADO *e, int lin, int col) {
+    e->ultima_jogada.coluna = col;
+    e->ultima_jogada.linha = lin;
+}
+
+void update_tab (ESTADO *e, int lin, int col) {
+    ///> Coloca a peça na posição pedida pelo utilizador.
+    e->tab[lin][col] = BRANCA;
+    ///> Coloca uma peça preta na casa anterior da peça branca.
+    e->tab[(e->ultima_jogada).linha][(e->ultima_jogada).coluna] = PRETA;
+}
+
+void atualiza_jogada (ESTADO *e, int col, int lin) {
+    int jog = obter_jogador_atual(e);
+    int jogadas = obter_numero_de_jogadas(e);
+    ///> Determina se foi o jogador 1 ou 2 a jogar, e, consoante isto, coloca na array "jogadas" as informações correspondentes.
+    if (jog == 1) {
+        e->jogadas[jogadas].jogador1.linha = lin;
+        e->jogadas[jogadas].jogador1.coluna = col;
+    } else {
+        e->jogadas[jogadas].jogador2.linha = lin;
+        e->jogadas[jogadas].jogador2.coluna = col;
+    }
+    if (jog == 1)
+        e->jogador_atual = 2;
+    else {
+        e->jogador_atual = 1;
+        ///> Incrementa o numero de jogadas.
+        if (e->num_jogadas >= e->max_num_jogadas) {
+            e->num_jogadas++;
+            e->max_num_jogadas++;
+        }
+        else
+            e->num_jogadas++;
+    }
+}
+
+int ultima_linha (ESTADO *e) {
+    return e->ultima_jogada.linha;
+}
+
+int ultima_coluna (ESTADO *e) {
+    return e->ultima_jogada.coluna;
+}
+
+void reset_max_num_jogadas (ESTADO *e) {
+    e->max_num_jogadas = 0;
+}
+
 void pos_helper (ESTADO *e, int r) {
     int col, lin, col2, lin2;
     reinit(e);
@@ -131,4 +180,15 @@ void ler_tab(ESTADO *e, char *linha) {
         COORDENADA coord = {col,lin};
         jogar(e,coord);
     }
+}
+
+void copyStruct (ESTADO *e, ESTADO *aux) {
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            aux->tab[i][j] = e->tab[i][j];
+        }
+    }
+    aux->ultima_jogada = e->ultima_jogada;
+    aux->jogador_atual = e->jogador_atual;
+    aux->num_jogadas = e->num_jogadas;
 }

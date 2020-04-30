@@ -9,14 +9,9 @@
 /**
  * \brief Imprime o tabuleiro.
  * @param e Estado do jogo.
+ * @param prompt Caso tenha o valor de 1, imprime o prompt, caso contrario, nao imprime.
  */
-void mostrar_tabuleiro(ESTADO *e);
-
-/**
- *\brief Imprime o tabuleiro sem o prompt.
- * @param e Estado atual do jogo.
- */
-void mostrar_tabuleiro_final(ESTADO *e);
+void mostrar_tabuleiro(ESTADO *e, int prompt);
 
 /**
  * \brief Interpretador do jogo, todos os comandos sao efetuados nesta função.
@@ -24,6 +19,12 @@ void mostrar_tabuleiro_final(ESTADO *e);
  * @return 1 caso a operação seja efetuada com sucesso.
  */
 int interpretador(ESTADO *e);
+
+/**
+ * \brief Determina que mensagem mostrar aos jogadores no fim do jogo.
+ * @param e Estado atual do jogo.
+ */
+void caso_final(ESTADO *e);
 
 /**
  * \brief Função que imprime o tabuleiro no ficheiro criado pelo utilizador com o comando "gr".

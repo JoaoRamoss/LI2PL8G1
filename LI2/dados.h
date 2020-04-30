@@ -107,6 +107,24 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
  */
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 
+void set_ultima_jogada (ESTADO *e, int lin, int col);
+
+void update_tab (ESTADO *e, int lin, int col);
+
+/**
+ * \brief Função (auxiliar) que atualiza os dados de forma a que a jogada fique realizada.
+ * @param e Estado atual do jogo.
+ * @param col posição da coluna.
+ * @param lin posição da linha.
+ */
+void atualiza_jogada (ESTADO *e, int col, int lin);
+
+int ultima_linha (ESTADO *e);
+
+int ultima_coluna (ESTADO *e);
+
+void reset_max_num_jogadas (ESTADO *e);
+
 /**
  * \brief Função auxiliar para a função "pos" na camada dados, atualiza o estado do jogo para que esta  seja executada com sucesso.
  * @param e Estado atual do jogo.
@@ -126,4 +144,10 @@ void reinit(ESTADO *e);
  */
 void ler_tab(ESTADO *e, char *linha);
 
+/**
+ * \brief Copia um struct para um outro struct.
+ * @param e Estado atual do jogo.
+ * @param aux Struct auxiliar para onde vao ser copiadas as informações.
+ */
+void copyStruct (ESTADO *e, ESTADO *aux);
 #endif

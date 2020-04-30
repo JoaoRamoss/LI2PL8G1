@@ -118,13 +118,6 @@ COORDENADA get_cords(char *str);
 int scores(ESTADO *e);
 
 /**
- * \brief Copia um struct para um outro struct.
- * @param e Estado atual do jogo.
- * @param aux Struct auxiliar para onde vao ser copiadas as informações.
- */
-void copyStruct (ESTADO *e, ESTADO *aux);
-
-/**
  * \brief Função para o comando jog, joga em uma posição disponível aleatória.
  * @param e Estado atual do jogo.
  */
