@@ -82,6 +82,13 @@ void atualiza_jogada (ESTADO *e, int col, int lin);
 int ler_ficheiro (ESTADO *e, char linha []);
 
 /**
+ * \brief Função que atualiza os dados do jogo ao ler o ficheiro.
+ * @param e Estado atual do jogo.
+ * @param linha Linha obtida na função "ler_ficheiro()".
+ */
+void ler_tab(ESTADO *e, char *linha);
+
+/**
  * \brief Converte a string no formato de dados do ficheiro criado pelo utilizador para um inteiro correspondente à linha.
  * @param str String de onde vao ser tirados os dados.
  * @return Uma posição para a linha do tabuleiro.

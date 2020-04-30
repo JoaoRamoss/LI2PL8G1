@@ -107,8 +107,20 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
  */
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 
+/**
+ * \brief Define como última jogada na estrutura de dados a ultima jogada feita pelo utilizador.
+ * @param e Estado atual do jogo.
+ * @param lin Coordenada da linha
+ * @param col Coordenada da coluna.
+ */
 void set_ultima_jogada (ESTADO *e, int lin, int col);
 
+/**
+ * \brief Atualiza as casas do tabuleiro consoante a jogada.
+ * @param e Estado atual do jogo.
+ * @param lin Coordenada da linha.
+ * @param col Coordenada da coluna.
+ */
 void update_tab (ESTADO *e, int lin, int col);
 
 /**
@@ -119,10 +131,24 @@ void update_tab (ESTADO *e, int lin, int col);
  */
 void atualiza_jogada (ESTADO *e, int col, int lin);
 
+/**
+ * \brief Função para obter a linha da ultima jogada.
+ * @param e Estado atual do jogo.
+ * @return A coordenada da linha da ultima jogada.
+ */
 int ultima_linha (ESTADO *e);
 
+/**
+ * \brief Função para obter a coluna da ultima jogada.
+ * @param e Estado atual do jogo.
+ * @return A coordenada da coluna da ultima jogada.
+ */
 int ultima_coluna (ESTADO *e);
 
+/**
+ * \brief Coloca o valor de max_num_jogadas igual a 0.
+ * @param e Estado atual do jogo.
+ */
 void reset_max_num_jogadas (ESTADO *e);
 
 /**
@@ -136,13 +162,6 @@ void pos_helper (ESTADO *e, int r);
  * @param e Estado atual do jogo.
  */
 void reinit(ESTADO *e);
-
-/**
- * \brief Função que atualiza os dados do jogo ao ler o ficheiro.
- * @param e Estado atual do jogo.
- * @param linha Linha obtida na função "ler_ficheiro()".
- */
-void ler_tab(ESTADO *e, char *linha);
 
 /**
  * \brief Copia um struct para um outro struct.

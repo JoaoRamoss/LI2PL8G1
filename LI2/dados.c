@@ -155,33 +155,6 @@ void reinit(ESTADO *e) {
     e->jogador_atual = 1;
 }
 
-void ler_tab(ESTADO *e, char *linha) {
-    int col, lin, col2, lin2;
-    char *linha2, *cords;
-    int i;
-    strtok(linha, " ");
-    linha2 = strtok  (NULL, "\n");
-    for (i = 0; linha2[i] != '\0'; i++);
-    strtok(linha2, " ");
-    cords = strtok(NULL, "\n");
-    if (i > 2) {
-        col = retira_coluna(linha2);
-        lin = abs(retira_linha(linha2)-8) - 1;
-        col2 = retira_coluna(cords);
-        lin2 = abs(retira_linha(cords)-8) - 1;
-        COORDENADA coord = {col,lin};
-        jogar(e,coord);
-        COORDENADA coord2 = {col2, lin2};
-        jogar(e, coord2);
-    }
-    else {
-        col = retira_coluna(linha2);
-        lin = abs(retira_linha(linha2)-8) - 1;
-        COORDENADA coord = {col,lin};
-        jogar(e,coord);
-    }
-}
-
 void copyStruct (ESTADO *e, ESTADO *aux) {
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
