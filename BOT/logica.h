@@ -1,5 +1,5 @@
-#ifndef LOGICA_H
-#define LOGICA_H
+#ifndef UNTITLED_LOGICA_H
+#define UNTITLED_LOGICA_H
 #include "dados.h"
 #include "lista.h"
 

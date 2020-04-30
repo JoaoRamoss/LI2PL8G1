@@ -254,11 +254,6 @@ int negamax (ESTADO *e, int depth, int player) {
     int bestScore = INT_MIN, score;
     LISTA L = criar_lista();
     L = add_livres(e, L);
-
-    if (encurralado(e) == 1) {
-        return 7;
-    }
-
     ///> Caso a depth seja = 0 ou esteja em posição terminal do jogo, da return do score (caso de paragem da função recursiva).
     if (depth == 0 || jogo_terminado(e)) {
         return (scores(e)*player);
@@ -323,4 +318,4 @@ void tabuleiro_ficheiro(ESTADO *e, char *linha) {
     imprime_fileTab(e, fp);
     file_posAnt(e, fp);
     fclose(fp);
-}
+} 

@@ -1,5 +1,5 @@
-#ifndef INTERFACE_H
-#define INTERFACE_H
+#ifndef UNTITLED_INTERFACE_H
+#define UNTITLED_INTERFACE_H
 #include "dados.h"
 #include <stdio.h>
 

@@ -1,5 +1,5 @@
-#ifndef DADOS_H
-#define DADOS_H
+#ifndef UNTITLED_DADOS_H
+#define UNTITLED_DADOS_H
 /**
  * \brief Tipos diferentes de Casa que o tabuleiro pode ter.
  */
@@ -136,7 +136,7 @@ char obtem_dados_jogadas_col (ESTADO *e, int n, int i);
  * @param e Estado atual do jogo.
  * @param n Numero do jogador atual.
  * @param i Indice onde ir buscar os dados da linha no array.
- * @return 
+ * @return
  */
 int obtem_dados_jogadas_lin (ESTADO *e, int n, int i);
 #endif
